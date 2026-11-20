@@ -9,30 +9,28 @@
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:"Sarabun",system-ui,Tahoma,sans-serif;background:#f5f4f0;color:#222;font-size:16px;line-height:1.5}
+body{margin:0;font-family:"Sarabun",system-ui,Tahoma,sans-serif;background:#f5f4f0;color:#222;font-size:18px;line-height:1.5}
 .wrap{max-width:720px;margin:0 auto;padding:12px 12px 96px}
-h1{font-size:19px;margin:4px 0 2px;font-weight:600}
-h2{font-size:16px;margin:14px 0 6px;font-weight:600}
+h1{font-size:21px;margin:4px 0 2px;font-weight:600}
+h2{font-size:18px;margin:14px 0 6px;font-weight:600}
 .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .sync{font-size:12px;color:#777;text-align:right}
-.nav{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:8px 0 10px}
-button{font:inherit;border:1px solid #c9c7bf;background:#fff;border-radius:10px;padding:10px 12px;min-height:44px;cursor:pointer;color:#222}
+.nav{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:8px 0 10px}
+button{font:inherit;border:1px solid #c9c7bf;background:#fff;border-radius:12px;padding:12px 14px;min-height:54px;cursor:pointer;color:#222}
 button:disabled{opacity:.5}
 button.pri{background:#2d6a4f;border-color:#2d6a4f;color:#fff;font-weight:600}
 button.on{background:#e7f1fb;border-color:#378add;color:#0c447c;font-weight:600}
-button.sm{min-height:36px;padding:6px 10px;font-size:14px}
+button.sm{min-height:44px;padding:8px 14px;font-size:16px}
 button.x{color:#a32d2d;border-color:#e8b4b4}
 button.danger{background:#a32d2d;color:#fff;border-color:#a32d2d}
 button.big{width:100%;margin:4px 0 10px}
-.nav button{padding:8px 1px 6px;font-size:12px;white-space:nowrap;letter-spacing:-.2px;border:none;border-radius:12px;background:var(--t);color:var(--c);display:flex;flex-direction:column;align-items:center;gap:3px;min-height:52px}
+.nav button{padding:10px 2px 8px;font-size:17px;border:none;border-radius:12px;background:var(--t);color:var(--c);display:flex;flex-direction:column;align-items:center;gap:3px;min-height:62px}
 .nav button i{width:8px;height:8px;border-radius:50%;background:var(--c);opacity:.35}
 .nav button.on{background:var(--c);color:#fff;font-weight:600}
 .nav button.on i{background:#fff;opacity:1}
 .nav [data-v=new]{--c:#2d6a4f;--t:#e3f1e8}
 .nav [data-v=saved]{--c:#1f6fb2;--t:#e3eef8}
-.nav [data-v=cases]{--c:#b4632a;--t:#f8ebe0}
-.nav [data-v=people]{--c:#7a4fa3;--t:#efe7f6}
-.nav [data-v=help]{--c:#5f6b73;--t:#eceeef}
+.nav [data-v=settings]{--c:#7a4fa3;--t:#efe7f6}
 .guide ol{padding-left:20px;margin:6px 0}.guide li{margin:5px 0}.guide h2{margin:14px 0 4px}
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin:6px 0 12px}
 .steps div{text-align:center;font-size:13px;padding:6px 2px;border-radius:8px;background:#e8e6df;color:#666}
@@ -40,7 +38,7 @@ button.big{width:100%;margin:4px 0 10px}
 .steps div.done{background:#cfe7d8;color:#1b4332}
 .card{background:#fff;border:1px solid #dedcd4;border-radius:12px;padding:12px;margin-bottom:10px}
 label{display:block;font-size:14px;color:#555;margin:8px 0 4px}
-input[type=text],input[type=date],input[type=password],input[type=url],select,textarea{font:inherit;width:100%;padding:10px;border:1px solid #c9c7bf;border-radius:10px;background:#fff;min-height:44px}
+input[type=text],input[type=date],input[type=password],input[type=url],select,textarea{font:inherit;width:100%;padding:12px;border:1px solid #c9c7bf;border-radius:12px;background:#fff;min-height:52px}
 .row{background:#fff;border:1px solid #dedcd4;border-radius:12px;padding:10px;margin-bottom:8px}
 .nm{font-weight:600;margin-bottom:6px}
 .nmrow{display:flex;gap:8px;align-items:center}
@@ -52,7 +50,18 @@ input[type=text],input[type=date],input[type=password],input[type=url],select,te
 .row input.from{margin-top:8px}
 .bar{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:6px 0 8px;font-size:14px;color:#555}
 .foot{position:fixed;left:0;right:0;bottom:0;background:#fffffe;border-top:1px solid #dedcd4;padding:10px 12px;display:flex;gap:8px;justify-content:center}
-.foot button{flex:1;max-width:340px}
+.foot button{flex:1;max-width:340px;min-height:58px;font-size:18px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chip{min-height:44px!important;padding:6px 12px!important;font-size:16px;border-radius:20px!important;background:#f1efe8}
+.chip.on{background:#2d6a4f;color:#fff;border-color:#2d6a4f}
+.cat{font-size:15px;color:#777;margin:12px 0 4px;font-weight:600}
+button.case{display:flex;flex-direction:column;align-items:flex-start;text-align:left;width:100%;margin-bottom:6px;min-height:58px}
+button.case small{color:#2d6a4f;font-size:14px}
+button.case.on{background:#d8f3dc;border-color:#2d6a4f;color:#1b4332;font-weight:600}
+.more summary{cursor:pointer;color:#555;margin:12px 0 4px;font-size:16px}
+.menu button{display:block;width:100%;text-align:left;margin-bottom:10px;padding:14px;border-left:6px solid #7a4fa3}
+.menu button b{display:block;font-size:19px}.menu button span{color:#666;font-size:15px}
+button.back{margin:0 0 10px;background:transparent}
 .muted{color:#777;font-size:13px}
 .chk{display:flex;gap:10px;align-items:flex-start;margin:10px 0}
 .chk input{width:22px;height:22px;margin-top:2px;flex:none}
@@ -117,14 +126,15 @@ let serverVersion = '';
 /* ===== สถานะ ===== */
 let S = {cases:[], doctors:[], staff:[], templates:{}, records:[]};
 let loaded = false, busy = false, lastSync = '', msg = '', msgType = 'ok';
-let view = ({'#saved':'saved','#cases':'cases','#people':'people','#help':'help'})[location.hash] || 'new';
-let step = 1, draft = null, editCase = null, delPending = '', justSaved = false, filt = {q:'', borrow:'all'};
+let view = ({'#saved':'saved','#settings':'settings','#cases':'cases','#people':'people','#help':'help','#backup':'backup'})[location.hash] || 'new';
+let catSel = '', caseQ = '', step = 1, draft = null, editCase = null, delPending = '', justSaved = false, filt = {q:'', borrow:'all'};
 const keep = {doctor:'', date:'', by:''};
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const today = () => { const d = new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); };
 const thDate = s => { if(!s) return ''; const p = String(s).split('-'); return p.length === 3 ? p[2]+'/'+p[1]+'/'+(+p[0]+543) : s; };
+const SUBV = ['settings','cases','people','backup','help','setup'];
 const caseById = id => S.cases.find(c => c.id === id);
 const clone = o => JSON.parse(JSON.stringify(o));
 
@@ -134,6 +144,11 @@ function setBusy(b){ busy = b; $('#busy').style.display = b ? 'block' : 'none'; 
 /* ===== คุยกับฐานข้อมูล (Supabase) ===== */
 const nowTh = () => new Intl.DateTimeFormat('sv-SE', {timeZone:'Asia/Bangkok', year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit', hourCycle:'h23'}).format(new Date());
 const enc = encodeURIComponent;
+async function uploadLocalToCloud(){
+  const mine = lrows().filter(r => r.updated_at !== SEED_TS);
+  for(let i = 0; i < mine.length; i += 200) await upsertRows(mine.slice(i, i + 200));
+  return mine.length;
+}
 function friendlyErr(status, text){
   if(status === 401 || status === 403) return 'รหัส (key) ไม่ถูกต้อง หรือยังไม่ได้รัน setup.sql';
   if(status === 404) return 'ไม่พบตาราง or_store — ยังไม่ได้รัน setup.sql ใน Supabase';
@@ -151,16 +166,41 @@ async function sb(method, path, body, prefer){
   if(!res.ok) throw new Error(friendlyErr(res.status, tx));
   return tx ? JSON.parse(tx) : null;
 }
-const upsertRows = (rows) => sb('POST', 'or_store?on_conflict=kind,id', rows.map(r => Object.assign({updated_at: new Date().toISOString()}, r)), 'resolution=merge-duplicates,return=minimal');
-const delRow = (kind, id) => sb('DELETE', 'or_store?kind=eq.' + enc(kind) + '&id=eq.' + enc(id), null, 'return=minimal');
+const cloud = () => !!(API && KEY);
+const SEED_TS = '2026-01-01T00:00:00.000Z';
+const SEED_CASES = [{"id":"c1","cat":"1. กระดูก / ข้อ","name":"ORIF Philos plate","ins":[["Small fragment",""],["LCP 3.5 set",""],["Set General",""],["Set Reduction",""]],"sup":[["Plate (ระบุชนิด: LCP / Philos / Hook / DMT / Narrow / L plate / Radius)","",""],["Screw (ระบุชนิด/ขนาด)","",""],["Screw cortex Extra long","",""],["ลวด no.23 / K-wire (TWB)","",""],["ไหมตามใบเตรียมแพทย์","","O"],["Radivac drain no.8 / 200 ml / 600 ml","","I"],["Image intensifier cover","","I"],["Ioban 6650","","OI"],["Leukostrip 13x102","",""],["Esmarch / Webril / Conform / EB (ระบุ)","",""]]},{"id":"c2","cat":"1. กระดูก / ข้อ","name":"ORIF LCP distal humerus","ins":[["Set General",""],["Set Reduction",""],["LCP 3.5 set",""],["Small fragment",""],["Bone clamp กลาง","O"]],"sup":[["Plate (ระบุชนิด: LCP / Philos / Hook / DMT / Narrow / L plate / Radius)","",""],["Screw (ระบุชนิด/ขนาด)","",""],["Screw cortex Extra long","",""],["ลวด no.23 / K-wire (TWB)","",""],["ไหมตามใบเตรียมแพทย์","","O"],["Radivac drain no.8 / 200 ml / 600 ml","","I"],["Image intensifier cover","","I"],["Ioban 6650","","OI"],["Leukostrip 13x102","",""],["Esmarch / Webril / Conform / EB (ระบุ)","",""]]},{"id":"c3","cat":"1. กระดูก / ข้อ","name":"ORIF Hook plate","ins":[["Small fragment",""]],"sup":[["Plate (ระบุชนิด: LCP / Philos / Hook / DMT / Narrow / L plate / Radius)","",""],["Screw (ระบุชนิด/ขนาด)","",""],["Screw cortex Extra long","",""],["ลวด no.23 / K-wire (TWB)","",""],["ไหมตามใบเตรียมแพทย์","","O"],["Radivac drain no.8 / 200 ml / 600 ml","","I"],["Image intensifier cover","","I"],["Ioban 6650","","OI"],["Leukostrip 13x102","",""],["Esmarch / Webril / Conform / EB (ระบุ)","",""]]},{"id":"c4","cat":"1. กระดูก / ข้อ","name":"ORIF medial proximal tibia / L plate","ins":[["Set plate medial proximal tibia",""],["Set L plate proximal tibia",""],["Small fragment",""],["LCP 3.5 set",""],["Set General",""],["Set Reduction",""],["Set chisel",""],["Depth gauge long",""],["Pelvic reduction forceps",""],["Drill long 2.5",""]],"sup":[["Plate (ระบุชนิด: LCP / Philos / Hook / DMT / Narrow / L plate / Radius)","",""],["Screw (ระบุชนิด/ขนาด)","",""],["Screw cortex Extra long","",""],["ลวด no.23 / K-wire (TWB)","",""],["ไหมตามใบเตรียมแพทย์","","O"],["Radivac drain no.8 / 200 ml / 600 ml","","I"],["Image intensifier cover","","I"],["Ioban 6650","","OI"],["Leukostrip 13x102","",""],["Esmarch / Webril / Conform / EB (ระบุ)","",""]]},{"id":"c5","cat":"1. กระดูก / ข้อ","name":"ORIF distal radius","ins":[["Set radius (instrument)",""],["Sleeve two column",""]],"sup":[["Plate (ระบุชนิด: LCP / Philos / Hook / DMT / Narrow / L plate / Radius)","",""],["Screw (ระบุชนิด/ขนาด)","",""],["Screw cortex Extra long","",""],["ลวด no.23 / K-wire (TWB)","",""],["ไหมตามใบเตรียมแพทย์","","O"],["Radivac drain no.8 / 200 ml / 600 ml","","I"],["Image intensifier cover","","I"],["Ioban 6650","","OI"],["Leukostrip 13x102","",""],["Esmarch / Webril / Conform / EB (ระบุ)","",""]]},{"id":"c6","cat":"1. กระดูก / ข้อ","name":"ORIF TWB","ins":[["Set wire",""],["Set chisel",""],["ลวดเล็ก (ถ้าเป็น ulnar ต้องยืม)",""]],"sup":[["Plate (ระบุชนิด: LCP / Philos / Hook / DMT / Narrow / L plate / Radius)","",""],["Screw (ระบุชนิด/ขนาด)","",""],["Screw cortex Extra long","",""],["ลวด no.23 / K-wire (TWB)","",""],["ไหมตามใบเตรียมแพทย์","","O"],["Radivac drain no.8 / 200 ml / 600 ml","","I"],["Image intensifier cover","","I"],["Ioban 6650","","OI"],["Leukostrip 13x102","",""],["Esmarch / Webril / Conform / EB (ระบุ)","",""]]},{"id":"c7","cat":"1. กระดูก / ข้อ","name":"ORIF distal medial tibia LCP (DMT)","ins":[["Set General",""],["Set Reduction",""],["Instrument 4.5",""],["Basic set",""],["Screw set",""],["LCP 4.5 set",""],["LCP 3.5 set",""],["Small fragment",""]],"sup":[["Plate (ระบุชนิด: LCP / Philos / Hook / DMT / Narrow / L plate / Radius)","",""],["Screw (ระบุชนิด/ขนาด)","",""],["Screw cortex Extra long","",""],["ลวด no.23 / K-wire (TWB)","",""],["ไหมตามใบเตรียมแพทย์","","O"],["Radivac drain no.8 / 200 ml / 600 ml","","I"],["Image intensifier cover","","I"],["Ioban 6650","","OI"],["Leukostrip 13x102","",""],["Esmarch / Webril / Conform / EB (ระบุ)","",""]]},{"id":"c8","cat":"1. กระดูก / ข้อ","name":"ORIF distal fibula / distal clavicle LCP","ins":[["Small fragment",""],["Instrument 2.7",""],["Depth gauge เล็ก",""],["Set wire pusher (clavicle)",""]],"sup":[["Plate (ระบุชนิด: LCP / Philos / Hook / DMT / Narrow / L plate / Radius)","",""],["Screw (ระบุชนิด/ขนาด)","",""],["Screw cortex Extra long","",""],["ลวด no.23 / K-wire (TWB)","",""],["ไหมตามใบเตรียมแพทย์","","O"],["Radivac drain no.8 / 200 ml / 600 ml","","I"],["Image intensifier cover","","I"],["Ioban 6650","","OI"],["Leukostrip 13x102","",""],["Esmarch / Webril / Conform / EB (ระบุ)","",""]]},{"id":"c9","cat":"1. กระดูก / ข้อ","name":"External fix","ins":[["Set External fix",""],["T handle",""],["T universal",""],["Set General",""],["Set Reduction",""],["ประแจ",""]],"sup":[["Pin / Rod ชุด External fix (ระบุ)","",""],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c10","cat":"1. กระดูก / ข้อ","name":"ORIF Narrow LCP / Small LCP","ins":[["LCP 4.5 set",""],["LCP 3.5 set",""],["Set screw",""],["Set basic","O"],["Set General",""],["Set Reduction",""],["ที่ดัด Plate ใหญ่","O"],["Small fragment",""]],"sup":[["Plate (ระบุชนิด: LCP / Philos / Hook / DMT / Narrow / L plate / Radius)","",""],["Screw (ระบุชนิด/ขนาด)","",""],["Screw cortex Extra long","",""],["ลวด no.23 / K-wire (TWB)","",""],["ไหมตามใบเตรียมแพทย์","","O"],["Radivac drain no.8 / 200 ml / 600 ml","","I"],["Image intensifier cover","","I"],["Ioban 6650","","OI"],["Leukostrip 13x102","",""],["Esmarch / Webril / Conform / EB (ระบุ)","",""]]},{"id":"c11","cat":"1. กระดูก / ข้อ","name":"Repair AC & CC ligament","ins":[["Set wire pusher",""],["Drill 2.0",""]],"sup":[["Suture button","",""],["Anchor suture","",""],["Fiber wire 5 (ไม่ติดเข็ม)","",""],["Ethibond 5 (ไม่ติดเข็ม)","",""],["Prolene 1","",""],["ลวด no.23","",""]]},{"id":"c12","cat":"1. กระดูก / ข้อ","name":"PFNA","ins":[["Life Plus",""],["Set General",""],["Set Reduction",""],["PFNA set",""],["Synream set",""],["Ruler",""],["Guide nail",""]],"sup":[["PFNA Blade","",""],["PFNA small / long","",""],["PFNA End cap / End cap IM nail (แจ้ง Inven)","",""],["IM nail (Tibia / Femur ระบุขนาด)","",""],["Radivac drain","","I"]]},{"id":"c13","cat":"1. กระดูก / ข้อ","name":"IM nail","ins":[["Nail instrument set",""],["Set expert",""],["Life plus",""],["Set General",""],["Set Reduction",""],["Synream set",""],["Ruler",""],["Depth gauge",""],["Guide nail",""],["Bone hook",""],["T universal",""],["Hammer",""],["F-ret (ถ้าทำ Femur)",""]],"sup":[["PFNA Blade","",""],["PFNA small / long","",""],["PFNA End cap / End cap IM nail (แจ้ง Inven)","",""],["IM nail (Tibia / Femur ระบุขนาด)","",""],["Radivac drain","","I"]]},{"id":"c14","cat":"1. กระดูก / ข้อ","name":"ORIF proximal lateral tibia","ins":[["Set proximal tibia (plate อยู่ในชุด)",""],["Set basic","O"],["Set General",""],["Set Reduction",""],["Pelvic clamp",""],["Instrument 4.5",""],["Depth gauge long",""],["Bone hook",""],["Bone curette","O"]],"sup":[["Plate (ระบุชนิด: LCP / Philos / Hook / DMT / Narrow / L plate / Radius)","",""],["Screw (ระบุชนิด/ขนาด)","",""],["Screw cortex Extra long","",""],["ลวด no.23 / K-wire (TWB)","",""],["ไหมตามใบเตรียมแพทย์","","O"],["Radivac drain no.8 / 200 ml / 600 ml","","I"],["Image intensifier cover","","I"],["Ioban 6650","","OI"],["Leukostrip 13x102","",""],["Esmarch / Webril / Conform / EB (ระบุ)","",""]]},{"id":"c15","cat":"1. กระดูก / ข้อ","name":"TKA","ins":[["Set General",""],["Set Osteotome ใหญ่",""],["Mallet ใหญ่","O"],["Bone rongeur","O"],["Volkman",""],["Bone curette ตรง","O"],["Bone hook / T handle",""],["Hohmann retractor large wide",""],["Hohmann retractor small narrow",""],["ตัวดันขาข้าง",""]],"sup":[["Implant TKA (ระบุยี่ห้อ/ขนาด)","",""],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c16","cat":"1. กระดูก / ข้อ","name":"ACL","ins":[],"sup":[["Suture button","",""],["Anchor suture","",""],["Fiber wire 5 (ไม่ติดเข็ม)","",""],["Ethibond 5 (ไม่ติดเข็ม)","",""],["Prolene 1","",""],["ลวด no.23","",""]]},{"id":"c17","cat":"2. Spine / พลาสติก / หู คอ จมูก","name":"Open discectomy","ins":[["Set Laminectomy",""],["Set special spine",""],["Metric instrument",""],["Anterior cervical ret.",""],["Set Midas + เครื่อง (หัวกรอยืม Inven)",""],["Frame",""],["Kerrison 2 mm / 3 mm",""],["ข้อต่อเตียงท่อนสีดำ",""]],"sup":[["Spongostan","","I"],["Surgicel","","OI"],["เวชภัณฑ์ตามใบแพทย์ (ระบุ)","",""]]},{"id":"c18","cat":"2. Spine / พลาสติก / หู คอ จมูก","name":"STSG with mesh","ins":[["Set Dermatome",""],["Set mesh graft",""],["ข้อต่อลม",""]],"sup":[["Dermatome blade","",""],["Dermacarrier 1.5:1","",""],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c19","cat":"2. Spine / พลาสติก / หู คอ จมูก","name":"ORIF Zygoma / orbital","ins":[["Set plastic small","O"],["Molt periosteal",""],["Zygoma elevator",""],["Drill 1.6",""],["Set Leibinger",""],["Midas instrument + เครื่อง + drill",""],["Brain retractor",""],["Vein retractor",""],["Shape hook",""],["ตัวงัด orbital",""],["Wire scissor (ถ้าวาง mesh)",""]],"sup":[["Mesh / plate / screw (ระบุ)","",""],["ลวด Extra","",""],["ยางมัดฟัน","",""],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c20","cat":"2. Spine / พลาสติก / หู คอ จมูก","name":"IMF","ins":[["Wire pusher",""],["Set arch bar",""],["Wire scissor","O"],["Tonsil suction",""],["E pen drive",""],["Mouth gag",""]],"sup":[["Mesh / plate / screw (ระบุ)","",""],["ลวด Extra","",""],["ยางมัดฟัน","",""],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c21","cat":"5. ระบบปัสสาวะ (Uro)","name":"Vasectomy","ins":[["Set TR","O"]],"sup":[["เวชภัณฑ์ตามใบแพทย์ (ระบุ)","",""],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c22","cat":"2. Spine / พลาสติก / หู คอ จมูก","name":"Thyroidectomy","ins":[["สาย Harmonic",""],["เครื่อง Harmonic",""]],"sup":[["เวชภัณฑ์ตามใบแพทย์ (ระบุ)","",""],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c23","cat":"2. Spine / พลาสติก / หู คอ จมูก","name":"Tonsillectomy","ins":[["Set tonsil",""]],"sup":[["เวชภัณฑ์ตามใบแพทย์ (ระบุ)","",""],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c24","cat":"4. นรีเวช","name":"TAH","ins":[["Explore set",""],["Cath set","O"],["Scrub set","O"],["Valley lab","O"],["Myoma screw",""]],"sup":[["Myoma screw","",""],["Interceed","",""],["Fibrillar","",""],["Surgicel","","OI"],["Spongostan","","I"],["หัวจี้ยาว E1450-6","",""],["Megadyne M/Blade 6 1/2\" Ez (0014M)","","I"],["Dermabond advanced / Mepilex post-op 10x20, 10x25","","I"],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c25","cat":"3. ศัลยกรรมทั่วไป / ส่องกล้อง / ทวารหนัก","name":"LC / Lap appendectomy","ins":[["Lens 5 mm 0°",""],["Lens 10 mm 0°",""],["Lens 10 mm 30°",""],["Set camera",""],["สายน้ำฟ้าขาว",""],["Suction and irrigate",""],["กระป๋องน้ำ LC",""],["Cautery cable LC",""],["LC set",""],["ด้าม Hemoloc 5 / 10 / 12 mm",""],["Pressure bag",""],["Harmonic (พ.ณัฐพงศ์) / Ligasure (พ.บัณฑิต, พ.ปราการ)",""],["(ใช้ของบริษัท) จุกน้ำ + จุกแก๊ส / สายน้ำ + สายแก๊ส",""]],"sup":[["Surgical trocar 12 mm (D12LT)","2",""],["Dilating tip trocar 5 mm (D5LT)","3–4",""],["Ligamex 5 mm / 12 mm","",""],["Endoloop (PDS)","3",""],["Hemoloc ทุก size","",""],["Polymer clip 5 / 10 / 12 mm","",""],["Endobag 3x6 / 5x8 / Lina endobag","",""],["Endo scissor 5 mm","",""],["Ligasure Maryland 37 cm LF1937 / Harmonic Ace 36 cm","",""],["Jackson Pratt 400 / Jackson round drain 15 Fr","","I"],["Glove port","",""],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c26","cat":"4. นรีเวช","name":"Lap ovarian cyst / TLH","ins":[["Laparoscope set",""],["Lens 5 mm / 10 mm",""],["Cautery cable micro jaw",""],["Cautery cable LC",""],["Uterine elevator",""],["Endo Allis",""],["Vaginal speculum L",""],["สายน้ำฟ้าขาว",""],["Suction and irrigate",""],["กระป๋องน้ำ LC",""],["ขาหยั่งดำ",""],["เครื่อง Ligasure",""],["Gynaecology set",""],["Vagina tube / Uterine sound / Needle handle LC (TLH)",""]],"sup":[["Dilating tip trocar 5 mm with stability sleeve (D5LT)","4",""],["Surgical trocar 11 mm bladeless (B11LT)","2",""],["Surgical trocar 12 mm (D12LT)","1",""],["Bipolar macro jaw (Ebfo1)","",""],["Ligasure blunt / Maryland 37 cm","1 / 1",""],["Endo scissor 5 mm","",""],["Endobag 3x6 / 5x8","",""],["Interceed 3x4","",""],["V-loc 180 (No.0316)  [TLH]","2",""],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c27","cat":"5. ระบบปัสสาวะ (Uro)","name":"TUERP","ins":[["Lens 4 mm 30°",""],["Set cystoscope",""],["หม้อ TUR",""],["สายน้ำ LC",""],["Stop cock",""],["Sound dilator",""],["Guide foley",""]],"sup":[["Sterile water irrigate 1000 ml (ใช้ 2–3 ขวด)","","I"],["สายน้ำ + Stop cock","",""],["เวชภัณฑ์ LEEP (ระบุ)","",""]]},{"id":"c28","cat":"4. นรีเวช","name":"Hysteroscope","ins":[["Set hysteroscope",""],["Cutting loop hystero",""],["Lens 4 mm 30°",""],["สายจี้",""],["Pressure bag",""],["Camera",""],["จุกเสียบสายน้ำ",""]],"sup":[["Sterile water irrigate 1000 ml (ใช้ 2–3 ขวด)","","I"],["สายน้ำ + Stop cock","",""],["เวชภัณฑ์ LEEP (ระบุ)","",""]]},{"id":"c29","cat":"4. นรีเวช","name":"LEEP","ins":[["เครื่องจี้ LEEP",""],["สายจี้ conization",""],["Set conization",""],["หัวจี้ Loop + หัว ball (ยืม Inven)",""]],"sup":[["Sterile water irrigate 1000 ml (ใช้ 2–3 ขวด)","","I"],["สายน้ำ + Stop cock","",""],["เวชภัณฑ์ LEEP (ระบุ)","",""]]},{"id":"c30","cat":"3. ศัลยกรรมทั่วไป / ส่องกล้อง / ทวารหนัก","name":"Excision / Hemorrhoid / I+D / Bartholin","ins":[["Minor set","O"],["Plastic small","O"],["Coronado",""],["Valley lab","O"],["Surgical pack",""]],"sup":[["Anal spongostan / Spongostan","","I"],["Penrose drain ทุก size","","O"],["Dermabond 0.5","","O"],["Megadyne micro needle 0118","","I"],["Horizon titanium clip (small)","",""],["Marcaine 0.5 %  /  Chalocaine 2 % jelly","",""],["Hydrogen peroxide / Tube culture","","I"],["Hand control pencil / Urine catheter red rubber no.14","","I"],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c31","cat":"3. ศัลยกรรมทั่วไป / ส่องกล้อง / ทวารหนัก","name":"Explor lap / Open colectomy","ins":[["Explor lap set","O"],["Intestinal set",""],["Omnitract ret. set",""],["Scrub set","O"],["Cath set","O"],["Valley lab","O"],["Harmonic scapler",""],["Drape x5","O"],["Colonoscope (ถ้าต้องใช้)",""]],"sup":[["Endo GIA stapler 80-3.8 / 75 mm NTLC75 + reload SR75","",""],["Contour curved cutter 40 mm Green CS40G + reload CR40G","",""],["CDH 25 / 29 / 33  /  Pursting device","",""],["Harmonic focus 17 cm / Harmonic 1100 20 cm / Ace","",""],["Ligasure Impact LF4318 / Atlas LS1020","",""],["Alexis wound retractor (ทุก size)","",""],["Hemoloc","",""],["Skin staple","","OI"],["Surgicel 5x7 W1913T","","OI"],["Redivac 200 ml / สาย no.8","","I"],["Colostomy / Stomahesive","",""],["Endo ICG","",""],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c32","cat":"6. อื่นๆ (ระบุเอง)","name":"อื่นๆ (ระบุเอง)","ins":[],"sup":[]}];
+function lrows(){
+  try{ const j = JSON.parse(LS.get('or_local_v1') || 'null'); if(Array.isArray(j)) return j; }catch(e){}
+  const r = SEED_CASES.map(c => ({kind: 'case', id: c.id, data: c, updated_at: SEED_TS}));
+  LS.set('or_local_v1', JSON.stringify(r)); return r;
+}
+const lsave = r => LS.set('or_local_v1', JSON.stringify(r));
+async function upsertRows(rows){
+  const ts = new Date().toISOString();
+  if(cloud()) return sb('POST', 'or_store?on_conflict=kind,id', rows.map(r => Object.assign({updated_at: ts}, r)), 'resolution=merge-duplicates,return=minimal');
+  const all = lrows();
+  rows.forEach(n => { n = Object.assign({updated_at: ts}, n); const k = all.findIndex(r => r.kind === n.kind && r.id === n.id); if(k >= 0) all[k] = n; else all.push(n); });
+  lsave(all);
+}
+async function delRow(kind, id){
+  if(cloud()) return sb('DELETE', 'or_store?kind=eq.' + enc(kind) + '&id=eq.' + enc(id), null, 'return=minimal');
+  lsave(lrows().filter(r => !(r.kind === kind && r.id === id)));
+}
 const caseOrder = c => { const m = /^c(\d+)$/.exec(c.id); return m ? +m[1] : 1000 + (c._t || 0) / 1e12; };
 
 async function loadAll(){
-  const [base, recs, ver] = await Promise.all([
-    sb('GET', 'or_store?select=kind,id,data,updated_at&kind=neq.record&limit=5000'),
-    sb('GET', 'or_store?select=data&kind=eq.record&order=updated_at.desc&limit=300'),
-    fetch('version.json?t=' + Date.now(), {cache: 'no-store'}).then(r => r.ok ? r.json() : null).then(j => (j && j.v) || '').catch(() => '')
-  ]);
+  const verP = fetch('version.json?t=' + Date.now(), {cache: 'no-store'}).then(r => r.ok ? r.json() : null).then(j => (j && j.v) || '').catch(() => '');
+  let base, recs;
+  if(cloud()){
+    [base, recs] = await Promise.all([
+      sb('GET', 'or_store?select=kind,id,data,updated_at&kind=neq.record&limit=5000'),
+      sb('GET', 'or_store?select=data&kind=eq.record&order=updated_at.desc&limit=300')
+    ]);
+  }else{
+    const all = lrows(); base = all.filter(r => r.kind !== 'record');
+    recs = all.filter(r => r.kind === 'record').sort((a, b) => (b.updated_at > a.updated_at ? 1 : -1)).slice(0, 300).map(r => ({data: r.data}));
+  }
+  const ver = await verP;
   const d = {cases: [], doctors: [], staff: [], templates: {}, records: recs.map(r => r.data), serverTime: nowTh(), version: ver};
   const dr = [], sr = [];
   base.forEach(r => {
@@ -218,7 +258,6 @@ const ACT = {
   deleteTemplate: b => delRow('template', b.key)
 };
 async function api(action, payload){
-  if(!API || !KEY) throw new Error('ยังไม่ได้ตั้งค่าการเชื่อมต่อ');
   setBusy(true);
   try{
     if(action){ const fn = ACT[action]; if(!fn) throw new Error('ไม่รู้จักคำสั่ง ' + action); await fn(payload || {}); }
@@ -297,29 +336,50 @@ function listView(key){
   if(!L.length) h += '<div class=muted style="margin:8px 0">ยังไม่มีรายการ เพิ่มด้านล่างได้เลย</div>';
   return h + addBox('d', key);
 }
+function catList(){ const c = []; S.cases.forEach(x => { if(c.indexOf(x.cat) < 0) c.push(x.cat); }); return c.sort((a, b) => a.localeCompare(b, 'th', {numeric: true})); }
+function casePicker(act, selId){
+  const cats = catList();
+  const q = caseQ.trim().toLowerCase();
+  let h = '<input type=text id=cq placeholder="พิมพ์ค้นหาเคส เช่น ACL, TKA, LC" value="' + esc(caseQ) + '">' +
+    '<div class=chips><button class="chip' + (!catSel ? ' on' : '') + '" data-act=cat data-v="">ทั้งหมด</button>' + cats.map((k, i) => '<button class="chip' + (catSel === k ? ' on' : '') + '" data-act=cat data-v="' + i + '">' + esc(k.replace(/^\d+\.\s*/, '')) + '</button>').join('') + '</div>';
+  let n = 0;
+  cats.forEach(k => {
+    if(catSel && catSel !== k) return;
+    const L = S.cases.filter(c => c.cat === k && (!q || c.name.toLowerCase().indexOf(q) >= 0));
+    if(!L.length) return;
+    h += '<div class=cat>' + esc(k) + '</div>';
+    L.forEach(c => { n++; const has = draft && draft.doctor && S.templates[draft.doctor + '|' + c.id];
+      h += '<button class="case' + (selId === c.id ? ' on' : '') + '" data-act=' + act + ' data-id="' + esc(c.id) + '"><span>' + esc(c.name) + '</span>' + (has && act === 'pickcase' ? '<small>✓ ' + esc(draft.doctor) + ' เคยใช้</small>' : '') + '</button>'; });
+  });
+  if(!n) h += '<div class=muted style="margin:8px 0">ไม่พบเคส — เพิ่มเคสใหม่ได้ด้านล่าง</div>';
+  return h;
+}
 function nameSelect(id, val, list, ph){
   if(!list.length) return '<input type=text id=' + id + ' value="' + esc(val) + '" placeholder="' + ph + '">';
   return '<select id=' + id + '><option value="">' + ph + '</option>' + list.map(n => '<option' + (val === n ? ' selected' : '') + '>' + esc(n) + '</option>').join('') + '</select>';
 }
 
 function viewSetup(){
-  return '<div class=card><h2 style="margin-top:0">ตั้งค่าการเชื่อมต่อ (ครั้งเดียวต่อเครื่อง)</h2><div class=muted>ขอลิงก์จากหัวหน้าทีม แล้วเปิดลิงก์นั้น จะตั้งให้อัตโนมัติ หรือกรอกเองด้านล่าง</div><label>Project URL (https://xxxx.supabase.co)</label><input type=url id=apiIn value="' + esc(API) + '" placeholder="https://xxxx.supabase.co"><label>Key (anon / publishable)</label><input type=password id=keyIn value="' + esc(KEY) + '"><div class=acts><button class=pri data-act=connect>เชื่อมต่อ</button></div></div>';
+  return '<div class=card><h2 style="margin-top:0">เชื่อมระบบกลาง (ใช้หลายเครื่อง)</h2><div class=muted>ขอลิงก์จากหัวหน้าทีม แล้วเปิดลิงก์นั้น จะตั้งให้อัตโนมัติ หรือกรอกเองด้านล่าง ปล่อยว่างแล้วกดเชื่อมต่อ = กลับไปใช้เครื่องเดียว</div><label>Project URL (https://xxxx.supabase.co)</label><input type=url id=apiIn value="' + esc(API) + '" placeholder="https://xxxx.supabase.co"><label>Key (anon / publishable)</label><input type=password id=keyIn value="' + esc(KEY) + '"><div class=acts><button class=pri data-act=connect>เชื่อมต่อ</button></div></div>';
 }
 
 function render(){
   const A = $('#app');
-  let h = '<div class=top><h1>ใบเช็กลิสต์ยืมของ ห้องผ่าตัด</h1><div class=sync>' + (lastSync ? 'ข้อมูลล่าสุด ' + esc(lastSync.slice(11)) : '') + '<br><div class=acts style="justify-content:flex-end;margin-top:2px"><button class=sm data-act=refresh' + (API ? '' : ' disabled') + '>รีเฟรช</button><button class=sm data-act=updateapp>อัปเดตแอป</button></div></div></div>';
+  let h = '<div class=top><h1>ใบเช็กลิสต์ยืมของ ห้องผ่าตัด</h1><button class=sm data-act=updateapp>↻ อัปเดต</button></div>';
   if(serverVersion && APP_VERSION.indexOf('__') !== 0 && serverVersion.indexOf('__') !== 0 && serverVersion !== APP_VERSION){
     h += '<div class=warn>มีเวอร์ชันใหม่ของแอป <button class=sm data-act=reload>โหลดใหม่</button></div>';
   }
-  if(!API || view === 'setup'){
-    if(msg) h += '<div class=' + msgType + '>' + esc(msg) + '</div>';
-    A.innerHTML = h + viewSetup(); return;
-  }
-  h += '<div class=nav>' + [['new','เคสใหม่'],['saved','บันทึกแล้ว'],['cases','เคส/รายการ'],['people','แพทย์/ชื่อ'],['help','คู่มือ']].map(v => '<button class="' + (view === v[0] ? 'on' : '') + '" data-act=view data-v=' + v[0] + '><i></i>' + v[1] + '</button>').join('') + '</div>';
+  const navOn = SUBV.indexOf(view) >= 0 ? 'settings' : view;
+  h += '<div class=nav>' + [['new','ทำใบยืมของ'],['saved','บันทึกแล้ว'],['settings','ตั้งค่า']].map(v => '<button class="' + (navOn === v[0] ? 'on' : '') + '" data-act=view data-v=' + v[0] + '><i></i>' + v[1] + '</button>').join('') + '</div>';
+  if(SUBV.indexOf(view) > 0) h += '<button class="sm back" data-act=view data-v=settings>← กลับไปเมนูตั้งค่า</button>';
+  if(!cloud() && (view === 'new' || view === 'saved')) h += '<div class=muted style="margin:0 0 8px">โหมดเครื่องเดียว — ข้อมูลเก็บในเครื่องนี้ <a href="#backup" data-act=view data-v=backup>เชื่อมหลายเครื่อง</a></div>';
   if(msg) h += '<div class=' + msgType + '>' + esc(msg) + '</div>';
   if(!loaded){ A.innerHTML = h + '<div class=card>กำลังโหลดข้อมูล…</div>'; return; }
   let foot = '';
+
+  if(view === 'settings'){
+    h += '<div class=menu>' + [['cases','แก้เคส / รายการมาตรฐาน','เพิ่ม แก้ ลบ เครื่องมือและเวชภัณฑ์ของแต่ละเคส'],['people','รายชื่อแพทย์ / พยาบาล','แพทย์ ผู้ลงชื่อ และรายการที่จำไว้ตามแพทย์'],['backup','สำรองข้อมูล / ใช้หลายเครื่อง','ดาวน์โหลดไฟล์สำรอง เชื่อมให้น้องๆ เห็นข้อมูลร่วมกัน'],['help','คู่มือใช้งาน','อ่านแค่ 1 นาที']].map(m => '<button data-act=view data-v=' + m[0] + '><b>' + m[1] + '</b><span>' + m[2] + '</span></button>').join('') + '</div>';
+  }
 
   if(view === 'new'){
     const names = ['แพทย์/เคส','เครื่องมือ','เวชภัณฑ์','ยืนยัน'];
@@ -328,9 +388,9 @@ function render(){
     if(step === 1){
       const cats = {}; S.cases.forEach(c => { (cats[c.cat] = cats[c.cat] || []).push(c); });
       h += '<div class=card><label>แพทย์</label><select id=docSel><option value="">ไม่ระบุแพทย์</option>' + S.doctors.map(n => '<option' + (draft.doctor === n ? ' selected' : '') + '>' + esc(n) + '</option>').join('') + '</select>' +
-        '<div class=nmrow style="margin-top:6px"><input type=text id=newDoc placeholder="เพิ่มชื่อแพทย์ใหม่"><button data-act=adddoc>เพิ่ม</button></div>' +
-        '<label>เคสผ่าตัด</label><select id=caseSel><option value="">เลือกเคส…</option>' + Object.keys(cats).map(k => '<optgroup label="' + esc(k) + '">' + cats[k].map(c => '<option value="' + esc(c.id) + '"' + (draft.caseId === c.id ? ' selected' : '') + '>' + esc(c.name) + '</option>').join('') + '</optgroup>').join('') + '</select>' +
-        '<div class=nmrow style="margin-top:6px"><input type=text id=newCase placeholder="เพิ่มชื่อเคสใหม่"><button data-act=addcase>เพิ่ม</button></div>' +
+        '<label>เคสผ่าตัด</label>' + casePicker('pickcase', draft.caseId) +
+        '<details class=more><summary>ไม่มีในรายการ? เพิ่มแพทย์ / เคสใหม่</summary><div class=nmrow style="margin-top:6px"><input type=text id=newDoc placeholder="ชื่อแพทย์ใหม่"><button data-act=adddoc>เพิ่ม</button></div>' +
+        '<div class=nmrow style="margin-top:6px"><input type=text id=newCase placeholder="ชื่อเคสใหม่"><button data-act=addcase>เพิ่ม</button></div></details>' +
         '<label>วันที่ผ่าตัด</label><input type=date id=dateIn value="' + esc(draft.date) + '">' +
         (draft.caseId ? '<div class="' + (draft.src === 'doctor' ? 'ok' : 'warn') + '">' + (draft.src === 'doctor' ? 'ดึงรายการที่ ' + esc(draft.doctor) + ' ใช้ครั้งล่าสุดมาให้แล้ว (เครื่องมือ ' + draft.ins.length + ' · เวชภัณฑ์ ' + draft.sup.length + ')' : 'ใช้รายการมาตรฐานของเคสนี้' + (draft.doctor ? ' — บันทึกครั้งนี้แล้ว ครั้งหน้าจะเด้งรายการของ ' + esc(draft.doctor) + ' ให้อัตโนมัติ' : '')) + '</div>' : '') + '</div>';
       foot = '<button class=pri data-act=next>ถัดไป: เครื่องมือ</button>';
@@ -379,8 +439,8 @@ function render(){
   }
 
   else if(view === 'cases'){
-    h += '<div class=card><label>เลือกเคสที่จะแก้รายการมาตรฐาน</label><select id=editSel><option value="">เลือกเคส…</option>' + S.cases.map(c => '<option value="' + esc(c.id) + '"' + (editCase && editCase.id === c.id ? ' selected' : '') + '>' + esc(c.name) + '</option>').join('') + '</select>' +
-      '<div class=nmrow style="margin-top:6px"><input type=text id=newCase2 placeholder="สร้างเคสใหม่"><button data-act=addcase2>สร้าง</button></div></div>';
+    h += '<div class=card><label>เลือกเคสที่จะแก้รายการมาตรฐาน</label>' + casePicker('editpick', editCase && editCase.id) +
+      '<div class=nmrow style="margin-top:10px"><input type=text id=newCase2 placeholder="สร้างเคสใหม่"><button data-act=addcase2>สร้าง</button></div></div>';
     if(editCase){
       const c = editCase;
       h += '<div class=card><label>ชื่อเคส</label><input type=text data-in=cname value="' + esc(c.name) + '"><label>หมวด</label><input type=text data-in=ccat value="' + esc(c.cat) + '"></div>';
@@ -401,16 +461,25 @@ function render(){
     h += '<h2>รายการที่จำไว้ตามแพทย์ (' + keys.length + ')</h2>';
     if(!keys.length) h += '<div class=muted>จะเพิ่มเองเมื่อบันทึกใบที่ระบุแพทย์</div>';
     keys.sort().forEach(k => { const p = k.split('|'); const c = caseById(p[1]); h += '<div class=row><div class=nmrow><div style="flex:1"><b>' + esc(p[0]) + '</b> · ' + esc(c ? c.name : p[1]) + '<div class=muted>อัปเดต ' + esc(S.templates[k].updatedAt || '') + '</div></div><button class="sm x" data-act=deltpl data-key="' + esc(k) + '">ลบ</button></div></div>'; });
-    h += '<div class=card style="margin-top:14px"><h2 style="margin-top:0">สำรองข้อมูล</h2><div class=muted>ดาวน์โหลดไฟล์สำรองเก็บไว้เอง (แนะนำทุกสัปดาห์) หรือนำเข้าไฟล์เพื่อกู้คืน</div><div class=acts><button class=sm data-act=backup>ดาวน์โหลดไฟล์สำรอง</button><button class=sm data-act=restore>นำเข้าไฟล์สำรอง</button></div><input type=file id=restoreFile accept=".json" style="display:none"></div>' +
-      '<div class=card><div class=muted>เครื่องนี้เชื่อมกับ: ' + esc(API.replace(/^https?:\/\//, '').slice(0, 40)) + '<br>แอปเวอร์ชัน ' + esc(APP_VERSION.indexOf('__') === 0 ? 'ทดสอบ' : APP_VERSION.slice(0, 7)) + '</div><div class=acts><button class=sm data-act=sharelink>คัดลอกลิงก์ให้น้องๆ</button><button class=sm data-act=setup>เปลี่ยนการเชื่อมต่อ</button></div></div>';
+  }
+  else if(view === 'backup'){
+    h += '<div class=card><h2 style="margin-top:0">สำรองข้อมูล</h2><div class=muted>ดาวน์โหลดไฟล์สำรองเก็บไว้ (แนะนำทุกสัปดาห์ เก็บลง OneDrive ได้) หรือนำเข้าไฟล์เพื่อกู้คืน</div><div class=acts><button class=sm data-act=backup>ดาวน์โหลดไฟล์สำรอง</button><button class=sm data-act=restore>นำเข้าไฟล์สำรอง</button></div><input type=file id=restoreFile accept=".json" style="display:none"></div>';
+    if(cloud()){
+      h += '<div class=card><h2 style="margin-top:0">ใช้หลายเครื่อง: เชื่อมแล้ว ✓</h2><div class=muted>' + esc(API.replace(/^https?:\/\//, '').slice(0, 40)) + '</div><div class=acts><button class="sm pri" data-act=sharelink>คัดลอกลิงก์ให้น้องๆ</button><button class=sm data-act=setup>เปลี่ยนการเชื่อมต่อ</button><button class="sm x" data-act=unlink>กลับไปใช้เครื่องเดียว</button></div></div>';
+    }else{
+      h += '<div class=card><h2 style="margin-top:0">ใช้หลายเครื่อง</h2><div class=muted>ตอนนี้ข้อมูลอยู่ในเครื่องนี้เครื่องเดียว ถ้าอยากให้น้องๆ ทุกเครื่องเห็นข้อมูลร่วมกัน ให้ตั้งค่าระบบกลางฟรี (ทำครั้งเดียว ดูวิธีใน README บน GitHub) แล้วกดปุ่มด้านล่าง</div><div class=acts><button class=sm data-act=setup>เชื่อมระบบกลาง</button></div></div>';
+    }
+    h += '<div class=muted style="text-align:center;margin-top:10px">แอปเวอร์ชัน ' + esc(APP_VERSION.indexOf('__') === 0 ? 'ทดสอบ' : APP_VERSION.slice(0, 7)) + '</div>';
   }
 
+
+  if(view === 'setup'){ h += viewSetup(); }
+
   if(view === 'help'){
-    h += '<div class="card guide"><h2 style="margin-top:0">ใช้งานครั้งแรก</h2><ol><li>เปิดลิงก์ที่หัวหน้าส่งให้ (ครั้งเดียว) แอปจะเชื่อมต่อเอง</li><li>ตั้งปุ่มลัดไว้หน้าจอหลักของมือถือ</li></ol>' +
-    '<h2>ทำใบยืมของ 1 เคส</h2><ol><li><b>เคสใหม่</b> → เลือกแพทย์, เคส, วันที่ → ถัดไป</li><li><b>เครื่องมือ</b>: กด <b>มีใน OR</b> หรือ <b>ต้องยืม</b> ทุกรายการ (ต้องยืมให้ใส่ชื่อ รพ./บริษัท)</li><li><b>เวชภัณฑ์</b>: ทำเหมือนกัน แก้จำนวนได้</li><li>ขาดอะไร กด <b>＋ เพิ่ม</b> พิมพ์ชื่อ เลือกสถานะ</li><li><b>ยืนยัน</b>: เลือกชื่อผู้ลงชื่อ → <b>บันทึก</b> → <b>ปริ้น A4</b> แยกเครื่องมือ/เวชภัณฑ์ได้</li></ol>' +
-    '<h2>หลังใช้เสร็จ</h2><ol><li>แถบ <b>บันทึกแล้ว</b> → กด <b>คืนครบแล้ว</b> เมื่อคืนของ</li><li>แก้ใบเดิม: กด <b>แก้ไข</b> / ลบ: กด <b>ลบ</b> สองครั้ง</li></ol>' +
-    '<h2>แก้ข้อมูลหลัก</h2><ol><li><b>เคส/รายการ</b>: เพิ่ม/แก้/ลบเคสและรายการมาตรฐาน → <b>บันทึกเคสนี้</b></li><li><b>แพทย์/ชื่อ</b>: แก้รายชื่อแพทย์และพยาบาล (ชื่อละบรรทัด) → <b>บันทึกรายชื่อ</b></li></ol>' +
-    '<h2>ปุ่มที่ควรรู้</h2><ol><li><b>รีเฟรช</b> ดึงข้อมูลล่าสุดจากเครื่องอื่น</li><li><b>อัปเดตแอป</b> ปกติแอปอัปเดตเอง กดเมื่ออยากโหลดใหม่ทันที</li><li>ติ๊ก/พิมพ์แล้วอย่าลืมกด <b>บันทึก</b></li></ol></div>';
+    h += '<div class="card guide"><h2 style="margin-top:0">ทำใบยืมของ 1 เคส</h2><ol><li>แท็บ <b>ทำใบยืมของ</b> → เลือกแพทย์ → เลือกเคส (พิมพ์ค้นหาหรือกดหมวด) → <b>ถัดไป</b></li><li><b>เครื่องมือ</b> และ <b>เวชภัณฑ์</b>: กด <b>มีใน OR</b> หรือ <b>ต้องยืม</b> ทุกรายการ (ต้องยืมให้ใส่ชื่อ รพ./บริษัท)</li><li>ขาดอะไร กด <b>＋ เพิ่ม</b> พิมพ์ชื่อ เลือกสถานะ</li><li><b>ยืนยัน</b>: เลือกชื่อผู้ลงชื่อ → <b>บันทึก</b> → <b>ปริ้น A4</b> (แยกเครื่องมือ/เวชภัณฑ์ได้)</li></ol>' +
+    '<h2>หลังใช้เสร็จ</h2><ol><li>แท็บ <b>บันทึกแล้ว</b> → กด <b>คืนครบแล้ว</b> เมื่อคืนของ</li><li>แก้ใบเดิมกด <b>แก้ไข</b> / ลบกด <b>ลบ</b> สองครั้ง</li></ol>' +
+    '<h2>แท็บ ตั้งค่า</h2><ol><li><b>แก้เคส / รายการมาตรฐาน</b>: เพิ่ม/แก้/ลบ → <b>บันทึกเคสนี้</b></li><li><b>รายชื่อแพทย์ / พยาบาล</b>: ชื่อละบรรทัด → <b>บันทึกรายชื่อ</b></li><li><b>สำรองข้อมูล</b>: ดาวน์โหลดไฟล์สำรองเป็นประจำ</li></ol>' +
+    '<h2>จำไว้</h2><ol><li>ติ๊ก/พิมพ์แล้วต้องกด <b>บันทึก</b> ทุกครั้ง</li><li><b>↻ อัปเดต</b> (มุมขวาบน) โหลดแอปเวอร์ชันใหม่ ปกติแอปอัปเดตเอง</li></ol></div>';
   }
 
   if(foot) h += '<div class=foot>' + foot + '</div>';
@@ -419,7 +488,7 @@ function render(){
 
 /* ===== อ่านค่าจากฟอร์ม ===== */
 function grab1(){
-  const d = $('#docSel'), s = $('#caseSel'), dt = $('#dateIn');
+  const d = $('#docSel'), s = null, dt = $('#dateIn');
   if(dt) draft.date = dt.value;
   let ch = false;
   if(d && d.value !== draft.doctor){ draft.doctor = d.value; ch = true; }
@@ -444,15 +513,26 @@ document.addEventListener('click', e => {
   msg = '';
   if(a !== 'delrec' && a !== 'delcase') delPending = '';
 
-  if(a === 'view'){ view = t.dataset.v; justSaved = false; location.hash = view === 'new' ? '' : '#' + view; render(); }
+  if(a === 'view'){ view = t.dataset.v; justSaved = false; location.hash = view === 'new' ? '' : '#' + view; window.scrollTo(0, 0); render(); }
   else if(a === 'refresh'){ refresh(); }
+  else if(a === 'cat'){ const cs = catList(); catSel = t.dataset.v === '' ? '' : cs[+t.dataset.v]; if(draft && view === 'new') grab1(); render(); }
+  else if(a === 'pickcase'){ grab1(); draft.caseId = t.dataset.id; loadCase(); render(); }
+  else if(a === 'editpick'){ const c = caseById(t.dataset.id); editCase = c ? clone(c) : null; delPending = ''; render(); window.scrollTo(0, document.body.scrollHeight); }
   else if(a === 'reload'){ location.reload(); }
   else if(a === 'updateapp'){ location.href = location.pathname + '?v=' + Date.now() + location.hash; }
   else if(a === 'setup'){ view = 'setup'; render(); }
+  else if(a === 'unlink'){ API = ''; KEY = ''; LS.set('or_url', ''); LS.set('or_dbkey', ''); loaded = false; run(async () => { await api(); say('กลับไปใช้แบบเครื่องเดียวแล้ว'); }); }
   else if(a === 'connect'){
-    API = $('#apiIn').value.trim(); KEY = $('#keyIn').value.trim();
-    LS.set('or_url', API); LS.set('or_dbkey', KEY); view = 'new';
-    loaded = false; render(); refresh(true);
+    const u = $('#apiIn').value.trim(), k2 = $('#keyIn').value.trim();
+    const hadLocal = !cloud() && lrows().some(r => r.updated_at !== SEED_TS);
+    API = u; KEY = k2; LS.set('or_url', API); LS.set('or_dbkey', KEY);
+    view = 'backup'; loaded = false; render();
+    run(async () => {
+      if(!cloud()){ await api(); say('กลับไปใช้แบบเครื่องเดียวแล้ว'); return; }
+      await api();
+      if(hadLocal && confirm('ส่งข้อมูลที่ทำไว้ในเครื่องนี้ขึ้นระบบกลางด้วยไหม?')){ const n = await uploadLocalToCloud(); await api(); say('เชื่อมต่อแล้ว และส่งข้อมูล ' + n + ' รายการขึ้นระบบกลาง'); }
+      else say('เชื่อมต่อระบบกลางแล้ว — ทุกเครื่องที่เปิดลิงก์เดียวกันเห็นข้อมูลร่วมกัน');
+    });
   }
   else if(a === 'sharelink'){
     const link = location.origin + location.pathname + '?u=' + encodeURIComponent(API) + '&k=' + encodeURIComponent(KEY);
@@ -560,8 +640,7 @@ document.addEventListener('change', e => {
     });
     rd.readAsText(t.files[0]); return;
   }
-  if(t.id === 'caseSel' || t.id === 'docSel'){ grab1(); render(); }
-  else if(t.id === 'editSel'){ const c = caseById(t.value); editCase = c ? clone(c) : null; delPending = ''; render(); }
+  if(t.id === 'docSel'){ grab1(); render(); }
   else if(t.id === 'fb'){ filt.borrow = t.value; render(); }
 });
 document.addEventListener('input', e => {
@@ -576,15 +655,16 @@ document.addEventListener('input', e => {
   else if(f === 'ccat') editCase.cat = t.value;
 });
 document.addEventListener('keyup', e => {
-  if(e.target.id === 'fq'){ filt.q = e.target.value; const pos = e.target.selectionStart; render(); const f = $('#fq'); if(f){ f.focus(); f.setSelectionRange(pos, pos); } }
+  if(e.target.id === 'cq'){ caseQ = e.target.value; if(draft && view === 'new') grab1(); const pos = e.target.selectionStart; render(); const f = $('#cq'); if(f){ f.focus(); f.setSelectionRange(pos, pos); } }
+  else if(e.target.id === 'fq'){ filt.q = e.target.value; const pos = e.target.selectionStart; render(); const f = $('#fq'); if(f){ f.focus(); f.setSelectionRange(pos, pos); } }
 });
-window.addEventListener('hashchange', () => { const v = ({'#saved':'saved','#cases':'cases','#people':'people','#help':'help'})[location.hash] || 'new'; if(v !== view){ view = v; render(); } });
+window.addEventListener('hashchange', () => { const v = ({'#saved':'saved','#settings':'settings','#cases':'cases','#people':'people','#help':'help','#backup':'backup'})[location.hash] || 'new'; if(v !== view){ view = v; render(); } });
 
 /* ดึงข้อมูลใหม่อัตโนมัติทุก 30 วินาที เมื่ออยู่หน้า "บันทึกแล้ว" (เห็นใบที่น้องๆ บันทึกจากเครื่องอื่น) */
-setInterval(() => { if(API && view === 'saved' && !busy && !document.hidden) refresh(true); }, 30000);
+setInterval(() => { if(cloud() && view === 'saved' && !busy && !document.hidden) refresh(true); }, 30000);
 /* เช็กเวอร์ชันใหม่ทุก 5 นาที และทุกครั้งที่กลับมาเปิดแอป */
-setInterval(() => { if(API && view !== 'saved' && !busy && !document.hidden) refresh(true); }, 300000);
-document.addEventListener('visibilitychange', () => { if(API && !document.hidden && !busy) refresh(true); });
+setInterval(() => { if(view !== 'saved' && !busy && !document.hidden) refresh(true); }, 300000);
+document.addEventListener('visibilitychange', () => { if(!document.hidden && !busy) refresh(true); });
 
 /* ===== ป๊อปอัพเพิ่มรายการ (เครื่องมือ / เวชภัณฑ์) ===== */
 let mdl = null;
@@ -626,7 +706,7 @@ document.addEventListener('click', e => {
 document.addEventListener('keydown', e => { if(mdl && e.key === 'Escape') closeModal(); if(mdl && e.key === 'Enter' && e.target.tagName === 'INPUT'){ if(mdlAdd()){ drawModal(); const i = $('#mN'); if(i) i.focus(); } } });
 
 render();
-if(API) refresh(true);
+refresh(true);
 </script>
 </body>
 </html>
