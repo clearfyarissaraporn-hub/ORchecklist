@@ -32,6 +32,7 @@ jobs:
         run: |
           mkdir -p _site
           cp index.html _site/index.html
+          if [ -d fonts ]; then cp -r fonts _site/fonts; fi
           sed -i "s/__VERSION__/${GITHUB_SHA}/" _site/index.html
           printf '{"v":"%s"}' "${GITHUB_SHA}" > _site/version.json
           if [ -n "$SUPABASE_URL" ] && [ -n "$SUPABASE_KEY" ]; then
