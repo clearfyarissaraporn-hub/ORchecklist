@@ -1,65 +1,29 @@
-# สำรองข้อมูลจาก Google Sheet เป็นไฟล์ Excel ไปเก็บใน OneDrive ทุกสัปดาห์
-# (ไฟล์สำรองไม่ถูกเก็บใน GitHub เพื่อไม่ให้ข้อมูลอยู่ใน repo สาธารณะ)
-name: สำรองข้อมูลไป OneDrive
+# สำรองข้อมูลอัตโนมัติ สัปดาห์ละ 2 ครั้ง (และช่วยให้ Supabase ฟรีไม่ถูกพักโปรเจกต์เพราะไม่มีคนใช้)
+# ไฟล์สำรองดาวน์โหลดได้ที่แท็บ Actions → เลือกรอบล่าสุด → Artifacts (เก็บ 90 วัน เห็นเฉพาะเจ้าของ repo)
+name: สำรองข้อมูล
 
 on:
   schedule:
-    - cron: "0 18 * * 0"   # ทุกวันจันทร์ 01:00 น. เวลาไทย
-  workflow_dispatch:         # กดสำรองเองได้ที่แท็บ Actions → Run workflow
-
-permissions:
-  contents: read
+    - cron: '0 18 * * 0,3'
+  workflow_dispatch:
 
 jobs:
   backup:
     runs-on: ubuntu-latest
     env:
-      API_URL: ${{ secrets.API_URL }}
-      TEAM_KEY: ${{ secrets.TEAM_KEY }}
-      RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
-      ONEDRIVE_FOLDER: ${{ vars.ONEDRIVE_FOLDER || 'OR-Checklist-Backup' }}
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
     steps:
-      - name: ตรวจว่าตั้งค่าครบไหม
+      - name: ดึงข้อมูลทั้งหมด
         run: |
-          for v in API_URL TEAM_KEY RCLONE_CONF; do
-            if [ -z "${!v}" ]; then echo "::error::ยังไม่ได้ตั้ง secret $v (ดู README)"; exit 1; fi
-          done
-
-      - name: ดึงข้อมูลจาก Google Sheet เป็น Excel
-        run: |
-          curl -sSL --fail --retry 3 --max-time 120 -G "$API_URL" \
-            --data-urlencode "mode=export" --data-urlencode "key=$TEAM_KEY" -o resp.json
-          python3 - <<'PY'
-          import json, base64, datetime, sys
-          r = json.load(open('resp.json'))
-          if not r.get('ok'):
-              print('::error::' + str(r.get('error'))); sys.exit(1)
-          d = (datetime.datetime.utcnow() + datetime.timedelta(hours=7)).strftime('%Y-%m-%d')
-          name = f'ยืมของOR_{d}.xlsx'
-          open(name, 'wb').write(base64.b64decode(r['xlsx']))
-          open('fname.txt', 'w').write(name)
-          print(f"ได้ไฟล์ {name} — {r.get('records')} ใบ")
-          PY
-          rm -f resp.json
-
-      - name: ส่งไฟล์ไป OneDrive
-        run: |
-          curl -sSL https://rclone.org/install.sh | sudo bash >/dev/null
-          mkdir -p ~/.config/rclone
-          printf '%s\n' "$RCLONE_CONF" > ~/.config/rclone/rclone.conf
-          rclone copy "$(cat fname.txt)" "onedrive:$ONEDRIVE_FOLDER/" -v
-          echo "เก็บไว้ที่ OneDrive › $ONEDRIVE_FOLDER › $(cat fname.txt)"
-
-      - name: ต่ออายุการเชื่อม OneDrive อัตโนมัติ (ถ้าตั้ง GH_PAT)
-        env:
-          GH_PAT: ${{ secrets.GH_PAT }}
-        run: |
-          if [ -z "$GH_PAT" ]; then
-            echo "ไม่ได้ตั้ง GH_PAT — ต้องเชื่อม OneDrive ใหม่ประมาณทุก 3 เดือน (ดู README)"; exit 0
-          fi
-          GH_TOKEN="$GH_PAT" gh secret set RCLONE_CONF --repo "$GITHUB_REPOSITORY" < ~/.config/rclone/rclone.conf
-          echo "ต่ออายุแล้ว"
-
-      - name: ล้างไฟล์ชั่วคราว
-        if: always()
-        run: rm -f *.xlsx resp.json fname.txt ~/.config/rclone/rclone.conf
+          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_KEY" ]; then echo "ยังไม่ได้ตั้ง SUPABASE_URL / SUPABASE_KEY — ข้าม"; exit 0; fi
+          AUTH=""; case "$SUPABASE_KEY" in eyJ*) AUTH="Authorization: Bearer $SUPABASE_KEY";; esac
+          curl -fsS "${SUPABASE_URL%/}/rest/v1/or_store?select=kind,id,data,updated_at&limit=100000" \
+            -H "apikey: $SUPABASE_KEY" ${AUTH:+-H "$AUTH"} -o backup.json
+          python3 -c "import json;d=json.load(open('backup.json'));print('สำรอง',len(d),'รายการ')"
+      - uses: actions/upload-artifact@v4
+        if: hashFiles('backup.json') != ''
+        with:
+          name: สำรองข้อมูล-${{ github.run_number }}
+          path: backup.json
+          retention-days: 90

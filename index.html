@@ -105,12 +105,13 @@ const LS = {
 };
 (function(){
   const q = new URLSearchParams(location.search);
-  if(q.get('api')){ LS.set('or_api', q.get('api')); LS.set('or_key', q.get('key') || ''); history.replaceState(null,'',location.pathname); }
+  if(q.get('u') && q.get('k')){ LS.set('or_url', q.get('u')); LS.set('or_dbkey', q.get('k')); history.replaceState(null,'',location.pathname); }
 })();
 // ค่าด้านล่าง GitHub Actions ใส่ให้อัตโนมัติ (ไม่ต้องแก้เอง)
 const APP_VERSION = '__VERSION__';
-const DEFAULT_API = '__API_URL__'.indexOf('__') === 0 ? '' : '__API_URL__';
-let API = LS.get('or_api') || DEFAULT_API, KEY = LS.get('or_key');
+const DEFAULT_URL = '__SUPABASE_URL__'.indexOf('__') === 0 ? '' : '__SUPABASE_URL__';
+const DEFAULT_KEY = '__SUPABASE_KEY__'.indexOf('__') === 0 ? '' : '__SUPABASE_KEY__';
+let API = LS.get('or_url') || DEFAULT_URL, KEY = LS.get('or_dbkey') || DEFAULT_KEY;
 let serverVersion = '';
 
 /* ===== สถานะ ===== */
@@ -130,21 +131,100 @@ const clone = o => JSON.parse(JSON.stringify(o));
 function say(t, type){ msg = t; msgType = type || 'ok'; }
 function setBusy(b){ busy = b; $('#busy').style.display = b ? 'block' : 'none'; }
 
-/* ===== คุยกับ Google Sheets ===== */
+/* ===== คุยกับฐานข้อมูล (Supabase) ===== */
+const nowTh = () => new Intl.DateTimeFormat('sv-SE', {timeZone:'Asia/Bangkok', year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit', hourCycle:'h23'}).format(new Date());
+const enc = encodeURIComponent;
+function friendlyErr(status, text){
+  if(status === 401 || status === 403) return 'รหัส (key) ไม่ถูกต้อง หรือยังไม่ได้รัน setup.sql';
+  if(status === 404) return 'ไม่พบตาราง or_store — ยังไม่ได้รัน setup.sql ใน Supabase';
+  if(status >= 500) return 'ฐานข้อมูลไม่ตอบสนอง (' + status + ') — ถ้าไม่ได้ใช้นานเกิน 7 วัน ให้เข้า supabase.com กด Restore project';
+  return 'ผิดพลาด ' + status + ' ' + String(text || '').slice(0, 120);
+}
+async function sb(method, path, body, prefer){
+  const h = {'Content-Type': 'application/json', apikey: KEY};
+  if(KEY.indexOf('eyJ') === 0) h.Authorization = 'Bearer ' + KEY;
+  if(prefer) h.Prefer = prefer;
+  let res;
+  try{ res = await fetch(API.replace(/\/+$/, '') + '/rest/v1/' + path, {method, headers: h, body: body ? JSON.stringify(body) : undefined}); }
+  catch(e){ throw new Error('ต่อฐานข้อมูลไม่ได้ (ตรวจอินเทอร์เน็ต และลิงก์ Project URL)'); }
+  const tx = await res.text();
+  if(!res.ok) throw new Error(friendlyErr(res.status, tx));
+  return tx ? JSON.parse(tx) : null;
+}
+const upsertRows = (rows) => sb('POST', 'or_store?on_conflict=kind,id', rows.map(r => Object.assign({updated_at: new Date().toISOString()}, r)), 'resolution=merge-duplicates,return=minimal');
+const delRow = (kind, id) => sb('DELETE', 'or_store?kind=eq.' + enc(kind) + '&id=eq.' + enc(id), null, 'return=minimal');
+const caseOrder = c => { const m = /^c(\d+)$/.exec(c.id); return m ? +m[1] : 1000 + (c._t || 0) / 1e12; };
+
+async function loadAll(){
+  const [base, recs, ver] = await Promise.all([
+    sb('GET', 'or_store?select=kind,id,data,updated_at&kind=neq.record&limit=5000'),
+    sb('GET', 'or_store?select=data&kind=eq.record&order=updated_at.desc&limit=300'),
+    fetch('version.json?t=' + Date.now(), {cache: 'no-store'}).then(r => r.ok ? r.json() : null).then(j => (j && j.v) || '').catch(() => '')
+  ]);
+  const d = {cases: [], doctors: [], staff: [], templates: {}, records: recs.map(r => r.data), serverTime: nowTh(), version: ver};
+  const dr = [], sr = [];
+  base.forEach(r => {
+    if(r.kind === 'case') d.cases.push(Object.assign({}, r.data, {_t: Date.parse(r.updated_at) || 0}));
+    else if(r.kind === 'doctor') dr.push(r.data);
+    else if(r.kind === 'staff') sr.push(r.data);
+    else if(r.kind === 'template') d.templates[r.id] = r.data;
+  });
+  d.cases.sort((a, b) => caseOrder(a) - caseOrder(b)); d.cases.forEach(c => delete c._t);
+  const byO = (a, b) => (a.o || 0) - (b.o || 0);
+  d.doctors = dr.sort(byO).map(x => x.name); d.staff = sr.sort(byO).map(x => x.name);
+  return d;
+}
+const borrowText = list => (list || []).filter(x => x.s === 'B').map(x => x.n + (x.q ? ' (' + x.q + ')' : '') + (x.from ? ' ← ' + x.from : '')).join('; ');
+const cleanList = list => (list || []).map(x => ({n: x.n, q: x.q || '', s: x.s || '', from: x.from || ''}));
+async function replaceNames(kind, names, current){
+  const want = names.map(s => String(s).trim()).filter(Boolean).filter((v, i, a) => a.indexOf(v) === i);
+  const gone = current.filter(n => want.indexOf(n) < 0);
+  await Promise.all(gone.map(n => delRow(kind, n)));
+  if(want.length) await upsertRows(want.map((n, i) => ({kind, id: n, data: {name: n, o: i + 1}})));
+}
+const ACT = {
+  async saveRecord(b){
+    const r = b.record;
+    if(!r || !r.caseId || !r.by) throw new Error('ข้อมูลไม่ครบ (เคส / ผู้ลงชื่อ)');
+    const isEdit = !!r.id;
+    r.id = r.id || ('r' + Date.now() + Math.floor(Math.random() * 1000));
+    if(isEdit){ const old = S.records.find(x => x.id === r.id); r.savedAt = old ? old.savedAt : nowTh(); r.editedAt = nowTh(); }
+    else { r.savedAt = nowTh(); r.editedAt = ''; }
+    r.borrowIns = borrowText(r.ins); r.borrowSup = borrowText(r.sup); r.returned = r.returned || '';
+    const rows = [{kind: 'record', id: r.id, data: r}];
+    if(r.doctor){
+      rows.push({kind: 'template', id: r.doctor + '|' + r.caseId, data: {key: r.doctor + '|' + r.caseId, doctor: r.doctor, caseId: r.caseId, caseName: r.caseName, ins: cleanList(r.ins), sup: cleanList(r.sup), updatedAt: nowTh()}});
+      if(S.doctors.indexOf(r.doctor) < 0) rows.push({kind: 'doctor', id: r.doctor, data: {name: r.doctor, o: S.doctors.length + 1}});
+    }
+    await upsertRows(rows);
+  },
+  deleteRecord: b => delRow('record', b.id),
+  async setReturned(b){
+    const hit = S.records.find(x => x.id === b.id); if(!hit) throw new Error('ไม่พบใบนี้');
+    const r = Object.assign({}, hit, {returned: b.returned ? nowTh() + (b.who ? ' (' + b.who + ')' : '') : ''});
+    await upsertRows([{kind: 'record', id: r.id, data: r}]);
+  },
+  async saveCase(b){
+    const c = b.case; if(!c || !c.name) throw new Error('ใส่ชื่อเคส');
+    c.id = c.id || ('n' + Date.now()); c.cat = c.cat || 'เคสที่เพิ่มเอง';
+    await upsertRows([{kind: 'case', id: c.id, data: c}]);
+  },
+  deleteCase: b => delRow('case', b.id),
+  async addDoctor(b){
+    const n = String(b.name || '').trim();
+    if(n && S.doctors.indexOf(n) < 0) await upsertRows([{kind: 'doctor', id: n, data: {name: n, o: S.doctors.length + 1}}]);
+  },
+  async savePeople(b){ await replaceNames('doctor', b.doctors || [], S.doctors); await replaceNames('staff', b.staff || [], S.staff); },
+  deleteTemplate: b => delRow('template', b.key)
+};
 async function api(action, payload){
-  if(!API) throw new Error('ยังไม่ได้ตั้งค่าการเชื่อมต่อ');
+  if(!API || !KEY) throw new Error('ยังไม่ได้ตั้งค่าการเชื่อมต่อ');
   setBusy(true);
   try{
-    let res;
-    if(!action){
-      res = await fetch(API + (API.indexOf('?') >= 0 ? '&' : '?') + 'key=' + encodeURIComponent(KEY) + '&t=' + Date.now());
-    }else{
-      res = await fetch(API, {method:'POST', body: JSON.stringify(Object.assign({action, key: KEY}, payload || {}))});
-    }
-    const j = await res.json();
-    if(!j.ok) throw new Error(j.error || 'เซิร์ฟเวอร์ตอบผิดพลาด');
-    applyData(j.data);
-    return j.data;
+    if(action){ const fn = ACT[action]; if(!fn) throw new Error('ไม่รู้จักคำสั่ง ' + action); await fn(payload || {}); }
+    const d = await loadAll();
+    applyData(d);
+    return d;
   }finally{ setBusy(false); }
 }
 function applyData(d){
@@ -163,7 +243,7 @@ function autoUpdate(){
 }
 async function refresh(silent){
   try{ await api(); if(!silent) say('อัปเดตข้อมูลล่าสุดแล้ว'); }
-  catch(e){ say('ดึงข้อมูลไม่ได้: ' + e.message + ' (ตรวจอินเทอร์เน็ต หรือ ลิงก์ตั้งค่า)', 'err'); }
+  catch(e){ say('ดึงข้อมูลไม่ได้: ' + e.message + ' ', 'err'); }
   render();
 }
 
@@ -223,7 +303,7 @@ function nameSelect(id, val, list, ph){
 }
 
 function viewSetup(){
-  return '<div class=card><h2 style="margin-top:0">ตั้งค่าการเชื่อมต่อ (ครั้งเดียวต่อเครื่อง)</h2><div class=muted>ขอลิงก์จากหัวหน้าทีม หรือเปิดลิงก์ที่หัวหน้าส่งให้ จะตั้งให้อัตโนมัติ</div><label>ลิงก์ Web app (ลงท้าย /exec)</label><input type=url id=apiIn value="' + esc(API) + '" placeholder="https://script.google.com/macros/s/.../exec"><label>รหัสทีม (ถ้ามี)</label><input type=password id=keyIn value="' + esc(KEY) + '"><div class=acts><button class=pri data-act=connect>เชื่อมต่อ</button></div></div>';
+  return '<div class=card><h2 style="margin-top:0">ตั้งค่าการเชื่อมต่อ (ครั้งเดียวต่อเครื่อง)</h2><div class=muted>ขอลิงก์จากหัวหน้าทีม แล้วเปิดลิงก์นั้น จะตั้งให้อัตโนมัติ หรือกรอกเองด้านล่าง</div><label>Project URL (https://xxxx.supabase.co)</label><input type=url id=apiIn value="' + esc(API) + '" placeholder="https://xxxx.supabase.co"><label>Key (anon / publishable)</label><input type=password id=keyIn value="' + esc(KEY) + '"><div class=acts><button class=pri data-act=connect>เชื่อมต่อ</button></div></div>';
 }
 
 function render(){
@@ -321,7 +401,8 @@ function render(){
     h += '<h2>รายการที่จำไว้ตามแพทย์ (' + keys.length + ')</h2>';
     if(!keys.length) h += '<div class=muted>จะเพิ่มเองเมื่อบันทึกใบที่ระบุแพทย์</div>';
     keys.sort().forEach(k => { const p = k.split('|'); const c = caseById(p[1]); h += '<div class=row><div class=nmrow><div style="flex:1"><b>' + esc(p[0]) + '</b> · ' + esc(c ? c.name : p[1]) + '<div class=muted>อัปเดต ' + esc(S.templates[k].updatedAt || '') + '</div></div><button class="sm x" data-act=deltpl data-key="' + esc(k) + '">ลบ</button></div></div>'; });
-    h += '<div class=card style="margin-top:14px"><div class=muted>เครื่องนี้เชื่อมกับ: ' + esc(API.slice(0, 48)) + '…<br>แอป ' + esc(APP_VERSION.slice(0, 7)) + ' · เซิร์ฟเวอร์ ' + esc(serverVersion.slice(0, 7)) + '</div><div class=acts><button class=sm data-act=sharelink>คัดลอกลิงก์ให้น้องๆ</button><button class=sm data-act=setup>เปลี่ยนการเชื่อมต่อ</button></div></div>';
+    h += '<div class=card style="margin-top:14px"><h2 style="margin-top:0">สำรองข้อมูล</h2><div class=muted>ดาวน์โหลดไฟล์สำรองเก็บไว้เอง (แนะนำทุกสัปดาห์) หรือนำเข้าไฟล์เพื่อกู้คืน</div><div class=acts><button class=sm data-act=backup>ดาวน์โหลดไฟล์สำรอง</button><button class=sm data-act=restore>นำเข้าไฟล์สำรอง</button></div><input type=file id=restoreFile accept=".json" style="display:none"></div>' +
+      '<div class=card><div class=muted>เครื่องนี้เชื่อมกับ: ' + esc(API.replace(/^https?:\/\//, '').slice(0, 40)) + '<br>แอปเวอร์ชัน ' + esc(APP_VERSION.indexOf('__') === 0 ? 'ทดสอบ' : APP_VERSION.slice(0, 7)) + '</div><div class=acts><button class=sm data-act=sharelink>คัดลอกลิงก์ให้น้องๆ</button><button class=sm data-act=setup>เปลี่ยนการเชื่อมต่อ</button></div></div>';
   }
 
   if(view === 'help'){
@@ -370,11 +451,11 @@ document.addEventListener('click', e => {
   else if(a === 'setup'){ view = 'setup'; render(); }
   else if(a === 'connect'){
     API = $('#apiIn').value.trim(); KEY = $('#keyIn').value.trim();
-    LS.set('or_api', API); LS.set('or_key', KEY); view = 'new';
+    LS.set('or_url', API); LS.set('or_dbkey', KEY); view = 'new';
     loaded = false; render(); refresh(true);
   }
   else if(a === 'sharelink'){
-    const link = location.origin + location.pathname + '?api=' + encodeURIComponent(API) + (KEY ? '&key=' + encodeURIComponent(KEY) : '');
+    const link = location.origin + location.pathname + '?u=' + encodeURIComponent(API) + '&k=' + encodeURIComponent(KEY);
     (navigator.clipboard ? navigator.clipboard.writeText(link) : Promise.reject()).then(() => { say('คัดลอกลิงก์แล้ว ส่งให้น้องๆ เปิดครั้งเดียวเครื่องจะตั้งค่าเอง'); render(); }, () => { say('ลิงก์: ' + link); render(); });
   }
 
@@ -452,11 +533,33 @@ document.addEventListener('click', e => {
 
   /* รายชื่อ */
   else if(a === 'savepeople'){ const d = lines('#docIn'), s = lines('#staffIn'); run(async () => { await api('savePeople', {doctors: d, staff: s}); say('บันทึกรายชื่อแล้ว'); }); }
+  else if(a === 'backup'){
+    const blob = new Blob([JSON.stringify({app: 'or-checklist', at: nowTh(), cases: S.cases, doctors: S.doctors, staff: S.staff, templates: S.templates, records: S.records}, null, 1)], {type: 'application/json'});
+    const l = document.createElement('a'); l.href = URL.createObjectURL(blob); l.download = 'สำรองยืมของOR_' + today() + '.json'; document.body.appendChild(l); l.click(); l.remove();
+    say('ดาวน์โหลดไฟล์สำรองแล้ว');
+  }
+  else if(a === 'restore'){ const f = $('#restoreFile'); f.value = ''; f.click(); }
   else if(a === 'deltpl'){ run(async () => { await api('deleteTemplate', {key: t.dataset.key}); say('ลบรายการที่จำไว้แล้ว'); }); }
 });
 
 document.addEventListener('change', e => {
   const t = e.target;
+  if(t.id === 'restoreFile' && t.files[0]){
+    const rd = new FileReader();
+    rd.onload = () => run(async () => {
+      const j = JSON.parse(rd.result); if(j.app !== 'or-checklist') throw new Error('ไม่ใช่ไฟล์สำรองของแอปนี้');
+      const rows = [].concat(
+        (j.cases || []).map(c => ({kind: 'case', id: c.id, data: c})),
+        (j.doctors || []).map((n, i) => ({kind: 'doctor', id: n, data: {name: n, o: i + 1}})),
+        (j.staff || []).map((n, i) => ({kind: 'staff', id: n, data: {name: n, o: i + 1}})),
+        Object.keys(j.templates || {}).map(k => ({kind: 'template', id: k, data: j.templates[k]})),
+        (j.records || []).map(r => ({kind: 'record', id: r.id, data: r})));
+      for(let i = 0; i < rows.length; i += 200) await upsertRows(rows.slice(i, i + 200));
+      await api();
+      say('นำเข้าข้อมูล ' + rows.length + ' รายการแล้ว');
+    });
+    rd.readAsText(t.files[0]); return;
+  }
   if(t.id === 'caseSel' || t.id === 'docSel'){ grab1(); render(); }
   else if(t.id === 'editSel'){ const c = caseById(t.value); editCase = c ? clone(c) : null; delPending = ''; render(); }
   else if(t.id === 'fb'){ filt.borrow = t.value; render(); }

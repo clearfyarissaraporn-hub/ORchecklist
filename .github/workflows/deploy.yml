@@ -1,4 +1,4 @@
-# อัปเดตทุกแพลตฟอร์มอัตโนมัติ: แก้ไฟล์ใน GitHub แล้วกด Commit → หน้าแอป + Apps Script อัปเดตเอง
+# อัปเดตแอปอัตโนมัติ: แก้ไฟล์ใน GitHub แล้วกด Commit → หน้าแอปอัปเดตเอง ทุกเครื่องโหลดเวอร์ชันใหม่เองภายใน 5 นาที
 name: อัปเดตแอปอัตโนมัติ
 
 on:
@@ -16,43 +16,8 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  apps-script:
-    name: อัปเดต Apps Script (ตัวเก็บข้อมูล)
-    runs-on: ubuntu-latest
-    env:
-      CLASPRC_JSON: ${{ secrets.CLASPRC_JSON }}
-      SCRIPT_ID: ${{ secrets.SCRIPT_ID }}
-      DEPLOYMENT_ID: ${{ secrets.DEPLOYMENT_ID }}
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: ตรวจว่าตั้งค่าครบไหม
-        id: check
-        run: |
-          if [ -z "$CLASPRC_JSON" ] || [ -z "$SCRIPT_ID" ] || [ -z "$DEPLOYMENT_ID" ]; then
-            echo "ยังไม่ได้ตั้ง CLASPRC_JSON / SCRIPT_ID / DEPLOYMENT_ID — ข้ามการอัปเดต Apps Script (อัปเดตหน้าแอปอย่างเดียว)"
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-          fi
-
-      - uses: actions/setup-node@v4
-        if: steps.check.outputs.skip != 'true'
-        with:
-          node-version: 20
-
-      - name: ส่งโค้ดขึ้น Apps Script และอัปเดตลิงก์เดิม
-        if: steps.check.outputs.skip != 'true'
-        run: |
-          npm install -g @google/clasp@2.4.2
-          printf '%s' "$CLASPRC_JSON" > ~/.clasprc.json
-          printf '{"scriptId":"%s","rootDir":"apps-script"}' "$SCRIPT_ID" > .clasp.json
-          sed -i "s/__VERSION__/${GITHUB_SHA}/" apps-script/Code.gs
-          clasp push --force
-          clasp deploy --deploymentId "$DEPLOYMENT_ID" --description "auto ${GITHUB_SHA::7}"
-
   pages:
     name: อัปเดตหน้าแอป (GitHub Pages)
-    needs: apps-script
-    if: always()
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -62,17 +27,15 @@ jobs:
 
       - name: เตรียมหน้าแอป
         env:
-          API_URL: ${{ secrets.API_URL }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
         run: |
           mkdir -p _site
           cp index.html _site/index.html
           sed -i "s/__VERSION__/${GITHUB_SHA}/" _site/index.html
-          if [ "${{ needs.apps-script.result }}" != "success" ]; then
-            echo "Apps Script ไม่ได้อัปเดตรอบนี้ — ปิดการเตือนเวอร์ชันไม่ตรง"
-            sed -i "s/const APP_VERSION = '${GITHUB_SHA}'/const APP_VERSION = '__VERSION__'/" _site/index.html
-          fi
-          if [ -n "$API_URL" ]; then
-            python3 -c "import sys,os;p='_site/index.html';s=open(p).read().replace('__API_URL__',os.environ['API_URL']);open(p,'w').write(s)"
+          printf '{"v":"%s"}' "${GITHUB_SHA}" > _site/version.json
+          if [ -n "$SUPABASE_URL" ] && [ -n "$SUPABASE_KEY" ]; then
+            python3 -c "import os;p='_site/index.html';s=open(p).read().replace('__SUPABASE_URL__',os.environ['SUPABASE_URL']).replace('__SUPABASE_KEY__',os.environ['SUPABASE_KEY']);open(p,'w').write(s)"
           fi
           touch _site/.nojekyll
 
