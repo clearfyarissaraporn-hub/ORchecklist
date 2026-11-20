@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#2d6a4f">
+<title>ใบเช็กลิสต์ยืมของ ห้องผ่าตัด</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:"Sarabun",system-ui,Tahoma,sans-serif;background:#f5f4f0;color:#222;font-size:16px;line-height:1.5}
+.wrap{max-width:720px;margin:0 auto;padding:12px 12px 96px}
+h1{font-size:19px;margin:4px 0 2px;font-weight:600}
+h2{font-size:16px;margin:14px 0 6px;font-weight:600}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.sync{font-size:12px;color:#777;text-align:right}
+.nav{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:8px 0 10px}
+button{font:inherit;border:1px solid #c9c7bf;background:#fff;border-radius:10px;padding:10px 12px;min-height:44px;cursor:pointer;color:#222}
+button:disabled{opacity:.5}
+button.pri{background:#2d6a4f;border-color:#2d6a4f;color:#fff;font-weight:600}
+button.on{background:#e7f1fb;border-color:#378add;color:#0c447c;font-weight:600}
+button.sm{min-height:36px;padding:6px 10px;font-size:14px}
+button.x{color:#a32d2d;border-color:#e8b4b4}
+button.danger{background:#a32d2d;color:#fff;border-color:#a32d2d}
+button.big{width:100%;margin:4px 0 10px}
+.nav button{padding:8px 1px 6px;font-size:12px;white-space:nowrap;letter-spacing:-.2px;border:none;border-radius:12px;background:var(--t);color:var(--c);display:flex;flex-direction:column;align-items:center;gap:3px;min-height:52px}
+.nav button i{width:8px;height:8px;border-radius:50%;background:var(--c);opacity:.35}
+.nav button.on{background:var(--c);color:#fff;font-weight:600}
+.nav button.on i{background:#fff;opacity:1}
+.nav [data-v=new]{--c:#2d6a4f;--t:#e3f1e8}
+.nav [data-v=saved]{--c:#1f6fb2;--t:#e3eef8}
+.nav [data-v=cases]{--c:#b4632a;--t:#f8ebe0}
+.nav [data-v=people]{--c:#7a4fa3;--t:#efe7f6}
+.nav [data-v=help]{--c:#5f6b73;--t:#eceeef}
+.guide ol{padding-left:20px;margin:6px 0}.guide li{margin:5px 0}.guide h2{margin:14px 0 4px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin:6px 0 12px}
+.steps div{text-align:center;font-size:13px;padding:6px 2px;border-radius:8px;background:#e8e6df;color:#666}
+.steps div.cur{background:#2d6a4f;color:#fff;font-weight:600}
+.steps div.done{background:#cfe7d8;color:#1b4332}
+.card{background:#fff;border:1px solid #dedcd4;border-radius:12px;padding:12px;margin-bottom:10px}
+label{display:block;font-size:14px;color:#555;margin:8px 0 4px}
+input[type=text],input[type=date],input[type=password],input[type=url],select,textarea{font:inherit;width:100%;padding:10px;border:1px solid #c9c7bf;border-radius:10px;background:#fff;min-height:44px}
+.row{background:#fff;border:1px solid #dedcd4;border-radius:12px;padding:10px;margin-bottom:8px}
+.nm{font-weight:600;margin-bottom:6px}
+.nmrow{display:flex;gap:8px;align-items:center}
+.nmin{flex:1}
+.qin{width:84px!important}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.row button.or.on{background:#d8f3dc;border-color:#2d6a4f;color:#1b4332}
+.row button.bw.on{background:#fff0d6;border-color:#ba7517;color:#633806}
+.row input.from{margin-top:8px}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:6px 0 8px;font-size:14px;color:#555}
+.foot{position:fixed;left:0;right:0;bottom:0;background:#fffffe;border-top:1px solid #dedcd4;padding:10px 12px;display:flex;gap:8px;justify-content:center}
+.foot button{flex:1;max-width:340px}
+.muted{color:#777;font-size:13px}
+.chk{display:flex;gap:10px;align-items:flex-start;margin:10px 0}
+.chk input{width:22px;height:22px;margin-top:2px;flex:none}
+.warn{background:#fff0d6;color:#633806;border-radius:10px;padding:8px 10px;font-size:14px;margin:8px 0}
+.ok{background:#d8f3dc;color:#1b4332;border-radius:10px;padding:8px 10px;font-size:14px;margin:8px 0}
+.err{background:#fcebeb;color:#791f1f;border-radius:10px;padding:8px 10px;font-size:14px;margin:8px 0}
+.acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.pill{display:inline-block;border-radius:6px;padding:1px 8px;font-size:13px}
+.pill.b{background:#fff0d6;color:#633806}.pill.g{background:#d8f3dc;color:#1b4332}
+.filters{display:flex;gap:6px;margin-bottom:8px}.filters input,.filters select{flex:1}
+#busy{position:fixed;top:0;left:0;right:0;height:3px;background:#2d6a4f;transform-origin:left;animation:ld 1s infinite;display:none}
+@keyframes ld{0%{transform:scaleX(.1)}50%{transform:scaleX(.7)}100%{transform:scaleX(1);opacity:.3}}
+#modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;align-items:flex-end;justify-content:center}
+#modal.open{display:flex}
+#modal .sheet{background:#fffffe;width:100%;max-width:520px;max-height:92vh;overflow:auto;border-radius:16px 16px 0 0;padding:14px 14px 18px}
+#modal .sheet h2{margin:0 0 6px}
+#modal .seg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:6px 0}
+#modal .seg button.or.on{background:#d8f3dc;border-color:#2d6a4f;color:#1b4332;font-weight:600}
+#modal .seg button.bw.on{background:#fff0d6;border-color:#ba7517;color:#633806;font-weight:600}
+#modal .mact{display:flex;gap:8px;margin-top:12px}#modal .mact button{flex:1}
+#modal .added{background:#d8f3dc;color:#1b4332;border-radius:10px;padding:6px 10px;font-size:14px;margin:6px 0}
+#print{display:none}
+@media print{
+  @page{size:A4;margin:12mm}
+  body{background:#fff;font-family:"Sarabun",Tahoma,sans-serif;font-size:11pt}
+  #app,#busy{display:none!important}
+  #print{display:block}
+  #print h1{font-size:15pt;margin:0 0 2px}
+  #print h2{font-size:12pt;margin:10px 0 4px}
+  #print table{width:100%;border-collapse:collapse}
+  #print th,#print td{border:1px solid #888;padding:3px 6px;vertical-align:top}
+  #print th{background:#e6e6e6}
+  #print .c{text-align:center;width:62px}
+  #print section{page-break-after:always}
+  #print section:last-of-type{page-break-after:auto}
+  #print .sg{margin-top:14px}
+}
+</style>
+</head>
+<body>
+<div id="busy"></div>
+<div id="app" class="wrap"></div>
+<div id="modal"></div>
+<div id="print"></div>
+<script>
+/* ===== การเชื่อมต่อ: ตั้งครั้งเดียวต่อเครื่อง หรือเปิดลิงก์ที่มี ?api=...&key=... ===== */
+const LS = {
+  get(k){ try{ return localStorage.getItem(k) || ''; }catch(e){ return ''; } },
+  set(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+};
+(function(){
+  const q = new URLSearchParams(location.search);
+  if(q.get('api')){ LS.set('or_api', q.get('api')); LS.set('or_key', q.get('key') || ''); history.replaceState(null,'',location.pathname); }
+})();
+// ค่าด้านล่าง GitHub Actions ใส่ให้อัตโนมัติ (ไม่ต้องแก้เอง)
+const APP_VERSION = '__VERSION__';
+const DEFAULT_API = '__API_URL__'.indexOf('__') === 0 ? '' : '__API_URL__';
+let API = LS.get('or_api') || DEFAULT_API, KEY = LS.get('or_key');
+let serverVersion = '';
+
+/* ===== สถานะ ===== */
+let S = {cases:[], doctors:[], staff:[], templates:{}, records:[]};
+let loaded = false, busy = false, lastSync = '', msg = '', msgType = 'ok';
+let view = ({'#saved':'saved','#cases':'cases','#people':'people','#help':'help'})[location.hash] || 'new';
+let step = 1, draft = null, editCase = null, delPending = '', justSaved = false, filt = {q:'', borrow:'all'};
+const keep = {doctor:'', date:'', by:''};
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const today = () => { const d = new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); };
+const thDate = s => { if(!s) return ''; const p = String(s).split('-'); return p.length === 3 ? p[2]+'/'+p[1]+'/'+(+p[0]+543) : s; };
+const caseById = id => S.cases.find(c => c.id === id);
+const clone = o => JSON.parse(JSON.stringify(o));
+
+function say(t, type){ msg = t; msgType = type || 'ok'; }
+function setBusy(b){ busy = b; $('#busy').style.display = b ? 'block' : 'none'; }
+
+/* ===== คุยกับ Google Sheets ===== */
+async function api(action, payload){
+  if(!API) throw new Error('ยังไม่ได้ตั้งค่าการเชื่อมต่อ');
+  setBusy(true);
+  try{
+    let res;
+    if(!action){
+      res = await fetch(API + (API.indexOf('?') >= 0 ? '&' : '?') + 'key=' + encodeURIComponent(KEY) + '&t=' + Date.now());
+    }else{
+      res = await fetch(API, {method:'POST', body: JSON.stringify(Object.assign({action, key: KEY}, payload || {}))});
+    }
+    const j = await res.json();
+    if(!j.ok) throw new Error(j.error || 'เซิร์ฟเวอร์ตอบผิดพลาด');
+    applyData(j.data);
+    return j.data;
+  }finally{ setBusy(false); }
+}
+function applyData(d){
+  S = {cases: d.cases || [], doctors: d.doctors || [], staff: d.staff || [], templates: d.templates || {}, records: d.records || []};
+  loaded = true; lastSync = d.serverTime || ''; serverVersion = d.version || '';
+  autoUpdate();
+}
+/* อัปเดตแอปอัตโนมัติ: ถ้าเซิร์ฟเวอร์เป็นเวอร์ชันใหม่ และไม่ได้กรอกใบค้างอยู่ จะโหลดแอปใหม่เอง (ลองครั้งเดียวต่อเวอร์ชัน) */
+function autoUpdate(){
+  if(!serverVersion || APP_VERSION.indexOf('__') === 0 || serverVersion.indexOf('__') === 0 || serverVersion === APP_VERSION) return;
+  const busyForm = view === 'new' && step > 1;
+  let tried = ''; try{ tried = sessionStorage.getItem('or_upd') || ''; }catch(e){}
+  if(busyForm || tried === serverVersion) return;
+  try{ sessionStorage.setItem('or_upd', serverVersion); }catch(e){}
+  location.href = location.pathname + '?v=' + Date.now() + location.hash;
+}
+async function refresh(silent){
+  try{ await api(); if(!silent) say('อัปเดตข้อมูลล่าสุดแล้ว'); }
+  catch(e){ say('ดึงข้อมูลไม่ได้: ' + e.message + ' (ตรวจอินเทอร์เน็ต หรือ ลิงก์ตั้งค่า)', 'err'); }
+  render();
+}
+
+/* ===== ใบที่กำลังทำ ===== */
+function newDraft(){
+  draft = {id:'', caseId:'', doctor: keep.doctor, date: keep.date || today(), ins:[], sup:[], src:'', by: keep.by, by2:'', ok:false, returned:''};
+  step = 1;
+}
+function loadCase(){
+  const c = caseById(draft.caseId);
+  if(!c){ draft.ins = []; draft.sup = []; draft.src = ''; return; }
+  const t = draft.doctor ? S.templates[draft.doctor + '|' + c.id] : null;
+  if(t){
+    draft.ins = clone(t.ins); draft.sup = clone(t.sup); draft.src = 'doctor';
+  }else{
+    draft.ins = (c.ins || []).map(x => ({n: x[0], s: x[1] === 'O' ? 'O' : '', from: ''}));
+    draft.sup = (c.sup || []).map(x => ({n: x[0], q: x[1] || '', s: String(x[2] || '').indexOf('O') >= 0 ? 'O' : '', from: ''}));
+    draft.src = 'default';
+  }
+}
+newDraft();
+
+/* ===== พิมพ์ A4 ===== */
+function doPrint(r, parts){
+  const mk = (title, list, isSup) => {
+    const rows = (list || []).map(x => '<tr><td>' + esc(x.n) + (isSup && x.q ? ' (' + esc(x.q) + ')' : '') + '</td><td class=c>' + (x.s === 'O' ? '☑' : '☐') + '</td><td class=c>' + (x.s === 'B' ? '☑' : '☐') + '</td><td>' + esc(x.from) + '</td><td class=c>' + (x.s === 'B' ? (r.returned ? '☑' : '☐') : '') + '</td></tr>').join('');
+    return '<section><h1>ใบเช็กลิสต์ยืมของ ห้องผ่าตัด — ' + title + '</h1><div>เคส: <b>' + esc(r.caseName) + '</b>' + (r.doctor ? ' &nbsp; แพทย์: <b>' + esc(r.doctor) + '</b>' : '') + ' &nbsp; วันที่: <b>' + esc(thDate(r.date)) + '</b></div><h2>' + title + '</h2><table><tr><th>รายการ</th><th>มีใน OR</th><th>ต้องยืม</th><th>ยืมจาก (รพ./บริษัท)</th><th>คืนแล้ว</th></tr>' + rows + '</table><div class=sg>ผู้ตรวจสอบ: <b>' + esc(r.by) + '</b>' + (r.by2 ? ' &nbsp; ผู้รับของ/ประสานยืม: <b>' + esc(r.by2) + '</b>' : '') + ' &nbsp; บันทึกเมื่อ: ' + esc(r.savedAt || '') + (r.returned ? ' &nbsp; คืนครบ: ' + esc(r.returned) : '') + '</div></section>';
+  };
+  let h = '';
+  if(parts.indexOf('ins') >= 0) h += mk('เครื่องมือ (Instrument)', r.ins, false);
+  if(parts.indexOf('sup') >= 0) h += mk('เวชภัณฑ์', r.sup, true);
+  $('#print').innerHTML = h;
+  setTimeout(() => window.print(), 50);
+}
+
+/* ===== ส่วนแสดงผล ===== */
+function itemRow(key, x, i){
+  return '<div class=row><div class=nmrow><input type=text class=nmin value="' + esc(x.n) + '" data-in=nm data-k=' + key + ' data-i=' + i + ' aria-label="ชื่อรายการ">' +
+    (key === 'sup' ? '<input type=text class=qin placeholder="จำนวน" value="' + esc(x.q) + '" data-in=qty data-k=' + key + ' data-i=' + i + '>' : '') +
+    '<button class="sm x" data-act=delitem data-k=' + key + ' data-i=' + i + '>ลบ</button></div>' +
+    '<div class=btns><button class="or' + (x.s === 'O' ? ' on' : '') + '" data-act=set data-k=' + key + ' data-i=' + i + ' data-v=O>มีใน OR</button><button class="bw' + (x.s === 'B' ? ' on' : '') + '" data-act=set data-k=' + key + ' data-i=' + i + ' data-v=B>ต้องยืม</button></div>' +
+    (x.s === 'B' ? '<input type=text class=from placeholder="ยืมจากที่ไหน (รพ./บริษัท)" value="' + esc(x.from) + '" data-in=from data-k=' + key + ' data-i=' + i + '>' : '') + '</div>';
+}
+function addBox(target, key){
+  return '<button class="pri big" data-act=openadd data-t=' + target + ' data-k=' + key + '>＋ เพิ่ม' + (key === 'sup' ? 'เวชภัณฑ์' : 'เครื่องมือ (Instrument)') + '</button>';
+}
+function listView(key){
+  const L = draft[key], left = L.filter(x => !x.s).length;
+  let h = '<div class=bar><span>ยังไม่ติ๊ก ' + left + ' จาก ' + L.length + '</span><button class=sm data-act=allor data-k=' + key + '>ที่เหลือ = มีใน OR</button></div>';
+  L.forEach((x,i) => { h += itemRow(key, x, i); });
+  if(!L.length) h += '<div class=muted style="margin:8px 0">ยังไม่มีรายการ เพิ่มด้านล่างได้เลย</div>';
+  return h + addBox('d', key);
+}
+function nameSelect(id, val, list, ph){
+  if(!list.length) return '<input type=text id=' + id + ' value="' + esc(val) + '" placeholder="' + ph + '">';
+  return '<select id=' + id + '><option value="">' + ph + '</option>' + list.map(n => '<option' + (val === n ? ' selected' : '') + '>' + esc(n) + '</option>').join('') + '</select>';
+}
+
+function viewSetup(){
+  return '<div class=card><h2 style="margin-top:0">ตั้งค่าการเชื่อมต่อ (ครั้งเดียวต่อเครื่อง)</h2><div class=muted>ขอลิงก์จากหัวหน้าทีม หรือเปิดลิงก์ที่หัวหน้าส่งให้ จะตั้งให้อัตโนมัติ</div><label>ลิงก์ Web app (ลงท้าย /exec)</label><input type=url id=apiIn value="' + esc(API) + '" placeholder="https://script.google.com/macros/s/.../exec"><label>รหัสทีม (ถ้ามี)</label><input type=password id=keyIn value="' + esc(KEY) + '"><div class=acts><button class=pri data-act=connect>เชื่อมต่อ</button></div></div>';
+}
+
+function render(){
+  const A = $('#app');
+  let h = '<div class=top><h1>ใบเช็กลิสต์ยืมของ ห้องผ่าตัด</h1><div class=sync>' + (lastSync ? 'ข้อมูลล่าสุด ' + esc(lastSync.slice(11)) : '') + '<br><div class=acts style="justify-content:flex-end;margin-top:2px"><button class=sm data-act=refresh' + (API ? '' : ' disabled') + '>รีเฟรช</button><button class=sm data-act=updateapp>อัปเดตแอป</button></div></div></div>';
+  if(serverVersion && APP_VERSION.indexOf('__') !== 0 && serverVersion.indexOf('__') !== 0 && serverVersion !== APP_VERSION){
+    h += '<div class=warn>มีเวอร์ชันใหม่ของแอป <button class=sm data-act=reload>โหลดใหม่</button></div>';
+  }
+  if(!API || view === 'setup'){
+    if(msg) h += '<div class=' + msgType + '>' + esc(msg) + '</div>';
+    A.innerHTML = h + viewSetup(); return;
+  }
+  h += '<div class=nav>' + [['new','เคสใหม่'],['saved','บันทึกแล้ว'],['cases','เคส/รายการ'],['people','แพทย์/ชื่อ'],['help','คู่มือ']].map(v => '<button class="' + (view === v[0] ? 'on' : '') + '" data-act=view data-v=' + v[0] + '><i></i>' + v[1] + '</button>').join('') + '</div>';
+  if(msg) h += '<div class=' + msgType + '>' + esc(msg) + '</div>';
+  if(!loaded){ A.innerHTML = h + '<div class=card>กำลังโหลดข้อมูล…</div>'; return; }
+  let foot = '';
+
+  if(view === 'new'){
+    const names = ['แพทย์/เคส','เครื่องมือ','เวชภัณฑ์','ยืนยัน'];
+    h += '<div class=steps>' + names.map((n,i) => '<div class="' + (step === i+1 ? 'cur' : (step > i+1 ? 'done' : '')) + '">' + (i+1) + '. ' + n + '</div>').join('') + '</div>';
+    if(draft.id) h += '<div class=warn>กำลังแก้ใบที่บันทึกไว้ <button class=sm data-act=canceledit>ยกเลิกการแก้</button></div>';
+    if(step === 1){
+      const cats = {}; S.cases.forEach(c => { (cats[c.cat] = cats[c.cat] || []).push(c); });
+      h += '<div class=card><label>แพทย์</label><select id=docSel><option value="">ไม่ระบุแพทย์</option>' + S.doctors.map(n => '<option' + (draft.doctor === n ? ' selected' : '') + '>' + esc(n) + '</option>').join('') + '</select>' +
+        '<div class=nmrow style="margin-top:6px"><input type=text id=newDoc placeholder="เพิ่มชื่อแพทย์ใหม่"><button data-act=adddoc>เพิ่ม</button></div>' +
+        '<label>เคสผ่าตัด</label><select id=caseSel><option value="">เลือกเคส…</option>' + Object.keys(cats).map(k => '<optgroup label="' + esc(k) + '">' + cats[k].map(c => '<option value="' + esc(c.id) + '"' + (draft.caseId === c.id ? ' selected' : '') + '>' + esc(c.name) + '</option>').join('') + '</optgroup>').join('') + '</select>' +
+        '<div class=nmrow style="margin-top:6px"><input type=text id=newCase placeholder="เพิ่มชื่อเคสใหม่"><button data-act=addcase>เพิ่ม</button></div>' +
+        '<label>วันที่ผ่าตัด</label><input type=date id=dateIn value="' + esc(draft.date) + '">' +
+        (draft.caseId ? '<div class="' + (draft.src === 'doctor' ? 'ok' : 'warn') + '">' + (draft.src === 'doctor' ? 'ดึงรายการที่ ' + esc(draft.doctor) + ' ใช้ครั้งล่าสุดมาให้แล้ว (เครื่องมือ ' + draft.ins.length + ' · เวชภัณฑ์ ' + draft.sup.length + ')' : 'ใช้รายการมาตรฐานของเคสนี้' + (draft.doctor ? ' — บันทึกครั้งนี้แล้ว ครั้งหน้าจะเด้งรายการของ ' + esc(draft.doctor) + ' ให้อัตโนมัติ' : '')) + '</div>' : '') + '</div>';
+      foot = '<button class=pri data-act=next>ถัดไป: เครื่องมือ</button>';
+    }else if(step === 2){
+      h += '<h2>เครื่องมือ — มีใน OR หรือต้องยืม</h2>' + listView('ins');
+      foot = '<button data-act=back>ย้อนกลับ</button><button class=pri data-act=next>ถัดไป: เวชภัณฑ์</button>';
+    }else if(step === 3){
+      h += '<h2>เวชภัณฑ์ — มีใน OR หรือต้องยืม</h2>' + listView('sup');
+      foot = '<button data-act=back>ย้อนกลับ</button><button class=pri data-act=next>ถัดไป: ยืนยัน</button>';
+    }else{
+      const c = caseById(draft.caseId) || {name:'(เคสถูกลบ)'};
+      const bi = draft.ins.filter(x => x.s === 'B'), bs = draft.sup.filter(x => x.s === 'B');
+      const un = draft.ins.filter(x => !x.s).length + draft.sup.filter(x => !x.s).length;
+      h += '<div class=card><div><b>' + esc(c.name) + '</b>' + (draft.doctor ? ' · ' + esc(draft.doctor) : '') + '</div><div class=muted>วันที่ ' + esc(thDate(draft.date)) + '</div>' +
+        '<div style="margin-top:8px">ต้องยืม: เครื่องมือ <b>' + bi.length + '</b> · เวชภัณฑ์ <b>' + bs.length + '</b></div>' +
+        (bi.concat(bs).length ? '<div class=muted>' + esc(bi.concat(bs).map(x => x.n + (x.from ? ' ← ' + x.from : ' ← (ยังไม่ระบุที่ยืม)')).join(' · ')) + '</div>' : '') +
+        (un ? '<div class=warn>ยังไม่ได้ติ๊ก ' + un + ' รายการ (บันทึกได้ แต่ควรเช็กให้ครบ)</div>' : '') + '</div>';
+      h += '<div class=card><label>ลงชื่อผู้ตรวจสอบ</label>' + nameSelect('byIn', draft.by, S.staff, 'เลือกชื่อ…') +
+        '<label>ผู้รับของ / ผู้ประสานยืม (ถ้ามี)</label>' + nameSelect('by2In', draft.by2, S.staff, 'ไม่ระบุ') +
+        '<div class=chk><input type=checkbox id=okIn' + (draft.ok ? ' checked' : '') + '><label for=okIn style="margin:0;color:#222">ข้าพเจ้าตรวจสอบรายการแล้ว ยืนยันว่าถูกต้อง</label></div></div>';
+      foot = '<button data-act=back>ย้อนกลับ</button><button class=pri data-act=save' + (busy ? ' disabled' : '') + '>บันทึก</button>';
+    }
+  }
+
+  else if(view === 'saved'){
+    if(justSaved) h += '<button class="pri big" data-act=nextcase>เริ่มเคสถัดไป</button>';
+    h += '<div class=filters><input type=text id=fq placeholder="ค้นหา เคส / แพทย์ / ชื่อ / วันที่" value="' + esc(filt.q) + '"><select id=fb><option value=all>ทั้งหมด</option><option value=open' + (filt.borrow === 'open' ? ' selected' : '') + '>ยืมแล้วยังไม่คืน</option><option value=done' + (filt.borrow === 'done' ? ' selected' : '') + '>คืนครบแล้ว</option></select></div>';
+    const q = filt.q.trim().toLowerCase();
+    const list = S.records.filter(r => {
+      const nb = (r.ins || []).concat(r.sup || []).filter(x => x.s === 'B').length;
+      if(filt.borrow === 'open' && !(nb && !r.returned)) return false;
+      if(filt.borrow === 'done' && !r.returned) return false;
+      return !q || [r.caseName, r.doctor, r.by, r.by2, r.date, thDate(r.date)].join(' ').toLowerCase().indexOf(q) >= 0;
+    });
+    if(!list.length) h += '<div class=card>ไม่มีใบที่ตรงกับเงื่อนไข</div>';
+    list.forEach(r => {
+      const bl = (r.ins || []).concat(r.sup || []).filter(x => x.s === 'B');
+      h += '<div class=card><div><b>' + esc(r.caseName) + '</b>' + (r.doctor ? ' · ' + esc(r.doctor) : '') + '</div>' +
+        '<div class=muted>ผ่าตัด ' + esc(thDate(r.date)) + ' · ลงชื่อ ' + esc(r.by) + (r.by2 ? ' / ' + esc(r.by2) : '') + ' · บันทึก ' + esc(r.savedAt) + (r.editedAt ? ' (แก้ ' + esc(r.editedAt) + ')' : '') + '</div>' +
+        '<div style="margin-top:6px">' + (bl.length ? '<span class="pill ' + (r.returned ? 'g' : 'b') + '">' + (r.returned ? 'คืนครบ ' + esc(r.returned) : 'ยืม ' + bl.length + ' รายการ ยังไม่คืน') + '</span>' : '<span class="pill g">ไม่ต้องยืม</span>') + '</div>' +
+        (bl.length ? '<div class=muted style="margin-top:4px">' + esc(bl.map(x => x.n + (x.from ? ' ← ' + x.from : '')).join(' · ')) + '</div>' : '') +
+        '<div class=acts><button class=sm data-act=print data-id="' + esc(r.id) + '" data-p=ins>ปริ้นเครื่องมือ</button><button class=sm data-act=print data-id="' + esc(r.id) + '" data-p=sup>ปริ้นเวชภัณฑ์</button><button class=sm data-act=print data-id="' + esc(r.id) + '" data-p=both>ปริ้นทั้งหมด</button>' +
+        (bl.length ? '<button class=sm data-act=returned data-id="' + esc(r.id) + '" data-v="' + (r.returned ? '' : '1') + '">' + (r.returned ? 'ยกเลิกคืน' : 'คืนครบแล้ว') + '</button>' : '') +
+        '<button class=sm data-act=editrec data-id="' + esc(r.id) + '">แก้ไข</button><button class="sm x' + (delPending === r.id ? ' danger' : '') + '" data-act=delrec data-id="' + esc(r.id) + '">' + (delPending === r.id ? 'กดอีกครั้งเพื่อลบ' : 'ลบ') + '</button></div></div>';
+    });
+  }
+
+  else if(view === 'cases'){
+    h += '<div class=card><label>เลือกเคสที่จะแก้รายการมาตรฐาน</label><select id=editSel><option value="">เลือกเคส…</option>' + S.cases.map(c => '<option value="' + esc(c.id) + '"' + (editCase && editCase.id === c.id ? ' selected' : '') + '>' + esc(c.name) + '</option>').join('') + '</select>' +
+      '<div class=nmrow style="margin-top:6px"><input type=text id=newCase2 placeholder="สร้างเคสใหม่"><button data-act=addcase2>สร้าง</button></div></div>';
+    if(editCase){
+      const c = editCase;
+      h += '<div class=card><label>ชื่อเคส</label><input type=text data-in=cname value="' + esc(c.name) + '"><label>หมวด</label><input type=text data-in=ccat value="' + esc(c.cat) + '"></div>';
+      h += '<h2>เครื่องมือมาตรฐาน</h2>';
+      c.ins.forEach((x,i) => { h += '<div class=row><div class=nmrow><input type=text class=nmin value="' + esc(x[0]) + '" data-in=cnm data-k=ins data-i=' + i + '><button class="sm' + (x[1] === 'O' ? ' on' : '') + '" data-act=cor data-k=ins data-i=' + i + '>' + (x[1] === 'O' ? 'มีใน OR ✓' : 'มีใน OR?') + '</button><button class="sm x" data-act=cdel data-k=ins data-i=' + i + '>ลบ</button></div></div>'; });
+      h += addBox('c', 'ins') + '<h2>เวชภัณฑ์มาตรฐาน</h2>';
+      c.sup.forEach((x,i) => { const o = String(x[2] || '').indexOf('O') >= 0; h += '<div class=row><div class=nmrow><input type=text class=nmin value="' + esc(x[0]) + '" data-in=cnm data-k=sup data-i=' + i + '><input type=text class=qin placeholder="จำนวน" value="' + esc(x[1]) + '" data-in=cq data-k=sup data-i=' + i + '><button class="sm' + (o ? ' on' : '') + '" data-act=cor data-k=sup data-i=' + i + '>' + (o ? 'OR ✓' : 'OR?') + '</button><button class="sm x" data-act=cdel data-k=sup data-i=' + i + '>ลบ</button></div></div>'; });
+      h += addBox('c', 'sup');
+      foot = '<button class="x' + (delPending === 'case' ? ' danger' : '') + '" data-act=delcase>' + (delPending === 'case' ? 'กดอีกครั้งเพื่อลบเคส' : 'ลบเคสนี้') + '</button><button class=pri data-act=savecase' + (busy ? ' disabled' : '') + '>บันทึกเคสนี้</button>';
+    }
+  }
+
+  else if(view === 'people'){
+    h += '<div class=card><label>รายชื่อแพทย์ (ชื่อละบรรทัด)</label><textarea id=docIn rows=6>' + esc(S.doctors.join('\n')) + '</textarea>' +
+      '<label>รายชื่อพยาบาล / ผู้ลงชื่อ (ชื่อละบรรทัด — คัดลอกจากตารางเวรมาวางได้)</label><textarea id=staffIn rows=8>' + esc(S.staff.join('\n')) + '</textarea>' +
+      '<div class=acts><button class=pri data-act=savepeople' + (busy ? ' disabled' : '') + '>บันทึกรายชื่อ</button></div></div>';
+    const keys = Object.keys(S.templates);
+    h += '<h2>รายการที่จำไว้ตามแพทย์ (' + keys.length + ')</h2>';
+    if(!keys.length) h += '<div class=muted>จะเพิ่มเองเมื่อบันทึกใบที่ระบุแพทย์</div>';
+    keys.sort().forEach(k => { const p = k.split('|'); const c = caseById(p[1]); h += '<div class=row><div class=nmrow><div style="flex:1"><b>' + esc(p[0]) + '</b> · ' + esc(c ? c.name : p[1]) + '<div class=muted>อัปเดต ' + esc(S.templates[k].updatedAt || '') + '</div></div><button class="sm x" data-act=deltpl data-key="' + esc(k) + '">ลบ</button></div></div>'; });
+    h += '<div class=card style="margin-top:14px"><div class=muted>เครื่องนี้เชื่อมกับ: ' + esc(API.slice(0, 48)) + '…<br>แอป ' + esc(APP_VERSION.slice(0, 7)) + ' · เซิร์ฟเวอร์ ' + esc(serverVersion.slice(0, 7)) + '</div><div class=acts><button class=sm data-act=sharelink>คัดลอกลิงก์ให้น้องๆ</button><button class=sm data-act=setup>เปลี่ยนการเชื่อมต่อ</button></div></div>';
+  }
+
+  if(view === 'help'){
+    h += '<div class="card guide"><h2 style="margin-top:0">ใช้งานครั้งแรก</h2><ol><li>เปิดลิงก์ที่หัวหน้าส่งให้ (ครั้งเดียว) แอปจะเชื่อมต่อเอง</li><li>ตั้งปุ่มลัดไว้หน้าจอหลักของมือถือ</li></ol>' +
+    '<h2>ทำใบยืมของ 1 เคส</h2><ol><li><b>เคสใหม่</b> → เลือกแพทย์, เคส, วันที่ → ถัดไป</li><li><b>เครื่องมือ</b>: กด <b>มีใน OR</b> หรือ <b>ต้องยืม</b> ทุกรายการ (ต้องยืมให้ใส่ชื่อ รพ./บริษัท)</li><li><b>เวชภัณฑ์</b>: ทำเหมือนกัน แก้จำนวนได้</li><li>ขาดอะไร กด <b>＋ เพิ่ม</b> พิมพ์ชื่อ เลือกสถานะ</li><li><b>ยืนยัน</b>: เลือกชื่อผู้ลงชื่อ → <b>บันทึก</b> → <b>ปริ้น A4</b> แยกเครื่องมือ/เวชภัณฑ์ได้</li></ol>' +
+    '<h2>หลังใช้เสร็จ</h2><ol><li>แถบ <b>บันทึกแล้ว</b> → กด <b>คืนครบแล้ว</b> เมื่อคืนของ</li><li>แก้ใบเดิม: กด <b>แก้ไข</b> / ลบ: กด <b>ลบ</b> สองครั้ง</li></ol>' +
+    '<h2>แก้ข้อมูลหลัก</h2><ol><li><b>เคส/รายการ</b>: เพิ่ม/แก้/ลบเคสและรายการมาตรฐาน → <b>บันทึกเคสนี้</b></li><li><b>แพทย์/ชื่อ</b>: แก้รายชื่อแพทย์และพยาบาล (ชื่อละบรรทัด) → <b>บันทึกรายชื่อ</b></li></ol>' +
+    '<h2>ปุ่มที่ควรรู้</h2><ol><li><b>รีเฟรช</b> ดึงข้อมูลล่าสุดจากเครื่องอื่น</li><li><b>อัปเดตแอป</b> ปกติแอปอัปเดตเอง กดเมื่ออยากโหลดใหม่ทันที</li><li>ติ๊ก/พิมพ์แล้วอย่าลืมกด <b>บันทึก</b></li></ol></div>';
+  }
+
+  if(foot) h += '<div class=foot>' + foot + '</div>';
+  A.innerHTML = h;
+}
+
+/* ===== อ่านค่าจากฟอร์ม ===== */
+function grab1(){
+  const d = $('#docSel'), s = $('#caseSel'), dt = $('#dateIn');
+  if(dt) draft.date = dt.value;
+  let ch = false;
+  if(d && d.value !== draft.doctor){ draft.doctor = d.value; ch = true; }
+  if(s && s.value !== draft.caseId){ draft.caseId = s.value; ch = true; }
+  if(ch) loadCase();
+}
+function grab4(){
+  const a = $('#byIn'), b = $('#by2In'), o = $('#okIn');
+  if(a) draft.by = a.value.trim();
+  if(b) draft.by2 = b.value.trim();
+  if(o) draft.ok = o.checked;
+}
+const lines = id => $(id).value.split('\n').map(x => x.trim()).filter(Boolean);
+
+async function run(fn){ try{ await fn(); }catch(e){ say(e.message, 'err'); } render(); }
+
+/* ===== ปุ่มต่างๆ ===== */
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-act]');
+  if(!t || t.disabled) return;
+  const a = t.dataset.act, k = t.dataset.k, i = +t.dataset.i;
+  msg = '';
+  if(a !== 'delrec' && a !== 'delcase') delPending = '';
+
+  if(a === 'view'){ view = t.dataset.v; justSaved = false; location.hash = view === 'new' ? '' : '#' + view; render(); }
+  else if(a === 'refresh'){ refresh(); }
+  else if(a === 'reload'){ location.reload(); }
+  else if(a === 'updateapp'){ location.href = location.pathname + '?v=' + Date.now() + location.hash; }
+  else if(a === 'setup'){ view = 'setup'; render(); }
+  else if(a === 'connect'){
+    API = $('#apiIn').value.trim(); KEY = $('#keyIn').value.trim();
+    LS.set('or_api', API); LS.set('or_key', KEY); view = 'new';
+    loaded = false; render(); refresh(true);
+  }
+  else if(a === 'sharelink'){
+    const link = location.origin + location.pathname + '?api=' + encodeURIComponent(API) + (KEY ? '&key=' + encodeURIComponent(KEY) : '');
+    (navigator.clipboard ? navigator.clipboard.writeText(link) : Promise.reject()).then(() => { say('คัดลอกลิงก์แล้ว ส่งให้น้องๆ เปิดครั้งเดียวเครื่องจะตั้งค่าเอง'); render(); }, () => { say('ลิงก์: ' + link); render(); });
+  }
+
+  /* ใบงาน */
+  else if(a === 'set'){ const x = draft[k][i]; x.s = (x.s === t.dataset.v) ? '' : t.dataset.v; render(); }
+  else if(a === 'allor'){ draft[k].forEach(x => { if(!x.s) x.s = 'O'; }); render(); }
+  else if(a === 'delitem'){ draft[k].splice(i, 1); render(); }
+  else if(a === 'openadd'){ openModal(k, t.dataset.t || 'd'); }
+  else if(a === 'add'){
+    const inp = $('#add_' + t.dataset.t + '_' + k); const n = inp.value.trim(); if(!n) return;
+    if(t.dataset.t === 'd') draft[k].push(k === 'sup' ? {n, q:'', s:'', from:''} : {n, s:'', from:''});
+    else editCase[k].push(k === 'sup' ? [n, '', ''] : [n, '']);
+    render();
+    const again = $('#add_' + t.dataset.t + '_' + k); if(again) again.focus();
+  }
+  else if(a === 'adddoc'){
+    grab1(); const n = $('#newDoc').value.trim(); if(!n) return;
+    run(async () => { await api('addDoctor', {name: n}); draft.doctor = n; if(draft.caseId) loadCase(); say('เพิ่มแพทย์ ' + n + ' แล้ว'); });
+  }
+  else if(a === 'addcase'){
+    grab1(); const n = $('#newCase').value.trim(); if(!n) return;
+    const id = 'n' + Date.now();
+    run(async () => { await api('saveCase', {case: {id, cat: 'เคสที่เพิ่มเอง', name: n, ins: [], sup: []}}); draft.caseId = id; loadCase(); say('เพิ่มเคสแล้ว ใส่รายการในขั้นถัดไปได้เลย'); });
+  }
+  else if(a === 'next'){
+    if(step === 1){ grab1(); if(!draft.caseId){ say('เลือกเคสก่อน', 'err'); render(); return; } }
+    step++; window.scrollTo(0, 0); render();
+  }
+  else if(a === 'back'){ if(step === 4) grab4(); step--; window.scrollTo(0, 0); render(); }
+  else if(a === 'canceledit'){ newDraft(); render(); }
+  else if(a === 'save'){
+    grab4();
+    if(!draft.by){ say('ใส่ชื่อผู้ตรวจสอบก่อน', 'err'); render(); return; }
+    if(!draft.ok){ say('ติ๊กยืนยันก่อนบันทึก', 'err'); render(); return; }
+    const c = caseById(draft.caseId) || {};
+    const rec = {id: draft.id, caseId: draft.caseId, caseName: c.name || '', doctor: draft.doctor, date: draft.date, by: draft.by, by2: draft.by2, ins: draft.ins, sup: draft.sup, returned: draft.returned};
+    run(async () => {
+      await api('saveRecord', {record: rec});
+      keep.doctor = draft.doctor; keep.date = draft.date; keep.by = draft.by;
+      newDraft(); view = 'saved'; justSaved = true; location.hash = '#saved';
+      say('บันทึกแล้ว' + (rec.doctor ? ' — จำรายการของ ' + rec.doctor + ' ไว้ใช้ครั้งหน้า' : ''));
+    });
+  }
+  else if(a === 'nextcase'){ newDraft(); view = 'new'; justSaved = false; location.hash = ''; render(); }
+
+  /* ใบที่บันทึก */
+  else if(a === 'print'){ const r = S.records.find(x => x.id === t.dataset.id); if(r) doPrint(r, t.dataset.p === 'both' ? ['ins','sup'] : [t.dataset.p]); }
+  else if(a === 'returned'){ run(async () => { await api('setReturned', {id: t.dataset.id, returned: !!t.dataset.v, who: keep.by}); say(t.dataset.v ? 'บันทึกว่าคืนครบแล้ว' : 'ยกเลิกสถานะคืนแล้ว'); }); }
+  else if(a === 'editrec'){
+    const r = S.records.find(x => x.id === t.dataset.id); if(!r) return;
+    draft = {id: r.id, caseId: r.caseId, doctor: r.doctor || '', date: r.date, ins: clone(r.ins || []), sup: clone(r.sup || []), src: 'doctor', by: r.by, by2: r.by2 || '', ok: false, returned: r.returned || ''};
+    step = 2; view = 'new'; justSaved = false; location.hash = ''; window.scrollTo(0, 0); render();
+  }
+  else if(a === 'delrec'){
+    if(delPending !== t.dataset.id){ delPending = t.dataset.id; render(); return; }
+    delPending = ''; run(async () => { await api('deleteRecord', {id: t.dataset.id}); say('ลบแล้ว'); });
+  }
+
+  /* แก้เคสมาตรฐาน */
+  else if(a === 'addcase2'){
+    const n = $('#newCase2').value.trim(); if(!n) return;
+    editCase = {id: 'n' + Date.now(), cat: 'เคสที่เพิ่มเอง', name: n, ins: [], sup: []}; render();
+  }
+  else if(a === 'cdel'){ editCase[k].splice(i, 1); render(); }
+  else if(a === 'cor'){ const x = editCase[k][i]; const p = k === 'ins' ? 1 : 2; const on = String(x[p] || '').indexOf('O') >= 0; x[p] = on ? String(x[p]).replace('O', '') : 'O' + String(x[p] || ''); render(); }
+  else if(a === 'savecase'){
+    if(!editCase.name.trim()){ say('ใส่ชื่อเคส', 'err'); render(); return; }
+    run(async () => { await api('saveCase', {case: editCase}); editCase = clone(caseById(editCase.id) || editCase); say('บันทึกเคสแล้ว ทุกเครื่องเห็นรายการใหม่'); });
+  }
+  else if(a === 'delcase'){
+    if(delPending !== 'case'){ delPending = 'case'; render(); return; }
+    delPending = ''; const id = editCase.id;
+    run(async () => { await api('deleteCase', {id}); editCase = null; say('ลบเคสแล้ว'); });
+  }
+
+  /* รายชื่อ */
+  else if(a === 'savepeople'){ const d = lines('#docIn'), s = lines('#staffIn'); run(async () => { await api('savePeople', {doctors: d, staff: s}); say('บันทึกรายชื่อแล้ว'); }); }
+  else if(a === 'deltpl'){ run(async () => { await api('deleteTemplate', {key: t.dataset.key}); say('ลบรายการที่จำไว้แล้ว'); }); }
+});
+
+document.addEventListener('change', e => {
+  const t = e.target;
+  if(t.id === 'caseSel' || t.id === 'docSel'){ grab1(); render(); }
+  else if(t.id === 'editSel'){ const c = caseById(t.value); editCase = c ? clone(c) : null; delPending = ''; render(); }
+  else if(t.id === 'fb'){ filt.borrow = t.value; render(); }
+});
+document.addEventListener('input', e => {
+  const t = e.target, f = t.dataset && t.dataset.in; if(!f) return;
+  const k = t.dataset.k, i = +t.dataset.i;
+  if(f === 'from') draft[k][i].from = t.value;
+  else if(f === 'nm') draft[k][i].n = t.value;
+  else if(f === 'qty') draft[k][i].q = t.value;
+  else if(f === 'cnm') editCase[k][i][0] = t.value;
+  else if(f === 'cq') editCase[k][i][1] = t.value;
+  else if(f === 'cname') editCase.name = t.value;
+  else if(f === 'ccat') editCase.cat = t.value;
+});
+document.addEventListener('keyup', e => {
+  if(e.target.id === 'fq'){ filt.q = e.target.value; const pos = e.target.selectionStart; render(); const f = $('#fq'); if(f){ f.focus(); f.setSelectionRange(pos, pos); } }
+});
+window.addEventListener('hashchange', () => { const v = ({'#saved':'saved','#cases':'cases','#people':'people','#help':'help'})[location.hash] || 'new'; if(v !== view){ view = v; render(); } });
+
+/* ดึงข้อมูลใหม่อัตโนมัติทุก 30 วินาที เมื่ออยู่หน้า "บันทึกแล้ว" (เห็นใบที่น้องๆ บันทึกจากเครื่องอื่น) */
+setInterval(() => { if(API && view === 'saved' && !busy && !document.hidden) refresh(true); }, 30000);
+/* เช็กเวอร์ชันใหม่ทุก 5 นาที และทุกครั้งที่กลับมาเปิดแอป */
+setInterval(() => { if(API && view !== 'saved' && !busy && !document.hidden) refresh(true); }, 300000);
+document.addEventListener('visibilitychange', () => { if(API && !document.hidden && !busy) refresh(true); });
+
+/* ===== ป๊อปอัพเพิ่มรายการ (เครื่องมือ / เวชภัณฑ์) ===== */
+let mdl = null;
+function openModal(key, target){ mdl = {tg: target || 'd', key: key || 'ins', n: '', q: '', s: 'O', from: '', last: ''}; drawModal(); setTimeout(() => { const i = $('#mN'); if(i) i.focus(); }, 30); }
+function closeModal(){ mdl = null; $('#modal').className = ''; $('#modal').innerHTML = ''; }
+function drawModal(){
+  const M = $('#modal'); if(!mdl){ closeModal(); return; }
+  const sup = mdl.key === 'sup';
+  M.className = 'open';
+  M.innerHTML = '<div class=sheet><h2>' + (mdl.tg === 'c' ? 'เพิ่มรายการมาตรฐานของเคส' : 'เพิ่มรายการเข้าใบนี้') + '</h2>' +
+    '<div class=seg><button class="' + (!sup ? 'pri' : '') + '" data-m=type data-v=ins>เครื่องมือ (Instrument)</button><button class="' + (sup ? 'pri' : '') + '" data-m=type data-v=sup>เวชภัณฑ์</button></div>' +
+    (mdl.last ? '<div class=added>เพิ่มแล้ว: ' + esc(mdl.last) + ' — เพิ่มชิ้นต่อไปได้เลย</div>' : '') +
+    '<label>ชื่อรายการ</label><input type=text id=mN value="' + esc(mdl.n) + '" placeholder="' + (sup ? 'เช่น Vicryl 2-0' : 'เช่น Retractor ชุดเล็ก') + '">' +
+    (sup ? '<label>จำนวน</label><input type=text id=mQ value="' + esc(mdl.q) + '" placeholder="เช่น 2">' : '') +
+    '<label>' + (mdl.tg === 'c' ? 'ค่าเริ่มต้นของเคสนี้' : 'สถานะ') + '</label><div class=seg><button class="or' + (mdl.s === 'O' ? ' on' : '') + '" data-m=state data-v=O>มีใน OR</button><button class="bw' + (mdl.s === 'B' ? ' on' : '') + '" data-m=state data-v=B>' + (mdl.tg === 'c' ? 'ยังไม่ระบุ' : 'ยืมนอก รพ.') + '</button></div>' +
+    (mdl.s === 'B' && mdl.tg !== 'c' ? '<label>ยืมจากที่ไหน (รพ./บริษัท)</label><input type=text id=mF value="' + esc(mdl.from) + '" placeholder="เช่น รพ.วชิระ / บริษัท…">' : '') +
+    '<div class=mact><button data-m=close>ปิด</button><button class=pri data-m=again>เพิ่มแล้วเพิ่มอีก</button><button class=pri data-m=done>เพิ่มและปิด</button></div></div>';
+}
+function mdlRead(){ const g = id => { const e = $('#' + id); return e ? e.value : null; }; const n = g('mN'), q = g('mQ'), f = g('mF'); if(n !== null) mdl.n = n; if(q !== null) mdl.q = q; if(f !== null) mdl.from = f; }
+function mdlAdd(){
+  mdlRead(); const n = mdl.n.trim();
+  if(!n){ const i = $('#mN'); if(i) i.focus(); return false; }
+  const k = mdl.key;
+  const it = k === 'sup' ? {n, q: mdl.q.trim(), s: mdl.s, from: mdl.s === 'B' ? mdl.from.trim() : ''} : {n, s: mdl.s, from: mdl.s === 'B' ? mdl.from.trim() : ''};
+  if(mdl.tg === 'c'){ const o = mdl.s === 'O' ? 'O' : ''; editCase[k].push(k === 'sup' ? [n, mdl.q.trim(), o] : [n, o]); }
+  else draft[k].push(it);
+  mdl.last = n; mdl.n = ''; mdl.q = ''; render(); return true;
+}
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-m]');
+  if(!t){ if(e.target.id === 'modal') closeModal(); return; }
+  const m = t.dataset.m;
+  if(m === 'close') closeModal();
+  else if(m === 'type'){ mdlRead(); mdl.key = t.dataset.v; drawModal(); }
+  else if(m === 'state'){ mdlRead(); mdl.s = t.dataset.v; drawModal(); }
+  else if(m === 'again'){ if(mdlAdd()){ drawModal(); const i = $('#mN'); if(i) i.focus(); } }
+  else if(m === 'done'){ if(mdlAdd()) closeModal(); }
+});
+document.addEventListener('keydown', e => { if(mdl && e.key === 'Escape') closeModal(); if(mdl && e.key === 'Enter' && e.target.tagName === 'INPUT'){ if(mdlAdd()){ drawModal(); const i = $('#mN'); if(i) i.focus(); } } });
+
+render();
+if(API) refresh(true);
+</script>
+</body>
+</html>
