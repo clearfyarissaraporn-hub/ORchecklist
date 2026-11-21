@@ -435,7 +435,7 @@ function render(){
         '<div class=muted>ผ่าตัด ' + esc(thDate(r.date)) + ' · ลงชื่อ ' + esc(r.by) + (r.by2 ? ' / ' + esc(r.by2) : '') + ' · บันทึก ' + esc(r.savedAt) + (r.editedAt ? ' (แก้ ' + esc(r.editedAt) + ')' : '') + '</div>' +
         '<div style="margin-top:6px">' + (bl.length ? '<span class="pill ' + (r.returned ? 'g' : 'b') + '">' + (r.returned ? 'คืนครบ ' + esc(r.returned) : 'ยืม ' + bl.length + ' รายการ ยังไม่คืน') + '</span>' : '<span class="pill g">ไม่ต้องยืม</span>') + '</div>' +
         (bl.length ? '<div class=muted style="margin-top:4px">' + esc(bl.map(x => x.n + (x.from ? ' ← ' + x.from : '')).join(' · ')) + '</div>' : '') +
-        '<div class=acts><button class="sm pri" data-act=printmenu data-id="' + esc(r.id) + '">ปริ้น / แชร์ PDF</button>' +
+        '<div class=acts><button class="sm pri" data-act=printmenu data-id="' + esc(r.id) + '">แชร์ PDF</button>' +
         (bl.length ? '<button class=sm data-act=returned data-id="' + esc(r.id) + '" data-v="' + (r.returned ? '' : '1') + '">' + (r.returned ? 'ยกเลิกคืน' : 'คืนครบแล้ว') + '</button>' : '') +
         '<button class=sm data-act=editrec data-id="' + esc(r.id) + '">แก้ไข</button><button class="sm x' + (delPending === r.id ? ' danger' : '') + '" data-act=delrec data-id="' + esc(r.id) + '">' + (delPending === r.id ? 'กดอีกครั้งเพื่อลบ' : 'ลบ') + '</button></div></div>';
     });
@@ -792,10 +792,8 @@ function drawPrintMenu(){
   M.className = 'open';
   const seg = (v, t) => '<button class="' + (pmod.p === v ? 'pri' : '') + '" data-pm=part data-v=' + v + '>' + t + '</button>';
   M.innerHTML = '<div class=sheet><h2>ปริ้น / บันทึก / แชร์ — ' + esc(r.caseName) + '</h2><label>เลือกใบที่ต้องการ</label><div class=seg style="grid-template-columns:1fr 1fr 1fr">' + seg('ins', 'เครื่องมือ') + seg('sup', 'เวชภัณฑ์') + seg('both', 'ทั้งหมด') + '</div>' +
-    '<button class="pri big" data-pm=share style="width:100%;margin-top:10px">แชร์ไฟล์ PDF (ไลน์ / อีเมล / แอปปริ้น)</button>' +
-    '<button class=big data-pm=save style="width:100%;margin-top:8px">บันทึกเป็นไฟล์ PDF ในเครื่อง</button>' +
-    '<button class=big data-pm=print style="width:100%;margin-top:8px">ปริ้นเลย (เครื่องปริ้นของเครื่องนี้)</button>' +
-    '<div class=muted style="margin-top:8px">ไฟล์ PDF ขนาด A4 เปิดด้วยแอปของเครื่องปริ้น (เช่น HP Smart, Epson iPrint, Canon PRINT, Mopria) หรือส่งเข้าคอมแล้วสั่งพิมพ์ได้</div>' +
+    '<button class="pri big" data-pm=share style="width:100%;margin-top:10px">แชร์ไฟล์ PDF</button>' +
+    '<div class=muted style="margin-top:8px">ไฟล์ PDF ขนาด A4 ส่งเข้าไลน์/อีเมล หรือเปิดในแอปเครื่องปริ้นเพื่อสั่งพิมพ์</div>' +
     '<div class=mact><button data-pm=close>ปิด</button></div></div>';
 }
 document.addEventListener('click', e => {
