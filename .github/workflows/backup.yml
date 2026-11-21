@@ -7,6 +7,9 @@ on:
     - cron: '0 18 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   backup:
     runs-on: ubuntu-latest
@@ -14,6 +17,7 @@ jobs:
       SUPABASE_URL: ${{ secrets.SUPABASE_URL || 'https://krnygmosppwudcwshutd.supabase.co' }}
       SUPABASE_KEY: ${{ secrets.SUPABASE_KEY || 'sb_publishable_DU5tLtHJajlGNnLonQ_22w_yZC79Ktg' }}
     steps:
+      - uses: actions/checkout@v4
       - name: ดึงข้อมูลทั้งหมด
         run: |
           if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_KEY" ]; then echo "ยังไม่ได้ตั้ง SUPABASE_URL / SUPABASE_KEY — ข้าม"; exit 0; fi
@@ -27,3 +31,12 @@ jobs:
           name: สำรองข้อมูล-${{ github.run_number }}
           path: backup.json
           retention-days: 90
+      - name: บันทึกสำเนาข้อมูลลง repo (data/snapshot.json) เมื่อมีการเปลี่ยนแปลง
+        if: hashFiles('backup.json') != ''
+        run: |
+          mkdir -p data
+          python3 -c "import json;d=json.load(open('backup.json'));d.sort(key=lambda r:(r['kind'],r['id']));json.dump(d,open('data/snapshot.json','w'),ensure_ascii=False,indent=1,sort_keys=True)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/snapshot.json
+          if git diff --cached --quiet; then echo "ข้อมูลไม่เปลี่ยน ไม่ต้องบันทึกใหม่"; else git commit -m "ซิงค์ข้อมูลจากฐานข้อมูลกลาง $(TZ=Asia/Bangkok date +'%Y-%m-%d %H:%M')" && git push; fi
