@@ -2231,14 +2231,14 @@
   "data": {
    "borrowIns": "Set General; Set Osteotome ใหญ่; Mallet ใหญ่; Bone rongeur; Volkman; Bone curette ตรง; Bone hook / T handle; Hohmann retractor large wide; Hohmann retractor small narrow",
    "borrowSup": "",
-   "by": "Clear",
+   "by": "วริศราภรณ์",
    "by2": "",
    "caseId": "c15",
    "caseName": "TKA",
    "date": "2026-11-22",
    "doctor": "",
-   "editedAt": "2026-11-21 22:07",
-   "id": "r1795273582547431",
+   "editedAt": "",
+   "id": "r1795276781523314",
    "ins": [
     {
      "from": "",
@@ -2286,8 +2286,8 @@
      "s": "B"
     }
    ],
-   "returned": "2026-11-21 22:07 (Clear)",
-   "savedAt": "2026-11-21 22:06",
+   "returned": "",
+   "savedAt": "2026-11-21 22:59",
    "sup": [
     {
      "from": "",
@@ -2297,8 +2297,8 @@
     }
    ]
   },
-  "id": "r1795273582547431",
+  "id": "r1795276781523314",
   "kind": "record",
-  "updated_at": "2026-11-21T15:07:34.231+00:00"
+  "updated_at": "2026-11-21T15:59:41.523+00:00"
  }
 ]
