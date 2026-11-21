@@ -482,6 +482,7 @@ function render(){
     h += '<div class="card guide"><h2 style="margin-top:0">ทำใบยืมของ 1 เคส</h2><ol><li>แท็บ <b>ทำใบยืมของ</b> → เลือกแพทย์ → เลือกเคส (พิมพ์ค้นหาหรือกดหมวด) → <b>ถัดไป</b></li><li><b>เครื่องมือ</b> และ <b>เวชภัณฑ์</b>: กด <b>มีใน OR</b> หรือ <b>ต้องยืม</b> ทุกรายการ (ต้องยืมให้ใส่ชื่อ รพ./บริษัท)</li><li>ขาดอะไร กด <b>＋ เพิ่ม</b> พิมพ์ชื่อ เลือกสถานะ</li><li><b>ยืนยัน</b>: เลือกชื่อผู้ลงชื่อ → <b>บันทึก</b> → <b>ปริ้น A4</b> (แยกเครื่องมือ/เวชภัณฑ์ได้)</li></ol>' +
     '<h2>หลังใช้เสร็จ</h2><ol><li>แท็บ <b>บันทึกแล้ว</b> → กด <b>คืนครบแล้ว</b> เมื่อคืนของ</li><li>แก้ใบเดิมกด <b>แก้ไข</b> / ลบกด <b>ลบ</b> สองครั้ง</li></ol>' +
     '<h2>แท็บ ตั้งค่า</h2><ol><li><b>แก้เคส / รายการมาตรฐาน</b>: เพิ่ม/แก้/ลบ → <b>บันทึกเคสนี้</b></li><li><b>รายชื่อแพทย์ / พยาบาล</b>: ชื่อละบรรทัด → <b>บันทึกรายชื่อ</b></li><li><b>สำรองข้อมูล</b>: ดาวน์โหลดไฟล์สำรองเป็นประจำ</li></ol>' +
+    '<h2>เชื่อมเครื่องปริ้น (ทำครั้งเดียวต่อมือถือ)</h2><ol><li>มือถือและเครื่อง RICOH ต้องอยู่ Wi-Fi เดียวกัน</li><li>Android: ตั้งค่า → อุปกรณ์ที่เชื่อมต่อ → การพิมพ์ → เปิด <b>Ricoh Print Service</b> (หรือ Mopria) / iPhone ใช้ AirPrint ได้เลย</li><li>เปิดแอปนี้ใน <b>Chrome</b> → ใบที่บันทึกแล้ว → <b>แชร์ PDF</b> → <b>ส่งไปเครื่องปริ้น</b> → เลือกเครื่อง → กระดาษ A4 → พิมพ์</li><li>ใช้ไม่ได้: กด <b>แชร์ PDF</b> แล้วเลือกแอป RICOH Smart Device Connector</li></ol>' +
     '<h2>จำไว้</h2><ol><li>ติ๊ก/พิมพ์แล้วต้องกด <b>บันทึก</b> ทุกครั้ง</li><li><b>↻ อัปเดต</b> (มุมขวาบน) โหลดแอปเวอร์ชันใหม่ ปกติแอปอัปเดตเอง</li></ol></div>';
   }
 
@@ -793,7 +794,8 @@ function drawPrintMenu(){
   const seg = (v, t) => '<button class="' + (pmod.p === v ? 'pri' : '') + '" data-pm=part data-v=' + v + '>' + t + '</button>';
   M.innerHTML = '<div class=sheet><h2>ปริ้น / บันทึก / แชร์ — ' + esc(r.caseName) + '</h2><label>เลือกใบที่ต้องการ</label><div class=seg style="grid-template-columns:1fr 1fr 1fr">' + seg('ins', 'เครื่องมือ') + seg('sup', 'เวชภัณฑ์') + seg('both', 'ทั้งหมด') + '</div>' +
     '<button class="pri big" data-pm=share style="width:100%;margin-top:10px">แชร์ไฟล์ PDF</button>' +
-    '<div class=muted style="margin-top:8px">ไฟล์ PDF ขนาด A4 ส่งเข้าไลน์/อีเมล หรือเปิดในแอปเครื่องปริ้นเพื่อสั่งพิมพ์</div>' +
+    '<button class=big data-pm=print style="width:100%;margin-top:8px">ส่งไปเครื่องปริ้น (RICOH / เครื่องอื่นที่เชื่อมไว้)</button>' +
+    '<div class=muted style="margin-top:8px">แชร์ PDF: ส่งเข้าไลน์/อีเมล/แอปเครื่องปริ้น<br>ส่งไปเครื่องปริ้น: เปิดหน้าต่างพิมพ์ของมือถือ เลือกเครื่อง RICOH → กระดาษ A4 → พิมพ์ (ต้องเปิดแอปใน Chrome และเชื่อมเครื่องปริ้นไว้ในมือถือก่อน ดูวิธีในคู่มือ)</div>' +
     '<div class=mact><button data-pm=close>ปิด</button></div></div>';
 }
 document.addEventListener('click', e => {
