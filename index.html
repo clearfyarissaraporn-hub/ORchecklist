@@ -163,7 +163,7 @@ async function sb(method, path, body, prefer){
   if(KEY.indexOf('eyJ') === 0) h.Authorization = 'Bearer ' + KEY;
   if(prefer) h.Prefer = prefer;
   let res;
-  try{ res = await fetch(API.replace(/\/+$/, '') + '/rest/v1/' + path, {method, headers: h, body: body ? JSON.stringify(body) : undefined}); }
+  try{ res = await fetch(API.replace(/^(https?:\/\/[^\/\s]+).*$/, '$1') + '/rest/v1/' + path, {method, headers: h, body: body ? JSON.stringify(body) : undefined}); }
   catch(e){ throw new Error('ต่อฐานข้อมูลไม่ได้ (ตรวจอินเทอร์เน็ต และลิงก์ Project URL)'); }
   const tx = await res.text();
   if(!res.ok) throw new Error(friendlyErr(res.status, tx));
@@ -526,7 +526,7 @@ document.addEventListener('click', e => {
   else if(a === 'setup'){ view = 'setup'; render(); }
   else if(a === 'unlink'){ API = ''; KEY = ''; LS.set('or_url', ''); LS.set('or_dbkey', ''); loaded = false; run(async () => { await api(); say('กลับไปใช้แบบเครื่องเดียวแล้ว'); }); }
   else if(a === 'connect'){
-    const u = $('#apiIn').value.trim(), k2 = $('#keyIn').value.trim();
+    const u = ($('#apiIn').value.trim().match(/^https?:\/\/[^\/\s]+/) || [''])[0], k2 = $('#keyIn').value.trim().replace(/^Bearer\s+/i, '');
     const hadLocal = !cloud() && lrows().some(r => r.updated_at !== SEED_TS);
     API = u; KEY = k2; LS.set('or_url', API); LS.set('or_dbkey', KEY);
     view = 'backup'; loaded = false; render();
