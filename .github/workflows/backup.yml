@@ -1,18 +1,18 @@
-# สำรองข้อมูลอัตโนมัติ สัปดาห์ละ 2 ครั้ง (และช่วยให้ Supabase ฟรีไม่ถูกพักโปรเจกต์เพราะไม่มีคนใช้)
+# สำรองข้อมูลอัตโนมัติ ทุกวัน (ตี 1 ตามเวลาไทย) (และช่วยให้ Supabase ฟรีไม่ถูกพักโปรเจกต์เพราะไม่มีคนใช้)
 # ไฟล์สำรองดาวน์โหลดได้ที่แท็บ Actions → เลือกรอบล่าสุด → Artifacts (เก็บ 90 วัน เห็นเฉพาะเจ้าของ repo)
 name: สำรองข้อมูล
 
 on:
   schedule:
-    - cron: '0 18 * * 0,3'
+    - cron: '0 18 * * *'
   workflow_dispatch:
 
 jobs:
   backup:
     runs-on: ubuntu-latest
     env:
-      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-      SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL || 'https://krnygmosppwudcwshutd.supabase.co' }}
+      SUPABASE_KEY: ${{ secrets.SUPABASE_KEY || 'sb_publishable_DU5tLtHJajlGNnLonQ_22w_yZC79Ktg' }}
     steps:
       - name: ดึงข้อมูลทั้งหมด
         run: |

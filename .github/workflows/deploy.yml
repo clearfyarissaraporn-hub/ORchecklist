@@ -27,8 +27,8 @@ jobs:
 
       - name: เตรียมหน้าแอป
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL || 'https://krnygmosppwudcwshutd.supabase.co' }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY || 'sb_publishable_DU5tLtHJajlGNnLonQ_22w_yZC79Ktg' }}
         run: |
           mkdir -p _site
           cp index.html _site/index.html
