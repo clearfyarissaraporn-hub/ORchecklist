@@ -435,7 +435,7 @@ function render(){
         '<div class=muted>ผ่าตัด ' + esc(thDate(r.date)) + ' · ลงชื่อ ' + esc(r.by) + (r.by2 ? ' / ' + esc(r.by2) : '') + ' · บันทึก ' + esc(r.savedAt) + (r.editedAt ? ' (แก้ ' + esc(r.editedAt) + ')' : '') + '</div>' +
         '<div style="margin-top:6px">' + (bl.length ? '<span class="pill ' + (r.returned ? 'g' : 'b') + '">' + (r.returned ? 'คืนครบ ' + esc(r.returned) : 'ยืม ' + bl.length + ' รายการ ยังไม่คืน') + '</span>' : '<span class="pill g">ไม่ต้องยืม</span>') + '</div>' +
         (bl.length ? '<div class=muted style="margin-top:4px">' + esc(bl.map(x => x.n + (x.from ? ' ← ' + x.from : '')).join(' · ')) + '</div>' : '') +
-        '<div class=acts><button class=sm data-act=print data-id="' + esc(r.id) + '" data-p=ins>ปริ้นเครื่องมือ</button><button class=sm data-act=print data-id="' + esc(r.id) + '" data-p=sup>ปริ้นเวชภัณฑ์</button><button class=sm data-act=print data-id="' + esc(r.id) + '" data-p=both>ปริ้นทั้งหมด</button>' +
+        '<div class=acts><button class="sm pri" data-act=printmenu data-id="' + esc(r.id) + '">ปริ้น / แชร์ PDF</button>' +
         (bl.length ? '<button class=sm data-act=returned data-id="' + esc(r.id) + '" data-v="' + (r.returned ? '' : '1') + '">' + (r.returned ? 'ยกเลิกคืน' : 'คืนครบแล้ว') + '</button>' : '') +
         '<button class=sm data-act=editrec data-id="' + esc(r.id) + '">แก้ไข</button><button class="sm x' + (delPending === r.id ? ' danger' : '') + '" data-act=delrec data-id="' + esc(r.id) + '">' + (delPending === r.id ? 'กดอีกครั้งเพื่อลบ' : 'ลบ') + '</button></div></div>';
     });
@@ -585,6 +585,7 @@ document.addEventListener('click', e => {
   else if(a === 'nextcase'){ newDraft(); view = 'new'; justSaved = false; location.hash = ''; render(); }
 
   /* ใบที่บันทึก */
+  else if(a === 'printmenu'){ openPrintMenu(t.dataset.id); }
   else if(a === 'print'){ const r = S.records.find(x => x.id === t.dataset.id); if(r) doPrint(r, t.dataset.p === 'both' ? ['ins','sup'] : [t.dataset.p]); }
   else if(a === 'returned'){ run(async () => { await api('setReturned', {id: t.dataset.id, returned: !!t.dataset.v, who: keep.by}); say(t.dataset.v ? 'บันทึกว่าคืนครบแล้ว' : 'ยกเลิกสถานะคืนแล้ว'); }); }
   else if(a === 'editrec'){
@@ -707,6 +708,106 @@ document.addEventListener('click', e => {
   else if(m === 'done'){ if(mdlAdd()) closeModal(); }
 });
 document.addEventListener('keydown', e => { if(mdl && e.key === 'Escape') closeModal(); if(mdl && e.key === 'Enter' && e.target.tagName === 'INPUT'){ if(mdlAdd()){ drawModal(); const i = $('#mN'); if(i) i.focus(); } } });
+
+/* ===== สร้างไฟล์ PDF A4 ในเครื่อง (แชร์/บันทึก/ปริ้น) ===== */
+async function makePdf(r, parts){
+  try{ await Promise.all([document.fonts.load('26px ORThai'), document.fonts.load('bold 26px ORThai')]); }catch(e){}
+  const W = 1240, H = 1754, M = 90, FF = 'ORThai, Tahoma, sans-serif';
+  const pages = [];
+  let cv, g, y;
+  const newPage = () => { cv = document.createElement('canvas'); cv.width = W; cv.height = H; g = cv.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, W, H); g.fillStyle = '#000'; g.textBaseline = 'top'; pages.push(cv); y = M; };
+  const font = (px, b) => { g.font = (b ? 'bold ' : '') + px + 'px ' + FF; };
+  const wrap = (txt, maxW) => { const out = []; String(txt || '').split('\n').forEach(par => { let line = ''; for(const ch of par){ if(g.measureText(line + ch).width > maxW && line){ out.push(line); line = ch; } else line += ch; } out.push(line); }); return out; };
+  const box = (x, yy, s, on) => { g.lineWidth = 3; g.strokeRect(x, yy, s, s); if(on){ g.beginPath(); g.moveTo(x + 6, yy + s / 2); g.lineTo(x + s * 0.42, yy + s - 7); g.lineTo(x + s - 5, yy + 6); g.stroke(); } };
+  const cols = [{n: 'รายการ', w: 450}, {n: 'มีใน OR', w: 100, c: 1}, {n: 'ต้องยืม', w: 100, c: 1}, {n: 'ยืมจาก (รพ./บริษัท)', w: 300}, {n: 'คืนแล้ว', w: 110, c: 1}];
+  const hdr = () => { let x = M; const hh = 62; g.fillStyle = '#e6e6e6'; g.fillRect(M, y, 1060, hh); g.fillStyle = '#000'; g.lineWidth = 2; font(26, true);
+    cols.forEach(c => { g.strokeRect(x, y, c.w, hh); const tw = g.measureText(c.n).width; g.fillText(c.n, c.c ? x + (c.w - tw) / 2 : x + 12, y + 14); x += c.w; }); y += hh; };
+  const section = (title, list, isSup) => {
+    newPage();
+    font(44, true); g.fillText('ใบเช็กลิสต์ยืมของ ห้องผ่าตัด — ' + title, M, y); y += 74;
+    font(30, false); const info = 'เคส: ' + r.caseName + (r.doctor ? '    แพทย์: ' + r.doctor : '') + '    วันที่: ' + thDate(r.date);
+    wrap(info, 1060).forEach(l => { g.fillText(l, M, y); y += 44; }); y += 14;
+    font(34, true); g.fillText(title, M, y); y += 54;
+    hdr();
+    (list || []).forEach(x => {
+      font(28, false);
+      const nameL = wrap(x.n + (isSup && x.q ? ' (' + x.q + ')' : ''), cols[0].w - 24), fromL = wrap(x.from || '', cols[3].w - 24);
+      const rh = Math.max(nameL.length, fromL.length, 1) * 40 + 24;
+      if(y + rh > H - M - 120){ newPage(); hdr(); font(28, false); }
+      let xx = M; g.lineWidth = 2;
+      xx = M; cols.forEach(c => { g.strokeRect(xx, y, c.w, rh); xx += c.w; });
+      nameL.forEach((l, i) => g.fillText(l, M + 12, y + 12 + i * 40));
+      fromL.forEach((l, i) => g.fillText(l, M + cols[0].w + cols[1].w + cols[2].w + 12, y + 12 + i * 40));
+      const bs = 34, cy = y + rh / 2 - bs / 2;
+      box(M + cols[0].w + (cols[1].w - bs) / 2, cy, bs, x.s === 'O');
+      box(M + cols[0].w + cols[1].w + (cols[2].w - bs) / 2, cy, bs, x.s === 'B');
+      if(x.s === 'B') box(M + cols[0].w + cols[1].w + cols[2].w + cols[3].w + (cols[4].w - bs) / 2, cy, bs, !!r.returned);
+      y += rh;
+    });
+    y += 30; font(28, false);
+    const sg = 'ผู้ตรวจสอบ: ' + r.by + (r.by2 ? '    ผู้รับของ/ประสานยืม: ' + r.by2 : '') + '    บันทึกเมื่อ: ' + (r.savedAt || '') + (r.returned ? '    คืนครบ: ' + r.returned : '');
+    if(y + 130 > H - M){ newPage(); font(28, false); }
+    wrap(sg, 1060).forEach(l => { g.fillText(l, M, y); y += 42; });
+  };
+  if(parts.indexOf('ins') >= 0) section('เครื่องมือ (Instrument)', r.ins, false);
+  if(parts.indexOf('sup') >= 0) section('เวชภัณฑ์', r.sup, true);
+  const jpgs = [];
+  for(const p of pages){ const bin = atob(p.toDataURL('image/jpeg', 0.92).split(',')[1]), u = new Uint8Array(bin.length); for(let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); jpgs.push(u); }
+  const enc8 = new TextEncoder(), chunks = []; let len = 0; const offs = [];
+  const put = d => { const u = typeof d === 'string' ? enc8.encode(d) : d; chunks.push(u); len += u.length; };
+  const n = jpgs.length; put('%PDF-1.4\n');
+  const obj = (i, body) => { offs[i] = len; put(i + ' 0 obj\n'); put(body); put('\nendobj\n'); };
+  obj(1, '<< /Type /Catalog /Pages 2 0 R >>');
+  obj(2, '<< /Type /Pages /Count ' + n + ' /Kids [' + jpgs.map((_, i) => (3 + i * 3) + ' 0 R').join(' ') + '] >>');
+  jpgs.forEach((j, i) => {
+    const pg = 3 + i * 3, ct = pg + 1, im = pg + 2, cs = 'q 595.28 0 0 841.89 0 0 cm /Im0 Do Q';
+    obj(pg, '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /XObject << /Im0 ' + im + ' 0 R >> >> /Contents ' + ct + ' 0 R >>');
+    obj(ct, '<< /Length ' + cs.length + ' >>\nstream\n' + cs + '\nendstream');
+    offs[im] = len; put(im + ' 0 obj\n<< /Type /XObject /Subtype /Image /Width ' + W + ' /Height ' + H + ' /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ' + j.length + ' >>\nstream\n'); put(j); put('\nendstream\nendobj\n');
+  });
+  const total = 3 + n * 3, xr = len;
+  put('xref\n0 ' + total + '\n0000000000 65535 f \n'); for(let i = 1; i < total; i++) put(String(offs[i]).padStart(10, '0') + ' 00000 n \n');
+  put('trailer\n<< /Size ' + total + ' /Root 1 0 R >>\nstartxref\n' + xr + '\n%%EOF');
+  return new Blob(chunks, {type: 'application/pdf'});
+}
+const pdfName = (r, parts) => 'ใบยืมของ_' + String(r.caseName || '').replace(/[\\/:*?"<>|\s]+/g, '_').slice(0, 30) + '_' + (r.date || today()) + (parts.length === 1 ? (parts[0] === 'ins' ? '_เครื่องมือ' : '_เวชภัณฑ์') : '') + '.pdf';
+async function pdfAction(r, parts, mode){
+  setBusy(true);
+  try{
+    const blob = await makePdf(r, parts), name = pdfName(r, parts), file = new File([blob], name, {type: 'application/pdf'});
+    if(mode === 'share' && navigator.canShare && navigator.canShare({files: [file]})){
+      try{ await navigator.share({files: [file], title: name}); return; }catch(e){ if(e && e.name === 'AbortError') return; }
+    }
+    const l = document.createElement('a'); l.href = URL.createObjectURL(blob); l.download = name; document.body.appendChild(l); l.click(); l.remove();
+    setTimeout(() => URL.revokeObjectURL(l.href), 60000);
+    say(mode === 'share' ? 'เครื่องนี้แชร์ตรงไม่ได้ จึงบันทึกไฟล์ PDF ให้แล้ว (ดูในโฟลเดอร์ดาวน์โหลด) เปิดแล้วส่งต่อหรือสั่งพิมพ์ได้' : 'บันทึกไฟล์ PDF แล้ว (ดูในโฟลเดอร์ดาวน์โหลด)'); pmod = null; drawPrintMenu(); render();
+  }catch(e){ say('สร้างไฟล์ PDF ไม่สำเร็จ: ' + e.message, 'err'); render(); }
+  finally{ setBusy(false); }
+}
+let pmod = null;
+function openPrintMenu(id){ pmod = {id, p: 'both'}; drawPrintMenu(); }
+function drawPrintMenu(){
+  const M = $('#modal'); if(!pmod){ M.className = ''; M.innerHTML = ''; return; }
+  const r = S.records.find(x => x.id === pmod.id); if(!r){ pmod = null; return drawPrintMenu(); }
+  M.className = 'open';
+  const seg = (v, t) => '<button class="' + (pmod.p === v ? 'pri' : '') + '" data-pm=part data-v=' + v + '>' + t + '</button>';
+  M.innerHTML = '<div class=sheet><h2>ปริ้น / บันทึก / แชร์ — ' + esc(r.caseName) + '</h2><label>เลือกใบที่ต้องการ</label><div class=seg style="grid-template-columns:1fr 1fr 1fr">' + seg('ins', 'เครื่องมือ') + seg('sup', 'เวชภัณฑ์') + seg('both', 'ทั้งหมด') + '</div>' +
+    '<button class="pri big" data-pm=share style="width:100%;margin-top:10px">แชร์ไฟล์ PDF (ไลน์ / อีเมล / แอปปริ้น)</button>' +
+    '<button class=big data-pm=save style="width:100%;margin-top:8px">บันทึกเป็นไฟล์ PDF ในเครื่อง</button>' +
+    '<button class=big data-pm=print style="width:100%;margin-top:8px">ปริ้นเลย (เครื่องปริ้นของเครื่องนี้)</button>' +
+    '<div class=muted style="margin-top:8px">ไฟล์ PDF ขนาด A4 เปิดด้วยแอปของเครื่องปริ้น (เช่น HP Smart, Epson iPrint, Canon PRINT, Mopria) หรือส่งเข้าคอมแล้วสั่งพิมพ์ได้</div>' +
+    '<div class=mact><button data-pm=close>ปิด</button></div></div>';
+}
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-pm]'); if(!t){ if(pmod && e.target.id === 'modal'){ pmod = null; drawPrintMenu(); } return; }
+  const m = t.dataset.pm; const r = pmod && S.records.find(x => x.id === pmod.id);
+  if(m === 'close'){ pmod = null; drawPrintMenu(); }
+  else if(m === 'part'){ pmod.p = t.dataset.v; drawPrintMenu(); }
+  else if(r){ const parts = pmod.p === 'both' ? ['ins', 'sup'] : [pmod.p];
+    if(m === 'print'){ pmod = null; drawPrintMenu(); doPrint(r, parts); }
+    else if(m === 'share' || m === 'save'){ pdfAction(r, parts, m); }
+  }
+});
 
 render();
 refresh(true);
