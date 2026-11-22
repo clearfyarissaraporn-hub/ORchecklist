@@ -49,7 +49,15 @@ input[type=text],input[type=date],input[type=password],input[type=url],select,te
 .btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
 .row button.or.on{background:#d8f3dc;border-color:#2d6a4f;color:#1b4332}
 .row button.bw.on{background:#fff0d6;border-color:#ba7517;color:#633806}
-.row input.from{margin-top:8px}
+.row input.from{margin-top:6px;min-height:40px!important;padding:6px 10px!important;font-size:15px;max-width:240px;display:block}
+.sugs{margin:6px 0 2px;max-height:280px;overflow:auto}
+button.sug{display:flex;justify-content:space-between;gap:8px;width:100%;text-align:left;margin:4px 0;min-height:48px;padding:8px 12px;background:#f1efe8}
+button.sug small{color:#2d6a4f;font-size:14px;white-space:nowrap}
+.imeta{font-size:13px;color:#888;margin-top:2px}
+.sheet.wide{max-width:640px}
+.pv{max-height:52vh;overflow:auto;background:#d9d7cf;padding:8px;border-radius:10px;margin:8px 0}
+.pv img{display:block;width:100%;height:auto;margin:0 auto 8px;box-shadow:0 1px 4px rgba(0,0,0,.25);background:#fff}
+.pmb{display:grid;gap:8px}.pmb button{width:100%}
 .bar{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:6px 0 8px;font-size:14px;color:#555}
 .foot{position:fixed;left:0;right:0;bottom:0;background:#fffffe;border-top:1px solid #dedcd4;padding:10px 12px;display:flex;gap:8px;justify-content:center}
 .foot button{flex:1;max-width:340px;min-height:58px;font-size:18px}
@@ -87,7 +95,9 @@ button.back{margin:0 0 10px;background:transparent}
 #modal .added{background:#d8f3dc;color:#1b4332;border-radius:10px;padding:6px 10px;font-size:14px;margin:6px 0}
 #print{display:none}
 @media print{
-  @page{size:A4;margin:12mm}
+  @page{size:A4;margin:0}
+  #print img.pg{display:block;width:210mm;height:297mm;page-break-after:always}
+  #print img.pg:last-child{page-break-after:auto}
   body{background:#fff;font-family:"ORThai","Sarabun",Tahoma,sans-serif;font-size:12pt;line-height:1.45;color:#000}
   #app,#busy{display:none!important}
   #print{display:block}
@@ -129,7 +139,7 @@ let serverVersion = '';
 /* ===== สถานะ ===== */
 let S = {cases:[], doctors:[], staff:[], templates:{}, records:[]};
 let loaded = false, busy = false, lastSync = '', msg = '', msgType = 'ok';
-let view = ({'#saved':'saved','#settings':'settings','#cases':'cases','#people':'people','#help':'help','#backup':'backup'})[location.hash] || 'new';
+let view = ({'#saved':'saved','#items':'items','#settings':'settings','#cases':'cases','#people':'people','#help':'help','#backup':'backup'})[location.hash] || 'new';
 let catSel = '', caseQ = '', step = 1, draft = null, editCase = null, delPending = '', justSaved = false, filt = {q:'', borrow:'all'};
 const keep = {doctor:'', date:'', by:''};
 
@@ -137,7 +147,7 @@ const $ = s => document.querySelector(s);
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const today = () => { const d = new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); };
 const thDate = s => { if(!s) return ''; const p = String(s).split('-'); return p.length === 3 ? p[2]+'/'+p[1]+'/'+(+p[0]+543) : s; };
-const SUBV = ['settings','cases','people','backup','help','setup'];
+const SUBV = ['settings','items','cases','people','backup','help','setup'];
 const caseById = id => S.cases.find(c => c.id === id);
 const clone = o => JSON.parse(JSON.stringify(o));
 
@@ -171,6 +181,7 @@ async function sb(method, path, body, prefer){
 }
 const cloud = () => !!(API && KEY);
 const SEED_TS = '2026-01-01T00:00:00.000Z';
+const SEED_ITEMS = [{"t":"ins","n":"D&C set","or":true,"stock":"3","grp":"Set เครื่องมือ","from":""},{"t":"ins","n":"Minor Set","or":true,"stock":"1","grp":"Set เครื่องมือ","from":""},{"t":"ins","n":"Plastic set","or":true,"stock":"1","grp":"Set เครื่องมือ","from":""},{"t":"ins","n":"Suture Set","or":true,"stock":"1","grp":"Set เครื่องมือ","from":""},{"t":"ins","n":"Set Explore","or":true,"stock":"1","grp":"Set เครื่องมือ","from":""},{"t":"ins","n":"Scrub set","or":true,"stock":"4","grp":"Set เครื่องมือ","from":""},{"t":"ins","n":"Cath set","or":true,"stock":"2","grp":"Set เครื่องมือ","from":""},{"t":"ins","n":"Basin + ขัน","or":true,"stock":"3","grp":"Set เครื่องมือ","from":""},{"t":"ins","n":"Dressing Tray Small","or":true,"stock":"2","grp":"Set เครื่องมือ","from":""},{"t":"ins","n":"Tray Mayo","or":true,"stock":"3","grp":"Set เครื่องมือ","from":""},{"t":"ins","n":"ที่ดัด Plate ใหญ่","or":true,"stock":"1","grp":"Set เครื่องมือ","from":""},{"t":"ins","n":"k-wire set","or":true,"stock":"2","grp":"Set เครื่องมือ","from":""},{"t":"ins","n":"Hegar dilator set","or":true,"stock":"2","grp":"Set เครื่องมือ","from":""},{"t":"ins","n":"Deaver set","or":true,"stock":"1","grp":"Set เครื่องมือ","from":""},{"t":"ins","n":"Procto scope set","or":true,"stock":"1","grp":"Set เครื่องมือ","from":""},{"t":"ins","n":"Set compact air drive","or":true,"stock":"1","grp":"Set เครื่องมือ","from":""},{"t":"ins","n":"Set basic Instrument","or":true,"stock":"1","grp":"Set เครื่องมือ","from":""},{"t":"ins","n":"Drape x5","or":true,"stock":"6","grp":"Set เครื่องมือ","from":""},{"t":"ins","n":"Pack large","or":true,"stock":"5","grp":"Set เครื่องมือ","from":""},{"t":"ins","n":"TUR","or":true,"stock":"10","grp":"Set เครื่องมือ","from":""},{"t":"ins","n":"Needle Holder","or":true,"stock":"8","grp":"ซอง Extra","from":""},{"t":"ins","n":"Steven โค้ง","or":true,"stock":"1","grp":"ซอง Extra","from":""},{"t":"ins","n":"Senn retractor","or":true,"stock":"4","grp":"ซอง Extra","from":""},{"t":"ins","n":"Army Navy Retracter","or":true,"stock":"2","grp":"ซอง Extra","from":""},{"t":"ins","n":"Bone curette","or":true,"stock":"5","grp":"ซอง Extra","from":""},{"t":"ins","n":"เข็ม Radivac drain","or":true,"stock":"3","grp":"ซอง Extra","from":""},{"t":"ins","n":"A-P retracter","or":true,"stock":"2","grp":"ซอง Extra","from":""},{"t":"ins","n":"mosqito","or":true,"stock":"2","grp":"ซอง Extra","from":""},{"t":"ins","n":"Brain sucion","or":true,"stock":"1","grp":"ซอง Extra","from":""},{"t":"ins","n":"Kidney Basin","or":true,"stock":"2","grp":"ซอง Extra","from":""},{"t":"ins","n":"Metzenbaum","or":true,"stock":"6","grp":"ซอง Extra","from":""},{"t":"ins","n":"Towel clip","or":true,"stock":"1","grp":"ซอง Extra","from":""},{"t":"ins","n":"Sponge holder (ใหญ่)","or":true,"stock":"2","grp":"ซอง Extra","from":""},{"t":"ins","n":"Sponge holder","or":true,"stock":"2","grp":"ซอง Extra","from":""},{"t":"ins","n":"Punch Biopsy","or":true,"stock":"1","grp":"ซอง Extra","from":""},{"t":"ins","n":"Balfour Retractor , bladder retractor","or":true,"stock":"1,2","grp":"ซอง Extra","from":""},{"t":"ins","n":"Wire cutter","or":true,"stock":"2","grp":"ซอง Extra","from":""},{"t":"ins","n":"Holder ปากเสีย","or":true,"stock":"2","grp":"ซอง Extra","from":""},{"t":"ins","n":"Bone Rongeur","or":true,"stock":"4","grp":"ซอง Extra","from":""},{"t":"ins","n":"Rochester Pean Str.","or":true,"stock":"3","grp":"ซอง Extra","from":""},{"t":"ins","n":"Tonsil Clamp","or":true,"stock":"3","grp":"ซอง Extra","from":""},{"t":"ins","n":"Allis Tissue","or":true,"stock":"2","grp":"ซอง Extra","from":""},{"t":"ins","n":"Mallet เล็ก","or":true,"stock":"1","grp":"ซอง Extra","from":""},{"t":"ins","n":"Mallet ใหญ่","or":true,"stock":"1","grp":"ซอง Extra","from":""},{"t":"ins","n":"Heaney Clamp","or":true,"stock":"1","grp":"ซอง Extra","from":""},{"t":"ins","n":"Bone clamp","or":true,"stock":"1","grp":"ซอง Extra","from":""},{"t":"ins","n":"Osteotome","or":true,"stock":"1","grp":"ซอง Extra","from":""},{"t":"ins","n":"LH room 1","or":true,"stock":"5","grp":"ซอง Extra","from":""},{"t":"ins","n":"Weitlaner retractor","or":true,"stock":"3","grp":"ซอง Extra","from":""},{"t":"ins","n":"Wire Bending","or":true,"stock":"1","grp":"ซอง Extra","from":""},{"t":"ins","n":"Esmarch","or":true,"stock":"2","grp":"ซอง Extra","from":""},{"t":"ins","n":"ถุงพลาสติก","or":true,"stock":"3","grp":"ซอง Extra","from":""},{"t":"ins","n":"Wound Curette","or":true,"stock":"4","grp":"ซอง Extra","from":""},{"t":"ins","n":"Skin Hook","or":true,"stock":"3","grp":"ซอง Extra","from":""},{"t":"ins","n":"ด้ามมีด","or":true,"stock":"1","grp":"ซอง Extra","from":""},{"t":"ins","n":"Artery clamp","or":true,"stock":"2","grp":"ซอง Extra","from":""},{"t":"ins","n":"Adson tooth","or":true,"stock":"3","grp":"ซอง Extra","from":""},{"t":"ins","n":"Adson nontooth","or":true,"stock":"3","grp":"ซอง Extra","from":""},{"t":"ins","n":"Nontooth forcep","or":true,"stock":"2","grp":"ซอง Extra","from":""},{"t":"ins","n":"Long forcep nontooth","or":true,"stock":"2","grp":"ซอง Extra","from":""},{"t":"ins","n":"Cup L","or":true,"stock":"1","grp":"ซอง Extra","from":""},{"t":"ins","n":"Right ankle","or":true,"stock":"6","grp":"ซอง Extra","from":""},{"t":"ins","n":"Periosteal ด้ามไม้","or":true,"stock":"2","grp":"ซอง Extra","from":""},{"t":"ins","n":"feer","or":true,"stock":"1","grp":"ซอง Extra","from":""},{"t":"ins","n":"Babcock","or":true,"stock":"4","grp":"ซอง Extra","from":""},{"t":"ins","n":"Allis 3 เคี้ยว","or":true,"stock":"2","grp":"ซอง Extra","from":""},{"t":"ins","n":"Metzenbaum ยาว","or":true,"stock":"1","grp":"ซอง Extra","from":""},{"t":"ins","n":"ยางเหลือง","or":true,"stock":"2","grp":"ซอง Extra","from":""},{"t":"ins","n":"horman","or":true,"stock":"1","grp":"ซอง Extra","from":""},{"t":"ins","n":"verrbugge","or":true,"stock":"2","grp":"ซอง Extra","from":""},{"t":"ins","n":"Reduction with point","or":true,"stock":"1","grp":"ซอง Extra","from":""},{"t":"ins","n":"book","or":true,"stock":"2","grp":"ซอง Extra","from":""},{"t":"ins","n":"Koker","or":true,"stock":"2","grp":"ซอง Extra","from":""},{"t":"ins","n":"Suture scissor","or":true,"stock":"2","grp":"ซอง Extra","from":""},{"t":"sup","n":"Esifix 1 Inch ( Sterile )","or":true,"stock":"3","grp":"ซอง Extra (Ortho)","from":""},{"t":"sup","n":"Esifix 2 Inch ( Sterile )","or":true,"stock":"3","grp":"ซอง Extra (Ortho)","from":""},{"t":"sup","n":"Esifix 3 Inch ( Sterile )","or":true,"stock":"3","grp":"ซอง Extra (Ortho)","from":""},{"t":"sup","n":"Esifix 4 Inch ( Sterile )","or":true,"stock":"3","grp":"ซอง Extra (Ortho)","from":""},{"t":"sup","n":"Elastic Bandage 2 Inch ( Sterile )","or":true,"stock":"3","grp":"ซอง Extra (Ortho)","from":""},{"t":"sup","n":"Elastic Bandage 3 Inch ( Sterile )","or":true,"stock":"3","grp":"ซอง Extra (Ortho)","from":""},{"t":"sup","n":"Elastic Bandage 4 Inch ( Sterile )","or":true,"stock":"3","grp":"ซอง Extra (Ortho)","from":""},{"t":"sup","n":"Elastic Bandage 6 Inch ( Sterile )","or":true,"stock":"3","grp":"ซอง Extra (Ortho)","from":""},{"t":"sup","n":"Confrrm 3 Inch ( Sterile )","or":true,"stock":"3","grp":"ซอง Extra (Ortho)","from":""},{"t":"sup","n":"Confrrm 4 Inch ( Sterile )","or":true,"stock":"3","grp":"ซอง Extra (Ortho)","from":""},{"t":"sup","n":"Confrrm 6 Inch ( Sterile )","or":true,"stock":"3","grp":"ซอง Extra (Ortho)","from":""},{"t":"sup","n":"Webrill 3 Inch ( Sterile )","or":true,"stock":"3","grp":"ซอง Extra (Ortho)","from":""},{"t":"sup","n":"Webrill 4 Inch ( Sterile )","or":true,"stock":"3","grp":"ซอง Extra (Ortho)","from":""},{"t":"sup","n":"Webrill 6 Inch ( Sterile )","or":true,"stock":"3","grp":"ซอง Extra (Ortho)","from":""},{"t":"ins","n":"k-wire extra1.0-2.0","or":true,"stock":"5","grp":"Set เครื่องมือ","from":""},{"t":"ins","n":"Allis Tissue ,allis ยาว","or":true,"stock":"1,2","grp":"ซอง Extra","from":""},{"t":"ins","n":"spatula","or":true,"stock":"2","grp":"ซอง Extra","from":""},{"t":"ins","n":"Nontooth forcep, tooth forcep","or":true,"stock":"2,4","grp":"ซอง Extra","from":""},{"t":"ins","n":"Fine nontooth","or":true,"stock":"3","grp":"ซอง Extra","from":""},{"t":"ins","n":"Off staple","or":true,"stock":"2","grp":"ซอง Extra","from":""},{"t":"ins","n":"Ligasure","or":true,"stock":"1","grp":"ซอง Extra","from":""},{"t":"ins","n":"External fix","or":true,"stock":"1","grp":"ซอง Extra","from":""},{"t":"ins","n":"Stockinette","or":true,"stock":"3","grp":"ซอง Extra","from":""},{"t":"ins","n":"ฟองน้ำ","or":true,"stock":"3","grp":"ซอง Extra","from":""},{"t":"ins","n":"K-wire extra","or":true,"stock":"7","grp":"ซอง Extra","from":""},{"t":"ins","n":"mayo","or":true,"stock":"1","grp":"ซอง Extra","from":""},{"t":"ins","n":"ไม้กดลิ้น","or":true,"stock":"1","grp":"ซอง Extra","from":""},{"t":"ins","n":"Cheek mouth","or":true,"stock":"1","grp":"ซอง Extra","from":""},{"t":"ins","n":"tenaculum","or":true,"stock":"1","grp":"ซอง Extra","from":""},{"t":"sup","n":"Mersilk No.0 (W214) BPK","or":true,"stock":"3","grp":"ไหม","from":""},{"t":"sup","n":"Mersilk No.1 (W215) BPK","or":true,"stock":"3","grp":"ไหม","from":""},{"t":"sup","n":"Mersilk 2-0 (W213) BPK","or":true,"stock":"6","grp":"ไหม","from":""},{"t":"sup","n":"Mersilk 3-0 (W212) BPK","or":true,"stock":"3","grp":"ไหม","from":""},{"t":"sup","n":"Mersilk 2-0 (W327) ติดเข็ม","or":true,"stock":"6","grp":"ไหม","from":""},{"t":"sup","n":"Mersilk 3-0 (W546) ติดเข็ม","or":true,"stock":"5","grp":"ไหม","from":""},{"t":"sup","n":"Mersilk 4-0 (K871) ติดเข็ม","or":true,"stock":"5","grp":"ไหม","from":""},{"t":"sup","n":"Prolene 2-0 (W295) Round BPK","or":true,"stock":"6","grp":"ไหม","from":""},{"t":"sup","n":"Vicryl No.0 (W9141) Round BPK","or":true,"stock":"4","grp":"ไหม","from":""},{"t":"sup","n":"Vicryl No.1 (VCP9468) Round BPK","or":true,"stock":"6","grp":"ไหม","from":""},{"t":"sup","n":"Vicryl 2-0 (VCP 317) Round","or":true,"stock":"4","grp":"ไหม","from":""},{"t":"sup","n":"Vicryl 2-0 (W9582) Cutting","or":true,"stock":"6","grp":"ไหม","from":""},{"t":"sup","n":"Vicryl 3-0 (W9114) Round","or":true,"stock":"5","grp":"ไหม","from":""},{"t":"sup","n":"Vicryl 3-0 (W9571) Cutting","or":true,"stock":"5","grp":"ไหม","from":""},{"t":"sup","n":"Vicryl 3-0 (VCP316 ) Round","or":true,"stock":"5","grp":"ไหม","from":""},{"t":"sup","n":"Vicryl 4-0 (W9711) เข็มตรง BPK","or":true,"stock":"3","grp":"ไหม","from":""},{"t":"sup","n":"Vicryl 4-0 (W9506 ) Cutting เข็มเล็ก","or":true,"stock":"2","grp":"ไหม","from":""},{"t":"sup","n":"Vicryl 4-0 (W9570) Cutting เข็มใหญ่","or":true,"stock":"2","grp":"ไหม","from":""},{"t":"sup","n":"Vicryl 4-0 (VCP426 ) Cutting","or":true,"stock":"5","grp":"ไหม","from":""},{"t":"sup","n":"Vicryl 4-0 (W9074) Round","or":true,"stock":"5","grp":"ไหม","from":""},{"t":"sup","n":"Vicryl Rapid 4-0 (W9918)","or":true,"stock":"5","grp":"ไหม","from":""},{"t":"sup","n":"Vicryl 5-0 (W9501) Cutting","or":true,"stock":"6","grp":"ไหม","from":""},{"t":"sup","n":"Vicryl 5-0 (W9505) Cutting","or":true,"stock":"4","grp":"ไหม","from":""},{"t":"sup","n":"Vicryl 5-0 (W9105) Round","or":true,"stock":"4","grp":"ไหม","from":""},{"t":"sup","n":"Vicryl 5-0 (VCP500 ) Cutting BPK","or":true,"stock":"6","grp":"ไหม","from":""},{"t":"sup","n":"Vicryl Rapid 5-0 (W9915)","or":true,"stock":"5","grp":"ไหม","from":""},{"t":"sup","n":"Vicryl 6-0 (W9500) Cutting","or":true,"stock":"2","grp":"ไหม","from":""},{"t":"sup","n":"Vicryl Rapid 6-0 (W9913)","or":true,"stock":"5","grp":"ไหม","from":""},{"t":"sup","n":"PDS No.1 (W9237) Round BPK","or":true,"stock":"6","grp":"ไหม","from":""},{"t":"sup","n":"PDS 3-0 (W9124) Round","or":true,"stock":"5","grp":"ไหม","from":""},{"t":"sup","n":"PDS 4-0 (W9615) Round","or":true,"stock":"5","grp":"ไหม","from":""},{"t":"sup","n":"PDS 5-0 (W9863)","or":true,"stock":"5","grp":"ไหม","from":""},{"t":"sup","n":"Monocryl 4-0 (MCP3205) Cutting BPK","or":true,"stock":"6","grp":"ไหม","from":""},{"t":"sup","n":"Monocryl 5-0 (MCP500)","or":true,"stock":"3","grp":"ไหม","from":""},{"t":"sup","n":"Monocryl 6-0 (MCP489)","or":true,"stock":"3","grp":"ไหม","from":""},{"t":"sup","n":"Polysorb 4-0 (GL181) BPK","or":true,"stock":"4","grp":"ไหม","from":""},{"t":"sup","n":"Ethilon 2-0 (F2418)","or":true,"stock":"5","grp":"ไหม","from":""},{"t":"sup","n":"Ethilon 3-0 (EH7563)","or":true,"stock":"5","grp":"ไหม","from":""},{"t":"sup","n":"Ethilon 4-0 (F24022)","or":true,"stock":"5","grp":"ไหม","from":""},{"t":"sup","n":"Ethilon 5-0 (1865)","or":true,"stock":"5","grp":"ไหม","from":""},{"t":"sup","n":"Ethilon 6-0 (697)","or":true,"stock":"5","grp":"ไหม","from":""},{"t":"sup","n":"Chromic No.0 (GG124) BPK","or":true,"stock":"3","grp":"ไหม","from":""},{"t":"sup","n":"Chromic No.1 (GG803) BPK","or":true,"stock":"4","grp":"ไหม","from":""},{"t":"sup","n":"Chromic 2-0 (GG123) BPK","or":true,"stock":"4","grp":"ไหม","from":""},{"t":"sup","n":"Chromic 3-0 (GG122)","or":true,"stock":"5","grp":"ไหม","from":""},{"t":"sup","n":"Chromic 4-0 (UG203)","or":true,"stock":"5","grp":"ไหม","from":""},{"t":"sup","n":"Dermalon 3-0 (1756-41)","or":true,"stock":"5","grp":"ไหม","from":""},{"t":"sup","n":"Dermalon 4-0 (1756-31)","or":true,"stock":"5","grp":"ไหม","from":""},{"t":"sup","n":"Dermalon 5-0 (1756-21)","or":true,"stock":"5","grp":"ไหม","from":""},{"t":"sup","n":"Dermalon 6-0 (1756-11)","or":true,"stock":"5","grp":"ไหม","from":""},{"t":"sup","n":"Vicryl 2-0 w9121","or":true,"stock":"3","grp":"ไหม","from":""},{"t":"sup","n":"Vicryl 3-0 w9120","or":true,"stock":"3","grp":"ไหม","from":""},{"t":"sup","n":"Prolene 3-0 8558","or":true,"stock":"2","grp":"ไหม","from":""},{"t":"sup","n":"Fiber wire 2-0 AR7200","or":true,"stock":"2","grp":"ไหม","from":""},{"t":"sup","n":"Fiber wire 2-0 AR7220","or":true,"stock":"2","grp":"ไหม","from":""},{"t":"sup","n":"Fiber wire 2-0 AR7221","or":true,"stock":"2","grp":"ไหม","from":""},{"t":"sup","n":"Cord tap","or":true,"stock":"2","grp":"ไหม","from":""},{"t":"sup","n":"Needdle No.18","or":true,"stock":"10","grp":"รถเวชภัณฑ์ ชั้นที่ 1","from":""},{"t":"sup","n":"Needdle No.20","or":true,"stock":"10","grp":"รถเวชภัณฑ์ ชั้นที่ 1","from":""},{"t":"sup","n":"Needdle No.22","or":true,"stock":"10","grp":"รถเวชภัณฑ์ ชั้นที่ 1","from":""},{"t":"sup","n":"Needdle No.24","or":true,"stock":"10","grp":"รถเวชภัณฑ์ ชั้นที่ 1","from":""},{"t":"sup","n":"Needdle No.25","or":true,"stock":"10","grp":"รถเวชภัณฑ์ ชั้นที่ 1","from":""},{"t":"sup","n":"Needdle No.27","or":true,"stock":"10","grp":"รถเวชภัณฑ์ ชั้นที่ 1","from":""},{"t":"sup","n":"Needdle No.30","or":true,"stock":"10","grp":"รถเวชภัณฑ์ ชั้นที่ 1","from":""},{"t":"sup","n":"Blade No.10","or":true,"stock":"5","grp":"รถเวชภัณฑ์ ชั้นที่ 1","from":""},{"t":"sup","n":"Blade No.11","or":true,"stock":"5","grp":"รถเวชภัณฑ์ ชั้นที่ 1","from":""},{"t":"sup","n":"Blade No.15","or":true,"stock":"10","grp":"รถเวชภัณฑ์ ชั้นที่ 1","from":""},{"t":"sup","n":"Blade No.15 carbone","or":true,"stock":"1","grp":"รถเวชภัณฑ์ ชั้นที่ 1","from":""},{"t":"sup","n":"Gauze drain 0.25” x 4 Y","or":true,"stock":"4","grp":"รถเวชภัณฑ์ ชั้นที่ 1","from":""},{"t":"sup","n":"Alcohol Pad 3M","or":true,"stock":"20","grp":"รถเวชภัณฑ์ ชั้นที่ 1","from":""},{"t":"sup","n":"Cautery Tip Cleaner (BPK)","or":true,"stock":"3","grp":"รถเวชภัณฑ์ ชั้นที่ 1","from":""},{"t":"sup","n":"Syringe Tuberculin 1 mL","or":true,"stock":"5","grp":"รถเวชภัณฑ์ ชั้นที่ 1","from":""},{"t":"sup","n":"Disposable Syinge 3 mL","or":true,"stock":"5","grp":"รถเวชภัณฑ์ ชั้นที่ 1","from":""},{"t":"sup","n":"Disposable Syinge 5 mL","or":true,"stock":"5","grp":"รถเวชภัณฑ์ ชั้นที่ 1","from":""},{"t":"sup","n":"Disposable Syinge 10 mL","or":true,"stock":"5","grp":"รถเวชภัณฑ์ ชั้นที่ 1","from":""},{"t":"sup","n":"Disposable Syinge 20 mL","or":true,"stock":"5","grp":"รถเวชภัณฑ์ ชั้นที่ 1","from":""},{"t":"sup","n":"Blade Clipper ชมพู","or":true,"stock":"1","grp":"รถเวชภัณฑ์ ชั้นที่ 1","from":""},{"t":"sup","n":"Blade Clipper ฟ้า","or":true,"stock":"2","grp":"รถเวชภัณฑ์ ชั้นที่ 1","from":""},{"t":"sup","n":"เครื่อง BD Surgical clipper","or":true,"stock":"1","grp":"รถเวชภัณฑ์ ชั้นที่ 1","from":""},{"t":"sup","n":"Gauze Bandage 4 นิ้ว","or":true,"stock":"3","grp":"รถเวชภัณฑ์ ชั้นที่ 2","from":""},{"t":"sup","n":"Cotton Swab S","or":true,"stock":"2","grp":"รถเวชภัณฑ์ ชั้นที่ 2","from":""},{"t":"sup","n":"Cotton Swab L","or":true,"stock":"2","grp":"รถเวชภัณฑ์ ชั้นที่ 2","from":""},{"t":"sup","n":"Penrose Drainage Tubing ¼ นิ้ว","or":true,"stock":"2","grp":"รถเวชภัณฑ์ ชั้นที่ 2","from":""},{"t":"sup","n":"Penrose Drainage Tubing ½ นิ้ว","or":true,"stock":"2","grp":"รถเวชภัณฑ์ ชั้นที่ 2","from":""},{"t":"sup","n":"Penrose Drainage Tubing 1 นิ้ว","or":true,"stock":"2","grp":"รถเวชภัณฑ์ ชั้นที่ 2","from":""},{"t":"sup","n":"Bulb Syringe Acepto (BPK)","or":true,"stock":"1","grp":"รถเวชภัณฑ์ ชั้นที่ 2","from":""},{"t":"sup","n":"Disposable Syinge 50 mL ( Catheter tip )","or":true,"stock":"2","grp":"รถเวชภัณฑ์ ชั้นที่ 2","from":""},{"t":"sup","n":"Disposable Syinge 50 mL ( Eccentric tip )","or":true,"stock":"2","grp":"รถเวชภัณฑ์ ชั้นที่ 2","from":""},{"t":"sup","n":"Sterile Lubricating Jelly","or":true,"stock":"5","grp":"รถเวชภัณฑ์ ชั้นที่ 2","from":""},{"t":"sup","n":"Glove Sterile No Powder No 6 (Gammex Ansell)","or":true,"stock":"10","grp":"รถเวชภัณฑ์ ชั้นที่ 3","from":""},{"t":"sup","n":"Glove Sterile No Powder No 6.5 (Gammex Ansell)","or":true,"stock":"10","grp":"รถเวชภัณฑ์ ชั้นที่ 3","from":""},{"t":"sup","n":"Glove Sterile No Powder No 7 (Gammex Ansell)","or":true,"stock":"10","grp":"รถเวชภัณฑ์ ชั้นที่ 3","from":""},{"t":"sup","n":"Glove Sterile No Powder No 7.5 (Gammex Ansell)","or":true,"stock":"10","grp":"รถเวชภัณฑ์ ชั้นที่ 3","from":""},{"t":"sup","n":"Glove Sterile No Powder No 8 (Gammex Ansell)","or":true,"stock":"10","grp":"รถเวชภัณฑ์ ชั้นที่ 3","from":""},{"t":"sup","n":"Glove Sterile No Powder No 8.5 (Gammex Ansell)","or":true,"stock":"10","grp":"รถเวชภัณฑ์ ชั้นที่ 3","from":""},{"t":"sup","n":"Gauze Sterile 4x4 8ply 10 pcs","or":true,"stock":"10","grp":"รถเวชภัณฑ์ ชั้นที่ 3","from":""},{"t":"sup","n":"ABD 6x18 (BPK)","or":true,"stock":"2","grp":"รถเวชภัณฑ์ ชั้นที่ 3","from":""},{"t":"sup","n":"ABD 18x18 (BPK)","or":true,"stock":"2","grp":"รถเวชภัณฑ์ ชั้นที่ 3","from":""},{"t":"sup","n":"Gauze Sponges Sterile X-ray Detec.4x4 8ply 10pcs (BPK)","or":true,"stock":"2","grp":"รถเวชภัณฑ์ ชั้นที่ 3","from":""},{"t":"sup","n":"Tube Collection Swab culture","or":true,"stock":"5","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Surgical Skin marker (Bx marker)","or":true,"stock":"5","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Disposable Skin stapler (BPK)","or":true,"stock":"2","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Dermabond mini 0.5 ml","or":true,"stock":"1","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Terramycin","or":true,"stock":"1","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Ioband 3M 60cm x 45cm","or":true,"stock":"3","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Blood Tranfusion Set","or":true,"stock":"1","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"IV set","or":true,"stock":"1","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Urine catheter No14 (แดง)","or":true,"stock":"1","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Surgicel (BPK)","or":true,"stock":"5","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Surgicel Fibrillar (BPK)","or":true,"stock":"3","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Spongostan","or":true,"stock":"3","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Mepilex Border Post-Op 6x8 cm","or":true,"stock":"3","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Mepilex Border Post-Op 10x15 cm","or":true,"stock":"3","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Mepilex Border Post-Op 10x20 cm","or":true,"stock":"3","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Opsite Post op 6.5x5 cm","or":true,"stock":"5","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Opsite Post op 9.5x8.5 cm","or":true,"stock":"5","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Opsite Post op 15.5x8.5 cm","or":true,"stock":"5","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Bacticgas 10x10cm","or":true,"stock":"5","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Urgotul 5*5","or":true,"stock":"1","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Leukostrip 1/8 * 1 ½ นิ้ว","or":true,"stock":"3","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Leukostrip 1/4 * 3 นิ้ว","or":true,"stock":"3","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Leukostrip 1/4 * 4 นิ้ว","or":true,"stock":"3","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Leukostrip 1/2 * 4 นิ้ว","or":true,"stock":"3","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Steri-Strip 1/4 x 3นิ้ว (แดง) R1541","or":true,"stock":"3","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Steri-Strip 1/4 x 4 นิ้ว (ส้ม) R1546","or":true,"stock":"5","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Steri-Strip 1/4 x 3นิ้ว (น้ำเงิน) R1547","or":true,"stock":"3","grp":"รถเวชภัณฑ์ ชั้นที่ 4","from":""},{"t":"sup","n":"Suction Tubing 6mm x 3.0 m (10ft)","or":true,"stock":"2","grp":"รถเวชภัณฑ์ ชั้นที่ 5","from":""},{"t":"sup","n":"Valleylab REM plate","or":true,"stock":"1","grp":"รถเวชภัณฑ์ ชั้นที่ 5","from":""},{"t":"sup","n":"Hand Control Electrosurgical pencil","or":true,"stock":"2","grp":"รถเวชภัณฑ์ ชั้นที่ 5","from":""},{"t":"sup","n":"Foot Control Electrosurgical pencil","or":true,"stock":"2","grp":"รถเวชภัณฑ์ ชั้นที่ 5","from":""},{"t":"sup","n":"ขวด Redivac drain 200 ml","or":true,"stock":"2","grp":"รถเวชภัณฑ์ ชั้นที่ 5","from":""},{"t":"sup","n":"ขวด Redivac drain 600 ml","or":true,"stock":"2","grp":"รถเวชภัณฑ์ ชั้นที่ 5","from":""},{"t":"sup","n":"สาย Redivac No.8","or":true,"stock":"2","grp":"รถเวชภัณฑ์ ชั้นที่ 5","from":""},{"t":"sup","n":"สาย Redivac No. 10","or":true,"stock":"2","grp":"รถเวชภัณฑ์ ชั้นที่ 5","from":""},{"t":"sup","n":"Opsite Post op 25x10 cm","or":true,"stock":"6","grp":"รถเวชภัณฑ์ ชั้นที่ 5","from":""},{"t":"sup","n":"Mepilex Ag 17.5 x 17.5 cm","or":true,"stock":"2","grp":"รถเวชภัณฑ์ ชั้นที่ 5","from":""},{"t":"sup","n":"หัวจี้ยาว","or":true,"stock":"1","grp":"รถเวชภัณฑ์ ชั้นที่ 5","from":""},{"t":"sup","n":"Fixumull 10 x 10 cm","or":true,"stock":"1","grp":"รถเวชภัณฑ์ บนรถ/ข้างรถ","from":""},{"t":"sup","n":"Fixumull 15 x 10 cm","or":true,"stock":"1","grp":"รถเวชภัณฑ์ บนรถ/ข้างรถ","from":""},{"t":"sup","n":"Opsite Flexifix 10 x 10 cm","or":true,"stock":"1","grp":"รถเวชภัณฑ์ บนรถ/ข้างรถ","from":""},{"t":"sup","n":"Blue Pad (ใหญ่) 60x90 cm","or":true,"stock":"2","grp":"รถเวชภัณฑ์ บนรถ/ข้างรถ","from":""},{"t":"sup","n":"Blue Pad (เล็ก)","or":true,"stock":"1","grp":"รถเวชภัณฑ์ บนรถ/ข้างรถ","from":""},{"t":"sup","n":"Mask N95 3M 1870","or":true,"stock":"4","grp":"รถเวชภัณฑ์ บนรถ/ข้างรถ","from":""},{"t":"sup","n":"ไม้บรรทัดเหล็ก","or":true,"stock":"1","grp":"รถเวชภัณฑ์ บนรถ/ข้างรถ","from":""},{"t":"sup","n":"Monsel solution","or":true,"stock":"1","grp":"รถเวชภัณฑ์ บนรถ/ข้างรถ","from":""}];
 const SEED_CASES = [{"id":"c1","cat":"1. กระดูก / ข้อ","name":"ORIF Philos plate","ins":[["Small fragment",""],["LCP 3.5 set",""],["Set General",""],["Set Reduction",""]],"sup":[["Plate (ระบุชนิด: LCP / Philos / Hook / DMT / Narrow / L plate / Radius)","",""],["Screw (ระบุชนิด/ขนาด)","",""],["Screw cortex Extra long","",""],["ลวด no.23 / K-wire (TWB)","",""],["ไหมตามใบเตรียมแพทย์","","O"],["Radivac drain no.8 / 200 ml / 600 ml","","I"],["Image intensifier cover","","I"],["Ioban 6650","","OI"],["Leukostrip 13x102","",""],["Esmarch / Webril / Conform / EB (ระบุ)","",""]]},{"id":"c2","cat":"1. กระดูก / ข้อ","name":"ORIF LCP distal humerus","ins":[["Set General",""],["Set Reduction",""],["LCP 3.5 set",""],["Small fragment",""],["Bone clamp กลาง","O"]],"sup":[["Plate (ระบุชนิด: LCP / Philos / Hook / DMT / Narrow / L plate / Radius)","",""],["Screw (ระบุชนิด/ขนาด)","",""],["Screw cortex Extra long","",""],["ลวด no.23 / K-wire (TWB)","",""],["ไหมตามใบเตรียมแพทย์","","O"],["Radivac drain no.8 / 200 ml / 600 ml","","I"],["Image intensifier cover","","I"],["Ioban 6650","","OI"],["Leukostrip 13x102","",""],["Esmarch / Webril / Conform / EB (ระบุ)","",""]]},{"id":"c3","cat":"1. กระดูก / ข้อ","name":"ORIF Hook plate","ins":[["Small fragment",""]],"sup":[["Plate (ระบุชนิด: LCP / Philos / Hook / DMT / Narrow / L plate / Radius)","",""],["Screw (ระบุชนิด/ขนาด)","",""],["Screw cortex Extra long","",""],["ลวด no.23 / K-wire (TWB)","",""],["ไหมตามใบเตรียมแพทย์","","O"],["Radivac drain no.8 / 200 ml / 600 ml","","I"],["Image intensifier cover","","I"],["Ioban 6650","","OI"],["Leukostrip 13x102","",""],["Esmarch / Webril / Conform / EB (ระบุ)","",""]]},{"id":"c4","cat":"1. กระดูก / ข้อ","name":"ORIF medial proximal tibia / L plate","ins":[["Set plate medial proximal tibia",""],["Set L plate proximal tibia",""],["Small fragment",""],["LCP 3.5 set",""],["Set General",""],["Set Reduction",""],["Set chisel",""],["Depth gauge long",""],["Pelvic reduction forceps",""],["Drill long 2.5",""]],"sup":[["Plate (ระบุชนิด: LCP / Philos / Hook / DMT / Narrow / L plate / Radius)","",""],["Screw (ระบุชนิด/ขนาด)","",""],["Screw cortex Extra long","",""],["ลวด no.23 / K-wire (TWB)","",""],["ไหมตามใบเตรียมแพทย์","","O"],["Radivac drain no.8 / 200 ml / 600 ml","","I"],["Image intensifier cover","","I"],["Ioban 6650","","OI"],["Leukostrip 13x102","",""],["Esmarch / Webril / Conform / EB (ระบุ)","",""]]},{"id":"c5","cat":"1. กระดูก / ข้อ","name":"ORIF distal radius","ins":[["Set radius (instrument)",""],["Sleeve two column",""]],"sup":[["Plate (ระบุชนิด: LCP / Philos / Hook / DMT / Narrow / L plate / Radius)","",""],["Screw (ระบุชนิด/ขนาด)","",""],["Screw cortex Extra long","",""],["ลวด no.23 / K-wire (TWB)","",""],["ไหมตามใบเตรียมแพทย์","","O"],["Radivac drain no.8 / 200 ml / 600 ml","","I"],["Image intensifier cover","","I"],["Ioban 6650","","OI"],["Leukostrip 13x102","",""],["Esmarch / Webril / Conform / EB (ระบุ)","",""]]},{"id":"c6","cat":"1. กระดูก / ข้อ","name":"ORIF TWB","ins":[["Set wire",""],["Set chisel",""],["ลวดเล็ก (ถ้าเป็น ulnar ต้องยืม)",""]],"sup":[["Plate (ระบุชนิด: LCP / Philos / Hook / DMT / Narrow / L plate / Radius)","",""],["Screw (ระบุชนิด/ขนาด)","",""],["Screw cortex Extra long","",""],["ลวด no.23 / K-wire (TWB)","",""],["ไหมตามใบเตรียมแพทย์","","O"],["Radivac drain no.8 / 200 ml / 600 ml","","I"],["Image intensifier cover","","I"],["Ioban 6650","","OI"],["Leukostrip 13x102","",""],["Esmarch / Webril / Conform / EB (ระบุ)","",""]]},{"id":"c7","cat":"1. กระดูก / ข้อ","name":"ORIF distal medial tibia LCP (DMT)","ins":[["Set General",""],["Set Reduction",""],["Instrument 4.5",""],["Basic set",""],["Screw set",""],["LCP 4.5 set",""],["LCP 3.5 set",""],["Small fragment",""]],"sup":[["Plate (ระบุชนิด: LCP / Philos / Hook / DMT / Narrow / L plate / Radius)","",""],["Screw (ระบุชนิด/ขนาด)","",""],["Screw cortex Extra long","",""],["ลวด no.23 / K-wire (TWB)","",""],["ไหมตามใบเตรียมแพทย์","","O"],["Radivac drain no.8 / 200 ml / 600 ml","","I"],["Image intensifier cover","","I"],["Ioban 6650","","OI"],["Leukostrip 13x102","",""],["Esmarch / Webril / Conform / EB (ระบุ)","",""]]},{"id":"c8","cat":"1. กระดูก / ข้อ","name":"ORIF distal fibula / distal clavicle LCP","ins":[["Small fragment",""],["Instrument 2.7",""],["Depth gauge เล็ก",""],["Set wire pusher (clavicle)",""]],"sup":[["Plate (ระบุชนิด: LCP / Philos / Hook / DMT / Narrow / L plate / Radius)","",""],["Screw (ระบุชนิด/ขนาด)","",""],["Screw cortex Extra long","",""],["ลวด no.23 / K-wire (TWB)","",""],["ไหมตามใบเตรียมแพทย์","","O"],["Radivac drain no.8 / 200 ml / 600 ml","","I"],["Image intensifier cover","","I"],["Ioban 6650","","OI"],["Leukostrip 13x102","",""],["Esmarch / Webril / Conform / EB (ระบุ)","",""]]},{"id":"c9","cat":"1. กระดูก / ข้อ","name":"External fix","ins":[["Set External fix",""],["T handle",""],["T universal",""],["Set General",""],["Set Reduction",""],["ประแจ",""]],"sup":[["Pin / Rod ชุด External fix (ระบุ)","",""],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c10","cat":"1. กระดูก / ข้อ","name":"ORIF Narrow LCP / Small LCP","ins":[["LCP 4.5 set",""],["LCP 3.5 set",""],["Set screw",""],["Set basic","O"],["Set General",""],["Set Reduction",""],["ที่ดัด Plate ใหญ่","O"],["Small fragment",""]],"sup":[["Plate (ระบุชนิด: LCP / Philos / Hook / DMT / Narrow / L plate / Radius)","",""],["Screw (ระบุชนิด/ขนาด)","",""],["Screw cortex Extra long","",""],["ลวด no.23 / K-wire (TWB)","",""],["ไหมตามใบเตรียมแพทย์","","O"],["Radivac drain no.8 / 200 ml / 600 ml","","I"],["Image intensifier cover","","I"],["Ioban 6650","","OI"],["Leukostrip 13x102","",""],["Esmarch / Webril / Conform / EB (ระบุ)","",""]]},{"id":"c11","cat":"1. กระดูก / ข้อ","name":"Repair AC & CC ligament","ins":[["Set wire pusher",""],["Drill 2.0",""]],"sup":[["Suture button","",""],["Anchor suture","",""],["Fiber wire 5 (ไม่ติดเข็ม)","",""],["Ethibond 5 (ไม่ติดเข็ม)","",""],["Prolene 1","",""],["ลวด no.23","",""]]},{"id":"c12","cat":"1. กระดูก / ข้อ","name":"PFNA","ins":[["Life Plus",""],["Set General",""],["Set Reduction",""],["PFNA set",""],["Synream set",""],["Ruler",""],["Guide nail",""]],"sup":[["PFNA Blade","",""],["PFNA small / long","",""],["PFNA End cap / End cap IM nail (แจ้ง Inven)","",""],["IM nail (Tibia / Femur ระบุขนาด)","",""],["Radivac drain","","I"]]},{"id":"c13","cat":"1. กระดูก / ข้อ","name":"IM nail","ins":[["Nail instrument set",""],["Set expert",""],["Life plus",""],["Set General",""],["Set Reduction",""],["Synream set",""],["Ruler",""],["Depth gauge",""],["Guide nail",""],["Bone hook",""],["T universal",""],["Hammer",""],["F-ret (ถ้าทำ Femur)",""]],"sup":[["PFNA Blade","",""],["PFNA small / long","",""],["PFNA End cap / End cap IM nail (แจ้ง Inven)","",""],["IM nail (Tibia / Femur ระบุขนาด)","",""],["Radivac drain","","I"]]},{"id":"c14","cat":"1. กระดูก / ข้อ","name":"ORIF proximal lateral tibia","ins":[["Set proximal tibia (plate อยู่ในชุด)",""],["Set basic","O"],["Set General",""],["Set Reduction",""],["Pelvic clamp",""],["Instrument 4.5",""],["Depth gauge long",""],["Bone hook",""],["Bone curette","O"]],"sup":[["Plate (ระบุชนิด: LCP / Philos / Hook / DMT / Narrow / L plate / Radius)","",""],["Screw (ระบุชนิด/ขนาด)","",""],["Screw cortex Extra long","",""],["ลวด no.23 / K-wire (TWB)","",""],["ไหมตามใบเตรียมแพทย์","","O"],["Radivac drain no.8 / 200 ml / 600 ml","","I"],["Image intensifier cover","","I"],["Ioban 6650","","OI"],["Leukostrip 13x102","",""],["Esmarch / Webril / Conform / EB (ระบุ)","",""]]},{"id":"c15","cat":"1. กระดูก / ข้อ","name":"TKA","ins":[["Set General",""],["Set Osteotome ใหญ่",""],["Mallet ใหญ่","O"],["Bone rongeur","O"],["Volkman",""],["Bone curette ตรง","O"],["Bone hook / T handle",""],["Hohmann retractor large wide",""],["Hohmann retractor small narrow",""],["ตัวดันขาข้าง",""]],"sup":[["Implant TKA (ระบุยี่ห้อ/ขนาด)","",""],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c16","cat":"1. กระดูก / ข้อ","name":"ACL","ins":[],"sup":[["Suture button","",""],["Anchor suture","",""],["Fiber wire 5 (ไม่ติดเข็ม)","",""],["Ethibond 5 (ไม่ติดเข็ม)","",""],["Prolene 1","",""],["ลวด no.23","",""]]},{"id":"c17","cat":"2. Spine / พลาสติก / หู คอ จมูก","name":"Open discectomy","ins":[["Set Laminectomy",""],["Set special spine",""],["Metric instrument",""],["Anterior cervical ret.",""],["Set Midas + เครื่อง (หัวกรอยืม Inven)",""],["Frame",""],["Kerrison 2 mm / 3 mm",""],["ข้อต่อเตียงท่อนสีดำ",""]],"sup":[["Spongostan","","I"],["Surgicel","","OI"],["เวชภัณฑ์ตามใบแพทย์ (ระบุ)","",""]]},{"id":"c18","cat":"2. Spine / พลาสติก / หู คอ จมูก","name":"STSG with mesh","ins":[["Set Dermatome",""],["Set mesh graft",""],["ข้อต่อลม",""]],"sup":[["Dermatome blade","",""],["Dermacarrier 1.5:1","",""],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c19","cat":"2. Spine / พลาสติก / หู คอ จมูก","name":"ORIF Zygoma / orbital","ins":[["Set plastic small","O"],["Molt periosteal",""],["Zygoma elevator",""],["Drill 1.6",""],["Set Leibinger",""],["Midas instrument + เครื่อง + drill",""],["Brain retractor",""],["Vein retractor",""],["Shape hook",""],["ตัวงัด orbital",""],["Wire scissor (ถ้าวาง mesh)",""]],"sup":[["Mesh / plate / screw (ระบุ)","",""],["ลวด Extra","",""],["ยางมัดฟัน","",""],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c20","cat":"2. Spine / พลาสติก / หู คอ จมูก","name":"IMF","ins":[["Wire pusher",""],["Set arch bar",""],["Wire scissor","O"],["Tonsil suction",""],["E pen drive",""],["Mouth gag",""]],"sup":[["Mesh / plate / screw (ระบุ)","",""],["ลวด Extra","",""],["ยางมัดฟัน","",""],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c21","cat":"5. ระบบปัสสาวะ (Uro)","name":"Vasectomy","ins":[["Set TR","O"]],"sup":[["เวชภัณฑ์ตามใบแพทย์ (ระบุ)","",""],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c22","cat":"2. Spine / พลาสติก / หู คอ จมูก","name":"Thyroidectomy","ins":[["สาย Harmonic",""],["เครื่อง Harmonic",""]],"sup":[["เวชภัณฑ์ตามใบแพทย์ (ระบุ)","",""],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c23","cat":"2. Spine / พลาสติก / หู คอ จมูก","name":"Tonsillectomy","ins":[["Set tonsil",""]],"sup":[["เวชภัณฑ์ตามใบแพทย์ (ระบุ)","",""],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c24","cat":"4. นรีเวช","name":"TAH","ins":[["Explore set",""],["Cath set","O"],["Scrub set","O"],["Valley lab","O"],["Myoma screw",""]],"sup":[["Myoma screw","",""],["Interceed","",""],["Fibrillar","",""],["Surgicel","","OI"],["Spongostan","","I"],["หัวจี้ยาว E1450-6","",""],["Megadyne M/Blade 6 1/2\" Ez (0014M)","","I"],["Dermabond advanced / Mepilex post-op 10x20, 10x25","","I"],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c25","cat":"3. ศัลยกรรมทั่วไป / ส่องกล้อง / ทวารหนัก","name":"LC / Lap appendectomy","ins":[["Lens 5 mm 0°",""],["Lens 10 mm 0°",""],["Lens 10 mm 30°",""],["Set camera",""],["สายน้ำฟ้าขาว",""],["Suction and irrigate",""],["กระป๋องน้ำ LC",""],["Cautery cable LC",""],["LC set",""],["ด้าม Hemoloc 5 / 10 / 12 mm",""],["Pressure bag",""],["Harmonic (พ.ณัฐพงศ์) / Ligasure (พ.บัณฑิต, พ.ปราการ)",""],["(ใช้ของบริษัท) จุกน้ำ + จุกแก๊ส / สายน้ำ + สายแก๊ส",""]],"sup":[["Surgical trocar 12 mm (D12LT)","2",""],["Dilating tip trocar 5 mm (D5LT)","3–4",""],["Ligamex 5 mm / 12 mm","",""],["Endoloop (PDS)","3",""],["Hemoloc ทุก size","",""],["Polymer clip 5 / 10 / 12 mm","",""],["Endobag 3x6 / 5x8 / Lina endobag","",""],["Endo scissor 5 mm","",""],["Ligasure Maryland 37 cm LF1937 / Harmonic Ace 36 cm","",""],["Jackson Pratt 400 / Jackson round drain 15 Fr","","I"],["Glove port","",""],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c26","cat":"4. นรีเวช","name":"Lap ovarian cyst / TLH","ins":[["Laparoscope set",""],["Lens 5 mm / 10 mm",""],["Cautery cable micro jaw",""],["Cautery cable LC",""],["Uterine elevator",""],["Endo Allis",""],["Vaginal speculum L",""],["สายน้ำฟ้าขาว",""],["Suction and irrigate",""],["กระป๋องน้ำ LC",""],["ขาหยั่งดำ",""],["เครื่อง Ligasure",""],["Gynaecology set",""],["Vagina tube / Uterine sound / Needle handle LC (TLH)",""]],"sup":[["Dilating tip trocar 5 mm with stability sleeve (D5LT)","4",""],["Surgical trocar 11 mm bladeless (B11LT)","2",""],["Surgical trocar 12 mm (D12LT)","1",""],["Bipolar macro jaw (Ebfo1)","",""],["Ligasure blunt / Maryland 37 cm","1 / 1",""],["Endo scissor 5 mm","",""],["Endobag 3x6 / 5x8","",""],["Interceed 3x4","",""],["V-loc 180 (No.0316)  [TLH]","2",""],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c27","cat":"5. ระบบปัสสาวะ (Uro)","name":"TUERP","ins":[["Lens 4 mm 30°",""],["Set cystoscope",""],["หม้อ TUR",""],["สายน้ำ LC",""],["Stop cock",""],["Sound dilator",""],["Guide foley",""]],"sup":[["Sterile water irrigate 1000 ml (ใช้ 2–3 ขวด)","","I"],["สายน้ำ + Stop cock","",""],["เวชภัณฑ์ LEEP (ระบุ)","",""]]},{"id":"c28","cat":"4. นรีเวช","name":"Hysteroscope","ins":[["Set hysteroscope",""],["Cutting loop hystero",""],["Lens 4 mm 30°",""],["สายจี้",""],["Pressure bag",""],["Camera",""],["จุกเสียบสายน้ำ",""]],"sup":[["Sterile water irrigate 1000 ml (ใช้ 2–3 ขวด)","","I"],["สายน้ำ + Stop cock","",""],["เวชภัณฑ์ LEEP (ระบุ)","",""]]},{"id":"c29","cat":"4. นรีเวช","name":"LEEP","ins":[["เครื่องจี้ LEEP",""],["สายจี้ conization",""],["Set conization",""],["หัวจี้ Loop + หัว ball (ยืม Inven)",""]],"sup":[["Sterile water irrigate 1000 ml (ใช้ 2–3 ขวด)","","I"],["สายน้ำ + Stop cock","",""],["เวชภัณฑ์ LEEP (ระบุ)","",""]]},{"id":"c30","cat":"3. ศัลยกรรมทั่วไป / ส่องกล้อง / ทวารหนัก","name":"Excision / Hemorrhoid / I+D / Bartholin","ins":[["Minor set","O"],["Plastic small","O"],["Coronado",""],["Valley lab","O"],["Surgical pack",""]],"sup":[["Anal spongostan / Spongostan","","I"],["Penrose drain ทุก size","","O"],["Dermabond 0.5","","O"],["Megadyne micro needle 0118","","I"],["Horizon titanium clip (small)","",""],["Marcaine 0.5 %  /  Chalocaine 2 % jelly","",""],["Hydrogen peroxide / Tube culture","","I"],["Hand control pencil / Urine catheter red rubber no.14","","I"],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c31","cat":"3. ศัลยกรรมทั่วไป / ส่องกล้อง / ทวารหนัก","name":"Explor lap / Open colectomy","ins":[["Explor lap set","O"],["Intestinal set",""],["Omnitract ret. set",""],["Scrub set","O"],["Cath set","O"],["Valley lab","O"],["Harmonic scapler",""],["Drape x5","O"],["Colonoscope (ถ้าต้องใช้)",""]],"sup":[["Endo GIA stapler 80-3.8 / 75 mm NTLC75 + reload SR75","",""],["Contour curved cutter 40 mm Green CS40G + reload CR40G","",""],["CDH 25 / 29 / 33  /  Pursting device","",""],["Harmonic focus 17 cm / Harmonic 1100 20 cm / Ace","",""],["Ligasure Impact LF4318 / Atlas LS1020","",""],["Alexis wound retractor (ทุก size)","",""],["Hemoloc","",""],["Skin staple","","OI"],["Surgicel 5x7 W1913T","","OI"],["Redivac 200 ml / สาย no.8","","I"],["Colostomy / Stomahesive","",""],["Endo ICG","",""],["ไหมตามใบเตรียมแพทย์","","O"]]},{"id":"c32","cat":"6. อื่นๆ (ระบุเอง)","name":"อื่นๆ (ระบุเอง)","ins":[],"sup":[]}];
 function lrows(){
   try{ const j = JSON.parse(LS.get('or_local_v1') || 'null'); if(Array.isArray(j)) return j; }catch(e){}
@@ -204,13 +215,14 @@ async function loadAll(){
     recs = all.filter(r => r.kind === 'record').sort((a, b) => (b.updated_at > a.updated_at ? 1 : -1)).slice(0, 300).map(r => ({data: r.data}));
   }
   const ver = await verP;
-  const d = {cases: [], doctors: [], staff: [], templates: {}, records: recs.map(r => r.data), serverTime: nowTh(), version: ver};
+  const d = {cases: [], doctors: [], staff: [], templates: {}, items: [], records: recs.map(r => r.data), serverTime: nowTh(), version: ver};
   const dr = [], sr = [];
   base.forEach(r => {
     if(r.kind === 'case') d.cases.push(Object.assign({}, r.data, {_t: Date.parse(r.updated_at) || 0}));
     else if(r.kind === 'doctor') dr.push(r.data);
     else if(r.kind === 'staff') sr.push(r.data);
     else if(r.kind === 'template') d.templates[r.id] = r.data;
+    else if(r.kind === 'item') d.items.push(r.data);
   });
   d.cases.sort((a, b) => caseOrder(a) - caseOrder(b)); d.cases.forEach(c => delete c._t);
   const byO = (a, b) => (a.o || 0) - (b.o || 0);
@@ -239,6 +251,7 @@ const ACT = {
       rows.push({kind: 'template', id: r.doctor + '|' + r.caseId, data: {key: r.doctor + '|' + r.caseId, doctor: r.doctor, caseId: r.caseId, caseName: r.caseName, ins: cleanList(r.ins), sup: cleanList(r.sup), updatedAt: nowTh()}});
       if(S.doctors.indexOf(r.doctor) < 0) rows.push({kind: 'doctor', id: r.doctor, data: {name: r.doctor, o: S.doctors.length + 1}});
     }
+    rows.push.apply(rows, newItemRows('ins', (r.ins || []).map(x => ({n: x.n, or: x.s === 'O', from: x.from}))).concat(newItemRows('sup', (r.sup || []).map(x => ({n: x.n, or: x.s === 'O', from: x.from})))));
     await upsertRows(rows);
   },
   deleteRecord: b => delRow('record', b.id),
@@ -250,7 +263,7 @@ const ACT = {
   async saveCase(b){
     const c = b.case; if(!c || !c.name) throw new Error('ใส่ชื่อเคส');
     c.id = c.id || ('n' + Date.now()); c.cat = c.cat || 'เคสที่เพิ่มเอง';
-    await upsertRows([{kind: 'case', id: c.id, data: c}]);
+    await upsertRows([{kind: 'case', id: c.id, data: c}].concat(newItemRows('ins', (c.ins || []).map(x => ({n: x[0], or: x[1] === 'O'}))), newItemRows('sup', (c.sup || []).map(x => ({n: x[0], or: String(x[2] || '').indexOf('O') >= 0})))));
   },
   deleteCase: b => delRow('case', b.id),
   async addDoctor(b){
@@ -264,13 +277,14 @@ async function api(action, payload){
   setBusy(true);
   try{
     if(action){ const fn = ACT[action]; if(!fn) throw new Error('ไม่รู้จักคำสั่ง ' + action); await fn(payload || {}); }
-    const d = await loadAll();
+    let d = await loadAll();
+    if(!d.items.length && d.cases.length){ const rows = SEED_ITEMS.map(x => ({kind: 'item', id: itemId(x.t, x.n), data: x})); for(let i = 0; i < rows.length; i += 200) await upsertRows(rows.slice(i, i + 200)); d = await loadAll(); }
     applyData(d);
     return d;
   }finally{ setBusy(false); }
 }
 function applyData(d){
-  S = {cases: d.cases || [], doctors: d.doctors || [], staff: d.staff || [], templates: d.templates || {}, records: d.records || []};
+  S = {cases: d.cases || [], doctors: d.doctors || [], staff: d.staff || [], templates: d.templates || {}, items: d.items || [], records: d.records || []};
   loaded = true; lastSync = d.serverTime || ''; serverVersion = d.version || '';
   autoUpdate();
 }
@@ -323,7 +337,7 @@ function doPrint(r, parts){
 
 /* ===== ส่วนแสดงผล ===== */
 function itemRow(key, x, i){
-  return '<div class=row><div class=nmrow><input type=text class=nmin value="' + esc(x.n) + '" data-in=nm data-k=' + key + ' data-i=' + i + ' aria-label="ชื่อรายการ">' +
+  return '<div class=row><div class=nmrow><input type=text class=nmin list=dl-' + key + ' value="' + esc(x.n) + '" data-in=nm data-k=' + key + ' data-i=' + i + ' aria-label="ชื่อรายการ">' +
     (key === 'sup' ? '<input type=text class=qin placeholder="จำนวน" value="' + esc(x.q) + '" data-in=qty data-k=' + key + ' data-i=' + i + '>' : '') +
     '<button class="sm x" data-act=delitem data-k=' + key + ' data-i=' + i + '>ลบ</button></div>' +
     '<div class=btns><button class="or' + (x.s === 'O' ? ' on' : '') + '" data-act=set data-k=' + key + ' data-i=' + i + ' data-v=O>มีใน OR</button><button class="bw' + (x.s === 'B' ? ' on' : '') + '" data-act=set data-k=' + key + ' data-i=' + i + ' data-v=B>ต้องยืม</button></div>' +
@@ -381,7 +395,7 @@ function render(){
   let foot = '';
 
   if(view === 'settings'){
-    h += '<div class=menu>' + [['cases','แก้เคส / รายการมาตรฐาน','เพิ่ม แก้ ลบ เครื่องมือและเวชภัณฑ์ของแต่ละเคส'],['people','รายชื่อแพทย์ / พยาบาล','แพทย์ ผู้ลงชื่อ และรายการที่จำไว้ตามแพทย์'],['backup','สำรองข้อมูล / ใช้หลายเครื่อง','ดาวน์โหลดไฟล์สำรอง เชื่อมให้น้องๆ เห็นข้อมูลร่วมกัน'],['help','คู่มือใช้งาน','อ่านแค่ 1 นาที']].map(m => '<button data-act=view data-v=' + m[0] + '><b>' + m[1] + '</b><span>' + m[2] + '</span></button>').join('') + '</div>';
+    h += '<div class=menu>' + [['items','คลังเครื่องมือ / เวชภัณฑ์ใน OR','รายการทั้งหมด ใช้ซ้ำได้ทุกเคส ดึงไปใส่เคสได้เลย'],['cases','แก้เคส / รายการมาตรฐาน','เพิ่ม แก้ ลบ เครื่องมือและเวชภัณฑ์ของแต่ละเคส'],['people','รายชื่อแพทย์ / พยาบาล','แพทย์ ผู้ลงชื่อ และรายการที่จำไว้ตามแพทย์'],['backup','สำรองข้อมูล / ใช้หลายเครื่อง','ดาวน์โหลดไฟล์สำรอง เชื่อมให้น้องๆ เห็นข้อมูลร่วมกัน'],['help','คู่มือใช้งาน','อ่านแค่ 1 นาที']].map(m => '<button data-act=view data-v=' + m[0] + '><b>' + m[1] + '</b><span>' + m[2] + '</span></button>').join('') + '</div>';
   }
 
   if(view === 'new'){
@@ -435,7 +449,7 @@ function render(){
         '<div class=muted>ผ่าตัด ' + esc(thDate(r.date)) + ' · ลงชื่อ ' + esc(r.by) + (r.by2 ? ' / ' + esc(r.by2) : '') + ' · บันทึก ' + esc(r.savedAt) + (r.editedAt ? ' (แก้ ' + esc(r.editedAt) + ')' : '') + '</div>' +
         '<div style="margin-top:6px">' + (bl.length ? '<span class="pill ' + (r.returned ? 'g' : 'b') + '">' + (r.returned ? 'คืนครบ ' + esc(r.returned) : 'ยืม ' + bl.length + ' รายการ ยังไม่คืน') + '</span>' : '<span class="pill g">ไม่ต้องยืม</span>') + '</div>' +
         (bl.length ? '<div class=muted style="margin-top:4px">' + esc(bl.map(x => x.n + (x.from ? ' ← ' + x.from : '')).join(' · ')) + '</div>' : '') +
-        '<div class=acts><button class="sm pri" data-act=printmenu data-id="' + esc(r.id) + '">แชร์ PDF</button>' +
+        '<div class=acts><button class="sm pri" data-act=printmenu data-id="' + esc(r.id) + '">พรีวิว / แชร์ / ปริ้น</button>' +
         (bl.length ? '<button class=sm data-act=returned data-id="' + esc(r.id) + '" data-v="' + (r.returned ? '' : '1') + '">' + (r.returned ? 'ยกเลิกคืน' : 'คืนครบแล้ว') + '</button>' : '') +
         '<button class=sm data-act=editrec data-id="' + esc(r.id) + '">แก้ไข</button><button class="sm x' + (delPending === r.id ? ' danger' : '') + '" data-act=delrec data-id="' + esc(r.id) + '">' + (delPending === r.id ? 'กดอีกครั้งเพื่อลบ' : 'ลบ') + '</button></div></div>';
     });
@@ -448,14 +462,18 @@ function render(){
       const c = editCase;
       h += '<div class=card><label>ชื่อเคส</label><input type=text data-in=cname value="' + esc(c.name) + '"><label>หมวด</label><input type=text data-in=ccat value="' + esc(c.cat) + '"></div>';
       h += '<h2>เครื่องมือมาตรฐาน</h2>';
-      c.ins.forEach((x,i) => { h += '<div class=row><div class=nmrow><input type=text class=nmin value="' + esc(x[0]) + '" data-in=cnm data-k=ins data-i=' + i + '><button class="sm' + (x[1] === 'O' ? ' on' : '') + '" data-act=cor data-k=ins data-i=' + i + '>' + (x[1] === 'O' ? 'มีใน OR ✓' : 'มีใน OR?') + '</button><button class="sm x" data-act=cdel data-k=ins data-i=' + i + '>ลบ</button></div></div>'; });
+      c.ins.forEach((x,i) => { h += '<div class=row><div class=nmrow><input type=text class=nmin list=dl-ins value="' + esc(x[0]) + '" data-in=cnm data-k=ins data-i=' + i + '><button class="sm' + (x[1] === 'O' ? ' on' : '') + '" data-act=cor data-k=ins data-i=' + i + '>' + (x[1] === 'O' ? 'มีใน OR ✓' : 'มีใน OR?') + '</button><button class="sm x" data-act=cdel data-k=ins data-i=' + i + '>ลบ</button></div></div>'; });
       h += addBox('c', 'ins') + '<h2>เวชภัณฑ์มาตรฐาน</h2>';
-      c.sup.forEach((x,i) => { const o = String(x[2] || '').indexOf('O') >= 0; h += '<div class=row><div class=nmrow><input type=text class=nmin value="' + esc(x[0]) + '" data-in=cnm data-k=sup data-i=' + i + '><input type=text class=qin placeholder="จำนวน" value="' + esc(x[1]) + '" data-in=cq data-k=sup data-i=' + i + '><button class="sm' + (o ? ' on' : '') + '" data-act=cor data-k=sup data-i=' + i + '>' + (o ? 'OR ✓' : 'OR?') + '</button><button class="sm x" data-act=cdel data-k=sup data-i=' + i + '>ลบ</button></div></div>'; });
+      c.sup.forEach((x,i) => { const o = String(x[2] || '').indexOf('O') >= 0; h += '<div class=row><div class=nmrow><input type=text class=nmin list=dl-sup value="' + esc(x[0]) + '" data-in=cnm data-k=sup data-i=' + i + '><input type=text class=qin placeholder="จำนวน" value="' + esc(x[1]) + '" data-in=cq data-k=sup data-i=' + i + '><button class="sm' + (o ? ' on' : '') + '" data-act=cor data-k=sup data-i=' + i + '>' + (o ? 'OR ✓' : 'OR?') + '</button><button class="sm x" data-act=cdel data-k=sup data-i=' + i + '>ลบ</button></div></div>'; });
       h += addBox('c', 'sup');
       foot = '<button class="x' + (delPending === 'case' ? ' danger' : '') + '" data-act=delcase>' + (delPending === 'case' ? 'กดอีกครั้งเพื่อลบเคส' : 'ลบเคสนี้') + '</button><button class=pri data-act=savecase' + (busy ? ' disabled' : '') + '>บันทึกเคสนี้</button>';
     }
   }
 
+  else if(view === 'items'){
+    h += itemsView();
+    foot = '<button data-act=itemsreset>ยกเลิกที่แก้</button><button class=pri data-act=saveitems' + (busy ? ' disabled' : '') + '>บันทึกคลัง</button>';
+  }
   else if(view === 'people'){
     h += '<div class=card><label>รายชื่อแพทย์ (ชื่อละบรรทัด)</label><textarea id=docIn rows=6>' + esc(S.doctors.join('\n')) + '</textarea>' +
       '<label>รายชื่อพยาบาล / ผู้ลงชื่อ (ชื่อละบรรทัด — คัดลอกจากตารางเวรมาวางได้)</label><textarea id=staffIn rows=8>' + esc(S.staff.join('\n')) + '</textarea>' +
@@ -487,6 +505,7 @@ function render(){
   }
 
   if(foot) h += '<div class=foot>' + foot + '</div>';
+  if(view === 'new' || view === 'cases') h += ['ins', 'sup'].map(k => '<datalist id=dl-' + k + '>' + catalog(k).map(x => '<option value="' + esc(x.n) + '">').join('') + '</datalist>').join('');
   A.innerHTML = h;
 }
 
@@ -517,8 +536,14 @@ document.addEventListener('click', e => {
   msg = '';
   if(a !== 'delrec' && a !== 'delcase') delPending = '';
 
-  if(a === 'view'){ view = t.dataset.v; justSaved = false; location.hash = view === 'new' ? '' : '#' + view; window.scrollTo(0, 0); render(); }
+  if(a === 'view'){ if(t.dataset.v === 'items') itemsEdit = null; view = t.dataset.v; justSaved = false; location.hash = view === 'new' ? '' : '#' + view; window.scrollTo(0, 0); render(); }
   else if(a === 'refresh'){ refresh(); }
+  else if(a === 'itab'){ itemsTab = t.dataset.v; itemDel = ''; render(); }
+  else if(a === 'additem'){ const v = normN($('#newItem').value); if(!v) return; const L = itemsEdit[itemsTab]; if(L.some(x => x.n.toLowerCase() === v.toLowerCase())){ say('มีชื่อนี้ในคลังแล้ว', 'err'); render(); return; } L.unshift({t: itemsTab, n: v, or: true, stock: '', grp: 'เพิ่มเอง', from: '', orig: ''}); itemQ = ''; render(); }
+  else if(a === 'ior'){ const x = itemsEdit[itemsTab][+t.dataset.i]; x.or = !x.or; render(); }
+  else if(a === 'idel'){ const L = itemsEdit[itemsTab], x = L[+t.dataset.i]; if(itemDel === x.id){ if(x.orig) itemsEdit.gone.push(x.orig); L.splice(+t.dataset.i, 1); itemDel = ''; } else itemDel = x.id; render(); }
+  else if(a === 'itemsreset'){ startItems(); render(); }
+  else if(a === 'saveitems'){ run(async () => { await saveItems(); await api(); startItems(); say('บันทึกคลังแล้ว ทุกเครื่องใช้รายการนี้ได้'); }); }
   else if(a === 'cat'){ const cs = catList(); catSel = t.dataset.v === '' ? '' : cs[+t.dataset.v]; if(draft && view === 'new') grab1(); render(); }
   else if(a === 'pickcase'){ grab1(); draft.caseId = t.dataset.id; loadCase(); render(); }
   else if(a === 'editpick'){ const c = caseById(t.dataset.id); editCase = c ? clone(c) : null; delPending = ''; render(); window.scrollTo(0, document.body.scrollHeight); }
@@ -659,7 +684,14 @@ document.addEventListener('input', e => {
   else if(f === 'cname') editCase.name = t.value;
   else if(f === 'ccat') editCase.cat = t.value;
 });
+document.addEventListener('input', e => {
+  const t = e.target;
+  if(t.dataset && t.dataset.in === 'iname'){ itemsEdit[itemsTab][+t.dataset.i].n = t.value; }
+  else if(t.dataset && t.dataset.in === 'ifrom'){ itemsEdit[itemsTab][+t.dataset.i].from = t.value; }
+  else if(t.id === 'mN' && mdl){ mdl.n = t.value; const b = $('#mSug'); if(b) b.innerHTML = sugHtml(mdl.key, t.value); }
+});
 document.addEventListener('keyup', e => {
+  if(e.target.id === 'iq'){ itemQ = e.target.value; const pos = e.target.selectionStart; render(); const f = $('#iq'); if(f){ f.focus(); f.setSelectionRange(pos, pos); } return; }
   if(e.target.id === 'cq'){ caseQ = e.target.value; if(draft && view === 'new') grab1(); const pos = e.target.selectionStart; render(); const f = $('#cq'); if(f){ f.focus(); f.setSelectionRange(pos, pos); } }
   else if(e.target.id === 'fq'){ filt.q = e.target.value; const pos = e.target.selectionStart; render(); const f = $('#fq'); if(f){ f.focus(); f.setSelectionRange(pos, pos); } }
 });
@@ -682,7 +714,7 @@ function drawModal(){
   M.innerHTML = '<div class=sheet><h2>' + (mdl.tg === 'c' ? 'เพิ่มรายการมาตรฐานของเคส' : 'เพิ่มรายการเข้าใบนี้') + '</h2>' +
     '<div class=seg><button class="' + (!sup ? 'pri' : '') + '" data-m=type data-v=ins>เครื่องมือ (Instrument)</button><button class="' + (sup ? 'pri' : '') + '" data-m=type data-v=sup>เวชภัณฑ์</button></div>' +
     (mdl.last ? '<div class=added>เพิ่มแล้ว: ' + esc(mdl.last) + ' — เพิ่มชิ้นต่อไปได้เลย</div>' : '') +
-    '<label>ชื่อรายการ</label><input type=text id=mN value="' + esc(mdl.n) + '" placeholder="' + (sup ? 'เช่น Vicryl 2-0' : 'เช่น Retractor ชุดเล็ก') + '">' +
+    '<label>ชื่อรายการ</label><input type=text id=mN value="' + esc(mdl.n) + '" placeholder="' + (sup ? 'พิมพ์ค้นหา เช่น Vicryl' : 'พิมพ์ค้นหา เช่น Set General') + '" autocomplete=off><div id=mSug class=sugs>' + sugHtml(mdl.key, mdl.n) + '</div>' +
     (sup ? '<label>จำนวน</label><input type=text id=mQ value="' + esc(mdl.q) + '" placeholder="เช่น 2">' : '') +
     '<label>' + (mdl.tg === 'c' ? 'ค่าเริ่มต้นของเคสนี้' : 'สถานะ') + '</label><div class=seg><button class="or' + (mdl.s === 'O' ? ' on' : '') + '" data-m=state data-v=O>มีใน OR</button><button class="bw' + (mdl.s === 'B' ? ' on' : '') + '" data-m=state data-v=B>' + (mdl.tg === 'c' ? 'ยังไม่ระบุ' : 'ยืมนอก รพ.') + '</button></div>' +
     (mdl.s === 'B' && mdl.tg !== 'c' ? '<label>ยืมจากที่ไหน (รพ./บริษัท)</label><input type=text id=mF value="' + esc(mdl.from) + '" placeholder="เช่น รพ.วชิระ / บริษัท…">' : '') +
@@ -705,55 +737,68 @@ document.addEventListener('click', e => {
   if(m === 'close') closeModal();
   else if(m === 'type'){ mdlRead(); mdl.key = t.dataset.v; drawModal(); }
   else if(m === 'state'){ mdlRead(); mdl.s = t.dataset.v; drawModal(); }
+  else if(m === 'pick'){ mdlRead(); const it = catalog(mdl.key).find(x => x.id === t.dataset.v); if(it){ mdl.n = it.n; mdl.s = it.or ? 'O' : 'B'; mdl.from = it.from || ''; if(mdlAdd()){ drawModal(); const i = $('#mN'); if(i) i.focus(); } } }
   else if(m === 'again'){ if(mdlAdd()){ drawModal(); const i = $('#mN'); if(i) i.focus(); } }
   else if(m === 'done'){ if(mdlAdd()) closeModal(); }
 });
 document.addEventListener('keydown', e => { if(mdl && e.key === 'Escape') closeModal(); if(mdl && e.key === 'Enter' && e.target.tagName === 'INPUT'){ if(mdlAdd()){ drawModal(); const i = $('#mN'); if(i) i.focus(); } } });
 
-/* ===== สร้างไฟล์ PDF A4 ในเครื่อง (แชร์/บันทึก/ปริ้น) ===== */
-async function makePdf(r, parts){
+/* ===== สร้างหน้า A4 (พรีวิว / PDF / รูปภาพ / ปริ้น) ===== */
+const PART_LABEL = {prep: 'ใบเตรียมเคส (รวมทุกรายการ)', ins: 'เครื่องมือ', sup: 'เวชภัณฑ์', both: 'แยก 2 ใบ'};
+async function renderPages(r, p){
   try{ await Promise.all([document.fonts.load('26px ORThai'), document.fonts.load('bold 26px ORThai')]); }catch(e){}
-  const W = 1240, H = 1754, M = 90, FF = 'ORThai, Tahoma, sans-serif';
-  const pages = [];
-  let cv, g, y;
+  const W = 1240, H = 1754, M = 80, FF = 'ORThai, Tahoma, sans-serif', TW = W - 2 * M;
+  const pages = []; let cv, g, y;
   const newPage = () => { cv = document.createElement('canvas'); cv.width = W; cv.height = H; g = cv.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, W, H); g.fillStyle = '#000'; g.textBaseline = 'top'; pages.push(cv); y = M; };
   const font = (px, b) => { g.font = (b ? 'bold ' : '') + px + 'px ' + FF; };
   const wrap = (txt, maxW) => { const out = []; String(txt || '').split('\n').forEach(par => { let line = ''; for(const ch of par){ if(g.measureText(line + ch).width > maxW && line){ out.push(line); line = ch; } else line += ch; } out.push(line); }); return out; };
   const box = (x, yy, s, on) => { g.lineWidth = 3; g.strokeRect(x, yy, s, s); if(on){ g.beginPath(); g.moveTo(x + 6, yy + s / 2); g.lineTo(x + s * 0.42, yy + s - 7); g.lineTo(x + s - 5, yy + 6); g.stroke(); } };
-  const cols = [{n: 'รายการ', w: 450}, {n: 'มีใน OR', w: 100, c: 1}, {n: 'ต้องยืม', w: 100, c: 1}, {n: 'ยืมจาก (รพ./บริษัท)', w: 300}, {n: 'คืนแล้ว', w: 110, c: 1}];
-  const hdr = () => { let x = M; const hh = 62; g.fillStyle = '#e6e6e6'; g.fillRect(M, y, 1060, hh); g.fillStyle = '#000'; g.lineWidth = 2; font(26, true);
-    cols.forEach(c => { g.strokeRect(x, y, c.w, hh); const tw = g.measureText(c.n).width; g.fillText(c.n, c.c ? x + (c.w - tw) / 2 : x + 12, y + 14); x += c.w; }); y += hh; };
-  const section = (title, list, isSup) => {
-    newPage();
-    font(44, true); g.fillText('ใบเช็กลิสต์ยืมของ ห้องผ่าตัด — ' + title, M, y); y += 74;
-    font(30, false); const info = 'เคส: ' + r.caseName + (r.doctor ? '    แพทย์: ' + r.doctor : '') + '    วันที่: ' + thDate(r.date);
-    wrap(info, 1060).forEach(l => { g.fillText(l, M, y); y += 44; }); y += 14;
-    font(34, true); g.fillText(title, M, y); y += 54;
+  const cols = [{n: 'รายการ', w: 560}, {n: 'มีใน OR', w: 105, c: 1}, {n: 'ต้องยืม', w: 105, c: 1}, {n: 'ยืมจาก', w: 210}, {n: 'คืนแล้ว', w: 100, c: 1}];
+  const hdr = () => { let x = M; const hh = 56; g.fillStyle = '#e6e6e6'; g.fillRect(M, y, TW, hh); g.fillStyle = '#000'; g.lineWidth = 2; font(25, true);
+    cols.forEach(c => { g.strokeRect(x, y, c.w, hh); const tw = g.measureText(c.n).width; g.fillText(c.n, c.c ? x + (c.w - tw) / 2 : x + 10, y + 13); x += c.w; }); y += hh; };
+  const head = title => {
+    font(40, true); wrap('ใบเช็กลิสต์ยืมของ ห้องผ่าตัด — ' + title, TW).forEach(l => { g.fillText(l, M, y); y += 56; }); y += 6;
+    font(28, false); wrap('เคส: ' + r.caseName + (r.doctor ? '    แพทย์: ' + r.doctor : '') + '    วันที่ผ่าตัด: ' + thDate(r.date), TW).forEach(l => { g.fillText(l, M, y); y += 42; }); y += 10;
+  };
+  const table = (sub, list, isSup) => {
+    if(y + 160 > H - M){ newPage(); }
+    font(31, true); const nB = (list || []).filter(x => x.s === 'B').length;
+    g.fillText(sub + '  (' + (list || []).length + ' รายการ' + (nB ? ' · ต้องยืม ' + nB : '') + ')', M, y); y += 50;
     hdr();
+    if(!(list || []).length){ font(26, false); g.strokeRect(M, y, TW, 56); g.fillText('— ไม่มีรายการ —', M + 12, y + 14); y += 56; }
     (list || []).forEach(x => {
-      font(28, false);
-      const nameL = wrap(x.n + (isSup && x.q ? ' (' + x.q + ')' : ''), cols[0].w - 24), fromL = wrap(x.from || '', cols[3].w - 24);
-      const rh = Math.max(nameL.length, fromL.length, 1) * 40 + 24;
-      if(y + rh > H - M - 120){ newPage(); hdr(); font(28, false); }
-      let xx = M; g.lineWidth = 2;
-      xx = M; cols.forEach(c => { g.strokeRect(xx, y, c.w, rh); xx += c.w; });
-      nameL.forEach((l, i) => g.fillText(l, M + 12, y + 12 + i * 40));
-      fromL.forEach((l, i) => g.fillText(l, M + cols[0].w + cols[1].w + cols[2].w + 12, y + 12 + i * 40));
-      const bs = 34, cy = y + rh / 2 - bs / 2;
+      font(26, false);
+      const nameL = wrap(x.n + (isSup && x.q ? '  (' + x.q + ')' : ''), cols[0].w - 20), fromL = wrap(x.s === 'B' ? (x.from || '') : '', cols[3].w - 20);
+      const rh = Math.max(nameL.length, fromL.length, 1) * 36 + 20;
+      if(y + rh > H - M - 60){ newPage(); font(24, false); g.fillText(sub + ' (ต่อ)', M, y); y += 40; hdr(); font(26, false); }
+      let xx = M; g.lineWidth = 2; cols.forEach(c => { g.strokeRect(xx, y, c.w, rh); xx += c.w; });
+      nameL.forEach((l, i) => g.fillText(l, M + 10, y + 10 + i * 36));
+      fromL.forEach((l, i) => g.fillText(l, M + cols[0].w + cols[1].w + cols[2].w + 10, y + 10 + i * 36));
+      const bs = 32, cy = y + rh / 2 - bs / 2;
       box(M + cols[0].w + (cols[1].w - bs) / 2, cy, bs, x.s === 'O');
       box(M + cols[0].w + cols[1].w + (cols[2].w - bs) / 2, cy, bs, x.s === 'B');
       if(x.s === 'B') box(M + cols[0].w + cols[1].w + cols[2].w + cols[3].w + (cols[4].w - bs) / 2, cy, bs, !!r.returned);
       y += rh;
     });
-    y += 30; font(28, false);
-    const sg = 'ผู้ตรวจสอบ: ' + r.by + (r.by2 ? '    ผู้รับของ/ประสานยืม: ' + r.by2 : '') + '    บันทึกเมื่อ: ' + (r.savedAt || '') + (r.returned ? '    คืนครบ: ' + r.returned : '');
-    if(y + 130 > H - M){ newPage(); font(28, false); }
-    wrap(sg, 1060).forEach(l => { g.fillText(l, M, y); y += 42; });
+    y += 26;
   };
-  if(parts.indexOf('ins') >= 0) section('เครื่องมือ (Instrument)', r.ins, false);
-  if(parts.indexOf('sup') >= 0) section('เวชภัณฑ์', r.sup, true);
-  const jpgs = [];
-  for(const p of pages){ const bin = atob(p.toDataURL('image/jpeg', 0.92).split(',')[1]), u = new Uint8Array(bin.length); for(let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); jpgs.push(u); }
+  const sign = () => {
+    font(27, false);
+    const sg = 'ผู้ตรวจสอบ: ' + r.by + (r.by2 ? '    ผู้รับของ/ประสานยืม: ' + r.by2 : '') + '    บันทึกเมื่อ: ' + (r.savedAt || '') + (r.returned ? '    คืนครบ: ' + r.returned : '');
+    const L = wrap(sg, TW); if(y + L.length * 40 + 20 > H - M){ newPage(); font(27, false); }
+    L.forEach(l => { g.fillText(l, M, y); y += 40; });
+  };
+  if(p === 'prep'){ newPage(); head('ใบเตรียมเคสผ่าตัด'); table('เครื่องมือ (Instrument)', r.ins, false); table('เวชภัณฑ์', r.sup, true); sign(); }
+  else{
+    if(p === 'ins' || p === 'both'){ newPage(); head('เครื่องมือ (Instrument)'); table('เครื่องมือ (Instrument)', r.ins, false); sign(); }
+    if(p === 'sup' || p === 'both'){ newPage(); head('เวชภัณฑ์'); table('เวชภัณฑ์', r.sup, true); sign(); }
+  }
+  pages.forEach((c, i) => { const gg = c.getContext('2d'); gg.font = '22px ' + FF; gg.fillStyle = '#555'; gg.textBaseline = 'top'; const t = 'หน้า ' + (i + 1) + '/' + pages.length; gg.fillText(t, W - M - gg.measureText(t).width, H - 50); });
+  return pages;
+}
+const cvBytes = c => { const bin = atob(c.toDataURL('image/jpeg', 0.92).split(',')[1]), u = new Uint8Array(bin.length); for(let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); return u; };
+function pagesToPdf(pages){
+  const W = pages[0].width, H = pages[0].height, jpgs = pages.map(cvBytes);
   const enc8 = new TextEncoder(), chunks = []; let len = 0; const offs = [];
   const put = d => { const u = typeof d === 'string' ? enc8.encode(d) : d; chunks.push(u); len += u.length; };
   const n = jpgs.length; put('%PDF-1.4\n');
@@ -771,43 +816,107 @@ async function makePdf(r, parts){
   put('trailer\n<< /Size ' + total + ' /Root 1 0 R >>\nstartxref\n' + xr + '\n%%EOF');
   return new Blob(chunks, {type: 'application/pdf'});
 }
-const pdfName = (r, parts) => 'ใบยืมของ_' + String(r.caseName || '').replace(/[\\/:*?"<>|\s]+/g, '_').slice(0, 30) + '_' + (r.date || today()) + (parts.length === 1 ? (parts[0] === 'ins' ? '_เครื่องมือ' : '_เวชภัณฑ์') : '') + '.pdf';
-async function pdfAction(r, parts, mode){
-  setBusy(true);
-  try{
-    const blob = await makePdf(r, parts), name = pdfName(r, parts), file = new File([blob], name, {type: 'application/pdf'});
-    if(mode === 'share' && navigator.canShare && navigator.canShare({files: [file]})){
-      try{ await navigator.share({files: [file], title: name}); return; }catch(e){ if(e && e.name === 'AbortError') return; }
-    }
-    const l = document.createElement('a'); l.href = URL.createObjectURL(blob); l.download = name; document.body.appendChild(l); l.click(); l.remove();
-    setTimeout(() => URL.revokeObjectURL(l.href), 60000);
-    say(mode === 'share' ? 'เครื่องนี้แชร์ตรงไม่ได้ จึงบันทึกไฟล์ PDF ให้แล้ว (ดูในโฟลเดอร์ดาวน์โหลด) เปิดแล้วส่งต่อหรือสั่งพิมพ์ได้' : 'บันทึกไฟล์ PDF แล้ว (ดูในโฟลเดอร์ดาวน์โหลด)'); pmod = null; drawPrintMenu(); render();
-  }catch(e){ say('สร้างไฟล์ PDF ไม่สำเร็จ: ' + e.message, 'err'); render(); }
-  finally{ setBusy(false); }
+async function makePdf(r, parts){ return pagesToPdf(await renderPages(r, parts.length === 2 ? 'both' : parts[0])); }
+const fileBase = (r, p) => (p === 'prep' ? 'ใบเตรียมเคส_' : 'ใบยืมของ_') + String(r.caseName || '').replace(/[\\/:*?"<>|\s]+/g, '_').slice(0, 30) + '_' + (r.date || today()) + (p === 'ins' ? '_เครื่องมือ' : p === 'sup' ? '_เวชภัณฑ์' : '');
+function downloadBlob(blob, name){ const l = document.createElement('a'); l.href = URL.createObjectURL(blob); l.download = name; document.body.appendChild(l); l.click(); l.remove(); setTimeout(() => URL.revokeObjectURL(l.href), 60000); }
+async function shareOrSave(files, title){
+  if(navigator.canShare && navigator.canShare({files})){
+    try{ await navigator.share({files, title}); return 'shared'; }catch(e){ if(e && e.name === 'AbortError') return 'cancel'; }
+  }
+  files.forEach(f => downloadBlob(f, f.name)); return 'saved';
 }
 let pmod = null;
-function openPrintMenu(id){ pmod = {id, p: 'both'}; drawPrintMenu(); }
+function openPrintMenu(id){ pmod = {id, p: 'prep', cv: null, key: ''}; drawPrintMenu(); }
+async function pmPages(r){ const k = pmod.p + '|' + r.id + '|' + (r.editedAt || r.savedAt) + '|' + r.returned; if(pmod.key !== k || !pmod.cv){ pmod.cv = await renderPages(r, pmod.p); pmod.key = k; } return pmod.cv; }
 function drawPrintMenu(){
   const M = $('#modal'); if(!pmod){ M.className = ''; M.innerHTML = ''; return; }
   const r = S.records.find(x => x.id === pmod.id); if(!r){ pmod = null; return drawPrintMenu(); }
   M.className = 'open';
-  const seg = (v, t) => '<button class="' + (pmod.p === v ? 'pri' : '') + '" data-pm=part data-v=' + v + '>' + t + '</button>';
-  M.innerHTML = '<div class=sheet><h2>ปริ้น / บันทึก / แชร์ — ' + esc(r.caseName) + '</h2><label>เลือกใบที่ต้องการ</label><div class=seg style="grid-template-columns:1fr 1fr 1fr">' + seg('ins', 'เครื่องมือ') + seg('sup', 'เวชภัณฑ์') + seg('both', 'ทั้งหมด') + '</div>' +
-    '<button class="pri big" data-pm=share style="width:100%;margin-top:10px">แชร์ไฟล์ PDF</button>' +
-    '<button class=big data-pm=print style="width:100%;margin-top:8px">ส่งไปเครื่องปริ้น (RICOH / เครื่องอื่นที่เชื่อมไว้)</button>' +
-    '<div class=muted style="margin-top:8px">แชร์ PDF: ส่งเข้าไลน์/อีเมล/แอปเครื่องปริ้น<br>ส่งไปเครื่องปริ้น: เปิดหน้าต่างพิมพ์ของมือถือ เลือกเครื่อง RICOH → กระดาษ A4 → พิมพ์ (ต้องเปิดแอปใน Chrome และเชื่อมเครื่องปริ้นไว้ในมือถือก่อน ดูวิธีในคู่มือ)</div>' +
+  const seg = v => '<button class="' + (pmod.p === v ? 'pri' : '') + '" data-pm=part data-v=' + v + '>' + PART_LABEL[v] + '</button>';
+  M.innerHTML = '<div class="sheet wide"><h2>พรีวิว / แชร์ / ปริ้น — ' + esc(r.caseName) + '</h2>' +
+    '<div class=seg style="grid-template-columns:1fr 1fr">' + seg('prep') + seg('both') + seg('ins') + seg('sup') + '</div>' +
+    '<div id=pv class=pv><div class=muted>กำลังสร้างพรีวิว…</div></div>' +
+    '<div class=pmb><button class="pri big" data-pm=share>แชร์ไฟล์ PDF</button><button class=big data-pm=img>บันทึก / แชร์รูปภาพ</button><button class=big data-pm=print>ส่งไปเครื่องปริ้น</button></div>' +
+    '<div class=muted style="margin-top:6px">ขนาด A4 · ส่งไปเครื่องปริ้น: เปิดแอปใน Chrome แล้วเลือกเครื่อง RICOH → A4 → พิมพ์ (วิธีเชื่อมเครื่องอยู่ในคู่มือ)</div>' +
     '<div class=mact><button data-pm=close>ปิด</button></div></div>';
+  const want = pmod.p;
+  pmPages(r).then(cv => { if(!pmod || pmod.p !== want) return; const P = $('#pv'); if(P) P.innerHTML = cv.map((c, i) => '<img alt="หน้า ' + (i + 1) + '" src="' + c.toDataURL('image/jpeg', 0.85) + '">').join(''); })
+    .catch(e => { const P = $('#pv'); if(P) P.innerHTML = '<div class=err>สร้างพรีวิวไม่สำเร็จ: ' + esc(e.message) + '</div>'; });
+}
+function printPages(cv){
+  $('#print').innerHTML = cv.map(c => '<img class=pg src="' + c.toDataURL('image/jpeg', 0.92) + '">').join('');
+  setTimeout(() => window.print(), 120);
 }
 document.addEventListener('click', e => {
   const t = e.target.closest('[data-pm]'); if(!t){ if(pmod && e.target.id === 'modal'){ pmod = null; drawPrintMenu(); } return; }
   const m = t.dataset.pm; const r = pmod && S.records.find(x => x.id === pmod.id);
-  if(m === 'close'){ pmod = null; drawPrintMenu(); }
-  else if(m === 'part'){ pmod.p = t.dataset.v; drawPrintMenu(); }
-  else if(r){ const parts = pmod.p === 'both' ? ['ins', 'sup'] : [pmod.p];
-    if(m === 'print'){ pmod = null; drawPrintMenu(); doPrint(r, parts); }
-    else if(m === 'share' || m === 'save'){ pdfAction(r, parts, m); }
-  }
+  if(m === 'close'){ pmod = null; drawPrintMenu(); return; }
+  if(m === 'part'){ pmod.p = t.dataset.v; drawPrintMenu(); return; }
+  if(!r) return;
+  const p = pmod.p, base = fileBase(r, p);
+  (async () => {
+    setBusy(true);
+    try{
+      const cv = await pmPages(r);
+      if(m === 'print'){ printPages(cv); return; }
+      let files;
+      if(m === 'share') files = [new File([pagesToPdf(cv)], base + '.pdf', {type: 'application/pdf'})];
+      else files = cv.map((c, i) => new File([cvBytes(c)], base + (cv.length > 1 ? '_หน้า' + (i + 1) : '') + '.jpg', {type: 'image/jpeg'}));
+      const res = await shareOrSave(files, base);
+      if(res === 'saved'){ say(m === 'share' ? 'บันทึกไฟล์ PDF แล้ว (โฟลเดอร์ดาวน์โหลด)' : 'บันทึกรูปภาพแล้ว ' + files.length + ' ไฟล์ (โฟลเดอร์ดาวน์โหลด)'); render(); }
+    }catch(err){ say('ทำไม่สำเร็จ: ' + err.message, 'err'); render(); }
+    finally{ setBusy(false); }
+  })();
 });
+
+/* ===== คลังเครื่องมือ / เวชภัณฑ์ (ใช้ซ้ำได้ทุกเคส) ===== */
+const normN = n => String(n || '').replace(/\s+/g, ' ').trim();
+const itemId = (t, n) => t + '|' + normN(n).toLowerCase();
+function catalog(t){
+  const out = {}, add = (o, derived) => { const id = itemId(t, o.n); if(!normN(o.n) || out[id]) return; out[id] = Object.assign({t, n: normN(o.n), or: false, stock: '', grp: '', from: ''}, o, {n: normN(o.n), id, derived: !!derived}); };
+  (S.items || []).filter(x => x.t === t).forEach(x => add(x, false));
+  S.cases.forEach(c => (c[t] || []).forEach(x => add({n: x[0], or: String(t === 'sup' ? x[2] || '' : x[1] || '').indexOf('O') >= 0, grp: 'จากเคส'}, true)));
+  return Object.values(out).sort((a, b) => a.n.localeCompare(b.n, 'th', {sensitivity: 'base'}));
+}
+function newItemRows(t, list){
+  const have = {}; (S.items || []).forEach(x => have[itemId(x.t, x.n)] = 1);
+  const rows = [];
+  list.forEach(o => { const n = normN(o.n), id = itemId(t, n); if(!n || have[id]) return; have[id] = 1; rows.push({kind: 'item', id, data: {t, n, or: !!o.or, stock: '', grp: 'เพิ่มจากเคส', from: o.from || ''}}); });
+  return rows;
+}
+function sugHtml(t, q){
+  q = normN(q).toLowerCase();
+  if(!q) return '<div class=muted style="font-size:15px">พิมพ์ 1–2 ตัวอักษร จะขึ้นรายการจากคลังให้แตะเลือก</div>';
+  const L = catalog(t).filter(x => x.n.toLowerCase().indexOf(q) >= 0).slice(0, 8);
+  if(!L.length) return '<div class=muted style="font-size:15px">ไม่มีในคลัง — กดเพิ่มได้เลย จะบันทึกเข้าคลังให้อัตโนมัติ</div>';
+  return '<div class=muted style="font-size:14px">แตะเพื่อเพิ่มทันที</div>' + L.map(x => '<button class=sug data-m=pick data-v="' + esc(x.id) + '">' + esc(x.n) + '<small>' + (x.or ? 'มีใน OR' : 'ต้องยืม') + (x.stock ? ' · stock ' + esc(x.stock) : '') + '</small></button>').join('');
+}
+let itemsTab = 'ins', itemQ = '', itemsEdit = null, itemDel = '';
+function startItems(){ itemsEdit = {ins: catalog('ins').map(x => Object.assign({}, x, {orig: x.derived ? '' : x.id})), sup: catalog('sup').map(x => Object.assign({}, x, {orig: x.derived ? '' : x.id})), gone: []}; }
+function itemsView(){
+  if(!itemsEdit) startItems();
+  const L = itemsEdit[itemsTab], q = itemQ.trim().toLowerCase();
+  let h = '<div class=card><div class=seg><button class="' + (itemsTab === 'ins' ? 'pri' : '') + '" data-act=itab data-v=ins>เครื่องมือ (' + itemsEdit.ins.length + ')</button><button class="' + (itemsTab === 'sup' ? 'pri' : '') + '" data-act=itab data-v=sup>เวชภัณฑ์ (' + itemsEdit.sup.length + ')</button></div>' +
+    '<div class=muted style="font-size:15px;margin:6px 0">รายการทั้งหมดของ OR ใช้ซ้ำได้ทุกเคส ชื่อที่พิมพ์เพิ่มในเคสจะเข้าคลังเองเมื่อกดบันทึก</div>' +
+    '<div class=nmrow><input type=text id=newItem placeholder="เพิ่มชื่อ' + (itemsTab === 'ins' ? 'เครื่องมือ' : 'เวชภัณฑ์') + 'ใหม่"><button class=pri data-act=additem>เพิ่ม</button></div>' +
+    '<input type=text id=iq placeholder="ค้นหาในคลัง" value="' + esc(itemQ) + '" style="margin-top:8px"></div>';
+  let n = 0;
+  L.forEach((x, i) => {
+    if(q && x.n.toLowerCase().indexOf(q) < 0) return; n++;
+    h += '<div class=row><div class=nmrow><input type=text class=nmin value="' + esc(x.n) + '" data-in=iname data-i=' + i + '><button class="sm' + (x.or ? ' on' : '') + '" data-act=ior data-i=' + i + '>' + (x.or ? 'มีใน OR ✓' : 'ต้องยืม') + '</button><button class="sm x' + (itemDel === x.id ? ' danger' : '') + '" data-act=idel data-i=' + i + '>' + (itemDel === x.id ? 'ยืนยันลบ' : 'ลบ') + '</button></div>' +
+      '<div class=imeta>' + (x.grp ? esc(x.grp) : '') + (x.stock ? ' · stock ' + esc(x.stock) : '') + '</div>' +
+      (x.or ? '' : '<input type=text class=from placeholder="ยืมจากที่ไหน (ค่าเริ่มต้น)" value="' + esc(x.from) + '" data-in=ifrom data-i=' + i + '>') + '</div>';
+  });
+  if(!n) h += '<div class=muted>ไม่พบรายการ</div>';
+  return h;
+}
+async function saveItems(){
+  const rows = [];
+  ['ins', 'sup'].forEach(t => itemsEdit[t].forEach(x => { const n = normN(x.n); if(!n) return; const id = itemId(t, n); if(x.orig && x.orig !== id) itemsEdit.gone.push(x.orig); rows.push({kind: 'item', id, data: {t, n, or: !!x.or, stock: x.stock || '', grp: x.grp === 'จากเคส' ? 'เพิ่มจากเคส' : (x.grp || ''), from: x.or ? '' : normN(x.from)}}); }));
+  const keep = {}; rows.forEach(r => keep[r.id] = 1);
+  for(const id of itemsEdit.gone) if(!keep[id]) await delRow('item', id);
+  for(let i = 0; i < rows.length; i += 200) await upsertRows(rows.slice(i, i + 200));
+}
 
 render();
 refresh(true);
