@@ -19,6 +19,10 @@
     [
      "Set Reduction",
      ""
+    ],
+    [
+     "set minor",
+     "O"
     ]
    ],
    "name": "ORIF Philos plate",
@@ -77,7 +81,7 @@
   },
   "id": "c1",
   "kind": "case",
-  "updated_at": "2026-11-21T14:19:44.775668+00:00"
+  "updated_at": "2026-11-22T15:15:24.939+00:00"
  },
  {
   "data": {
@@ -503,19 +507,15 @@
      ""
     ],
     [
-     "Bone rongeur",
-     ""
-    ],
-    [
      "Volkman",
      ""
     ],
     [
-     "Bone curette ตรง",
+     "set Bone curette ",
      ""
     ],
     [
-     "Bone hook / T handle",
+     "Bone hook ",
      ""
     ],
     [
@@ -523,8 +523,36 @@
      ""
     ],
     [
-     "Hohmann retractor small narrow",
+     "set minor",
+     "O"
+    ],
+    [
+     "set basin",
+     "O"
+    ],
+    [
+     "เครื่องมือบริษัท",
      ""
+    ],
+    [
+     "Hohmann retractor large",
+     "O"
+    ],
+    [
+     "Bone rongeur small",
+     "O"
+    ],
+    [
+     "Bone rongeur large",
+     "O"
+    ],
+    [
+     "Gelpi",
+     ""
+    ],
+    [
+     "Brain suction",
+     "O"
     ]
    ],
    "name": "TKA",
@@ -538,7 +566,7 @@
   },
   "id": "c15",
   "kind": "case",
-  "updated_at": "2026-11-21T15:03:35.893+00:00"
+  "updated_at": "2026-11-22T15:24:15.707+00:00"
  },
  {
   "data": {
@@ -2001,7 +2029,7 @@
   },
   "id": "c6",
   "kind": "case",
-  "updated_at": "2026-11-21T14:19:44.775668+00:00"
+  "updated_at": "2026-11-22T15:07:43.672+00:00"
  },
  {
   "data": {
@@ -2229,7 +2257,6585 @@
  },
  {
   "data": {
-   "borrowIns": "Set General; Set Osteotome ใหญ่; Mallet ใหญ่; Bone rongeur; Volkman; Bone curette ตรง; Bone hook / T handle; Hohmann retractor large wide; Hohmann retractor small narrow",
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "(ใช้ของบริษัท) จุกน้ำ + จุกแก๊ส / สายน้ำ + สายแก๊ส",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|(ใช้ของบริษัท) จุกน้ำ + จุกแก๊ส / สายน้ำ + สายแก๊ส",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "A-P retracter",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|a-p retracter",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Adson nontooth",
+   "or": true,
+   "stock": "3",
+   "t": "ins"
+  },
+  "id": "ins|adson nontooth",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Adson tooth",
+   "or": true,
+   "stock": "3",
+   "t": "ins"
+  },
+  "id": "ins|adson tooth",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Allis 3 เคี้ยว",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|allis 3 เคี้ยว",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Allis Tissue",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|allis tissue",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Allis Tissue ,allis ยาว",
+   "or": true,
+   "stock": "1,2",
+   "t": "ins"
+  },
+  "id": "ins|allis tissue ,allis ยาว",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Anterior cervical ret.",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|anterior cervical ret.",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Army Navy Retracter",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|army navy retracter",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Artery clamp",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|artery clamp",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Babcock",
+   "or": true,
+   "stock": "4",
+   "t": "ins"
+  },
+  "id": "ins|babcock",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Balfour Retractor , bladder retractor",
+   "or": true,
+   "stock": "1,2",
+   "t": "ins"
+  },
+  "id": "ins|balfour retractor , bladder retractor",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Basic set",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|basic set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "Set เครื่องมือ",
+   "n": "Basin + ขัน",
+   "or": true,
+   "stock": "3",
+   "t": "ins"
+  },
+  "id": "ins|basin + ขัน",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Bone clamp",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|bone clamp",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Bone clamp กลาง",
+   "or": true,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|bone clamp กลาง",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Bone curette",
+   "or": true,
+   "stock": "5",
+   "t": "ins"
+  },
+  "id": "ins|bone curette",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Bone hook",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|bone hook",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Bone Rongeur",
+   "or": true,
+   "stock": "4",
+   "t": "ins"
+  },
+  "id": "ins|bone rongeur",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Bone rongeur large",
+   "or": true,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|bone rongeur large",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Bone rongeur small",
+   "or": true,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|bone rongeur small",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "book",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|book",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Bra",
+   "or": true,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|bra",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Brain retractor",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|brain retractor",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Brain sucion",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|brain sucion",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Brain suction",
+   "or": true,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|brain suction",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Camera",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|camera",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "Set เครื่องมือ",
+   "n": "Cath set",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|cath set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Cautery cable LC",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|cautery cable lc",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Cautery cable micro jaw",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|cautery cable micro jaw",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Cheek mouth",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|cheek mouth",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Colonoscope (ถ้าต้องใช้)",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|colonoscope (ถ้าต้องใช้)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Coronado",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|coronado",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Cup L",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|cup l",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Cutting loop hystero",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|cutting loop hystero",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "Set เครื่องมือ",
+   "n": "D&C set",
+   "or": true,
+   "stock": "3",
+   "t": "ins"
+  },
+  "id": "ins|d&c set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "Set เครื่องมือ",
+   "n": "Deaver set",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|deaver set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Depth gauge",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|depth gauge",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Depth gauge long",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|depth gauge long",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Depth gauge เล็ก",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|depth gauge เล็ก",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "Set เครื่องมือ",
+   "n": "Drape x5",
+   "or": true,
+   "stock": "6",
+   "t": "ins"
+  },
+  "id": "ins|drape x5",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "Set เครื่องมือ",
+   "n": "Dressing Tray Small",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|dressing tray small",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Drill 1.6",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|drill 1.6",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Drill 2.0",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|drill 2.0",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Drill long 2.5",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|drill long 2.5",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "E pen drive",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|e pen drive",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Endo Allis",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|endo allis",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Esmarch",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|esmarch",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Explor lap set",
+   "or": true,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|explor lap set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Explore set",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|explore set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "External fix",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|external fix",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "F-ret (ถ้าทำ Femur)",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|f-ret (ถ้าทำ femur)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "feer",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|feer",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Fine nontooth",
+   "or": true,
+   "stock": "3",
+   "t": "ins"
+  },
+  "id": "ins|fine nontooth",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Frame",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|frame",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Gelpi",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|gelpi",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Guide foley",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|guide foley",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Guide nail",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|guide nail",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Gynaecology set",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|gynaecology set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Hammer",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|hammer",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Harmonic (พ.ณัฐพงศ์) / Ligasure (พ.บัณฑิต, พ.ปราการ)",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|harmonic (พ.ณัฐพงศ์) / ligasure (พ.บัณฑิต, พ.ปราการ)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Harmonic scapler",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|harmonic scapler",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Heaney Clamp",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|heaney clamp",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "Set เครื่องมือ",
+   "n": "Hegar dilator set",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|hegar dilator set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Hohmann retractor large",
+   "or": true,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|hohmann retractor large",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Hohmann retractor large wide",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|hohmann retractor large wide",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Holder ปากเสีย",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|holder ปากเสีย",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "horman",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|horman",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Instrument 2.7",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|instrument 2.7",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Instrument 4.5",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|instrument 4.5",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Intestinal set",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|intestinal set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "K-wire extra",
+   "or": true,
+   "stock": "7",
+   "t": "ins"
+  },
+  "id": "ins|k-wire extra",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "Set เครื่องมือ",
+   "n": "k-wire extra1.0-2.0",
+   "or": true,
+   "stock": "5",
+   "t": "ins"
+  },
+  "id": "ins|k-wire extra1.0-2.0",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "Set เครื่องมือ",
+   "n": "k-wire set",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|k-wire set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Kerrison 2 mm / 3 mm",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|kerrison 2 mm / 3 mm",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Kidney Basin",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|kidney basin",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Koker",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|koker",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Laparoscope set",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|laparoscope set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "LC set",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|lc set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "LCP 3.5 set",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|lcp 3.5 set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "LCP 4.5 set",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|lcp 4.5 set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Lens 10 mm 0°",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|lens 10 mm 0°",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Lens 10 mm 30°",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|lens 10 mm 30°",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Lens 4 mm 30°",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|lens 4 mm 30°",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Lens 5 mm / 10 mm",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|lens 5 mm / 10 mm",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Lens 5 mm 0°",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|lens 5 mm 0°",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "LH room 1",
+   "or": true,
+   "stock": "5",
+   "t": "ins"
+  },
+  "id": "ins|lh room 1",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Life Plus",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|life plus",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Ligasure",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|ligasure",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Long forcep nontooth",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|long forcep nontooth",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Mallet เล็ก",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|mallet เล็ก",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Mallet ใหญ่",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|mallet ใหญ่",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "mayo",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|mayo",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Metric instrument",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|metric instrument",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Metzenbaum",
+   "or": true,
+   "stock": "6",
+   "t": "ins"
+  },
+  "id": "ins|metzenbaum",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Metzenbaum ยาว",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|metzenbaum ยาว",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Midas instrument + เครื่อง + drill",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|midas instrument + เครื่อง + drill",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "Set เครื่องมือ",
+   "n": "Minor Set",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|minor set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Molt periosteal",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|molt periosteal",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "mosqito",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|mosqito",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Mouth gag",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|mouth gag",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Myoma screw",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|myoma screw",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Nail instrument set",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|nail instrument set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Needle Holder",
+   "or": true,
+   "stock": "8",
+   "t": "ins"
+  },
+  "id": "ins|needle holder",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Nontooth forcep",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|nontooth forcep",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Nontooth forcep, tooth forcep",
+   "or": true,
+   "stock": "2,4",
+   "t": "ins"
+  },
+  "id": "ins|nontooth forcep, tooth forcep",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Off staple",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|off staple",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Omnitract ret. set",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|omnitract ret. set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Osteotome",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|osteotome",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "Set เครื่องมือ",
+   "n": "Pack large",
+   "or": true,
+   "stock": "5",
+   "t": "ins"
+  },
+  "id": "ins|pack large",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Pelvic clamp",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|pelvic clamp",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Pelvic reduction forceps",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|pelvic reduction forceps",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Periosteal ด้ามไม้",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|periosteal ด้ามไม้",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "PFNA set",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|pfna set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "Set เครื่องมือ",
+   "n": "Plastic set",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|plastic set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Plastic small",
+   "or": true,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|plastic small",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Pressure bag",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|pressure bag",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "Set เครื่องมือ",
+   "n": "Procto scope set",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|procto scope set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Punch Biopsy",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|punch biopsy",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Reduction with point",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|reduction with point",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Right ankle",
+   "or": true,
+   "stock": "6",
+   "t": "ins"
+  },
+  "id": "ins|right ankle",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Rochester Pean Str.",
+   "or": true,
+   "stock": "3",
+   "t": "ins"
+  },
+  "id": "ins|rochester pean str.",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Ruler",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|ruler",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Screw set",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|screw set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "Set เครื่องมือ",
+   "n": "Scrub set",
+   "or": true,
+   "stock": "4",
+   "t": "ins"
+  },
+  "id": "ins|scrub set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Senn retractor",
+   "or": true,
+   "stock": "4",
+   "t": "ins"
+  },
+  "id": "ins|senn retractor",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set arch bar",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set arch bar",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set basic",
+   "or": true,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set basic",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "Set เครื่องมือ",
+   "n": "Set basic Instrument",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|set basic instrument",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "set basin",
+   "or": true,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set basin",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "set Bone curette",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set bone curette",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set camera",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set camera",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set chisel",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set chisel",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "Set เครื่องมือ",
+   "n": "Set compact air drive",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|set compact air drive",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set conization",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set conization",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set cystoscope",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set cystoscope",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set Dermatome",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set dermatome",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set expert",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set expert",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "Set เครื่องมือ",
+   "n": "Set Explore",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|set explore",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set External fix",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set external fix",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set General",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set general",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set hysteroscope",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set hysteroscope",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set L plate proximal tibia",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set l plate proximal tibia",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set Laminectomy",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set laminectomy",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set Leibinger",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set leibinger",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set mesh graft",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set mesh graft",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set Midas + เครื่อง (หัวกรอยืม Inven)",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set midas + เครื่อง (หัวกรอยืม inven)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "set minor",
+   "or": true,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set minor",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set Osteotome ใหญ่",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set osteotome ใหญ่",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set plastic small",
+   "or": true,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set plastic small",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set plate medial proximal tibia",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set plate medial proximal tibia",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set proximal tibia (plate อยู่ในชุด)",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set proximal tibia (plate อยู่ในชุด)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set radius (instrument)",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set radius (instrument)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set Reduction",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set reduction",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set screw",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set screw",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set special spine",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set special spine",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set tonsil",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set tonsil",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set TR",
+   "or": true,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set tr",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set wire",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set wire",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set wire pusher",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set wire pusher",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Set wire pusher (clavicle)",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|set wire pusher (clavicle)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Shape hook",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|shape hook",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Skin Hook",
+   "or": true,
+   "stock": "3",
+   "t": "ins"
+  },
+  "id": "ins|skin hook",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Sleeve two column",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|sleeve two column",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Small fragment",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|small fragment",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Sound dilator",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|sound dilator",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "spatula",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|spatula",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Sponge holder",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|sponge holder",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Sponge holder (ใหญ่)",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|sponge holder (ใหญ่)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Steven โค้ง",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|steven โค้ง",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Stockinette",
+   "or": true,
+   "stock": "3",
+   "t": "ins"
+  },
+  "id": "ins|stockinette",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Stop cock",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|stop cock",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Suction and irrigate",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|suction and irrigate",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Surgical pack",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|surgical pack",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Suture scissor",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|suture scissor",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "Set เครื่องมือ",
+   "n": "Suture Set",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|suture set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Synream set",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|synream set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "T handle",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|t handle",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "T universal",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|t universal",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "tenaculum",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|tenaculum",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Tonsil Clamp",
+   "or": true,
+   "stock": "3",
+   "t": "ins"
+  },
+  "id": "ins|tonsil clamp",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Tonsil suction",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|tonsil suction",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Towel clip",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|towel clip",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "Set เครื่องมือ",
+   "n": "Tray Mayo",
+   "or": true,
+   "stock": "3",
+   "t": "ins"
+  },
+  "id": "ins|tray mayo",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "Set เครื่องมือ",
+   "n": "TUR",
+   "or": true,
+   "stock": "10",
+   "t": "ins"
+  },
+  "id": "ins|tur",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Uterine elevator",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|uterine elevator",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Vagina tube / Uterine sound / Needle handle LC (TLH)",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|vagina tube / uterine sound / needle handle lc (tlh)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Vaginal speculum L",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|vaginal speculum l",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Valley lab",
+   "or": true,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|valley lab",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Vein retractor",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|vein retractor",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "verrbugge",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|verrbugge",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Volkman",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|volkman",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Weitlaner retractor",
+   "or": true,
+   "stock": "3",
+   "t": "ins"
+  },
+  "id": "ins|weitlaner retractor",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Wire Bending",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|wire bending",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Wire cutter",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|wire cutter",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Wire pusher",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|wire pusher",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Wire scissor",
+   "or": true,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|wire scissor",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Wire scissor (ถ้าวาง mesh)",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|wire scissor (ถ้าวาง mesh)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "Wound Curette",
+   "or": true,
+   "stock": "4",
+   "t": "ins"
+  },
+  "id": "ins|wound curette",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Zygoma elevator",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|zygoma elevator",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "กระป๋องน้ำ LC",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|กระป๋องน้ำ lc",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "ขาหยั่งสูติสีดำ",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|ขาหยั่งสูติสีดำ",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "ข้อต่อลม",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|ข้อต่อลม",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "ข้อต่อเตียงท่อนสีดำ",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|ข้อต่อเตียงท่อนสีดำ",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "จุกเสียบสายน้ำ",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|จุกเสียบสายน้ำ",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "ด้าม Hemoloc 5 / 10 / 12 mm",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|ด้าม hemoloc 5 / 10 / 12 mm",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "ด้ามมีด",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|ด้ามมีด",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "ตัวงัด orbital",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|ตัวงัด orbital",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "ถุงพลาสติก",
+   "or": true,
+   "stock": "3",
+   "t": "ins"
+  },
+  "id": "ins|ถุงพลาสติก",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "Set เครื่องมือ",
+   "n": "ที่ดัด Plate ใหญ่",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|ที่ดัด plate ใหญ่",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "ประแจ",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|ประแจ",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "ฟองน้ำ",
+   "or": true,
+   "stock": "3",
+   "t": "ins"
+  },
+  "id": "ins|ฟองน้ำ",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "ยางเหลือง",
+   "or": true,
+   "stock": "2",
+   "t": "ins"
+  },
+  "id": "ins|ยางเหลือง",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "ลวดเล็ก (ถ้าเป็น ulnar ต้องยืม)",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|ลวดเล็ก (ถ้าเป็น ulnar ต้องยืม)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "สาย Harmonic",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|สาย harmonic",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "สายจี้",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|สายจี้",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "สายจี้ conization",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|สายจี้ conization",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "สายน้ำ LC",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|สายน้ำ lc",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "สายน้ำฟ้าขาว",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|สายน้ำฟ้าขาว",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "หม้อ TUR",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|หม้อ tur",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "หัวจี้ Loop + หัว ball (ยืม Inven)",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|หัวจี้ loop + หัว ball (ยืม inven)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "เข็ม Radivac drain",
+   "or": true,
+   "stock": "3",
+   "t": "ins"
+  },
+  "id": "ins|เข็ม radivac drain",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "เครื่อง Harmonic",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|เครื่อง harmonic",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "เครื่อง Ligasure",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|เครื่อง ligasure",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "เครื่องจี้ LEEP",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|เครื่องจี้ leep",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "เครื่องมือบริษัท",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|เครื่องมือบริษัท",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra",
+   "n": "ไม้กดลิ้น",
+   "or": true,
+   "stock": "1",
+   "t": "ins"
+  },
+  "id": "ins|ไม้กดลิ้น",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:55.755+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 3",
+   "n": "ABD 18x18 (BPK)",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|abd 18x18 (bpk)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 3",
+   "n": "ABD 6x18 (BPK)",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|abd 6x18 (bpk)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 1",
+   "n": "Alcohol Pad 3M",
+   "or": true,
+   "stock": "20",
+   "t": "sup"
+  },
+  "id": "sup|alcohol pad 3m",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Alexis wound retractor (ทุก size)",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|alexis wound retractor (ทุก size)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Anal spongostan / Spongostan",
+   "or": true,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|anal spongostan / spongostan",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Anchor suture",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|anchor suture",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Bacticgas 10x10cm",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|bacticgas 10x10cm",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Bipolar macro jaw (Ebfo1)",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|bipolar macro jaw (ebfo1)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 1",
+   "n": "Blade Clipper ชมพู",
+   "or": true,
+   "stock": "1",
+   "t": "sup"
+  },
+  "id": "sup|blade clipper ชมพู",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 1",
+   "n": "Blade Clipper ฟ้า",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|blade clipper ฟ้า",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 1",
+   "n": "Blade No.10",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|blade no.10",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 1",
+   "n": "Blade No.11",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|blade no.11",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 1",
+   "n": "Blade No.15",
+   "or": true,
+   "stock": "10",
+   "t": "sup"
+  },
+  "id": "sup|blade no.15",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 1",
+   "n": "Blade No.15 carbone",
+   "or": true,
+   "stock": "1",
+   "t": "sup"
+  },
+  "id": "sup|blade no.15 carbone",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Blood Tranfusion Set",
+   "or": true,
+   "stock": "1",
+   "t": "sup"
+  },
+  "id": "sup|blood tranfusion set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ บนรถ/ข้างรถ",
+   "n": "Blue Pad (เล็ก)",
+   "or": true,
+   "stock": "1",
+   "t": "sup"
+  },
+  "id": "sup|blue pad (เล็ก)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ บนรถ/ข้างรถ",
+   "n": "Blue Pad (ใหญ่) 60x90 cm",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|blue pad (ใหญ่) 60x90 cm",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 2",
+   "n": "Bulb Syringe Acepto (BPK)",
+   "or": true,
+   "stock": "1",
+   "t": "sup"
+  },
+  "id": "sup|bulb syringe acepto (bpk)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 1",
+   "n": "Cautery Tip Cleaner (BPK)",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|cautery tip cleaner (bpk)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "CDH 25 / 29 / 33 / Pursting device",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|cdh 25 / 29 / 33 / pursting device",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Chromic 2-0 (GG123) BPK",
+   "or": true,
+   "stock": "4",
+   "t": "sup"
+  },
+  "id": "sup|chromic 2-0 (gg123) bpk",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Chromic 3-0 (GG122)",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|chromic 3-0 (gg122)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Chromic 4-0 (UG203)",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|chromic 4-0 (ug203)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Chromic No.0 (GG124) BPK",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|chromic no.0 (gg124) bpk",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Chromic No.1 (GG803) BPK",
+   "or": true,
+   "stock": "4",
+   "t": "sup"
+  },
+  "id": "sup|chromic no.1 (gg803) bpk",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Colostomy / Stomahesive",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|colostomy / stomahesive",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra (Ortho)",
+   "n": "Confrrm 3 Inch ( Sterile )",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|confrrm 3 inch ( sterile )",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra (Ortho)",
+   "n": "Confrrm 4 Inch ( Sterile )",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|confrrm 4 inch ( sterile )",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra (Ortho)",
+   "n": "Confrrm 6 Inch ( Sterile )",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|confrrm 6 inch ( sterile )",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Contour curved cutter 40 mm Green CS40G + reload CR40G",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|contour curved cutter 40 mm green cs40g + reload cr40g",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Cord tap",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|cord tap",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 2",
+   "n": "Cotton Swab L",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|cotton swab l",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 2",
+   "n": "Cotton Swab S",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|cotton swab s",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Dermabond 0.5",
+   "or": true,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|dermabond 0.5",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Dermabond advanced / Mepilex post-op 10x20, 10x25",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|dermabond advanced / mepilex post-op 10x20, 10x25",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Dermabond mini 0.5 ml",
+   "or": true,
+   "stock": "1",
+   "t": "sup"
+  },
+  "id": "sup|dermabond mini 0.5 ml",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Dermacarrier 1.5:1",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|dermacarrier 1.5:1",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Dermalon 3-0 (1756-41)",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|dermalon 3-0 (1756-41)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Dermalon 4-0 (1756-31)",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|dermalon 4-0 (1756-31)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Dermalon 5-0 (1756-21)",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|dermalon 5-0 (1756-21)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Dermalon 6-0 (1756-11)",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|dermalon 6-0 (1756-11)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Dermatome blade",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|dermatome blade",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Dilating tip trocar 5 mm (D5LT)",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|dilating tip trocar 5 mm (d5lt)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Dilating tip trocar 5 mm with stability sleeve (D5LT)",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|dilating tip trocar 5 mm with stability sleeve (d5lt)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Disposable Skin stapler (BPK)",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|disposable skin stapler (bpk)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 1",
+   "n": "Disposable Syinge 10 mL",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|disposable syinge 10 ml",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 1",
+   "n": "Disposable Syinge 20 mL",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|disposable syinge 20 ml",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 1",
+   "n": "Disposable Syinge 3 mL",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|disposable syinge 3 ml",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 1",
+   "n": "Disposable Syinge 5 mL",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|disposable syinge 5 ml",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 2",
+   "n": "Disposable Syinge 50 mL ( Catheter tip )",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|disposable syinge 50 ml ( catheter tip )",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 2",
+   "n": "Disposable Syinge 50 mL ( Eccentric tip )",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|disposable syinge 50 ml ( eccentric tip )",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra (Ortho)",
+   "n": "Elastic Bandage 2 Inch ( Sterile )",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|elastic bandage 2 inch ( sterile )",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra (Ortho)",
+   "n": "Elastic Bandage 3 Inch ( Sterile )",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|elastic bandage 3 inch ( sterile )",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra (Ortho)",
+   "n": "Elastic Bandage 4 Inch ( Sterile )",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|elastic bandage 4 inch ( sterile )",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra (Ortho)",
+   "n": "Elastic Bandage 6 Inch ( Sterile )",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|elastic bandage 6 inch ( sterile )",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Endo GIA stapler 80-3.8 / 75 mm NTLC75 + reload SR75",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|endo gia stapler 80-3.8 / 75 mm ntlc75 + reload sr75",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Endo ICG",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|endo icg",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Endo scissor 5 mm",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|endo scissor 5 mm",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Endobag 3x6 / 5x8",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|endobag 3x6 / 5x8",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Endobag 3x6 / 5x8 / Lina endobag",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|endobag 3x6 / 5x8 / lina endobag",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Endoloop (PDS)",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|endoloop (pds)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra (Ortho)",
+   "n": "Esifix 1 Inch ( Sterile )",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|esifix 1 inch ( sterile )",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra (Ortho)",
+   "n": "Esifix 2 Inch ( Sterile )",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|esifix 2 inch ( sterile )",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra (Ortho)",
+   "n": "Esifix 3 Inch ( Sterile )",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|esifix 3 inch ( sterile )",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra (Ortho)",
+   "n": "Esifix 4 Inch ( Sterile )",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|esifix 4 inch ( sterile )",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Esmarch / Webril / Conform / EB (ระบุ)",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|esmarch / webril / conform / eb (ระบุ)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Ethibond 5 (ไม่ติดเข็ม)",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|ethibond 5 (ไม่ติดเข็ม)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Ethilon 2-0 (F2418)",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|ethilon 2-0 (f2418)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Ethilon 3-0 (EH7563)",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|ethilon 3-0 (eh7563)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Ethilon 4-0 (F24022)",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|ethilon 4-0 (f24022)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Ethilon 5-0 (1865)",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|ethilon 5-0 (1865)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Ethilon 6-0 (697)",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|ethilon 6-0 (697)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Fiber wire 2-0 AR7200",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|fiber wire 2-0 ar7200",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Fiber wire 2-0 AR7220",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|fiber wire 2-0 ar7220",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Fiber wire 2-0 AR7221",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|fiber wire 2-0 ar7221",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Fiber wire 5 (ไม่ติดเข็ม)",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|fiber wire 5 (ไม่ติดเข็ม)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Fibrillar",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|fibrillar",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ บนรถ/ข้างรถ",
+   "n": "Fixumull 10 x 10 cm",
+   "or": true,
+   "stock": "1",
+   "t": "sup"
+  },
+  "id": "sup|fixumull 10 x 10 cm",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ บนรถ/ข้างรถ",
+   "n": "Fixumull 15 x 10 cm",
+   "or": true,
+   "stock": "1",
+   "t": "sup"
+  },
+  "id": "sup|fixumull 15 x 10 cm",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 5",
+   "n": "Foot Control Electrosurgical pencil",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|foot control electrosurgical pencil",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 2",
+   "n": "Gauze Bandage 4 นิ้ว",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|gauze bandage 4 นิ้ว",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 1",
+   "n": "Gauze drain 0.25” x 4 Y",
+   "or": true,
+   "stock": "4",
+   "t": "sup"
+  },
+  "id": "sup|gauze drain 0.25” x 4 y",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 3",
+   "n": "Gauze Sponges Sterile X-ray Detec.4x4 8ply 10pcs (BPK)",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|gauze sponges sterile x-ray detec.4x4 8ply 10pcs (bpk)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 3",
+   "n": "Gauze Sterile 4x4 8ply 10 pcs",
+   "or": true,
+   "stock": "10",
+   "t": "sup"
+  },
+  "id": "sup|gauze sterile 4x4 8ply 10 pcs",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Glove port",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|glove port",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 3",
+   "n": "Glove Sterile No Powder No 6 (Gammex Ansell)",
+   "or": true,
+   "stock": "10",
+   "t": "sup"
+  },
+  "id": "sup|glove sterile no powder no 6 (gammex ansell)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 3",
+   "n": "Glove Sterile No Powder No 6.5 (Gammex Ansell)",
+   "or": true,
+   "stock": "10",
+   "t": "sup"
+  },
+  "id": "sup|glove sterile no powder no 6.5 (gammex ansell)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 3",
+   "n": "Glove Sterile No Powder No 7 (Gammex Ansell)",
+   "or": true,
+   "stock": "10",
+   "t": "sup"
+  },
+  "id": "sup|glove sterile no powder no 7 (gammex ansell)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 3",
+   "n": "Glove Sterile No Powder No 7.5 (Gammex Ansell)",
+   "or": true,
+   "stock": "10",
+   "t": "sup"
+  },
+  "id": "sup|glove sterile no powder no 7.5 (gammex ansell)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 3",
+   "n": "Glove Sterile No Powder No 8 (Gammex Ansell)",
+   "or": true,
+   "stock": "10",
+   "t": "sup"
+  },
+  "id": "sup|glove sterile no powder no 8 (gammex ansell)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 3",
+   "n": "Glove Sterile No Powder No 8.5 (Gammex Ansell)",
+   "or": true,
+   "stock": "10",
+   "t": "sup"
+  },
+  "id": "sup|glove sterile no powder no 8.5 (gammex ansell)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 5",
+   "n": "Hand Control Electrosurgical pencil",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|hand control electrosurgical pencil",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Hand control pencil / Urine catheter red rubber no.14",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|hand control pencil / urine catheter red rubber no.14",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Harmonic focus 17 cm / Harmonic 1100 20 cm / Ace",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|harmonic focus 17 cm / harmonic 1100 20 cm / ace",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Hemoloc",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|hemoloc",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Hemoloc ทุก size",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|hemoloc ทุก size",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Horizon titanium clip (small)",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|horizon titanium clip (small)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Hydrogen peroxide / Tube culture",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|hydrogen peroxide / tube culture",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "IM nail (Tibia / Femur ระบุขนาด)",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|im nail (tibia / femur ระบุขนาด)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Image intensifier cover",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|image intensifier cover",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Implant TKA (ระบุยี่ห้อ/ขนาด)",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|implant tka (ระบุยี่ห้อ/ขนาด)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Interceed",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|interceed",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Interceed 3x4",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|interceed 3x4",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Ioban 6650",
+   "or": true,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|ioban 6650",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Ioband 3M 60cm x 45cm",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|ioband 3m 60cm x 45cm",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "IV set",
+   "or": true,
+   "stock": "1",
+   "t": "sup"
+  },
+  "id": "sup|iv set",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Jackson Pratt 400 / Jackson round drain 15 Fr",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|jackson pratt 400 / jackson round drain 15 fr",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Leukostrip 1/2 * 4 นิ้ว",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|leukostrip 1/2 * 4 นิ้ว",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Leukostrip 1/4 * 3 นิ้ว",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|leukostrip 1/4 * 3 นิ้ว",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Leukostrip 1/4 * 4 นิ้ว",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|leukostrip 1/4 * 4 นิ้ว",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Leukostrip 1/8 * 1 ½ นิ้ว",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|leukostrip 1/8 * 1 ½ นิ้ว",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Leukostrip 13x102",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|leukostrip 13x102",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Ligamex 5 mm / 12 mm",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|ligamex 5 mm / 12 mm",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Ligasure blunt / Maryland 37 cm",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|ligasure blunt / maryland 37 cm",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Ligasure Impact LF4318 / Atlas LS1020",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|ligasure impact lf4318 / atlas ls1020",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Ligasure Maryland 37 cm LF1937 / Harmonic Ace 36 cm",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|ligasure maryland 37 cm lf1937 / harmonic ace 36 cm",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Marcaine 0.5 % / Chalocaine 2 % jelly",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|marcaine 0.5 % / chalocaine 2 % jelly",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ บนรถ/ข้างรถ",
+   "n": "Mask N95 3M 1870",
+   "or": true,
+   "stock": "4",
+   "t": "sup"
+  },
+  "id": "sup|mask n95 3m 1870",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Megadyne M/Blade 6 1/2\" Ez (0014M)",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|megadyne m/blade 6 1/2\" ez (0014m)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Megadyne micro needle 0118",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|megadyne micro needle 0118",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 5",
+   "n": "Mepilex Ag 17.5 x 17.5 cm",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|mepilex ag 17.5 x 17.5 cm",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Mepilex Border Post-Op 10x15 cm",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|mepilex border post-op 10x15 cm",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Mepilex Border Post-Op 10x20 cm",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|mepilex border post-op 10x20 cm",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Mepilex Border Post-Op 6x8 cm",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|mepilex border post-op 6x8 cm",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Mersilk 2-0 (W213) BPK",
+   "or": true,
+   "stock": "6",
+   "t": "sup"
+  },
+  "id": "sup|mersilk 2-0 (w213) bpk",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Mersilk 2-0 (W327) ติดเข็ม",
+   "or": true,
+   "stock": "6",
+   "t": "sup"
+  },
+  "id": "sup|mersilk 2-0 (w327) ติดเข็ม",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Mersilk 3-0 (W212) BPK",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|mersilk 3-0 (w212) bpk",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Mersilk 3-0 (W546) ติดเข็ม",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|mersilk 3-0 (w546) ติดเข็ม",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Mersilk 4-0 (K871) ติดเข็ม",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|mersilk 4-0 (k871) ติดเข็ม",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Mersilk No.0 (W214) BPK",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|mersilk no.0 (w214) bpk",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Mersilk No.1 (W215) BPK",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|mersilk no.1 (w215) bpk",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Mesh / plate / screw (ระบุ)",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|mesh / plate / screw (ระบุ)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Monocryl 4-0 (MCP3205) Cutting BPK",
+   "or": true,
+   "stock": "6",
+   "t": "sup"
+  },
+  "id": "sup|monocryl 4-0 (mcp3205) cutting bpk",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Monocryl 5-0 (MCP500)",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|monocryl 5-0 (mcp500)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Monocryl 6-0 (MCP489)",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|monocryl 6-0 (mcp489)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ บนรถ/ข้างรถ",
+   "n": "Monsel solution",
+   "or": true,
+   "stock": "1",
+   "t": "sup"
+  },
+  "id": "sup|monsel solution",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Myoma screw",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|myoma screw",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 1",
+   "n": "Needdle No.18",
+   "or": true,
+   "stock": "10",
+   "t": "sup"
+  },
+  "id": "sup|needdle no.18",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 1",
+   "n": "Needdle No.20",
+   "or": true,
+   "stock": "10",
+   "t": "sup"
+  },
+  "id": "sup|needdle no.20",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 1",
+   "n": "Needdle No.22",
+   "or": true,
+   "stock": "10",
+   "t": "sup"
+  },
+  "id": "sup|needdle no.22",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 1",
+   "n": "Needdle No.24",
+   "or": true,
+   "stock": "10",
+   "t": "sup"
+  },
+  "id": "sup|needdle no.24",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 1",
+   "n": "Needdle No.25",
+   "or": true,
+   "stock": "10",
+   "t": "sup"
+  },
+  "id": "sup|needdle no.25",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 1",
+   "n": "Needdle No.27",
+   "or": true,
+   "stock": "10",
+   "t": "sup"
+  },
+  "id": "sup|needdle no.27",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 1",
+   "n": "Needdle No.30",
+   "or": true,
+   "stock": "10",
+   "t": "sup"
+  },
+  "id": "sup|needdle no.30",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ บนรถ/ข้างรถ",
+   "n": "Opsite Flexifix 10 x 10 cm",
+   "or": true,
+   "stock": "1",
+   "t": "sup"
+  },
+  "id": "sup|opsite flexifix 10 x 10 cm",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Opsite Post op 15.5x8.5 cm",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|opsite post op 15.5x8.5 cm",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 5",
+   "n": "Opsite Post op 25x10 cm",
+   "or": true,
+   "stock": "6",
+   "t": "sup"
+  },
+  "id": "sup|opsite post op 25x10 cm",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Opsite Post op 6.5x5 cm",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|opsite post op 6.5x5 cm",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Opsite Post op 9.5x8.5 cm",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|opsite post op 9.5x8.5 cm",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "PDS 3-0 (W9124) Round",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|pds 3-0 (w9124) round",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "PDS 4-0 (W9615) Round",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|pds 4-0 (w9615) round",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "PDS 5-0 (W9863)",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|pds 5-0 (w9863)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "PDS No.1 (W9237) Round BPK",
+   "or": true,
+   "stock": "6",
+   "t": "sup"
+  },
+  "id": "sup|pds no.1 (w9237) round bpk",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Penrose drain ทุก size",
+   "or": true,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|penrose drain ทุก size",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 2",
+   "n": "Penrose Drainage Tubing 1 นิ้ว",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|penrose drainage tubing 1 นิ้ว",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 2",
+   "n": "Penrose Drainage Tubing ¼ นิ้ว",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|penrose drainage tubing ¼ นิ้ว",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 2",
+   "n": "Penrose Drainage Tubing ½ นิ้ว",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|penrose drainage tubing ½ นิ้ว",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "PFNA Blade",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|pfna blade",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "PFNA End cap / End cap IM nail (แจ้ง Inven)",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|pfna end cap / end cap im nail (แจ้ง inven)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "PFNA small / long",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|pfna small / long",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Pin / Rod ชุด External fix (ระบุ)",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|pin / rod ชุด external fix (ระบุ)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Plate (ระบุชนิด: LCP / Philos / Hook / DMT / Narrow / L plate / Radius)",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|plate (ระบุชนิด: lcp / philos / hook / dmt / narrow / l plate / radius)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Polymer clip 5 / 10 / 12 mm",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|polymer clip 5 / 10 / 12 mm",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Polysorb 4-0 (GL181) BPK",
+   "or": true,
+   "stock": "4",
+   "t": "sup"
+  },
+  "id": "sup|polysorb 4-0 (gl181) bpk",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Prolene 1",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|prolene 1",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Prolene 2-0 (W295) Round BPK",
+   "or": true,
+   "stock": "6",
+   "t": "sup"
+  },
+  "id": "sup|prolene 2-0 (w295) round bpk",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Prolene 3-0 8558",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|prolene 3-0 8558",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Radivac drain",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|radivac drain",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Radivac drain no.8 / 200 ml / 600 ml",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|radivac drain no.8 / 200 ml / 600 ml",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Redivac 200 ml / สาย no.8",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|redivac 200 ml / สาย no.8",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Screw (ระบุชนิด/ขนาด)",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|screw (ระบุชนิด/ขนาด)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Screw cortex Extra long",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|screw cortex extra long",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Skin staple",
+   "or": true,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|skin staple",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Spongostan",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|spongostan",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Steri-Strip 1/4 x 3นิ้ว (น้ำเงิน) R1547",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|steri-strip 1/4 x 3นิ้ว (น้ำเงิน) r1547",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Steri-Strip 1/4 x 3นิ้ว (แดง) R1541",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|steri-strip 1/4 x 3นิ้ว (แดง) r1541",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Steri-Strip 1/4 x 4 นิ้ว (ส้ม) R1546",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|steri-strip 1/4 x 4 นิ้ว (ส้ม) r1546",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 2",
+   "n": "Sterile Lubricating Jelly",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|sterile lubricating jelly",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Sterile water irrigate 1000 ml (ใช้ 2–3 ขวด)",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|sterile water irrigate 1000 ml (ใช้ 2–3 ขวด)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 5",
+   "n": "Suction Tubing 6mm x 3.0 m (10ft)",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|suction tubing 6mm x 3.0 m (10ft)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Surgical Skin marker (Bx marker)",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|surgical skin marker (bx marker)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Surgical trocar 11 mm bladeless (B11LT)",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|surgical trocar 11 mm bladeless (b11lt)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Surgical trocar 12 mm (D12LT)",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|surgical trocar 12 mm (d12lt)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Surgicel",
+   "or": true,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|surgicel",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Surgicel (BPK)",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|surgicel (bpk)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Surgicel 5x7 W1913T",
+   "or": true,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|surgicel 5x7 w1913t",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Surgicel Fibrillar (BPK)",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|surgicel fibrillar (bpk)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Suture button",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|suture button",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 1",
+   "n": "Syringe Tuberculin 1 mL",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|syringe tuberculin 1 ml",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Terramycin",
+   "or": true,
+   "stock": "1",
+   "t": "sup"
+  },
+  "id": "sup|terramycin",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Tube Collection Swab culture",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|tube collection swab culture",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Urgotul 5*5",
+   "or": true,
+   "stock": "1",
+   "t": "sup"
+  },
+  "id": "sup|urgotul 5*5",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 4",
+   "n": "Urine catheter No14 (แดง)",
+   "or": true,
+   "stock": "1",
+   "t": "sup"
+  },
+  "id": "sup|urine catheter no14 (แดง)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "V-loc 180 (No.0316) [TLH]",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|v-loc 180 (no.0316) [tlh]",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 5",
+   "n": "Valleylab REM plate",
+   "or": true,
+   "stock": "1",
+   "t": "sup"
+  },
+  "id": "sup|valleylab rem plate",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Vicryl 2-0 (VCP 317) Round",
+   "or": true,
+   "stock": "4",
+   "t": "sup"
+  },
+  "id": "sup|vicryl 2-0 (vcp 317) round",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Vicryl 2-0 (W9582) Cutting",
+   "or": true,
+   "stock": "6",
+   "t": "sup"
+  },
+  "id": "sup|vicryl 2-0 (w9582) cutting",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Vicryl 2-0 w9121",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|vicryl 2-0 w9121",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Vicryl 3-0 (VCP316 ) Round",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|vicryl 3-0 (vcp316 ) round",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Vicryl 3-0 (W9114) Round",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|vicryl 3-0 (w9114) round",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Vicryl 3-0 (W9571) Cutting",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|vicryl 3-0 (w9571) cutting",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Vicryl 3-0 w9120",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|vicryl 3-0 w9120",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Vicryl 4-0 (VCP426 ) Cutting",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|vicryl 4-0 (vcp426 ) cutting",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Vicryl 4-0 (W9074) Round",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|vicryl 4-0 (w9074) round",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Vicryl 4-0 (W9506 ) Cutting เข็มเล็ก",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|vicryl 4-0 (w9506 ) cutting เข็มเล็ก",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Vicryl 4-0 (W9570) Cutting เข็มใหญ่",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|vicryl 4-0 (w9570) cutting เข็มใหญ่",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Vicryl 4-0 (W9711) เข็มตรง BPK",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|vicryl 4-0 (w9711) เข็มตรง bpk",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Vicryl 5-0 (VCP500 ) Cutting BPK",
+   "or": true,
+   "stock": "6",
+   "t": "sup"
+  },
+  "id": "sup|vicryl 5-0 (vcp500 ) cutting bpk",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Vicryl 5-0 (W9105) Round",
+   "or": true,
+   "stock": "4",
+   "t": "sup"
+  },
+  "id": "sup|vicryl 5-0 (w9105) round",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Vicryl 5-0 (W9501) Cutting",
+   "or": true,
+   "stock": "6",
+   "t": "sup"
+  },
+  "id": "sup|vicryl 5-0 (w9501) cutting",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Vicryl 5-0 (W9505) Cutting",
+   "or": true,
+   "stock": "4",
+   "t": "sup"
+  },
+  "id": "sup|vicryl 5-0 (w9505) cutting",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Vicryl 6-0 (W9500) Cutting",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|vicryl 6-0 (w9500) cutting",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Vicryl No.0 (W9141) Round BPK",
+   "or": true,
+   "stock": "4",
+   "t": "sup"
+  },
+  "id": "sup|vicryl no.0 (w9141) round bpk",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Vicryl No.1 (VCP9468) Round BPK",
+   "or": true,
+   "stock": "6",
+   "t": "sup"
+  },
+  "id": "sup|vicryl no.1 (vcp9468) round bpk",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Vicryl Rapid 4-0 (W9918)",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|vicryl rapid 4-0 (w9918)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Vicryl Rapid 5-0 (W9915)",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|vicryl rapid 5-0 (w9915)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ไหม",
+   "n": "Vicryl Rapid 6-0 (W9913)",
+   "or": true,
+   "stock": "5",
+   "t": "sup"
+  },
+  "id": "sup|vicryl rapid 6-0 (w9913)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra (Ortho)",
+   "n": "Webrill 3 Inch ( Sterile )",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|webrill 3 inch ( sterile )",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra (Ortho)",
+   "n": "Webrill 4 Inch ( Sterile )",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|webrill 4 inch ( sterile )",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "ซอง Extra (Ortho)",
+   "n": "Webrill 6 Inch ( Sterile )",
+   "or": true,
+   "stock": "3",
+   "t": "sup"
+  },
+  "id": "sup|webrill 6 inch ( sterile )",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.253+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 5",
+   "n": "ขวด Redivac drain 200 ml",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|ขวด redivac drain 200 ml",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 5",
+   "n": "ขวด Redivac drain 600 ml",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|ขวด redivac drain 600 ml",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "ยางมัดฟัน",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|ยางมัดฟัน",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "ลวด Extra",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|ลวด extra",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "ลวด no.23",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|ลวด no.23",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "ลวด no.23 / K-wire (TWB)",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|ลวด no.23 / k-wire (twb)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 5",
+   "n": "สาย Redivac No. 10",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|สาย redivac no. 10",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 5",
+   "n": "สาย Redivac No.8",
+   "or": true,
+   "stock": "2",
+   "t": "sup"
+  },
+  "id": "sup|สาย redivac no.8",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "สายน้ำ + Stop cock",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|สายน้ำ + stop cock",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 5",
+   "n": "หัวจี้ยาว",
+   "or": true,
+   "stock": "1",
+   "t": "sup"
+  },
+  "id": "sup|หัวจี้ยาว",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "หัวจี้ยาว E1450-6",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|หัวจี้ยาว e1450-6",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ ชั้นที่ 1",
+   "n": "เครื่อง BD Surgical clipper",
+   "or": true,
+   "stock": "1",
+   "t": "sup"
+  },
+  "id": "sup|เครื่อง bd surgical clipper",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "เวชภัณฑ์ LEEP (ระบุ)",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|เวชภัณฑ์ leep (ระบุ)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "เวชภัณฑ์ตามใบแพทย์ (ระบุ)",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|เวชภัณฑ์ตามใบแพทย์ (ระบุ)",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "รถเวชภัณฑ์ บนรถ/ข้างรถ",
+   "n": "ไม้บรรทัดเหล็ก",
+   "or": true,
+   "stock": "1",
+   "t": "sup"
+  },
+  "id": "sup|ไม้บรรทัดเหล็ก",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "code": "",
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "ไหมตามใบเตรียมแพทย์",
+   "or": true,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|ไหมตามใบเตรียมแพทย์",
+  "kind": "item",
+  "updated_at": "2026-11-22T16:26:56.049+00:00"
+ },
+ {
+  "data": {
+   "borrowIns": "",
+   "borrowSup": "",
+   "by": "K",
+   "by2": "",
+   "caseId": "c30",
+   "caseName": "Excision / Hemorrhoid / I+D / Bartholin",
+   "date": "2026-11-22",
+   "doctor": "",
+   "editedAt": "",
+   "id": "r1795363682060596",
+   "ins": [
+    {
+     "from": "",
+     "n": "Minor set",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Coronado",
+     "s": ""
+    },
+    {
+     "from": "",
+     "n": "Valley lab",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Surgical pack",
+     "s": ""
+    },
+    {
+     "from": "",
+     "n": "Bra",
+     "s": "O"
+    }
+   ],
+   "returned": "",
+   "savedAt": "2026-11-22 23:08",
+   "sup": [
+    {
+     "from": "",
+     "n": "Anal spongostan / Spongostan",
+     "q": "",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Penrose drain ทุก size",
+     "q": "",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Dermabond 0.5",
+     "q": "",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Megadyne micro needle 0118",
+     "q": "",
+     "s": ""
+    },
+    {
+     "from": "",
+     "n": "Horizon titanium clip (small)",
+     "q": "",
+     "s": ""
+    },
+    {
+     "from": "",
+     "n": "Marcaine 0.5 %  /  Chalocaine 2 % jelly",
+     "q": "",
+     "s": ""
+    },
+    {
+     "from": "",
+     "n": "Hydrogen peroxide / Tube culture",
+     "q": "",
+     "s": ""
+    },
+    {
+     "from": "",
+     "n": "Hand control pencil / Urine catheter red rubber no.14",
+     "q": "",
+     "s": ""
+    }
+   ]
+  },
+  "id": "r1795363682060596",
+  "kind": "record",
+  "updated_at": "2026-11-22T16:08:02.061+00:00"
+ },
+ {
+  "data": {
+   "borrowIns": "",
    "borrowSup": "",
    "by": "วริศราภรณ์",
    "by2": "",
@@ -2238,56 +8844,86 @@
    "date": "2026-11-22",
    "doctor": "",
    "editedAt": "",
-   "id": "r1795276781523314",
+   "id": "r1795364940460671",
    "ins": [
     {
      "from": "",
      "n": "Set General",
-     "s": "B"
+     "s": ""
     },
     {
      "from": "",
      "n": "Set Osteotome ใหญ่",
-     "s": "B"
+     "s": ""
     },
     {
      "from": "",
      "n": "Mallet ใหญ่",
-     "s": "B"
-    },
-    {
-     "from": "",
-     "n": "Bone rongeur",
-     "s": "B"
+     "s": ""
     },
     {
      "from": "",
      "n": "Volkman",
-     "s": "B"
+     "s": ""
     },
     {
      "from": "",
-     "n": "Bone curette ตรง",
-     "s": "B"
+     "n": "set Bone curette ",
+     "s": ""
     },
     {
      "from": "",
-     "n": "Bone hook / T handle",
-     "s": "B"
+     "n": "Bone hook ",
+     "s": ""
     },
     {
      "from": "",
      "n": "Hohmann retractor large wide",
-     "s": "B"
+     "s": ""
     },
     {
      "from": "",
-     "n": "Hohmann retractor small narrow",
-     "s": "B"
+     "n": "set minor",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "set basin",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "เครื่องมือบริษัท",
+     "s": ""
+    },
+    {
+     "from": "",
+     "n": "Hohmann retractor large",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Bone rongeur small",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Bone rongeur large",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Gelpi",
+     "s": ""
+    },
+    {
+     "from": "",
+     "n": "Brain suction",
+     "s": "O"
     }
    ],
    "returned": "",
-   "savedAt": "2026-11-21 22:59",
+   "savedAt": "2026-11-22 23:29",
    "sup": [
     {
      "from": "",
@@ -2297,8 +8933,8 @@
     }
    ]
   },
-  "id": "r1795276781523314",
+  "id": "r1795364940460671",
   "kind": "record",
-  "updated_at": "2026-11-21T15:59:41.523+00:00"
+  "updated_at": "2026-11-22T16:29:00.465+00:00"
  }
 ]
