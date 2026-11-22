@@ -53,6 +53,7 @@ input[type=text],input[type=date],input[type=password],input[type=url],select,te
 .sugs{margin:6px 0 2px;max-height:280px;overflow:auto}
 button.sug{display:flex;justify-content:space-between;gap:8px;width:100%;text-align:left;margin:4px 0;min-height:48px;padding:8px 12px;background:#f1efe8}
 button.sug small{color:#2d6a4f;font-size:14px;white-space:nowrap}
+.isug{margin-top:4px}.isug:empty{display:none}
 .imeta{font-size:13px;color:#888;margin-top:2px}
 .sheet.wide{max-width:640px}
 .pv{max-height:52vh;overflow:auto;background:#d9d7cf;padding:8px;border-radius:10px;margin:8px 0}
@@ -139,7 +140,8 @@ let serverVersion = '';
 /* ===== สถานะ ===== */
 let S = {cases:[], doctors:[], staff:[], templates:{}, records:[]};
 let loaded = false, busy = false, lastSync = '', msg = '', msgType = 'ok';
-let view = ({'#saved':'saved','#items':'items','#settings':'settings','#cases':'cases','#people':'people','#help':'help','#backup':'backup'})[location.hash] || 'new';
+const VIEWMAP = {'#saved':'saved','#items':'items','#settings':'settings','#cases':'cases','#people':'people','#help':'help','#backup':'backup'};
+let view = VIEWMAP[location.hash] || 'new';
 let catSel = '', caseQ = '', step = 1, draft = null, editCase = null, delPending = '', justSaved = false, filt = {q:'', borrow:'all'};
 const keep = {doctor:'', date:'', by:''};
 
@@ -337,7 +339,7 @@ function doPrint(r, parts){
 
 /* ===== ส่วนแสดงผล ===== */
 function itemRow(key, x, i){
-  return '<div class=row><div class=nmrow><input type=text class=nmin list=dl-' + key + ' value="' + esc(x.n) + '" data-in=nm data-k=' + key + ' data-i=' + i + ' aria-label="ชื่อรายการ">' +
+  return '<div class=row><div class=nmrow><input type=text class=nmin value="' + esc(x.n) + '" data-in=nm data-k=' + key + ' data-i=' + i + ' aria-label="ชื่อรายการ">' +
     (key === 'sup' ? '<input type=text class=qin placeholder="จำนวน" value="' + esc(x.q) + '" data-in=qty data-k=' + key + ' data-i=' + i + '>' : '') +
     '<button class="sm x" data-act=delitem data-k=' + key + ' data-i=' + i + '>ลบ</button></div>' +
     '<div class=btns><button class="or' + (x.s === 'O' ? ' on' : '') + '" data-act=set data-k=' + key + ' data-i=' + i + ' data-v=O>มีใน OR</button><button class="bw' + (x.s === 'B' ? ' on' : '') + '" data-act=set data-k=' + key + ' data-i=' + i + ' data-v=B>ต้องยืม</button></div>' +
@@ -462,9 +464,9 @@ function render(){
       const c = editCase;
       h += '<div class=card><label>ชื่อเคส</label><input type=text data-in=cname value="' + esc(c.name) + '"><label>หมวด</label><input type=text data-in=ccat value="' + esc(c.cat) + '"></div>';
       h += '<h2>เครื่องมือมาตรฐาน</h2>';
-      c.ins.forEach((x,i) => { h += '<div class=row><div class=nmrow><input type=text class=nmin list=dl-ins value="' + esc(x[0]) + '" data-in=cnm data-k=ins data-i=' + i + '><button class="sm' + (x[1] === 'O' ? ' on' : '') + '" data-act=cor data-k=ins data-i=' + i + '>' + (x[1] === 'O' ? 'มีใน OR ✓' : 'มีใน OR?') + '</button><button class="sm x" data-act=cdel data-k=ins data-i=' + i + '>ลบ</button></div></div>'; });
+      c.ins.forEach((x,i) => { h += '<div class=row><div class=nmrow><input type=text class=nmin value="' + esc(x[0]) + '" data-in=cnm data-k=ins data-i=' + i + '><button class="sm' + (x[1] === 'O' ? ' on' : '') + '" data-act=cor data-k=ins data-i=' + i + '>' + (x[1] === 'O' ? 'มีใน OR ✓' : 'มีใน OR?') + '</button><button class="sm x" data-act=cdel data-k=ins data-i=' + i + '>ลบ</button></div></div>'; });
       h += addBox('c', 'ins') + '<h2>เวชภัณฑ์มาตรฐาน</h2>';
-      c.sup.forEach((x,i) => { const o = String(x[2] || '').indexOf('O') >= 0; h += '<div class=row><div class=nmrow><input type=text class=nmin list=dl-sup value="' + esc(x[0]) + '" data-in=cnm data-k=sup data-i=' + i + '><input type=text class=qin placeholder="จำนวน" value="' + esc(x[1]) + '" data-in=cq data-k=sup data-i=' + i + '><button class="sm' + (o ? ' on' : '') + '" data-act=cor data-k=sup data-i=' + i + '>' + (o ? 'OR ✓' : 'OR?') + '</button><button class="sm x" data-act=cdel data-k=sup data-i=' + i + '>ลบ</button></div></div>'; });
+      c.sup.forEach((x,i) => { const o = String(x[2] || '').indexOf('O') >= 0; h += '<div class=row><div class=nmrow><input type=text class=nmin value="' + esc(x[0]) + '" data-in=cnm data-k=sup data-i=' + i + '><input type=text class=qin placeholder="จำนวน" value="' + esc(x[1]) + '" data-in=cq data-k=sup data-i=' + i + '><button class="sm' + (o ? ' on' : '') + '" data-act=cor data-k=sup data-i=' + i + '>' + (o ? 'OR ✓' : 'OR?') + '</button><button class="sm x" data-act=cdel data-k=sup data-i=' + i + '>ลบ</button></div></div>'; });
       h += addBox('c', 'sup');
       foot = '<button class="x' + (delPending === 'case' ? ' danger' : '') + '" data-act=delcase>' + (delPending === 'case' ? 'กดอีกครั้งเพื่อลบเคส' : 'ลบเคสนี้') + '</button><button class=pri data-act=savecase' + (busy ? ' disabled' : '') + '>บันทึกเคสนี้</button>';
     }
@@ -505,7 +507,6 @@ function render(){
   }
 
   if(foot) h += '<div class=foot>' + foot + '</div>';
-  if(view === 'new' || view === 'cases') h += ['ins', 'sup'].map(k => '<datalist id=dl-' + k + '>' + catalog(k).map(x => '<option value="' + esc(x.n) + '">').join('') + '</datalist>').join('');
   A.innerHTML = h;
 }
 
@@ -538,6 +539,7 @@ document.addEventListener('click', e => {
 
   if(a === 'view'){ if(t.dataset.v === 'items') itemsEdit = null; view = t.dataset.v; justSaved = false; location.hash = view === 'new' ? '' : '#' + view; window.scrollTo(0, 0); render(); }
   else if(a === 'refresh'){ refresh(); }
+  else if(a === 'catadd'){ openCatAdd(); }
   else if(a === 'itab'){ itemsTab = t.dataset.v; itemDel = ''; render(); }
   else if(a === 'additem'){ const v = normN($('#newItem').value); if(!v) return; const L = itemsEdit[itemsTab]; if(L.some(x => x.n.toLowerCase() === v.toLowerCase())){ say('มีชื่อนี้ในคลังแล้ว', 'err'); render(); return; } L.unshift({t: itemsTab, n: v, or: true, stock: '', grp: 'เพิ่มเอง', from: '', orig: ''}); itemQ = ''; render(); }
   else if(a === 'ior'){ const x = itemsEdit[itemsTab][+t.dataset.i]; x.or = !x.or; render(); }
@@ -677,9 +679,9 @@ document.addEventListener('input', e => {
   const t = e.target, f = t.dataset && t.dataset.in; if(!f) return;
   const k = t.dataset.k, i = +t.dataset.i;
   if(f === 'from') draft[k][i].from = t.value;
-  else if(f === 'nm') draft[k][i].n = t.value;
+  else if(f === 'nm'){ draft[k][i].n = t.value; inlineSug(t, k); }
   else if(f === 'qty') draft[k][i].q = t.value;
-  else if(f === 'cnm') editCase[k][i][0] = t.value;
+  else if(f === 'cnm'){ editCase[k][i][0] = t.value; inlineSug(t, k); }
   else if(f === 'cq') editCase[k][i][1] = t.value;
   else if(f === 'cname') editCase.name = t.value;
   else if(f === 'ccat') editCase.cat = t.value;
@@ -695,7 +697,7 @@ document.addEventListener('keyup', e => {
   if(e.target.id === 'cq'){ caseQ = e.target.value; if(draft && view === 'new') grab1(); const pos = e.target.selectionStart; render(); const f = $('#cq'); if(f){ f.focus(); f.setSelectionRange(pos, pos); } }
   else if(e.target.id === 'fq'){ filt.q = e.target.value; const pos = e.target.selectionStart; render(); const f = $('#fq'); if(f){ f.focus(); f.setSelectionRange(pos, pos); } }
 });
-window.addEventListener('hashchange', () => { const v = ({'#saved':'saved','#settings':'settings','#cases':'cases','#people':'people','#help':'help','#backup':'backup'})[location.hash] || 'new'; if(v !== view){ view = v; render(); } });
+window.addEventListener('hashchange', () => { const v = VIEWMAP[location.hash] || 'new'; if(v !== view){ view = v; render(); } });
 
 /* ดึงข้อมูลใหม่อัตโนมัติทุก 30 วินาที เมื่ออยู่หน้า "บันทึกแล้ว" (เห็นใบที่น้องๆ บันทึกจากเครื่องอื่น) */
 setInterval(() => { if(cloud() && view === 'saved' && !busy && !document.hidden) refresh(true); }, 30000);
@@ -728,7 +730,7 @@ function mdlAdd(){
   const it = k === 'sup' ? {n, q: mdl.q.trim(), s: mdl.s, from: mdl.s === 'B' ? mdl.from.trim() : ''} : {n, s: mdl.s, from: mdl.s === 'B' ? mdl.from.trim() : ''};
   if(mdl.tg === 'c'){ const o = mdl.s === 'O' ? 'O' : ''; editCase[k].push(k === 'sup' ? [n, mdl.q.trim(), o] : [n, o]); }
   else draft[k].push(it);
-  mdl.last = n; mdl.n = ''; mdl.q = ''; render(); return true;
+  mdl.last = n; mdl.picked = ''; mdl.n = ''; mdl.q = ''; render(); return true;
 }
 document.addEventListener('click', e => {
   const t = e.target.closest('[data-m]');
@@ -737,19 +739,20 @@ document.addEventListener('click', e => {
   if(m === 'close') closeModal();
   else if(m === 'type'){ mdlRead(); mdl.key = t.dataset.v; drawModal(); }
   else if(m === 'state'){ mdlRead(); mdl.s = t.dataset.v; drawModal(); }
-  else if(m === 'pick'){ mdlRead(); const it = catalog(mdl.key).find(x => x.id === t.dataset.v); if(it){ mdl.n = it.n; mdl.s = it.or ? 'O' : 'B'; mdl.from = it.from || ''; if(mdlAdd()){ drawModal(); const i = $('#mN'); if(i) i.focus(); } } }
+  else if(m === 'pick'){ /* จัดการตอน pointerdown */ }
   else if(m === 'again'){ if(mdlAdd()){ drawModal(); const i = $('#mN'); if(i) i.focus(); } }
   else if(m === 'done'){ if(mdlAdd()) closeModal(); }
 });
 document.addEventListener('keydown', e => { if(mdl && e.key === 'Escape') closeModal(); if(mdl && e.key === 'Enter' && e.target.tagName === 'INPUT'){ if(mdlAdd()){ drawModal(); const i = $('#mN'); if(i) i.focus(); } } });
 
 /* ===== สร้างหน้า A4 (พรีวิว / PDF / รูปภาพ / ปริ้น) ===== */
-const PART_LABEL = {prep: 'ใบเตรียมเคส (รวมทุกรายการ)', ins: 'เครื่องมือ', sup: 'เวชภัณฑ์', both: 'แยก 2 ใบ'};
-async function renderPages(r, p){
+const PART_LABEL = {prep: 'ใบเตรียมเคส (รวมทุกรายการ)', borrow: 'ใบยืมของ (เฉพาะที่ยืม 1 หน้า)', ins: 'เครื่องมือ', sup: 'เวชภัณฑ์', both: 'แยก 2 ใบ'};
+async function renderPages(r, p, sc){
+  sc = sc || 1;
   try{ await Promise.all([document.fonts.load('26px ORThai'), document.fonts.load('bold 26px ORThai')]); }catch(e){}
-  const W = 1240, H = 1754, M = 80, FF = 'ORThai, Tahoma, sans-serif', TW = W - 2 * M;
+  const W = 1240 / sc, H = 1754 / sc, PW = 1240, PH = 1754, M = 80, FF = 'ORThai, Tahoma, sans-serif', TW = W - 2 * M;
   const pages = []; let cv, g, y;
-  const newPage = () => { cv = document.createElement('canvas'); cv.width = W; cv.height = H; g = cv.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, W, H); g.fillStyle = '#000'; g.textBaseline = 'top'; pages.push(cv); y = M; };
+  const newPage = () => { cv = document.createElement('canvas'); cv.width = PW; cv.height = PH; g = cv.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, PW, PH); g.setTransform(sc, 0, 0, sc, 0, 0); g.fillStyle = '#000'; g.textBaseline = 'top'; pages.push(cv); y = M; };
   const font = (px, b) => { g.font = (b ? 'bold ' : '') + px + 'px ' + FF; };
   const wrap = (txt, maxW) => { const out = []; String(txt || '').split('\n').forEach(par => { let line = ''; for(const ch of par){ if(g.measureText(line + ch).width > maxW && line){ out.push(line); line = ch; } else line += ch; } out.push(line); }); return out; };
   const box = (x, yy, s, on) => { g.lineWidth = 3; g.strokeRect(x, yy, s, s); if(on){ g.beginPath(); g.moveTo(x + 6, yy + s / 2); g.lineTo(x + s * 0.42, yy + s - 7); g.lineTo(x + s - 5, yy + 6); g.stroke(); } };
@@ -788,12 +791,21 @@ async function renderPages(r, p){
     const L = wrap(sg, TW); if(y + L.length * 40 + 20 > H - M){ newPage(); font(27, false); }
     L.forEach(l => { g.fillText(l, M, y); y += 40; });
   };
-  if(p === 'prep'){ newPage(); head('ใบเตรียมเคสผ่าตัด'); table('เครื่องมือ (Instrument)', r.ins, false); table('เวชภัณฑ์', r.sup, true); sign(); }
+  if(p === 'borrow'){
+    const bi = (r.ins || []).filter(x => x.s === 'B'), bs = (r.sup || []).filter(x => x.s === 'B');
+    newPage(); head('ใบยืมของ (เฉพาะรายการที่ต้องยืม)');
+    if(!bi.length && !bs.length){ font(30, false); g.fillText('เคสนี้ไม่มีรายการที่ต้องยืม', M, y); y += 60; }
+    if(bi.length) table('เครื่องมือที่ต้องยืม', bi, false);
+    if(bs.length) table('เวชภัณฑ์ที่ต้องยืม', bs, true);
+    sign();
+    if(pages.length > 1 && sc > 0.4) return renderPages(r, p, Math.max(0.4, sc * 0.85));
+  }
+  else if(p === 'prep'){ newPage(); head('ใบเตรียมเคสผ่าตัด'); table('เครื่องมือ (Instrument)', r.ins, false); table('เวชภัณฑ์', r.sup, true); sign(); }
   else{
     if(p === 'ins' || p === 'both'){ newPage(); head('เครื่องมือ (Instrument)'); table('เครื่องมือ (Instrument)', r.ins, false); sign(); }
     if(p === 'sup' || p === 'both'){ newPage(); head('เวชภัณฑ์'); table('เวชภัณฑ์', r.sup, true); sign(); }
   }
-  pages.forEach((c, i) => { const gg = c.getContext('2d'); gg.font = '22px ' + FF; gg.fillStyle = '#555'; gg.textBaseline = 'top'; const t = 'หน้า ' + (i + 1) + '/' + pages.length; gg.fillText(t, W - M - gg.measureText(t).width, H - 50); });
+  pages.forEach((c, i) => { const gg = c.getContext('2d'); gg.setTransform(1, 0, 0, 1, 0, 0); gg.font = '22px ' + FF; gg.fillStyle = '#555'; gg.textBaseline = 'top'; const t = 'หน้า ' + (i + 1) + '/' + pages.length; gg.fillText(t, PW - 80 - gg.measureText(t).width, PH - 50); });
   return pages;
 }
 const cvBytes = c => { const bin = atob(c.toDataURL('image/jpeg', 0.92).split(',')[1]), u = new Uint8Array(bin.length); for(let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); return u; };
@@ -817,7 +829,7 @@ function pagesToPdf(pages){
   return new Blob(chunks, {type: 'application/pdf'});
 }
 async function makePdf(r, parts){ return pagesToPdf(await renderPages(r, parts.length === 2 ? 'both' : parts[0])); }
-const fileBase = (r, p) => (p === 'prep' ? 'ใบเตรียมเคส_' : 'ใบยืมของ_') + String(r.caseName || '').replace(/[\\/:*?"<>|\s]+/g, '_').slice(0, 30) + '_' + (r.date || today()) + (p === 'ins' ? '_เครื่องมือ' : p === 'sup' ? '_เวชภัณฑ์' : '');
+const fileBase = (r, p) => (p === 'prep' ? 'ใบเตรียมเคส_' : p === 'borrow' ? 'ใบยืมของเฉพาะที่ยืม_' : 'ใบยืมของ_') + String(r.caseName || '').replace(/[\\/:*?"<>|\s]+/g, '_').slice(0, 30) + '_' + (r.date || today()) + (p === 'ins' ? '_เครื่องมือ' : p === 'sup' ? '_เวชภัณฑ์' : '');
 function downloadBlob(blob, name){ const l = document.createElement('a'); l.href = URL.createObjectURL(blob); l.download = name; document.body.appendChild(l); l.click(); l.remove(); setTimeout(() => URL.revokeObjectURL(l.href), 60000); }
 async function shareOrSave(files, title){
   if(navigator.canShare && navigator.canShare({files})){
@@ -834,7 +846,7 @@ function drawPrintMenu(){
   M.className = 'open';
   const seg = v => '<button class="' + (pmod.p === v ? 'pri' : '') + '" data-pm=part data-v=' + v + '>' + PART_LABEL[v] + '</button>';
   M.innerHTML = '<div class="sheet wide"><h2>พรีวิว / แชร์ / ปริ้น — ' + esc(r.caseName) + '</h2>' +
-    '<div class=seg style="grid-template-columns:1fr 1fr">' + seg('prep') + seg('both') + seg('ins') + seg('sup') + '</div>' +
+    '<div class=seg style="grid-template-columns:1fr 1fr">' + seg('prep') + seg('borrow') + seg('both') + seg('ins') + seg('sup') + '</div>' +
     '<div id=pv class=pv><div class=muted>กำลังสร้างพรีวิว…</div></div>' +
     '<div class=pmb><button class="pri big" data-pm=share>แชร์ไฟล์ PDF</button><button class=big data-pm=img>บันทึก / แชร์รูปภาพ</button><button class=big data-pm=print>ส่งไปเครื่องปริ้น</button></div>' +
     '<div class=muted style="margin-top:6px">ขนาด A4 · ส่งไปเครื่องปริ้น: เปิดแอปใน Chrome แล้วเลือกเครื่อง RICOH → A4 → พิมพ์ (วิธีเชื่อมเครื่องอยู่ในคู่มือ)</div>' +
@@ -885,11 +897,12 @@ function newItemRows(t, list){
   return rows;
 }
 function sugHtml(t, q){
+  if(mdl && mdl.picked && normN(q) === mdl.picked) return '<div class=added>เลือกแล้ว: ' + esc(mdl.picked) + ' — กด เพิ่ม ด้านล่าง หรือพิมพ์แก้ชื่อได้</div>';
   q = normN(q).toLowerCase();
   if(!q) return '<div class=muted style="font-size:15px">พิมพ์ 1–2 ตัวอักษร จะขึ้นรายการจากคลังให้แตะเลือก</div>';
   const L = catalog(t).filter(x => x.n.toLowerCase().indexOf(q) >= 0).slice(0, 8);
   if(!L.length) return '<div class=muted style="font-size:15px">ไม่มีในคลัง — กดเพิ่มได้เลย จะบันทึกเข้าคลังให้อัตโนมัติ</div>';
-  return '<div class=muted style="font-size:14px">แตะเพื่อเพิ่มทันที</div>' + L.map(x => '<button class=sug data-m=pick data-v="' + esc(x.id) + '">' + esc(x.n) + '<small>' + (x.or ? 'มีใน OR' : 'ต้องยืม') + (x.stock ? ' · stock ' + esc(x.stock) : '') + '</small></button>').join('');
+  return '<div class=muted style="font-size:14px">แตะชื่อเพื่อใส่ลงช่อง</div>' + L.map(x => '<button class=sug data-m=pick data-v="' + esc(x.id) + '">' + esc(x.n) + '<small>' + (x.or ? 'มีใน OR' : 'ต้องยืม') + (x.stock ? ' · stock ' + esc(x.stock) : '') + '</small></button>').join('');
 }
 let itemsTab = 'ins', itemQ = '', itemsEdit = null, itemDel = '';
 function startItems(){ itemsEdit = {ins: catalog('ins').map(x => Object.assign({}, x, {orig: x.derived ? '' : x.id})), sup: catalog('sup').map(x => Object.assign({}, x, {orig: x.derived ? '' : x.id})), gone: []}; }
@@ -898,13 +911,13 @@ function itemsView(){
   const L = itemsEdit[itemsTab], q = itemQ.trim().toLowerCase();
   let h = '<div class=card><div class=seg><button class="' + (itemsTab === 'ins' ? 'pri' : '') + '" data-act=itab data-v=ins>เครื่องมือ (' + itemsEdit.ins.length + ')</button><button class="' + (itemsTab === 'sup' ? 'pri' : '') + '" data-act=itab data-v=sup>เวชภัณฑ์ (' + itemsEdit.sup.length + ')</button></div>' +
     '<div class=muted style="font-size:15px;margin:6px 0">รายการทั้งหมดของ OR ใช้ซ้ำได้ทุกเคส ชื่อที่พิมพ์เพิ่มในเคสจะเข้าคลังเองเมื่อกดบันทึก</div>' +
-    '<div class=nmrow><input type=text id=newItem placeholder="เพิ่มชื่อ' + (itemsTab === 'ins' ? 'เครื่องมือ' : 'เวชภัณฑ์') + 'ใหม่"><button class=pri data-act=additem>เพิ่ม</button></div>' +
+    '<button class="pri big" data-act=catadd style="width:100%">＋ เพิ่มของใหม่เข้าคลัง</button>' +
     '<input type=text id=iq placeholder="ค้นหาในคลัง" value="' + esc(itemQ) + '" style="margin-top:8px"></div>';
   let n = 0;
   L.forEach((x, i) => {
-    if(q && x.n.toLowerCase().indexOf(q) < 0) return; n++;
+    if(q && (x.n + ' ' + (x.code || '')).toLowerCase().indexOf(q) < 0) return; n++;
     h += '<div class=row><div class=nmrow><input type=text class=nmin value="' + esc(x.n) + '" data-in=iname data-i=' + i + '><button class="sm' + (x.or ? ' on' : '') + '" data-act=ior data-i=' + i + '>' + (x.or ? 'มีใน OR ✓' : 'ต้องยืม') + '</button><button class="sm x' + (itemDel === x.id ? ' danger' : '') + '" data-act=idel data-i=' + i + '>' + (itemDel === x.id ? 'ยืนยันลบ' : 'ลบ') + '</button></div>' +
-      '<div class=imeta>' + (x.grp ? esc(x.grp) : '') + (x.stock ? ' · stock ' + esc(x.stock) : '') + '</div>' +
+      '<div class=imeta>' + [x.code ? 'รหัส ' + esc(x.code) : '', x.grp ? esc(x.grp) : '', x.stock ? 'stock ' + esc(x.stock) : ''].filter(Boolean).join(' · ') + '</div>' +
       (x.or ? '' : '<input type=text class=from placeholder="ยืมจากที่ไหน (ค่าเริ่มต้น)" value="' + esc(x.from) + '" data-in=ifrom data-i=' + i + '>') + '</div>';
   });
   if(!n) h += '<div class=muted>ไม่พบรายการ</div>';
@@ -912,11 +925,67 @@ function itemsView(){
 }
 async function saveItems(){
   const rows = [];
-  ['ins', 'sup'].forEach(t => itemsEdit[t].forEach(x => { const n = normN(x.n); if(!n) return; const id = itemId(t, n); if(x.orig && x.orig !== id) itemsEdit.gone.push(x.orig); rows.push({kind: 'item', id, data: {t, n, or: !!x.or, stock: x.stock || '', grp: x.grp === 'จากเคส' ? 'เพิ่มจากเคส' : (x.grp || ''), from: x.or ? '' : normN(x.from)}}); }));
+  ['ins', 'sup'].forEach(t => itemsEdit[t].forEach(x => { const n = normN(x.n); if(!n) return; const id = itemId(t, n); if(x.orig && x.orig !== id) itemsEdit.gone.push(x.orig); rows.push({kind: 'item', id, data: {t, n, code: x.code || '', or: !!x.or, stock: x.stock || '', grp: x.grp === 'จากเคส' ? 'เพิ่มจากเคส' : (x.grp || ''), from: x.or ? '' : normN(x.from)}}); }));
   const keep = {}; rows.forEach(r => keep[r.id] = 1);
   for(const id of itemsEdit.gone) if(!keep[id]) await delRow('item', id);
   for(let i = 0; i < rows.length; i += 200) await upsertRows(rows.slice(i, i + 200));
 }
+
+/* ===== แนะนำชื่อจากคลังใต้ช่องที่กำลังพิมพ์ (แตะแล้วใส่ลงช่องทันที) ===== */
+function inlineSug(inp, t){
+  const row = inp.closest('.row'); if(!row) return;
+  let box = row.querySelector('.isug'); if(!box){ box = document.createElement('div'); box.className = 'isug'; row.appendChild(box); }
+  const q = normN(inp.value).toLowerCase();
+  const L = q ? catalog(t).filter(x => x.n.toLowerCase().indexOf(q) >= 0 && x.n.toLowerCase() !== q).slice(0, 6) : [];
+  box.innerHTML = L.length ? '<div class=muted style="font-size:14px">แตะชื่อเพื่อใส่ลงช่อง</div>' + L.map(x => '<button class=sug data-isug="' + esc(x.id) + '" data-t=' + t + '>' + esc(x.n) + '<small>' + (x.or ? 'มีใน OR' : 'ต้องยืม') + '</small></button>').join('') : '';
+}
+function applyInlinePick(btn){
+  const row = btn.closest('.row'), inp = row && row.querySelector('input.nmin'); if(!inp) return;
+  const it = catalog(btn.dataset.t).find(x => x.id === btn.dataset.isug); if(!it) return;
+  const k = inp.dataset.k, i = +inp.dataset.i;
+  if(inp.dataset.in === 'nm'){ const x = draft[k][i]; x.n = it.n; x.s = it.or ? 'O' : 'B'; if(!it.or && it.from && !x.from) x.from = it.from; }
+  else if(inp.dataset.in === 'cnm'){ const x = editCase[k][i]; x[0] = it.n; if(k === 'sup') x[2] = it.or ? 'O' : ''; else x[1] = it.or ? 'O' : ''; }
+  render();
+}
+/* แตะรายการแนะนำ: ทำงานตอนนิ้วแตะ (ก่อนคีย์บอร์ดหุบ) จะได้กดโดนรายการที่เห็นจริง */
+document.addEventListener('pointerdown', e => {
+  const a = e.target.closest('[data-isug]');
+  if(a){ e.preventDefault(); applyInlinePick(a); return; }
+  const m = e.target.closest('[data-m=pick]');
+  if(m && mdl){ e.preventDefault(); mdlRead(); const it = catalog(mdl.key).find(x => x.id === m.dataset.v); if(it){ mdl.n = it.n; mdl.s = it.or ? 'O' : 'B'; mdl.from = it.from || ''; mdl.picked = it.n; drawModal(); } }
+}, true);
+
+/* ===== ป๊อปอัพเพิ่มของใหม่เข้าคลัง (บันทึกทันที) ===== */
+let cmod = null;
+function openCatAdd(){ cmod = {t: itemsTab, n: '', code: '', stock: '', or: true, from: '', err: ''}; drawCatAdd(); setTimeout(() => { const i = $('#cN'); if(i) i.focus(); }, 30); }
+function drawCatAdd(){
+  const M = $('#modal'); if(!cmod){ M.className = ''; M.innerHTML = ''; return; }
+  M.className = 'open';
+  M.innerHTML = '<div class=sheet><h2>เพิ่มของใหม่เข้าคลัง</h2>' +
+    '<div class=seg><button class="' + (cmod.t === 'ins' ? 'pri' : '') + '" data-cm=t data-v=ins>เครื่องมือ</button><button class="' + (cmod.t === 'sup' ? 'pri' : '') + '" data-cm=t data-v=sup>เวชภัณฑ์</button></div>' +
+    (cmod.err ? '<div class=err>' + esc(cmod.err) + '</div>' : '') +
+    '<label>ชื่อ</label><input type=text id=cN value="' + esc(cmod.n) + '" placeholder="' + (cmod.t === 'ins' ? 'เช่น Set General' : 'เช่น Vicryl 2-0') + '" autocomplete=off>' +
+    '<div class=nmrow style="margin-top:6px"><input type=text id=cC value="' + esc(cmod.code) + '" placeholder="รหัส (ถ้ามี)"><input type=text id=cS value="' + esc(cmod.stock) + '" placeholder="Stock (ถ้ามี)" style="max-width:150px"></div>' +
+    '<label>สถานะเริ่มต้น</label><div class=seg><button class="or' + (cmod.or ? ' on' : '') + '" data-cm=or data-v=1>มีใน OR</button><button class="bw' + (!cmod.or ? ' on' : '') + '" data-cm=or data-v=0>ต้องยืม</button></div>' +
+    (!cmod.or ? '<input type=text class=from id=cF value="' + esc(cmod.from) + '" placeholder="ยืมจากที่ไหน (ถ้ารู้)" style="margin-top:6px">' : '') +
+    '<div class=mact><button data-cm=close>ปิด</button><button class=pri data-cm=save>บันทึกเข้าคลัง</button></div></div>';
+}
+function cmRead(){ const g = id => { const e = $('#' + id); return e ? e.value : null; }; [['cN','n'],['cC','code'],['cS','stock'],['cF','from']].forEach(p => { const v = g(p[0]); if(v !== null) cmod[p[1]] = v; }); }
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-cm]'); if(!t){ if(cmod && e.target.id === 'modal'){ cmod = null; drawCatAdd(); } return; }
+  const m = t.dataset.cm; cmRead();
+  if(m === 'close'){ cmod = null; drawCatAdd(); }
+  else if(m === 't'){ cmod.t = t.dataset.v; drawCatAdd(); }
+  else if(m === 'or'){ cmod.or = t.dataset.v === '1'; drawCatAdd(); }
+  else if(m === 'save'){
+    const n = normN(cmod.n); if(!n){ cmod.err = 'ใส่ชื่อก่อน'; drawCatAdd(); return; }
+    const id = itemId(cmod.t, n);
+    if(catalog(cmod.t).some(x => x.id === id)){ cmod.err = 'มีชื่อนี้ในคลังแล้ว'; drawCatAdd(); return; }
+    const data = {t: cmod.t, n, code: normN(cmod.code), or: cmod.or, stock: normN(cmod.stock), grp: 'เพิ่มเอง', from: cmod.or ? '' : normN(cmod.from)};
+    const tab = cmod.t; cmod = null; drawCatAdd();
+    run(async () => { await upsertRows([{kind: 'item', id, data}]); if(itemsEdit) itemsEdit[tab].unshift(Object.assign({}, data, {id, orig: id})); await api(); itemsTab = tab; say('เพิ่ม "' + n + '" เข้าคลังแล้ว ใช้ได้ทุกเคสทันที'); });
+  }
+});
 
 render();
 refresh(true);
