@@ -728,6 +728,7 @@ document.addEventListener('input', e => {
   const t = e.target;
   if(t.dataset && t.dataset.in === 'iname'){ itemsEdit[itemsTab][+t.dataset.i].n = t.value; }
   else if(t.dataset && t.dataset.in === 'ifrom'){ itemsEdit[itemsTab][+t.dataset.i].from = t.value; }
+  else if(t.id === 'mN' && mdl && mdl.picked && Date.now() - lastPick < 900 && normN(t.value) !== normN(mdl.picked)){ t.value = mdl.picked; mdl.n = mdl.picked; }
   else if(t.id === 'mN' && mdl){ mdl.n = t.value; const b = $('#mSug'); if(b) b.innerHTML = sugHtml(mdl.key, t.value); }
 });
 document.addEventListener('keyup', e => {
@@ -1053,8 +1054,18 @@ document.addEventListener('pointerdown', e => {
   const a = e.target.closest('[data-isug]');
   if(a){ e.preventDefault(); applyInlinePick(a); return; }
   const m = e.target.closest('[data-m=pick]');
-  if(m && mdl){ e.preventDefault(); mdlRead(); const it = catalog(mdl.key).find(x => x.id === m.dataset.v); if(it){ mdl.n = it.n; mdl.s = it.or ? 'O' : 'B'; mdl.from = it.from || ''; mdl.picked = it.n; drawModal(); } }
+  if(m && mdl){ e.preventDefault(); modalPick(m.dataset.v); }
 }, true);
+/* ใส่ชื่อที่เลือกลงช่องทันที (แก้ที่ช่องเดิม ไม่วาดป๊อปอัพใหม่ และกันคีย์บอร์ดเขียนทับตัวอักษรที่พิมพ์ค้างอยู่) */
+let lastPick = 0;
+function modalPick(id){
+  const it = catalog(mdl.key).find(x => x.id === id); if(!it) return;
+  mdlRead(); mdl.n = it.n; mdl.s = it.or ? 'O' : 'B'; mdl.from = it.from || ''; mdl.picked = it.n; lastPick = Date.now();
+  const inp = $('#mN'); if(inp){ try{ inp.blur(); }catch(e){} inp.value = it.n; }
+  drawModal();
+  const i2 = $('#mN'); if(i2){ i2.value = it.n; }
+}
+document.addEventListener('click', e => { const m = e.target.closest('[data-m=pick]'); if(m && mdl && Date.now() - lastPick > 700) modalPick(m.dataset.v); }, true);
 
 /* ===== ป๊อปอัพเพิ่มของใหม่เข้าคลัง (บันทึกทันที) ===== */
 let cmod = null;
