@@ -60,7 +60,7 @@ button.sug small{color:#2d6a4f;font-size:14px;white-space:nowrap}
 .isug{margin-top:4px}.isug:empty{display:none}
 .imeta{font-size:13px;color:#888;margin-top:2px}
 .sheet.wide{max-width:640px}
-.pv{max-height:52vh;overflow:auto;background:#d9d7cf;padding:8px;border-radius:10px;margin:8px 0}
+.sheet.wide{display:flex;flex-direction:column;height:92vh}.sheet.wide .pv{flex:1;min-height:0;max-height:none}.sheet.wide .pmb{grid-template-columns:1fr 1fr 1fr}.sheet.wide .pmb button,.sheet.wide .seg button{padding:8px 4px!important;font-size:15px!important;min-height:0!important}.sheet.wide .pmb,.sheet.wide .seg,.sheet.wide h2{flex:none}.pv{max-height:52vh;overflow:auto;background:#d9d7cf;padding:8px;border-radius:10px;margin:8px 0}
 .pv img{display:block;width:100%;height:auto;margin:0 auto 8px;box-shadow:0 1px 4px rgba(0,0,0,.25);background:#fff}
 .pmb{display:grid;gap:8px}.pmb button{width:100%}
 .bar{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:6px 0 8px;font-size:14px;color:#555}
@@ -750,10 +750,11 @@ document.addEventListener('click', e => {
 document.addEventListener('keydown', e => { if(mdl && e.key === 'Escape') closeModal(); if(mdl && e.key === 'Enter' && e.target.tagName === 'INPUT'){ if(mdlAdd()){ drawModal(); const i = $('#mN'); if(i) i.focus(); } } });
 
 /* ===== สร้างหน้า A4 (พรีวิว / PDF / รูปภาพ / ปริ้น) ===== */
-const PART_LABEL = {prep: 'ใบเตรียมเคส (รวมทุกรายการ)', borrow: 'แบบฟอร์มยืม-คืน (เฉพาะที่ยืม)', ins: 'เครื่องมือ', sup: 'เวชภัณฑ์', both: 'แยก 2 ใบ'};
+const PART_LABEL = {prep: 'ใบเตรียมเคส (รวมทุกรายการ)', borrow: 'ใบยืม 2 ใบ (ครบชุด)', ins: 'เครื่องมือ', sup: 'เวชภัณฑ์', both: 'เช็กลิสต์แยก 2 ใบ', bins: 'ใบยืมเครื่องมือ', bsup: 'ใบยืมเวชภัณฑ์'};
+const isBorrow = p => p === 'borrow' || p === 'bins' || p === 'bsup';
 async function renderPages(r, p, sc){
   sc = sc || 1;
-  if(p === 'borrow'){ try{ return await renderPagesRaw(r, p, sc); }catch(e){ if(e.message === '__toolong' && sc > 0.4) return renderPages(r, p, Math.max(0.4, sc * 0.85)); throw e; } }
+  if(isBorrow(p)){ try{ return await renderPagesRaw(r, p, sc); }catch(e){ if(e.message === '__toolong' && sc > 0.4) return renderPages(r, p, Math.max(0.4, sc * 0.85)); throw e; } }
   return renderPagesRaw(r, p, sc);
 }
 async function renderPagesRaw(r, p, sc){
@@ -799,12 +800,16 @@ async function renderPagesRaw(r, p, sc){
     const L = wrap(sg, TW); if(y + L.length * 40 + 20 > H - M){ newPage(); font(27, false); }
     L.forEach(l => { g.fillText(l, M, y); y += 40; });
   };
-  if(p === 'borrow'){
+  if(isBorrow(p)){
     /* แบบฟอร์มการยืม-คืนเครื่องมือแพทย์ระหว่างโรงพยาบาล: 1 หน้าต่อ 1 หน่วยงานผู้ให้ยืม */
-    const all = [].concat((r.ins || []).filter(x => x.s === 'B').map(x => Object.assign({k: 'เครื่องมือ'}, x)), (r.sup || []).filter(x => x.s === 'B').map(x => Object.assign({k: 'เวชภัณฑ์'}, x)));
-    const groups = {}, order = [];
-    all.forEach(x => { const f = normN(x.from) || ''; if(!groups[f]){ groups[f] = []; order.push(f); } groups[f].push(x); });
-    if(!order.length) order.push('__none');
+    const kinds = p === 'bins' ? ['ins'] : p === 'bsup' ? ['sup'] : ['ins', 'sup'];
+    const KN = {ins: 'เครื่องมือ (Instrument)', sup: 'เวชภัณฑ์'};
+    const sheets = [];
+    kinds.forEach(k => {
+      const L = (r[k] || []).filter(x => x.s === 'B'), groups = {}, order = [];
+      L.forEach(x => { const f = normN(x.from) || ''; if(!groups[f]){ groups[f] = []; order.push(f); } groups[f].push(x); });
+      if(!order.length) sheets.push({k, f: '', L: []}); else order.forEach(f => sheets.push({k, f, L: groups[f]}));
+    });
     const dl = (label, x, w, val) => { g.fillText(label, x, y); const lx = x + g.measureText(label).width + 6, ex = x + w;
       g.save(); g.setLineDash([3, 6]); g.lineWidth = 2; g.beginPath(); g.moveTo(lx, y + 34); g.lineTo(ex, y + 34); g.stroke(); g.restore();
       if(val){ const v = wrap(val, ex - lx - 8)[0]; g.fillText(v, lx + 6, y); } };
@@ -813,8 +818,8 @@ async function renderPagesRaw(r, p, sc){
       font(26, false); dl('กรณีรายการไม่ครบตามระบุ หรือไม่พร้อมใช้งาน รายละเอียด', M, TW); y += 48;
       dl('ผลการตรวจสอบและการแก้ไข', M, TW * 0.58); dl('ผู้ตรวจสอบและแก้ไข', M + TW * 0.6, TW * 0.4); y += 48;
     };
-    order.forEach(f => {
-      const L = f === '__none' ? [] : groups[f];
+    sheets.forEach(sh => {
+      const L = sh.L, f = sh.f;
       newPage();
       g.lineWidth = 3; g.strokeRect(M, y, TW, 92); font(34, true);
       const t1 = 'แบบฟอร์มการยืม - คืน เครื่องมือแพทย์ระหว่างโรงพยาบาลในเครือ BDMS';
@@ -822,8 +827,8 @@ async function renderPagesRaw(r, p, sc){
       font(28, true); g.fillText('รายละเอียดการยืม', M, y); y += 46; font(26, false);
       dl('เคสผ่าตัด :', M, TW * 0.62, r.caseName); dl('วันที่ผ่าตัด :', M + TW * 0.64, TW * 0.36, thDate(r.date)); y += 46;
       dl('แพทย์ :', M, TW * 0.62, r.doctor || ''); dl('ผู้ประสานงาน :', M + TW * 0.64, TW * 0.36, r.by2 || r.by || ''); y += 46;
-      dl('หน่วยงานผู้ให้ยืม :', M, TW * 0.55, f === '' || f === '__none' ? '' : f); dl('หน่วยงานผู้ยืม :', M + TW * 0.57, TW * 0.43, 'ห้องผ่าตัด'); y += 58;
-      font(28, true); g.fillText('รายการเครื่องมือ / อุปกรณ์ที่ยืม', M, y); y += 46;
+      dl('หน่วยงานผู้ให้ยืม :', M, TW * 0.55, f); dl('หน่วยงานผู้ยืม :', M + TW * 0.57, TW * 0.43, 'ห้องผ่าตัด'); y += 58;
+      font(30, true); g.fillText('ใบยืม' + KN[sh.k], M, y); y += 46;
       const cw = [90, 560, 130, TW - 780], hh = 52;
       const hdrs = ['ลำดับ', 'รายการ', 'จำนวน', 'หมายเหตุ'];
       let x = M; font(25, true); g.fillStyle = '#e6e6e6'; g.fillRect(M, y, TW, hh); g.fillStyle = '#000'; g.lineWidth = 2;
@@ -832,14 +837,13 @@ async function renderPagesRaw(r, p, sc){
       const nRows = Math.max(rows.length, 5);
       for(let i = 0; i < nRows; i++){
         const it = rows[i]; font(25, false);
-        const nl = it ? wrap(it.n, cw[1] - 20) : [''], ml = it ? wrap(it.k, cw[3] - 20) : [''];
+        const nl = it ? wrap(it.n, cw[1] - 20) : [''], ml = [''];
         const rh = Math.max(nl.length, ml.length, 1) * 34 + 18;
         x = M; cw.forEach(w => { g.strokeRect(x, y, w, rh); x += w; });
         if(it){
           const no = String(i + 1); g.fillText(no, M + (cw[0] - g.measureText(no).width) / 2, y + 9);
           nl.forEach((l, j) => g.fillText(l, M + cw[0] + 10, y + 9 + j * 34));
           const q = it.q || ''; g.fillText(q, M + cw[0] + cw[1] + (cw[2] - g.measureText(q).width) / 2, y + 9);
-          ml.forEach((l, j) => g.fillText(l, M + cw[0] + cw[1] + cw[2] + 10, y + 9 + j * 34));
         }
         y += rh;
       }
@@ -881,7 +885,7 @@ function pagesToPdf(pages){
   return new Blob(chunks, {type: 'application/pdf'});
 }
 async function makePdf(r, parts){ return pagesToPdf(await renderPages(r, parts.length === 2 ? 'both' : parts[0])); }
-const fileBase = (r, p) => (p === 'prep' ? 'ใบเตรียมเคส_' : p === 'borrow' ? 'แบบฟอร์มยืมคืน_' : 'ใบยืมของ_') + String(r.caseName || '').replace(/[\\/:*?"<>|\s]+/g, '_').slice(0, 30) + '_' + (r.date || today()) + (p === 'ins' ? '_เครื่องมือ' : p === 'sup' ? '_เวชภัณฑ์' : '');
+const fileBase = (r, p) => (p === 'prep' ? 'ใบเตรียมเคส_' : p === 'borrow' ? 'แบบฟอร์มยืมคืน_' : p === 'bins' ? 'ใบยืมเครื่องมือ_' : p === 'bsup' ? 'ใบยืมเวชภัณฑ์_' : 'ใบยืมของ_') + String(r.caseName || '').replace(/[\\/:*?"<>|\s]+/g, '_').slice(0, 30) + '_' + (r.date || today()) + (p === 'ins' ? '_เครื่องมือ' : p === 'sup' ? '_เวชภัณฑ์' : '');
 function downloadBlob(blob, name){ const l = document.createElement('a'); l.href = URL.createObjectURL(blob); l.download = name; document.body.appendChild(l); l.click(); l.remove(); setTimeout(() => URL.revokeObjectURL(l.href), 60000); }
 async function shareOrSave(files, title){
   if(navigator.canShare && navigator.canShare({files})){
@@ -898,10 +902,10 @@ function drawPrintMenu(){
   M.className = 'open';
   const seg = v => '<button class="' + (pmod.p === v ? 'pri' : '') + '" data-pm=part data-v=' + v + '>' + PART_LABEL[v] + '</button>';
   M.innerHTML = '<div class="sheet wide"><h2>พรีวิว / แชร์ / ปริ้น — ' + esc(r.caseName) + '</h2>' +
-    '<div class=seg style="grid-template-columns:1fr 1fr">' + seg('prep') + seg('borrow') + seg('both') + seg('ins') + seg('sup') + '</div>' +
+    '<div class=seg style="grid-template-columns:1fr 1fr 1fr">' + seg('prep') + seg('borrow') + seg('both') + seg('bins') + seg('bsup') + '</div>' +
     '<div id=pv class=pv><div class=muted>กำลังสร้างพรีวิว…</div></div>' +
-    '<div class=pmb><button class="pri big" data-pm=share>แชร์ไฟล์ PDF</button><button class=big data-pm=img>บันทึกเป็นรูปภาพ</button><button class=big data-pm=print>ส่งไปเครื่องปริ้น</button></div>' +
-    '<div class=muted style="margin-top:6px">ขนาด A4 · ส่งไปเครื่องปริ้น: เปิดแอปใน Chrome แล้วเลือกเครื่อง RICOH → A4 → พิมพ์ (วิธีเชื่อมเครื่องอยู่ในคู่มือ)</div>' +
+    '<div class=pmb><button class="pri big" data-pm=share>แชร์ PDF</button><button class=big data-pm=img>บันทึกรูป</button><button class=big data-pm=print>ปริ้น</button></div>' +
+    '<div class=muted style="margin-top:4px;font-size:13px">A4 · ปริ้น: เปิดใน Chrome → เลือกเครื่อง RICOH → A4 → พิมพ์</div>' +
     '<div class=mact><button data-pm=close>ปิด</button></div></div>';
   const want = pmod.p;
   pmPages(r).then(cv => { if(!pmod || pmod.p !== want) return; const P = $('#pv'); if(P) P.innerHTML = cv.map((c, i) => '<img alt="หน้า ' + (i + 1) + '" src="' + c.toDataURL('image/jpeg', 0.85) + '">').join(''); })
