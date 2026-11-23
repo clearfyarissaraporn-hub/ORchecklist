@@ -773,7 +773,7 @@ function mdlAdd(){
 }
 document.addEventListener('click', e => {
   const t = e.target.closest('[data-m]');
-  if(!t){ if(e.target.id === 'modal') closeModal(); return; }
+  if(!t) return; /* ไม่ปิดเมื่อแตะพื้นหลัง (กันคีย์บอร์ดหุบแล้วนิ้วโดนพื้นหลัง) ปิดด้วยปุ่ม ปิด เท่านั้น */
   const m = t.dataset.m;
   if(m === 'close') closeModal();
   else if(m === 'type'){ mdlRead(); mdl.key = t.dataset.v; drawModal(); }
@@ -1061,7 +1061,6 @@ let lastPick = 0;
 function modalPick(id){
   const it = catalog(mdl.key).find(x => x.id === id); if(!it) return;
   mdlRead(); mdl.n = it.n; mdl.s = it.or ? 'O' : 'B'; mdl.from = it.from || ''; mdl.picked = it.n; lastPick = Date.now();
-  const inp = $('#mN'); if(inp){ try{ inp.blur(); }catch(e){} inp.value = it.n; }
   drawModal();
   const i2 = $('#mN'); if(i2){ i2.value = it.n; }
 }
@@ -1084,7 +1083,7 @@ function drawCatAdd(){
 }
 function cmRead(){ const g = id => { const e = $('#' + id); return e ? e.value : null; }; [['cN','n'],['cC','code'],['cS','stock'],['cF','from']].forEach(p => { const v = g(p[0]); if(v !== null) cmod[p[1]] = v; }); }
 document.addEventListener('click', e => {
-  const t = e.target.closest('[data-cm]'); if(!t){ if(cmod && e.target.id === 'modal'){ cmod = null; drawCatAdd(); } return; }
+  const t = e.target.closest('[data-cm]'); if(!t) return;
   const m = t.dataset.cm; cmRead();
   if(m === 'close'){ cmod = null; drawCatAdd(); }
   else if(m === 't'){ cmod.t = t.dataset.v; drawCatAdd(); }
