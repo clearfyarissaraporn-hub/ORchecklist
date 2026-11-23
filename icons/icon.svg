@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#bfe9cf"/><stop offset="1" stop-color="#8fd3ae"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <!-- sparkles -->
+  <path d="M92 108l8 20 20 8-20 8-8 20-8-20-20-8 20-8z" fill="#fff" opacity=".9"/>
+  <path d="M424 96l6 14 14 6-14 6-6 14-6-14-14-6 14-6z" fill="#fff" opacity=".85"/>
+  <circle cx="430" cy="412" r="9" fill="#fff" opacity=".8"/>
+  <!-- clipboard -->
+  <rect x="118" y="104" width="276" height="336" rx="40" fill="#2d6a4f"/>
+  <rect x="140" y="134" width="232" height="286" rx="28" fill="#fffdf7"/>
+  <rect x="196" y="82" width="120" height="58" rx="22" fill="#f6b8c6" stroke="#2d6a4f" stroke-width="10"/>
+  <circle cx="256" cy="108" r="9" fill="#2d6a4f"/>
+  <!-- checklist rows -->
+  <rect x="168" y="292" width="30" height="30" rx="8" fill="#d8f3dc" stroke="#2d6a4f" stroke-width="6"/>
+  <path d="M174 307l7 8 13-16" fill="none" stroke="#2d6a4f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="212" y="300" width="132" height="14" rx="7" fill="#cfe7d8"/>
+  <rect x="168" y="346" width="30" height="30" rx="8" fill="#fff0d6" stroke="#ba7517" stroke-width="6"/>
+  <rect x="212" y="354" width="104" height="14" rx="7" fill="#f3dfc0"/>
+  <!-- cute face -->
+  <ellipse cx="214" cy="210" rx="13" ry="16" fill="#23302a"/>
+  <ellipse cx="298" cy="210" rx="13" ry="16" fill="#23302a"/>
+  <circle cx="219" cy="204" r="5" fill="#fff"/><circle cx="303" cy="204" r="5" fill="#fff"/>
+  <ellipse cx="190" cy="242" rx="18" ry="11" fill="#f6a5b8" opacity=".8"/>
+  <ellipse cx="322" cy="242" rx="18" ry="11" fill="#f6a5b8" opacity=".8"/>
+  <path d="M238 236q18 18 36 0" fill="none" stroke="#23302a" stroke-width="8" stroke-linecap="round"/>
+  <!-- nurse cap cross -->
+  <rect x="245" y="150" width="22" height="8" rx="3" fill="#e05a6d"/>
+  <rect x="252" y="143" width="8" height="22" rx="3" fill="#e05a6d"/>
+</svg>
