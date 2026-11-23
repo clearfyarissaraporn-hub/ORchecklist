@@ -104,7 +104,7 @@ button.back{margin:0 0 10px;background:transparent}
   #print img.pg{display:block;width:210mm;height:297mm;page-break-after:always}
   #print img.pg:last-child{page-break-after:auto}
   body{background:#fff;font-family:"ORThai","Sarabun",Tahoma,sans-serif;font-size:12pt;line-height:1.45;color:#000}
-  #app,#busy{display:none!important}
+  body>*:not(#print){display:none!important}
   #print{display:block}
   #print h1{font-size:17pt;margin:0 0 2px}
   #print h2{font-size:14pt;margin:10px 0 4px}
@@ -750,9 +750,13 @@ document.addEventListener('click', e => {
 document.addEventListener('keydown', e => { if(mdl && e.key === 'Escape') closeModal(); if(mdl && e.key === 'Enter' && e.target.tagName === 'INPUT'){ if(mdlAdd()){ drawModal(); const i = $('#mN'); if(i) i.focus(); } } });
 
 /* ===== สร้างหน้า A4 (พรีวิว / PDF / รูปภาพ / ปริ้น) ===== */
-const PART_LABEL = {prep: 'ใบเตรียมเคส (รวมทุกรายการ)', borrow: 'ใบยืมของ (เฉพาะที่ยืม 1 หน้า)', ins: 'เครื่องมือ', sup: 'เวชภัณฑ์', both: 'แยก 2 ใบ'};
+const PART_LABEL = {prep: 'ใบเตรียมเคส (รวมทุกรายการ)', borrow: 'แบบฟอร์มยืม-คืน (เฉพาะที่ยืม)', ins: 'เครื่องมือ', sup: 'เวชภัณฑ์', both: 'แยก 2 ใบ'};
 async function renderPages(r, p, sc){
   sc = sc || 1;
+  if(p === 'borrow'){ try{ return await renderPagesRaw(r, p, sc); }catch(e){ if(e.message === '__toolong' && sc > 0.4) return renderPages(r, p, Math.max(0.4, sc * 0.85)); throw e; } }
+  return renderPagesRaw(r, p, sc);
+}
+async function renderPagesRaw(r, p, sc){
   try{ await Promise.all([document.fonts.load('26px ORThai'), document.fonts.load('bold 26px ORThai')]); }catch(e){}
   const W = 1240 / sc, H = 1754 / sc, PW = 1240, PH = 1754, M = 80, FF = 'ORThai, Tahoma, sans-serif', TW = W - 2 * M;
   const pages = []; let cv, g, y;
@@ -796,13 +800,57 @@ async function renderPages(r, p, sc){
     L.forEach(l => { g.fillText(l, M, y); y += 40; });
   };
   if(p === 'borrow'){
-    const bi = (r.ins || []).filter(x => x.s === 'B'), bs = (r.sup || []).filter(x => x.s === 'B');
-    newPage(); head('ใบยืมของ (เฉพาะรายการที่ต้องยืม)');
-    if(!bi.length && !bs.length){ font(30, false); g.fillText('เคสนี้ไม่มีรายการที่ต้องยืม', M, y); y += 60; }
-    if(bi.length) table('เครื่องมือที่ต้องยืม', bi, false);
-    if(bs.length) table('เวชภัณฑ์ที่ต้องยืม', bs, true);
-    sign();
-    if(pages.length > 1 && sc > 0.4) return renderPages(r, p, Math.max(0.4, sc * 0.85));
+    /* แบบฟอร์มการยืม-คืนเครื่องมือแพทย์ระหว่างโรงพยาบาล: 1 หน้าต่อ 1 หน่วยงานผู้ให้ยืม */
+    const all = [].concat((r.ins || []).filter(x => x.s === 'B').map(x => Object.assign({k: 'เครื่องมือ'}, x)), (r.sup || []).filter(x => x.s === 'B').map(x => Object.assign({k: 'เวชภัณฑ์'}, x)));
+    const groups = {}, order = [];
+    all.forEach(x => { const f = normN(x.from) || ''; if(!groups[f]){ groups[f] = []; order.push(f); } groups[f].push(x); });
+    if(!order.length) order.push('__none');
+    const dl = (label, x, w, val) => { g.fillText(label, x, y); const lx = x + g.measureText(label).width + 6, ex = x + w;
+      g.save(); g.setLineDash([3, 6]); g.lineWidth = 2; g.beginPath(); g.moveTo(lx, y + 34); g.lineTo(ex, y + 34); g.stroke(); g.restore();
+      if(val){ const v = wrap(val, ex - lx - 8)[0]; g.fillText(v, lx + 6, y); } };
+    const check = title => {
+      font(27, true); g.lineWidth = 2; g.strokeRect(M, y + 6, 26, 26); g.fillText(title, M + 40, y); y += 50;
+      font(26, false); dl('กรณีรายการไม่ครบตามระบุ หรือไม่พร้อมใช้งาน รายละเอียด', M, TW); y += 48;
+      dl('ผลการตรวจสอบและการแก้ไข', M, TW * 0.58); dl('ผู้ตรวจสอบและแก้ไข', M + TW * 0.6, TW * 0.4); y += 48;
+    };
+    order.forEach(f => {
+      const L = f === '__none' ? [] : groups[f];
+      newPage();
+      g.lineWidth = 3; g.strokeRect(M, y, TW, 92); font(34, true);
+      const t1 = 'แบบฟอร์มการยืม - คืน เครื่องมือแพทย์ระหว่างโรงพยาบาลในเครือ BDMS';
+      let fs = 34; while(fs > 22 && (font(fs, true), g.measureText(t1).width > TW - 30)) fs -= 1; g.fillText(t1, M + (TW - g.measureText(t1).width) / 2, y + 46 - fs / 2); y += 120;
+      font(28, true); g.fillText('รายละเอียดการยืม', M, y); y += 46; font(26, false);
+      dl('เคสผ่าตัด :', M, TW * 0.62, r.caseName); dl('วันที่ผ่าตัด :', M + TW * 0.64, TW * 0.36, thDate(r.date)); y += 46;
+      dl('แพทย์ :', M, TW * 0.62, r.doctor || ''); dl('ผู้ประสานงาน :', M + TW * 0.64, TW * 0.36, r.by2 || r.by || ''); y += 46;
+      dl('หน่วยงานผู้ให้ยืม :', M, TW * 0.55, f === '' || f === '__none' ? '' : f); dl('หน่วยงานผู้ยืม :', M + TW * 0.57, TW * 0.43, 'ห้องผ่าตัด'); y += 58;
+      font(28, true); g.fillText('รายการเครื่องมือ / อุปกรณ์ที่ยืม', M, y); y += 46;
+      const cw = [90, 560, 130, TW - 780], hh = 52;
+      const hdrs = ['ลำดับ', 'รายการ', 'จำนวน', 'หมายเหตุ'];
+      let x = M; font(25, true); g.fillStyle = '#e6e6e6'; g.fillRect(M, y, TW, hh); g.fillStyle = '#000'; g.lineWidth = 2;
+      cw.forEach((w, i) => { g.strokeRect(x, y, w, hh); const tw = g.measureText(hdrs[i]).width; g.fillText(hdrs[i], x + (w - tw) / 2, y + 11); x += w; }); y += hh;
+      const rows = L.length ? L : [];
+      const nRows = Math.max(rows.length, 5);
+      for(let i = 0; i < nRows; i++){
+        const it = rows[i]; font(25, false);
+        const nl = it ? wrap(it.n, cw[1] - 20) : [''], ml = it ? wrap(it.k, cw[3] - 20) : [''];
+        const rh = Math.max(nl.length, ml.length, 1) * 34 + 18;
+        x = M; cw.forEach(w => { g.strokeRect(x, y, w, rh); x += w; });
+        if(it){
+          const no = String(i + 1); g.fillText(no, M + (cw[0] - g.measureText(no).width) / 2, y + 9);
+          nl.forEach((l, j) => g.fillText(l, M + cw[0] + 10, y + 9 + j * 34));
+          const q = it.q || ''; g.fillText(q, M + cw[0] + cw[1] + (cw[2] - g.measureText(q).width) / 2, y + 9);
+          ml.forEach((l, j) => g.fillText(l, M + cw[0] + cw[1] + cw[2] + 10, y + 9 + j * 34));
+        }
+        y += rh;
+      }
+      y += 34;
+      check('ตรวจสอบรายการครบตามระบุ และพร้อมใช้งาน/ไม่ชำรุด ก่อนให้ยืม');
+      font(26, false); dl('เจ้าหน้าที่ผู้ให้ยืม', M, TW * 0.36); dl('เจ้าหน้าที่ผู้ยืม', M + TW * 0.38, TW * 0.36); dl('วันที่', M + TW * 0.76, TW * 0.24); y += 56;
+      g.lineWidth = 2; g.beginPath(); g.moveTo(M, y); g.lineTo(M + TW, y); g.stroke(); y += 26;
+      check('ตรวจสอบรายการครบตามระบุ และพร้อมใช้งาน/ไม่ชำรุด ก่อนรับคืน');
+      font(26, false); dl('เจ้าหน้าที่ผู้ยืม', M, TW * 0.36); dl('เจ้าหน้าที่ผู้ให้ยืม', M + TW * 0.38, TW * 0.36); dl('วันที่', M + TW * 0.76, TW * 0.24, r.returned ? String(r.returned).slice(0, 10) : ''); y += 50;
+      if(y > H - M) { pages.pop(); throw new Error('__toolong'); }
+    });
   }
   else if(p === 'prep'){ newPage(); head('ใบเตรียมเคสผ่าตัด'); table('เครื่องมือ (Instrument)', r.ins, false); table('เวชภัณฑ์', r.sup, true); sign(); }
   else{
@@ -833,7 +881,7 @@ function pagesToPdf(pages){
   return new Blob(chunks, {type: 'application/pdf'});
 }
 async function makePdf(r, parts){ return pagesToPdf(await renderPages(r, parts.length === 2 ? 'both' : parts[0])); }
-const fileBase = (r, p) => (p === 'prep' ? 'ใบเตรียมเคส_' : p === 'borrow' ? 'ใบยืมของเฉพาะที่ยืม_' : 'ใบยืมของ_') + String(r.caseName || '').replace(/[\\/:*?"<>|\s]+/g, '_').slice(0, 30) + '_' + (r.date || today()) + (p === 'ins' ? '_เครื่องมือ' : p === 'sup' ? '_เวชภัณฑ์' : '');
+const fileBase = (r, p) => (p === 'prep' ? 'ใบเตรียมเคส_' : p === 'borrow' ? 'แบบฟอร์มยืมคืน_' : 'ใบยืมของ_') + String(r.caseName || '').replace(/[\\/:*?"<>|\s]+/g, '_').slice(0, 30) + '_' + (r.date || today()) + (p === 'ins' ? '_เครื่องมือ' : p === 'sup' ? '_เวชภัณฑ์' : '');
 function downloadBlob(blob, name){ const l = document.createElement('a'); l.href = URL.createObjectURL(blob); l.download = name; document.body.appendChild(l); l.click(); l.remove(); setTimeout(() => URL.revokeObjectURL(l.href), 60000); }
 async function shareOrSave(files, title){
   if(navigator.canShare && navigator.canShare({files})){
@@ -852,7 +900,7 @@ function drawPrintMenu(){
   M.innerHTML = '<div class="sheet wide"><h2>พรีวิว / แชร์ / ปริ้น — ' + esc(r.caseName) + '</h2>' +
     '<div class=seg style="grid-template-columns:1fr 1fr">' + seg('prep') + seg('borrow') + seg('both') + seg('ins') + seg('sup') + '</div>' +
     '<div id=pv class=pv><div class=muted>กำลังสร้างพรีวิว…</div></div>' +
-    '<div class=pmb><button class="pri big" data-pm=share>แชร์ไฟล์ PDF</button><button class=big data-pm=img>บันทึก / แชร์รูปภาพ</button><button class=big data-pm=print>ส่งไปเครื่องปริ้น</button></div>' +
+    '<div class=pmb><button class="pri big" data-pm=share>แชร์ไฟล์ PDF</button><button class=big data-pm=img>บันทึกเป็นรูปภาพ</button><button class=big data-pm=print>ส่งไปเครื่องปริ้น</button></div>' +
     '<div class=muted style="margin-top:6px">ขนาด A4 · ส่งไปเครื่องปริ้น: เปิดแอปใน Chrome แล้วเลือกเครื่อง RICOH → A4 → พิมพ์ (วิธีเชื่อมเครื่องอยู่ในคู่มือ)</div>' +
     '<div class=mact><button data-pm=close>ปิด</button></div></div>';
   const want = pmod.p;
@@ -860,6 +908,7 @@ function drawPrintMenu(){
     .catch(e => { const P = $('#pv'); if(P) P.innerHTML = '<div class=err>สร้างพรีวิวไม่สำเร็จ: ' + esc(e.message) + '</div>'; });
 }
 function printPages(cv){
+  pmod = null; drawPrintMenu();
   $('#print').innerHTML = cv.map(c => '<img class=pg src="' + c.toDataURL('image/jpeg', 0.92) + '">').join('');
   setTimeout(() => window.print(), 120);
 }
@@ -878,6 +927,7 @@ document.addEventListener('click', e => {
       let files;
       if(m === 'share') files = [new File([pagesToPdf(cv)], base + '.pdf', {type: 'application/pdf'})];
       else files = cv.map((c, i) => new File([cvBytes(c)], base + (cv.length > 1 ? '_หน้า' + (i + 1) : '') + '.jpg', {type: 'image/jpeg'}));
+      if(m === 'img'){ files.forEach(f => downloadBlob(f, f.name)); say('บันทึกรูปภาพแล้ว ' + files.length + ' ไฟล์ (ดูในแกลเลอรี/โฟลเดอร์ดาวน์โหลด)'); render(); return; }
       const res = await shareOrSave(files, base);
       if(res === 'saved'){ say(m === 'share' ? 'บันทึกไฟล์ PDF แล้ว (โฟลเดอร์ดาวน์โหลด)' : 'บันทึกรูปภาพแล้ว ' + files.length + ' ไฟล์ (โฟลเดอร์ดาวน์โหลด)'); render(); }
     }catch(err){ say('ทำไม่สำเร็จ: ' + err.message, 'err'); render(); }
