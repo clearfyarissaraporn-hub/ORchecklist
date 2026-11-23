@@ -144,7 +144,7 @@ let serverVersion = '';
 /* ===== สถานะ ===== */
 let S = {cases:[], doctors:[], staff:[], templates:{}, records:[]};
 let loaded = false, busy = false, lastSync = '', msg = '', msgType = 'ok';
-const VIEWMAP = {'#saved':'saved','#items':'items','#settings':'settings','#cases':'cases','#people':'people','#help':'help','#backup':'backup'};
+const VIEWMAP = {'#head':'head','#saved':'saved','#items':'items','#settings':'settings','#cases':'cases','#people':'people','#help':'help','#backup':'backup'};
 let view = VIEWMAP[location.hash] || 'new';
 let catSel = '', caseQ = '', step = 1, draft = null, editCase = null, delPending = '', justSaved = false, filt = {q:'', borrow:'all'};
 const keep = {doctor:'', date:'', by:''};
@@ -153,7 +153,7 @@ const $ = s => document.querySelector(s);
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const today = () => { const d = new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); };
 const thDate = s => { if(!s) return ''; const p = String(s).split('-'); return p.length === 3 ? p[2]+'/'+p[1]+'/'+(+p[0]+543) : s; };
-const SUBV = ['settings','items','cases','people','backup','help','setup'];
+const SUBV = ['settings','head','items','cases','people','backup','help','setup'];
 const caseById = id => S.cases.find(c => c.id === id);
 const clone = o => JSON.parse(JSON.stringify(o));
 
@@ -229,12 +229,31 @@ async function loadAll(){
     else if(r.kind === 'staff') sr.push(r.data);
     else if(r.kind === 'template') d.templates[r.id] = r.data;
     else if(r.kind === 'item') d.items.push(r.data);
+    else if(r.kind === 'setting' && r.id === 'head') d.head = r.data;
   });
   d.cases.sort((a, b) => caseOrder(a) - caseOrder(b)); d.cases.forEach(c => delete c._t);
   const byO = (a, b) => (a.o || 0) - (b.o || 0);
   d.doctors = dr.sort(byO).map(x => x.name); d.staff = sr.sort(byO).map(x => x.name);
   return d;
 }
+const HEAD_DEF = {title: 'ใบเช็กลิสต์ยืมของ ห้องผ่าตัด', org: '', form: 'แบบฟอร์มการยืม - คืน เครื่องมือแพทย์ระหว่างโรงพยาบาลในเครือ BDMS', logo: ''};
+const HEAD = () => Object.assign({}, HEAD_DEF, S.head || {});
+let hedit = null;
+function headView(){
+  if(!hedit) hedit = Object.assign({}, HEAD());
+  return '<div class=card><h2>หัวกระดาษที่ปริ้น</h2><div class=muted style="margin-bottom:6px">ตั้งครั้งเดียว ใช้กับทุกใบ และทุกเครื่องเห็นเหมือนกัน</div>' +
+    '<label>ชื่อโรงพยาบาล / หน่วยงาน (บรรทัดบนสุด)</label><input type=text id=hOrg value="' + esc(hedit.org) + '" placeholder="เช่น โรงพยาบาล…  ห้องผ่าตัด">' +
+    '<label>หัวใบเตรียมเคส / เช็กลิสต์</label><input type=text id=hTitle value="' + esc(hedit.title) + '">' +
+    '<label>หัวแบบฟอร์มยืม-คืน</label><input type=text id=hForm value="' + esc(hedit.form) + '">' +
+    '<label>ตรา รพ.</label>' + (hedit.logo ? '<div><img src="' + hedit.logo + '" style="max-height:90px;max-width:100%;border:1px solid #ddd;border-radius:8px;padding:4px;background:#fff"></div>' : '<div class=muted>ยังไม่มีตรา</div>') +
+    '<div class=nmrow style="margin-top:6px"><label class=filebtn style="flex:1;margin:0"><input type=file id=hLogo accept="image/*" style="display:none"><span style="display:block;text-align:center;padding:12px;border:1.5px solid var(--g,#2d6a4f);border-radius:12px;font-weight:600">เลือกรูปตรา จากเครื่อง</span></label>' + (hedit.logo ? '<button data-act=hlogodel>ลบตรา</button>' : '') + '</div></div>';
+}
+function readLogo(file){
+  return new Promise((ok, no) => { const fr = new FileReader(); fr.onerror = () => no(new Error('อ่านรูปไม่ได้')); fr.onload = () => { const im = new Image(); im.onerror = () => no(new Error('ไฟล์นี้ไม่ใช่รูป')); im.onload = () => {
+    const k = Math.min(1, 400 / Math.max(im.width, im.height)), c = document.createElement('canvas'); c.width = Math.round(im.width * k); c.height = Math.round(im.height * k);
+    const g = c.getContext('2d'); g.drawImage(im, 0, 0, c.width, c.height); ok(c.toDataURL('image/png')); }; im.src = fr.result; }; fr.readAsDataURL(file); });
+}
+const logoImg = src => new Promise(res => { if(!src) return res(null); const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null); im.src = src; });
 const borrowText = list => (list || []).filter(x => x.s === 'B').map(x => x.n + (x.q ? ' (' + x.q + ')' : '') + (x.from ? ' ← ' + x.from : '')).join('; ');
 const cleanList = list => (list || []).map(x => ({n: x.n, q: x.q || '', s: x.s || '', from: x.from || ''}));
 async function replaceNames(kind, names, current){
@@ -290,7 +309,7 @@ async function api(action, payload){
   }finally{ setBusy(false); }
 }
 function applyData(d){
-  S = {cases: d.cases || [], doctors: d.doctors || [], staff: d.staff || [], templates: d.templates || {}, items: d.items || [], records: d.records || []};
+  S = {cases: d.cases || [], doctors: d.doctors || [], staff: d.staff || [], templates: d.templates || {}, items: d.items || [], records: d.records || [], head: d.head || null};
   loaded = true; lastSync = d.serverTime || ''; serverVersion = d.version || '';
   autoUpdate();
 }
@@ -401,7 +420,7 @@ function render(){
   let foot = '';
 
   if(view === 'settings'){
-    h += '<div class=menu>' + [['items','คลังเครื่องมือ / เวชภัณฑ์ใน OR','รายการทั้งหมด ใช้ซ้ำได้ทุกเคส ดึงไปใส่เคสได้เลย'],['cases','แก้เคส / รายการมาตรฐาน','เพิ่ม แก้ ลบ เครื่องมือและเวชภัณฑ์ของแต่ละเคส'],['people','รายชื่อแพทย์ / พยาบาล','แพทย์ ผู้ลงชื่อ และรายการที่จำไว้ตามแพทย์'],['backup','สำรองข้อมูล / ใช้หลายเครื่อง','ดาวน์โหลดไฟล์สำรอง เชื่อมให้น้องๆ เห็นข้อมูลร่วมกัน'],['help','คู่มือใช้งาน','อ่านแค่ 1 นาที']].map(m => '<button data-act=view data-v=' + m[0] + '><b>' + m[1] + '</b><span>' + m[2] + '</span></button>').join('') + '</div>';
+    h += '<div class=menu>' + [['head','หัวกระดาษ / ตรา รพ.','แก้ชื่อหัวใบ และใส่ตรา รพ. ที่ปริ้นทุกใบ'],['items','คลังเครื่องมือ / เวชภัณฑ์ใน OR','รายการทั้งหมด ใช้ซ้ำได้ทุกเคส ดึงไปใส่เคสได้เลย'],['cases','แก้เคส / รายการมาตรฐาน','เพิ่ม แก้ ลบ เครื่องมือและเวชภัณฑ์ของแต่ละเคส'],['people','รายชื่อแพทย์ / พยาบาล','แพทย์ ผู้ลงชื่อ และรายการที่จำไว้ตามแพทย์'],['backup','สำรองข้อมูล / ใช้หลายเครื่อง','ดาวน์โหลดไฟล์สำรอง เชื่อมให้น้องๆ เห็นข้อมูลร่วมกัน'],['help','คู่มือใช้งาน','อ่านแค่ 1 นาที']].map(m => '<button data-act=view data-v=' + m[0] + '><b>' + m[1] + '</b><span>' + m[2] + '</span></button>').join('') + '</div>';
   }
 
   if(view === 'new'){
@@ -476,6 +495,9 @@ function render(){
     }
   }
 
+  else if(view === 'head'){
+    h += headView(); foot = '<button class=pri data-act=savehead' + (busy ? ' disabled' : '') + '>บันทึกหัวกระดาษ</button>';
+  }
   else if(view === 'items'){
     h += itemsView();
     foot = '<button data-act=itemsreset>ยกเลิกที่แก้</button><button class=pri data-act=saveitems' + (busy ? ' disabled' : '') + '>บันทึกคลัง</button>';
@@ -549,6 +571,8 @@ document.addEventListener('click', e => {
   else if(a === 'ior'){ const x = itemsEdit[itemsTab][+t.dataset.i]; x.or = !x.or; render(); }
   else if(a === 'idel'){ const L = itemsEdit[itemsTab], x = L[+t.dataset.i]; if(itemDel === x.id){ if(x.orig) itemsEdit.gone.push(x.orig); L.splice(+t.dataset.i, 1); itemDel = ''; } else itemDel = x.id; render(); }
   else if(a === 'itemsreset'){ startItems(); render(); }
+  else if(a === 'savehead'){ run(async () => { const o = {org: $('#hOrg').value.trim(), title: $('#hTitle').value.trim() || HEAD_DEF.title, form: $('#hForm').value.trim() || HEAD_DEF.form, logo: hedit.logo || ''}; await upsertRows([{kind: 'setting', id: 'head', data: o}]); await api(); hedit = null; say('บันทึกหัวกระดาษแล้ว'); }); }
+  else if(a === 'hlogodel'){ hedit.org = $('#hOrg').value; hedit.title = $('#hTitle').value; hedit.form = $('#hForm').value; hedit.logo = ''; render(); }
   else if(a === 'saveitems'){ run(async () => { await saveItems(); await api(); startItems(); say('บันทึกคลังแล้ว ทุกเครื่องใช้รายการนี้ได้'); }); }
   else if(a === 'cat'){ const cs = catList(); catSel = t.dataset.v === '' ? '' : cs[+t.dataset.v]; if(draft && view === 'new') grab1(); render(); }
   else if(a === 'pickcase'){ grab1(); draft.caseId = t.dataset.id; loadCase(); render(); }
@@ -676,6 +700,8 @@ document.addEventListener('change', e => {
     });
     rd.readAsText(t.files[0]); return;
   }
+  if(t.id === 'hLogo'){ const f = t.files[0]; if(f) readLogo(f).then(u => { hedit.logo = u; hedit.org = $('#hOrg').value; hedit.title = $('#hTitle').value; hedit.form = $('#hForm').value; render(); }).catch(er => { say(er.message, 'err'); render(); }); return; }
+  if(['hOrg','hTitle','hForm'].indexOf(t.id) >= 0 && hedit){ hedit.org = $('#hOrg').value; hedit.title = $('#hTitle').value; hedit.form = $('#hForm').value; return; }
   if(t.id === 'docSel'){ grab1(); render(); }
   else if(t.id === 'fb'){ filt.borrow = t.value; render(); }
 });
@@ -760,6 +786,7 @@ async function renderPages(r, p, sc){
 async function renderPagesRaw(r, p, sc){
   try{ await Promise.all([document.fonts.load('26px ORThai'), document.fonts.load('bold 26px ORThai')]); }catch(e){}
   const W = 1240 / sc, H = 1754 / sc, PW = 1240, PH = 1754, M = 80, FF = 'ORThai, Tahoma, sans-serif', TW = W - 2 * M;
+  const HD = HEAD(), LG = await logoImg(HD.logo), LH = 100, LWd = LG ? Math.round(LG.width * Math.min(LH / LG.height, 220 / LG.width)) : 0, LHd = LG ? Math.round(LG.height * (LWd / LG.width)) : 0;
   const pages = []; let cv, g, y;
   const newPage = () => { cv = document.createElement('canvas'); cv.width = PW; cv.height = PH; g = cv.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, PW, PH); g.setTransform(sc, 0, 0, sc, 0, 0); g.fillStyle = '#000'; g.textBaseline = 'top'; pages.push(cv); y = M; };
   const font = (px, b) => { g.font = (b ? 'bold ' : '') + px + 'px ' + FF; };
@@ -768,8 +795,16 @@ async function renderPagesRaw(r, p, sc){
   const cols = [{n: 'รายการ', w: 560}, {n: 'มีใน OR', w: 105, c: 1}, {n: 'ต้องยืม', w: 105, c: 1}, {n: 'ยืมจาก', w: 210}, {n: 'คืนแล้ว', w: 100, c: 1}];
   const hdr = () => { let x = M; const hh = 56; g.fillStyle = '#e6e6e6'; g.fillRect(M, y, TW, hh); g.fillStyle = '#000'; g.lineWidth = 2; font(25, true);
     cols.forEach(c => { g.strokeRect(x, y, c.w, hh); const tw = g.measureText(c.n).width; g.fillText(c.n, c.c ? x + (c.w - tw) / 2 : x + 10, y + 13); x += c.w; }); y += hh; };
+  const orgRow = () => {
+    if(!LG && !HD.org) return;
+    const h0 = Math.max(LHd, HD.org ? 56 : 0);
+    if(LG) g.drawImage(LG, M, y + (h0 - LHd) / 2, LWd, LHd);
+    if(HD.org){ font(34, true); const L = wrap(HD.org, TW - LWd - 24); L.forEach((l, i) => g.fillText(l, M + (LG ? LWd + 24 : 0), y + (h0 - L.length * 44) / 2 + i * 44)); }
+    y += h0 + 14; g.lineWidth = 2; g.beginPath(); g.moveTo(M, y); g.lineTo(M + TW, y); g.stroke(); y += 18;
+  };
   const head = title => {
-    font(40, true); wrap('ใบเช็กลิสต์ยืมของ ห้องผ่าตัด — ' + title, TW).forEach(l => { g.fillText(l, M, y); y += 56; }); y += 6;
+    orgRow();
+    font(40, true); wrap(HD.title + ' — ' + title, TW).forEach(l => { g.fillText(l, M, y); y += 56; }); y += 6;
     font(28, false); wrap('เคส: ' + r.caseName + (r.doctor ? '    แพทย์: ' + r.doctor : '') + '    วันที่ผ่าตัด: ' + thDate(r.date), TW).forEach(l => { g.fillText(l, M, y); y += 42; }); y += 10;
   };
   const table = (sub, list, isSup) => {
@@ -820,9 +855,9 @@ async function renderPagesRaw(r, p, sc){
     };
     sheets.forEach(sh => {
       const L = sh.L, f = sh.f;
-      newPage();
+      newPage(); orgRow();
       g.lineWidth = 3; g.strokeRect(M, y, TW, 92); font(34, true);
-      const t1 = 'แบบฟอร์มการยืม - คืน เครื่องมือแพทย์ระหว่างโรงพยาบาลในเครือ BDMS';
+      const t1 = HD.form;
       let fs = 34; while(fs > 22 && (font(fs, true), g.measureText(t1).width > TW - 30)) fs -= 1; g.fillText(t1, M + (TW - g.measureText(t1).width) / 2, y + 46 - fs / 2); y += 120;
       font(28, true); g.fillText('รายละเอียดการยืม', M, y); y += 46; font(26, false);
       dl('เคสผ่าตัด :', M, TW * 0.62, r.caseName); dl('วันที่ผ่าตัด :', M + TW * 0.64, TW * 0.36, thDate(r.date)); y += 46;
