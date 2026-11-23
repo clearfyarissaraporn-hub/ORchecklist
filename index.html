@@ -379,6 +379,13 @@ function listView(key){
   return h + addBox('d', key);
 }
 function catList(){ const c = []; S.cases.forEach(x => { if(c.indexOf(x.cat) < 0) c.push(x.cat); }); return c.sort((a, b) => a.localeCompare(b, 'th', {numeric: true})); }
+let newCatSel = '', newCatTxt = '';
+function catPickHtml(sid, tid){
+  const cats = catList(), cur = newCatSel || (catSel && cats.indexOf(catSel) >= 0 ? catSel : '');
+  return '<label>หมวดของเคสใหม่</label><select id=' + sid + '><option value="">เคสที่เพิ่มเอง (ไม่ระบุหมวด)</option>' + cats.filter(k => k !== 'เคสที่เพิ่มเอง').map(k => '<option value="' + esc(k) + '"' + (cur === k ? ' selected' : '') + '>' + esc(k) + '</option>').join('') + '</select>' +
+    '<input type=text id=' + tid + ' placeholder="หรือพิมพ์ชื่อหมวดใหม่" value="' + esc(newCatTxt) + '" style="margin-top:6px">';
+}
+function pickedCat(sid, tid){ const t = ($('#' + tid).value || '').trim(), v = $('#' + sid).value; newCatSel = ''; newCatTxt = ''; return t || v || 'เคสที่เพิ่มเอง'; }
 function casePicker(act, selId){
   const cats = catList();
   const q = caseQ.trim().toLowerCase();
@@ -432,7 +439,7 @@ function render(){
       h += '<div class=card><label>แพทย์</label><select id=docSel><option value="">ไม่ระบุแพทย์</option>' + S.doctors.map(n => '<option' + (draft.doctor === n ? ' selected' : '') + '>' + esc(n) + '</option>').join('') + '</select>' +
         '<label>เคสผ่าตัด</label>' + casePicker('pickcase', draft.caseId) +
         '<details class=more><summary>ไม่มีในรายการ? เพิ่มแพทย์ / เคสใหม่</summary><div class=nmrow style="margin-top:6px"><input type=text id=newDoc placeholder="ชื่อแพทย์ใหม่"><button data-act=adddoc>เพิ่ม</button></div>' +
-        '<div class=nmrow style="margin-top:6px"><input type=text id=newCase placeholder="ชื่อเคสใหม่"><button data-act=addcase>เพิ่ม</button></div></details>' +
+        catPickHtml('newCat', 'newCatT') + '<div class=nmrow style="margin-top:6px"><input type=text id=newCase placeholder="ชื่อเคสใหม่"><button data-act=addcase>เพิ่ม</button></div></details>' +
         '<label>วันที่ผ่าตัด</label><input type=date id=dateIn value="' + esc(draft.date) + '">' +
         (draft.caseId ? '<div class="' + (draft.src === 'doctor' ? 'ok' : 'warn') + '">' + (draft.src === 'doctor' ? 'ดึงรายการที่ ' + esc(draft.doctor) + ' ใช้ครั้งล่าสุดมาให้แล้ว (เครื่องมือ ' + draft.ins.length + ' · เวชภัณฑ์ ' + draft.sup.length + ')' : 'ใช้รายการมาตรฐานของเคสนี้' + (draft.doctor ? ' — บันทึกครั้งนี้แล้ว ครั้งหน้าจะเด้งรายการของ ' + esc(draft.doctor) + ' ให้อัตโนมัติ' : '')) + '</div>' : '') + '</div>';
       foot = '<button class=pri data-act=next>ถัดไป: เครื่องมือ</button>';
@@ -482,10 +489,10 @@ function render(){
 
   else if(view === 'cases'){
     h += '<div class=card><label>เลือกเคสที่จะแก้รายการมาตรฐาน</label>' + casePicker('editpick', editCase && editCase.id) +
-      '<div class=nmrow style="margin-top:10px"><input type=text id=newCase2 placeholder="สร้างเคสใหม่"><button data-act=addcase2>สร้าง</button></div></div>';
+      '<div style="margin-top:10px;padding-top:8px;border-top:1px solid #e5e2d8"><b>สร้างเคสใหม่</b>' + catPickHtml('newCat2', 'newCatT2') + '<div class=nmrow style="margin-top:6px"><input type=text id=newCase2 placeholder="ชื่อเคสใหม่"><button data-act=addcase2>สร้าง</button></div></div></div>';
     if(editCase){
       const c = editCase;
-      h += '<div class=card><label>ชื่อเคส</label><input type=text data-in=cname value="' + esc(c.name) + '"><label>หมวด</label><input type=text data-in=ccat value="' + esc(c.cat) + '"></div>';
+      h += '<div class=card><label>ชื่อเคส</label><input type=text data-in=cname value="' + esc(c.name) + '"><label>หมวด</label><select id=ccatSel>' + catList().concat(catList().indexOf(c.cat) < 0 && c.cat ? [c.cat] : []).map(k => '<option value="' + esc(k) + '"' + (c.cat === k ? ' selected' : '') + '>' + esc(k) + '</option>').join('') + '</select><input type=text data-in=ccat placeholder="หรือพิมพ์ชื่อหมวดใหม่" style="margin-top:6px"></div>';
       h += '<h2>เครื่องมือมาตรฐาน</h2>';
       c.ins.forEach((x,i) => { h += '<div class=row><div class=nmrow><input type=text class=nmin value="' + esc(x[0]) + '" data-in=cnm data-k=ins data-i=' + i + '><button class="sm' + (x[1] === 'O' ? ' on' : '') + '" data-act=cor data-k=ins data-i=' + i + '>' + (x[1] === 'O' ? 'มีใน OR ✓' : 'มีใน OR?') + '</button><button class="sm x" data-act=cdel data-k=ins data-i=' + i + '>ลบ</button></div></div>'; });
       h += addBox('c', 'ins') + '<h2>เวชภัณฑ์มาตรฐาน</h2>';
@@ -624,8 +631,8 @@ document.addEventListener('click', e => {
   }
   else if(a === 'addcase'){
     grab1(); const n = $('#newCase').value.trim(); if(!n) return;
-    const id = 'n' + Date.now();
-    run(async () => { await api('saveCase', {case: {id, cat: 'เคสที่เพิ่มเอง', name: n, ins: [], sup: []}}); draft.caseId = id; loadCase(); say('เพิ่มเคสแล้ว ใส่รายการในขั้นถัดไปได้เลย'); });
+    const id = 'n' + Date.now(), cat0 = pickedCat('newCat', 'newCatT');
+    run(async () => { await api('saveCase', {case: {id, cat: cat0, name: n, ins: [], sup: []}}); draft.caseId = id; catSel = cat0; caseQ = ''; loadCase(); say('เพิ่มเคสแล้ว ใส่รายการในขั้นถัดไปได้เลย'); });
   }
   else if(a === 'next'){
     if(step === 1){ grab1(); if(!draft.caseId){ say('เลือกเคสก่อน', 'err'); render(); return; } }
@@ -664,14 +671,14 @@ document.addEventListener('click', e => {
 
   /* แก้เคสมาตรฐาน */
   else if(a === 'addcase2'){
-    const n = $('#newCase2').value.trim(); if(!n) return;
-    editCase = {id: 'n' + Date.now(), cat: 'เคสที่เพิ่มเอง', name: n, ins: [], sup: []}; render();
+    const n = $('#newCase2').value.trim(); if(!n){ say('พิมพ์ชื่อเคสใหม่ก่อน', 'err'); render(); return; }
+    editCase = {id: 'n' + Date.now(), cat: pickedCat('newCat2', 'newCatT2'), name: n, ins: [], sup: []}; catSel = editCase.cat; caseQ = ''; say('สร้างเคสแล้ว ใส่รายการแล้วกด บันทึกเคสนี้'); render(); window.scrollTo(0, 0);
   }
   else if(a === 'cdel'){ editCase[k].splice(i, 1); render(); }
   else if(a === 'cor'){ const x = editCase[k][i]; const p = k === 'ins' ? 1 : 2; const on = String(x[p] || '').indexOf('O') >= 0; x[p] = on ? String(x[p]).replace('O', '') : 'O' + String(x[p] || ''); render(); }
   else if(a === 'savecase'){
     if(!editCase.name.trim()){ say('ใส่ชื่อเคส', 'err'); render(); return; }
-    run(async () => { await api('saveCase', {case: editCase}); editCase = clone(caseById(editCase.id) || editCase); say('บันทึกเคสแล้ว ทุกเครื่องเห็นรายการใหม่'); });
+    run(async () => { await api('saveCase', {case: editCase}); editCase = clone(caseById(editCase.id) || editCase); catSel = editCase.cat; caseQ = ''; say('บันทึกเคสแล้ว ทุกเครื่องเห็นรายการใหม่'); });
   }
   else if(a === 'delcase'){
     if(delPending !== 'case'){ delPending = 'case'; render(); return; }
@@ -708,6 +715,8 @@ document.addEventListener('change', e => {
     });
     rd.readAsText(t.files[0]); return;
   }
+  if(t.id === 'ccatSel' && editCase){ editCase.cat = t.value; return; }
+  if(t.id === 'newCat' || t.id === 'newCat2'){ newCatSel = t.value; return; }
   if(t.id === 'hLogo'){ const f = t.files[0]; if(f) readLogo(f).then(u => { hedit.logo = u; hedit.org = $('#hOrg').value; hedit.title = $('#hTitle').value; hedit.form = $('#hForm').value; render(); }).catch(er => { say(er.message, 'err'); render(); }); return; }
   if(['hOrg','hTitle','hForm'].indexOf(t.id) >= 0 && hedit){ hedit.org = $('#hOrg').value; hedit.title = $('#hTitle').value; hedit.form = $('#hForm').value; return; }
   if(t.id === 'docSel'){ grab1(); render(); }
@@ -722,7 +731,7 @@ document.addEventListener('input', e => {
   else if(f === 'cnm'){ editCase[k][i][0] = t.value; inlineSug(t, k); }
   else if(f === 'cq') editCase[k][i][1] = t.value;
   else if(f === 'cname') editCase.name = t.value;
-  else if(f === 'ccat') editCase.cat = t.value;
+  else if(f === 'ccat'){ if(t.value.trim()) editCase.cat = t.value.trim(); }
 });
 document.addEventListener('input', e => {
   const t = e.target;
