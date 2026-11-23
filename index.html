@@ -144,7 +144,7 @@ let serverVersion = '';
 /* ===== สถานะ ===== */
 let S = {cases:[], doctors:[], staff:[], templates:{}, records:[]};
 let loaded = false, busy = false, lastSync = '', msg = '', msgType = 'ok';
-const VIEWMAP = {'#head':'head','#saved':'saved','#items':'items','#settings':'settings','#cases':'cases','#people':'people','#help':'help','#backup':'backup'};
+const VIEWMAP = {'#printer':'printer','#head':'head','#saved':'saved','#items':'items','#settings':'settings','#cases':'cases','#people':'people','#help':'help','#backup':'backup'};
 let view = VIEWMAP[location.hash] || 'new';
 let catSel = '', caseQ = '', step = 1, draft = null, editCase = null, delPending = '', justSaved = false, filt = {q:'', borrow:'all'};
 const keep = {doctor:'', date:'', by:''};
@@ -153,7 +153,7 @@ const $ = s => document.querySelector(s);
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const today = () => { const d = new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); };
 const thDate = s => { if(!s) return ''; const p = String(s).split('-'); return p.length === 3 ? p[2]+'/'+p[1]+'/'+(+p[0]+543) : s; };
-const SUBV = ['settings','head','items','cases','people','backup','help','setup'];
+const SUBV = ['settings','printer','head','items','cases','people','backup','help','setup'];
 const caseById = id => S.cases.find(c => c.id === id);
 const clone = o => JSON.parse(JSON.stringify(o));
 
@@ -420,7 +420,7 @@ function render(){
   let foot = '';
 
   if(view === 'settings'){
-    h += '<div class=menu>' + [['head','หัวกระดาษ / ตรา รพ.','แก้ชื่อหัวใบ และใส่ตรา รพ. ที่ปริ้นทุกใบ'],['items','คลังเครื่องมือ / เวชภัณฑ์ใน OR','รายการทั้งหมด ใช้ซ้ำได้ทุกเคส ดึงไปใส่เคสได้เลย'],['cases','แก้เคส / รายการมาตรฐาน','เพิ่ม แก้ ลบ เครื่องมือและเวชภัณฑ์ของแต่ละเคส'],['people','รายชื่อแพทย์ / พยาบาล','แพทย์ ผู้ลงชื่อ และรายการที่จำไว้ตามแพทย์'],['backup','สำรองข้อมูล / ใช้หลายเครื่อง','ดาวน์โหลดไฟล์สำรอง เชื่อมให้น้องๆ เห็นข้อมูลร่วมกัน'],['help','คู่มือใช้งาน','อ่านแค่ 1 นาที']].map(m => '<button data-act=view data-v=' + m[0] + '><b>' + m[1] + '</b><span>' + m[2] + '</span></button>').join('') + '</div>';
+    h += '<div class=menu>' + [['printer','เชื่อมต่อเครื่องปริ้น','ตั้งครั้งเดียว + ปุ่มทดสอบปริ้น A4'],['head','หัวกระดาษ / ตรา รพ.','แก้ชื่อหัวใบ และใส่ตรา รพ. ที่ปริ้นทุกใบ'],['items','คลังเครื่องมือ / เวชภัณฑ์ใน OR','รายการทั้งหมด ใช้ซ้ำได้ทุกเคส ดึงไปใส่เคสได้เลย'],['cases','แก้เคส / รายการมาตรฐาน','เพิ่ม แก้ ลบ เครื่องมือและเวชภัณฑ์ของแต่ละเคส'],['people','รายชื่อแพทย์ / พยาบาล','แพทย์ ผู้ลงชื่อ และรายการที่จำไว้ตามแพทย์'],['backup','สำรองข้อมูล / ใช้หลายเครื่อง','ดาวน์โหลดไฟล์สำรอง เชื่อมให้น้องๆ เห็นข้อมูลร่วมกัน'],['help','คู่มือใช้งาน','อ่านแค่ 1 นาที']].map(m => '<button data-act=view data-v=' + m[0] + '><b>' + m[1] + '</b><span>' + m[2] + '</span></button>').join('') + '</div>';
   }
 
   if(view === 'new'){
@@ -524,6 +524,13 @@ function render(){
 
   if(view === 'setup'){ h += viewSetup(); }
 
+  if(view === 'printer'){
+    h += '<div class="card guide"><h2 style="margin-top:0">เชื่อมเครื่องปริ้น RICOH (ทำครั้งเดียวต่อมือถือ)</h2>' +
+    '<h3>Android</h3><ol><li>มือถือและเครื่อง RICOH ต้องต่อ <b>Wi-Fi วงเดียวกัน</b></li><li>ตั้งค่า → อุปกรณ์ที่เชื่อมต่อ → การพิมพ์ → เปิด <b>Ricoh Print Service</b> (หรือ <b>Mopria</b>)</li><li>เปิดแอปนี้ใน <b>Chrome</b> (ไม่ใช่ไอคอนที่ติดตั้ง ถ้าปริ้นไม่ออก)</li><li>กด <b>ทดสอบปริ้น A4</b> ด้านล่าง → ลูกศรเลือกเครื่อง → กระดาษ <b>A4</b> → พิมพ์</li></ol>' +
+    '<h3>iPhone / iPad</h3><ol><li>ต่อ Wi-Fi เดียวกับเครื่องปริ้น (ใช้ AirPrint ได้เลย ไม่ต้องลงแอป)</li><li>กด <b>ทดสอบปริ้น A4</b> → เลือกเครื่องปริ้น → พิมพ์</li></ol>' +
+    '<h3>ถ้าไม่ขึ้นเครื่อง</h3><ol><li>เปิดเครื่องปริ้นและต่อ Wi-Fi เดียวกันหรือยัง</li><li>ลองสำรอง: ในหน้าพรีวิวกด <b>แชร์ PDF</b> แล้วเลือกแอป <b>RICOH Smart Device Connector</b></li></ol>' +
+    '<button class="pri big" data-act=testprint style="width:100%;margin-top:6px">ทดสอบปริ้น A4</button><div class=muted style="margin-top:6px">หน้าทดสอบมีกรอบขอบกระดาษ ใช้ดูว่าเลื่อน/ตัดขอบหรือไม่</div></div>';
+  }
   if(view === 'help'){
     h += '<div class="card guide"><h2 style="margin-top:0">ทำใบยืมของ 1 เคส</h2><ol><li>แท็บ <b>ทำใบยืมของ</b> → เลือกแพทย์ → เลือกเคส (พิมพ์ค้นหาหรือกดหมวด) → <b>ถัดไป</b></li><li><b>เครื่องมือ</b> และ <b>เวชภัณฑ์</b>: กด <b>มีใน OR</b> หรือ <b>ต้องยืม</b> ทุกรายการ (ต้องยืมให้ใส่ชื่อ รพ./บริษัท)</li><li>ขาดอะไร กด <b>＋ เพิ่ม</b> พิมพ์ชื่อ เลือกสถานะ</li><li><b>ยืนยัน</b>: เลือกชื่อผู้ลงชื่อ → <b>บันทึก</b> → <b>ปริ้น A4</b> (แยกเครื่องมือ/เวชภัณฑ์ได้)</li></ol>' +
     '<h2>หลังใช้เสร็จ</h2><ol><li>แท็บ <b>บันทึกแล้ว</b> → กด <b>คืนครบแล้ว</b> เมื่อคืนของ</li><li>แก้ใบเดิมกด <b>แก้ไข</b> / ลบกด <b>ลบ</b> สองครั้ง</li></ol>' +
@@ -571,6 +578,7 @@ document.addEventListener('click', e => {
   else if(a === 'ior'){ const x = itemsEdit[itemsTab][+t.dataset.i]; x.or = !x.or; render(); }
   else if(a === 'idel'){ const L = itemsEdit[itemsTab], x = L[+t.dataset.i]; if(itemDel === x.id){ if(x.orig) itemsEdit.gone.push(x.orig); L.splice(+t.dataset.i, 1); itemDel = ''; } else itemDel = x.id; render(); }
   else if(a === 'itemsreset'){ startItems(); render(); }
+  else if(a === 'testprint'){ run(async () => { await document.fonts.load('bold 30px ORThai').catch(() => {}); const c = document.createElement('canvas'); c.width = 1240; c.height = 1754; const g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, 1240, 1754); g.fillStyle = '#000'; g.lineWidth = 4; g.strokeRect(40, 40, 1160, 1674); g.textBaseline = 'top'; g.font = 'bold 54px ORThai, sans-serif'; g.fillText('ทดสอบปริ้น A4', 100, 120); g.font = '36px ORThai, sans-serif'; g.fillText('ถ้าเห็นกรอบครบ 4 ด้าน แสดงว่าขนาดพอดี', 100, 210); g.fillText(nowTh(), 100, 270); printPages([c]); }); }
   else if(a === 'savehead'){ run(async () => { const o = {org: $('#hOrg').value.trim(), title: $('#hTitle').value.trim() || HEAD_DEF.title, form: $('#hForm').value.trim() || HEAD_DEF.form, logo: hedit.logo || ''}; await upsertRows([{kind: 'setting', id: 'head', data: o}]); await api(); hedit = null; say('บันทึกหัวกระดาษแล้ว'); }); }
   else if(a === 'hlogodel'){ hedit.org = $('#hOrg').value; hedit.title = $('#hTitle').value; hedit.form = $('#hForm').value; hedit.logo = ''; render(); }
   else if(a === 'saveitems'){ run(async () => { await saveItems(); await api(); startItems(); say('บันทึกคลังแล้ว ทุกเครื่องใช้รายการนี้ได้'); }); }
