@@ -153,66 +153,81 @@ button.tcard.first{background:#fbf0c4;border:1.5px solid #ecd27a;box-shadow:0 4p
 .rk .tr{height:7px;background:#f0ede4;border-radius:4px;margin:5px 0 3px}.rk .tr i{display:block;height:100%;border-radius:4px}.rk .sm2{display:flex;justify-content:space-between;font-size:11.5px;color:#8a887e}
 .mailc{background:#e7f0e4;border-radius:22px;padding:14px;box-shadow:0 4px 0 #cadcc5;margin-top:16px}.mailc .in{background:#fff;border-radius:16px;padding:10px 12px;margin-top:8px}.mailc .mailpv{background:#f6faf4;border:1px solid #dcebd8}
 button.gr{background:#4fae5b;border-color:#4fae5b;color:#fff;font-weight:700;box-shadow:0 3px 0 #3a8a44}button.go{border:1.5px solid #4fae5b;color:#2f7a3a;font-weight:700}
-/* ===== ธีมพาสเทล 3D ===== */
-:root{--ink:#4a3326;--ink2:#2b1d14;--y:#ffc0da;--ys:#ff9fbd;--bg:#fff7e3;--ln:#f0d8e2;--sh:#efd8cd}
+/* ===== ธีมพาสเทลนุ่ม (บอร์ด D/E) ===== */
+:root{--ink:#5a4032;--ink2:#3b2a20;--y:#ffc0da;--ys:#ff9fbd;--bg:#fff7e3;--ln:#f3d9e3;--sh:#f0d6e0}
 body{background:var(--bg);color:#5a4032}
-:root:not([data-font=plain]) .bigt,:root:not([data-font=plain]) .tn,:root:not([data-font=plain]) .dk .bd b,:root:not([data-font=plain]) .bento b{font-family:"Mali","Anuphan","ORThai",Tahoma,sans-serif}
-.bigt,.tn{color:#3b2a20}
+:root:not([data-font=plain]) .bigt,:root:not([data-font=plain]) .tn,:root:not([data-font=plain]) .dk .bd b,:root:not([data-font=plain]) .bento b,:root:not([data-font=plain]) .rpT{font-family:"Mali","Anuphan","ORThai",Tahoma,sans-serif}
+.bigt{color:#3b2a20;line-height:1.5}.tn{color:#3b2a20}
 h1{color:#9a8271}.muted{color:#9a8271}
-button{background:#fff;border-color:#ead3c6;color:#4a3326;box-shadow:0 2px 0 var(--sh)}
-button.pri{background:linear-gradient(#6b4a38,#4a3326);border:2px solid var(--ink2);color:#fff1f6;box-shadow:0 4px 0 var(--ink2);font-weight:700}
-.card{background:#fff;border:2px solid var(--ink);box-shadow:0 4px 0 var(--ink);border-radius:22px}
-.row{background:#fff;border-color:#f0d8e2;box-shadow:0 2px 0 #f2dfe6}
-input[type=text],input[type=date],input[type=password],input[type=url],input[type=email],select,textarea{border-color:#e6cbbd;background:#fffdfb}
+button{background:#fff;border-color:#f0d8e2;color:#5a4032;box-shadow:0 3px 0 var(--sh)}
+button.pri{background:linear-gradient(#ffc0da,#ff9fbd);border:0;color:#fff;box-shadow:0 4px 0 #e0789f;text-shadow:0 1px 0 #d96b92;font-weight:700}
+.card{background:#fff;border:1px solid var(--ln);box-shadow:0 4px 0 var(--sh),0 10px 18px rgba(138,98,72,.08);border-radius:24px}
+.row{background:#fff;border-color:#f3d9e3;box-shadow:0 2px 0 #f5e3ea}
+input[type=text],input[type=date],input[type=password],input[type=url],input[type=email],input[type=number],select,textarea{border-color:#efd6df;background:#fffdfb}
 input:focus,select:focus,textarea:focus{outline:2px solid #ffc0da;border-color:#ff9fbd}
-.chip{background:#fff;border-color:#ead3c6}.chip.on{background:var(--ink);border-color:var(--ink);color:#fff1f6}
-.steps div{background:#f7e1eb;color:#9a8271}.steps div.cur{background:linear-gradient(#f7e1eb,#ffc0da);color:var(--ink);border:2px solid var(--ink);box-shadow:0 2px 0 var(--ink)}.steps div.done{background:#d3eef2;color:#2f6f7a}
-.menu button{border-left:6px solid #ff9fbd}
+.chip{background:#fff;border-color:#f0d8e2}.chip.on{background:linear-gradient(#ffc0da,#ff9fbd);border-color:#ff9fbd;color:#fff}
+.steps div{background:#f7e1eb;color:#9a8271}.steps div.cur{background:linear-gradient(#f7e1eb,#ffc0da);color:#5a4032;box-shadow:0 2px 0 #ff9fbd}.steps div.done{background:#d3eef2;color:#2f6f7a}
+.menu button{border-left:6px solid #ffc0da}
 .foot{bottom:84px}
-.bnav{background:#fff4f8;border:2.5px solid var(--ink);box-shadow:0 5px 0 var(--ink);bottom:12px;border-radius:26px}
-.bnav button{color:#8a7060;font-weight:500}
-.bnav button.on{background:linear-gradient(#f7e1eb,#ffc0da);border:2px solid var(--ink);color:#3b2a20;font-weight:700}
-.hl{background:linear-gradient(#6b4a38,#4a3326);color:#fff1f6;border:2px solid var(--ink2);box-shadow:0 4px 0 var(--ink2);transform:none;border-radius:14px;padding:0 12px}
-.sect{background:linear-gradient(#6b4a38,#4a3326);border:2.5px solid var(--ink2);border-radius:20px;padding:8px 10px 8px 16px;box-shadow:0 5px 0 var(--ink2);align-items:center;margin:24px 0 16px}
-.sect .bigt{color:#fff1f6;font-size:19px}.sect .hl{background:none;border:0;box-shadow:none;padding:0;color:#ffd6e6}
-.sect a{background:#f7e1eb;color:var(--ink);border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700;box-shadow:0 2px 0 #ff9fbd;text-decoration:none;white-space:nowrap}
+.bnav{background:#fff;border:1px solid #f3d9e3;box-shadow:0 4px 0 #f0d6e0,0 10px 24px rgba(138,98,72,.14);bottom:12px;border-radius:26px}
+.bnav button{color:#9a8271;font-weight:500;box-shadow:none}
+.bnav button.on{background:linear-gradient(#f7e1eb,#ffc0da);border:0;color:#5a4032;font-weight:700;box-shadow:0 3px 0 #ff9fbd}
+.hl{background:linear-gradient(#f7e1eb,#ffc0da);color:#5a4032;border:0;box-shadow:0 3px 0 #ff9fbd;transform:rotate(-1.5deg);border-radius:14px;padding:0 12px;display:inline-block}
+.sect{display:flex;justify-content:space-between;align-items:flex-end;margin:24px 0 14px;background:none;border:0;box-shadow:none;padding:0}
+.sect .bigt{font-size:21px;color:#3b2a20}.sect .hl{font-size:19px}
+.sect a{font-size:12.5px;font-weight:600;color:#5a4032;text-decoration:none;white-space:nowrap}
 .tpill{background:#e1f0f9;color:#3b6f8a}
-.tg{background:var(--ink);color:#fff1f6}
-.tag{border:1.5px solid var(--ink)}.tag.recv{background:#e1f0f9;color:#3b6f8a}.tag.ret{background:#f7e1eb;color:#a3486a}.tag.done{background:#d3eef2;color:#2f6f7a}
+.tg{background:#5a4032;color:#fff}
+.tag{border:0}.tag.recv{background:#fff;color:#3b6f8a}.tag.ret{background:#fff;color:#a3486a}.tag.done{background:#d3eef2;color:#2f6f7a}
 .pth:before{border-top:2.5px dashed #e8cfdc}
 .pth i{background:#f7e1eb;color:#d9b8c9;box-shadow:inset 0 -3px 0 #eed3e0}
 .pth .dn i{background:linear-gradient(#b4e3ec,#6cc3d0);color:#fff;border:0;box-shadow:0 3px 0 #4aa9b9;font-size:20px}
 .pth .cu i{width:52px;height:52px;margin-top:-3px;background:linear-gradient(#fde8e4,#f4bdb5);color:#fff;text-shadow:0 1px 0 #c97d73;box-shadow:0 0 0 7px #fdeeea,0 4px 0 #e39b92;font-size:20px}
 .pth small{color:#9a8271}.pth b{color:#3b2a20}
-button.tcard{background:#e1f0f9;border:2px solid var(--ink);box-shadow:0 4px 0 var(--ink);border-radius:22px;color:#5a4032}
-button.tcard.first{background:#d3eef2;border:2.5px solid var(--ink);box-shadow:0 5px 0 var(--ink);margin-top:14px}
-button.tcard .tg{background:#f7e1eb;color:var(--ink);border:1.5px solid var(--ink);box-shadow:0 2px 0 var(--ink);top:-13px}
-.tcard .prog{border:2px solid var(--ink);height:12px;border-radius:7px}.tcard .prog i{background:linear-gradient(90deg,#8acdd7,#4aa9b9)!important}
-.tm{color:#8a7060}.tcard .tm b{background:var(--ink);color:#fff1f6;border-radius:999px;padding:1px 11px}
+.pth em{display:inline-block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-style:normal;background:#e1f0f9;color:#3b6f8a;border:1.5px solid #b4d3e8;border-radius:999px;padding:0 8px;font-size:10.5px;font-weight:700;margin-top:3px}
+.pth em.w{background:none;border:1.5px dashed #e3c3d2;color:#c9a3b5;font-weight:400}
+button.tcard{background:#e1f0f9;border:1.5px solid #9fc9e3;box-shadow:0 4px 0 #b5d3ea;border-radius:24px;color:#5a4032}
+button.tcard.first{background:#d3eef2;border:1.5px solid #a9d8df;box-shadow:0 4px 0 #b9dde3;margin-top:14px}
+button.tcard .tg{background:#5a4032;color:#fff;border:0;box-shadow:none;top:-11px}
+.tcard .prog{border:0;height:9px;border-radius:5px;background:rgba(255,255,255,.75)!important}.tcard .prog i{background:linear-gradient(90deg,#8acdd7,#4aa9b9)!important}
+.tcard .who{font-size:11.5px;color:#6b8aa0;margin-top:4px}
+.tm{color:#9a8271}
 .wk div{color:#9a8271}.wk i{background:#f7e1eb;color:transparent;box-shadow:inset 0 -2px 0 #eed3e0}.wk i.on{background:linear-gradient(#b4e3ec,#6cc3d0);color:#fff;box-shadow:0 3px 0 #4aa9b9}.wk i.td{background:#fff;border:2px solid #ffc0da;color:#ff9fbd;box-shadow:none}
-.seg2{background:#f7e1eb}.seg2 button{color:#9a8271}.seg2 button.r.on,.seg2 button.t.on{background:#fff;color:var(--ink);border:2px solid var(--ink);box-shadow:0 2px 0 var(--ink)}
-.dk{background:linear-gradient(#6b4a38,#4a3326);color:#fff1f6;border:2px solid var(--ink2);box-shadow:0 5px 0 var(--ink2)}
-.dk .bd{background:linear-gradient(#f7e1eb,#ffc0da);color:var(--ink);box-shadow:0 3px 0 #ff9fbd}
-.dk .prog{background:#6b4a38}.dk .prog i{background:#8acdd7}.dk .prog i+i{background:#ff9fbd}
-.ck{background:#fff;border:1.5px solid #f0d8e2;box-shadow:0 2px 0 #f2dfe6}.ck.cg{background:#f3fbfc;border-color:#8acdd7;box-shadow:0 2px 0 #b4e3ec}.ck.cb{background:#fff6f9;border-color:#ff9fbd;box-shadow:0 2px 0 #ffc0da}
-.ckb{gap:4px}.ckb button,.ckb button.y.on,.ckb button.n.on{width:46px;height:46px;background:transparent!important;border:0!important;box-shadow:none;padding:0;filter:grayscale(.55);opacity:.7;transition:transform .12s}
-.ckb button.y.on,.ckb button.n.on{filter:none;opacity:1;transform:scale(1.1)}
-#busy{background:#ff9fbd}
-.ck.cg .ckb button:not(.on),.ck.cb .ckb button:not(.on){filter:grayscale(.8);opacity:.35}
-.why button{background:#fff6f9;border-color:#ffc0da;color:#a3486a}.why button.on{background:#ff9fbd;border-color:#ff9fbd;color:#fff}
-.bento>div{border:2px solid var(--ink)}
-.bento .k1{background:linear-gradient(#f7e1eb,#ffc0da);box-shadow:0 4px 0 var(--ink)}.bento .k1 em{background:var(--ink);color:#ffd6e6}
-.bento .k2{background:#e1f0f9;box-shadow:0 4px 0 var(--ink)}.bento .k2 small{color:#3b6f8a}
-.bento .k3{background:#F7D6D1;box-shadow:0 4px 0 var(--ink)}.bento .k3 small{color:#9a4f45}
-.bento .k4{background:#d3eef2;box-shadow:0 4px 0 var(--ink)}.bento .k4 small{color:#2f6f7a}
+.seg2{background:#f7e1eb}.seg2 button{color:#9a8271;box-shadow:none}.seg2 button.r.on,.seg2 button.t.on,.seg2 button.on{background:#fff;color:#5a4032;border:0;box-shadow:0 2px 0 #f0d6e0}
+.dk{background:#fff;color:#5a4032;border:1px solid var(--ln);box-shadow:0 4px 0 var(--sh)}
+.dk .bd{background:linear-gradient(#f7e1eb,#ffc0da);color:#fff;text-shadow:0 1px 0 #e0789f;box-shadow:0 4px 0 #ff9fbd}
+.dk .tm b{color:#5a4032!important}.dk .prog{background:#f7e1eb}.dk .prog i{background:linear-gradient(90deg,#8acdd7,#4aa9b9)}.dk .prog i+i{background:#ec8a62}.dk .prog i+i+i{background:#ff9fbd}
+.ck{background:#fff;border:1px solid #f3d9e3;box-shadow:0 3px 0 #f2dfe6}.ck.cg{background:#f3fbfc;border-color:#8acdd7;box-shadow:0 3px 0 #b4e3ec}.ck.cb{background:#fff6f9;border-color:#ff9fbd;box-shadow:0 3px 0 #ffc0da}.ck.cp{background:#fff6f1;border-color:#ec8a62;box-shadow:0 3px 0 #f6c3ac}
+.ckb{gap:2px}.ckb button{width:52px;height:auto;min-height:0;background:transparent!important;border:0!important;box-shadow:none!important;padding:0;filter:grayscale(.55);opacity:.7;transition:transform .12s;display:flex;flex-direction:column;align-items:center}
+.ckb button small{font-size:10px;font-weight:700;margin-top:-3px;line-height:1.2;white-space:nowrap}
+.ckb button.y small{color:#2f7f8c}.ckb button.p small{color:#b8532f}.ckb button.n small{color:#c4466f}
+.ckb button.y.on,.ckb button.n.on,.ckb button.p.on{filter:none;opacity:1;transform:scale(1.06)}
+.ck.cg .ckb button:not(.on),.ck.cb .ckb button:not(.on),.ck.cp .ckb button:not(.on){filter:grayscale(.8);opacity:.35}
+.why{flex-wrap:wrap}.why button{background:#fff;border:1.5px solid #ecd2da;color:#c4466f;box-shadow:none}.why button.on{background:#ff9fbd;border-color:#ff9fbd;color:#fff}
+.why.p button{color:#9a4426;border-color:#f3c4b8}.why.p button.on{background:#ec8a62;border-color:#ec8a62;color:#fff}
+.mis{display:flex;gap:6px;margin:-4px 0 6px;padding:8px 10px;background:#fff6f1;border:1px dashed #f3c4b8;border-radius:14px;flex-wrap:wrap;align-items:center}
+.mis b{width:100%;font-size:12px;color:#9a4426}.mis input{flex:1;min-width:0;margin:0}.mis input.q{flex:0 0 64px}
+.bento>div{border:0}
 .lgd{color:#6b5546}
-.rk{border-bottom-color:#f3e3ea}.rk1{background:#fff4f8}.rk2{background:#f1f7fc}.rk3{background:#fdf0ee}.rk .tr{background:#f7e1eb}.rk .sm2{color:#9a8271}
-.mailc{background:#e1f0f9;border:2px solid var(--ink);box-shadow:0 4px 0 var(--ink)}.mailc .mailpv{background:#f6fbfe;border-color:#cfe4f2}
-button.gr{background:linear-gradient(#8acdd7,#4aa9b9);border:2px solid var(--ink);color:#fff;box-shadow:0 3px 0 var(--ink);text-shadow:0 1px 0 #3a8794}button.go{border:2px solid #4aa9b9;color:#2f6f7a}
+.mailc{background:#e1f0f9;border:1.5px solid #9fc9e3;box-shadow:0 4px 0 #b5d3ea}.mailc .mailpv{background:#f6fbfe;border-color:#cfe4f2}
+button.gr{background:linear-gradient(#b4e3ec,#6cc3d0);border:0;color:#fff;box-shadow:0 4px 0 #4aa9b9;text-shadow:0 1px 0 #3a8fa0}button.go{border:1.5px solid #8acdd7;color:#2f6f7a}
 .prog{background:#f7e1eb}
 .ok{background:#d3eef2;color:#2f6f7a}
-#modal .sheet{background:#fffdf8;border-top:3px solid var(--ink)}
+#modal .sheet{background:#fffdf8}
 #modal .seg button.bw.on{background:#f7e1eb;border-color:#ff9fbd;color:#a3486a}
+.rpseg{display:flex;background:#f7e1eb;border-radius:18px;padding:4px;margin:12px 0 10px}.rpseg button{flex:1;border:0;background:none;box-shadow:none;color:#9a8271;font-weight:700;padding:8px 2px;min-height:0}.rpseg button.on{background:#fff;color:#5a4032;box-shadow:0 2px 0 #f0d6e0}
+.rpnav{display:flex;justify-content:space-between;align-items:center;margin:0 2px 12px}.rpnav button{width:40px;height:40px;min-height:0;padding:0;border-radius:50%;font-size:15px}.rpnav div{text-align:center}.rpnav b{font-size:16px}
+.rp{padding:16px 14px}.rpH{text-align:center;border-bottom:2px solid #f3d9e3;padding-bottom:10px;margin-bottom:12px}.rpT{font-size:16px;font-weight:700;color:#3b2a20}
+.rpS{font-size:13px;font-weight:700;margin:14px 0 6px;color:#3b2a20}
+.sbx{display:flex;gap:8px}.sbx>div{flex:1;border-radius:16px;padding:8px 4px;text-align:center}.sbx b{display:block;font-size:22px;line-height:1.2}.sbx small{font-size:11px;color:#5a4032}
+.stb{height:12px;border-radius:7px;overflow:hidden;display:flex;background:#f7e1eb;margin:10px 0 4px}
+.rtab{width:100%;border-collapse:collapse;font-size:12.5px}.rtab td{padding:7px 4px;border-bottom:1px solid #f3e3ea;vertical-align:top}.rtab tr:first-child td{color:#9a8271;font-size:11px;padding:2px 4px}.rtab tr:last-child td{border-bottom:0}
+.rp .pill{font-size:11px;white-space:nowrap}
+.hb{margin-bottom:9px}.hb>div:first-child{display:flex;justify-content:space-between;font-size:12.5px}.hb .tr2{height:12px;background:#f7e1eb;border-radius:7px;overflow:hidden;display:flex;margin-top:3px}
+.rpN{font-size:12.5px;line-height:1.65}
+.bkst{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.stb i,.tr2 i{display:block;height:100%}
+.dk .prog{display:flex}
 
 #busy{position:fixed;top:0;left:0;right:0;height:3px;background:#3a97a6;transform-origin:left;animation:ld 1s infinite;display:none}
 @keyframes ld{0%{transform:scaleX(.1)}50%{transform:scaleX(.7)}100%{transform:scaleX(1);opacity:.3}}
@@ -257,7 +272,7 @@ button.gr{background:linear-gradient(#8acdd7,#4aa9b9);border:2px solid var(--ink
 <linearGradient id="gRose" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffc0da"/><stop offset="1" stop-color="#ff9fbd"/></linearGradient>
 <linearGradient id="gBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B9DCF0"/><stop offset=".55" stop-color="#e3f5e9"/><stop offset="1" stop-color="#fbd3e0"/></linearGradient>
 <filter id="fSh" x="-25%" y="-20%" width="150%" height="160%"><feDropShadow dx="0" dy="3" stdDeviation="2" flood-color="#8a6248" flood-opacity=".3"/></filter>
-</defs></svg>
+<linearGradient id="gCoral" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbd0c4"/><stop offset="1" stop-color="#ee9783"/></linearGradient></defs></svg>
 <div id="app" class="wrap"></div>
 <div id="modal"></div>
 <div id="print"></div>
@@ -558,30 +573,43 @@ const ICO = {
   stats: '<svg viewBox="0 0 64 64" width="28" height="28" aria-hidden="true"><g filter="url(#fSh)"><rect x="9" y="34" width="13" height="23" rx="6.5" fill="url(#gBlue)"/><rect x="25.5" y="21" width="13" height="36" rx="6.5" fill="url(#gMint)"/><rect x="42" y="9" width="13" height="48" rx="6.5" fill="url(#gPink)"/></g><g fill="#fff" opacity=".6"><ellipse cx="13.5" cy="39" rx="2.2" ry="3.5"/><ellipse cx="30" cy="26" rx="2.2" ry="3.5"/><ellipse cx="46.5" cy="14" rx="2.2" ry="3.5"/></g></svg>',
   settings: '<svg viewBox="0 0 64 64" width="28" height="28" aria-hidden="true"><g filter="url(#fSh)"><circle cx="54.0" cy="33.0" r="5.6" fill="url(#gPink)"/><circle cx="47.6" cy="48.6" r="5.6" fill="url(#gPink)"/><circle cx="32.0" cy="55.0" r="5.6" fill="url(#gPink)"/><circle cx="16.4" cy="48.6" r="5.6" fill="url(#gPink)"/><circle cx="10.0" cy="33.0" r="5.6" fill="url(#gPink)"/><circle cx="16.4" cy="17.4" r="5.6" fill="url(#gPink)"/><circle cx="32.0" cy="11.0" r="5.6" fill="url(#gPink)"/><circle cx="47.6" cy="17.4" r="5.6" fill="url(#gPink)"/><circle cx="32" cy="33" r="18" fill="url(#gPink)"/></g><circle cx="32" cy="33" r="7.5" fill="url(#gCream)"/><ellipse cx="24" cy="25" rx="7" ry="3.4" fill="#fff" opacity=".55" transform="rotate(-25 24 25)"/></svg>',
   ok: '<svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true"><g filter="url(#fSh)"><circle cx="32" cy="33" r="23" fill="url(#gGreen)"/></g><path d="M21 33.5l8 8 15-17" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="23" cy="21" rx="9" ry="4" fill="#fff" opacity=".55" transform="rotate(-25 23 21)"/></svg>',
-  bad: '<svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true"><g filter="url(#fSh)"><circle cx="32" cy="33" r="23" fill="url(#gRose)"/></g><path d="M23 24l18 18M41 24L23 42" stroke="#fff" stroke-width="6.5" stroke-linecap="round"/><ellipse cx="23" cy="21" rx="9" ry="4" fill="#fff" opacity=".55" transform="rotate(-25 23 21)"/></svg>'
+  bad: '<svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true"><g filter="url(#fSh)"><circle cx="32" cy="33" r="23" fill="url(#gRose)"/></g><path d="M23 24l18 18M41 24L23 42" stroke="#fff" stroke-width="6.5" stroke-linecap="round"/><ellipse cx="23" cy="21" rx="9" ry="4" fill="#fff" opacity=".55" transform="rotate(-25 23 21)"/></svg>',
+  part: '<svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true"><g filter="url(#fSh)"><circle cx="32" cy="33" r="23" fill="url(#gCoral)"/></g><path d="M32 22v13" stroke="#fff" stroke-width="6.5" stroke-linecap="round"/><circle cx="32" cy="44" r="3.6" fill="#fff"/><ellipse cx="23" cy="21" rx="9" ry="4" fill="#fff" opacity=".55" transform="rotate(-25 23 21)"/></svg>'
 };
 
 const CKV = ['check', 'checkdone', 'stats', 'today'];
 const WHY = ['ไม่มีของ', 'ชำรุด', 'ผิดขนาด/รุ่น', 'จำนวนขาด', 'อื่นๆ'];
+const WHY_NS = ['ไม่ได้เตรียมมา', 'ส่งตามมาทีหลัง', 'อื่นๆ'];
+const WHY_P = ['สาย', 'ก้าน/ชิ้นเล็ก', 'ฝา/อะไหล่', 'อื่นๆ'];
 const PN = {recv: 'ตรวจรับ', ret: 'ตรวจคืน'};
 const TM = ['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
-let ck = null, stR = 'm3';
+const TMF = ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
+let ck = null, stR = 'm', rpOff = 0;
 const pct = (a, b) => b ? Math.round(a * 100 / b) : 0;
 const pcol = p => p >= 90 ? '#2f8f9d' : p >= 80 ? '#cf8a2c' : '#d9536f';
+const ymd = x => x.getFullYear() + '-' + String(x.getMonth() + 1).padStart(2, '0') + '-' + String(x.getDate()).padStart(2, '0');
+const pYmd = s => { const p = String(s || '').slice(0, 10).split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); };
+const thShort = s => { if(!s) return ''; const d = pYmd(s); return isNaN(d) ? s : d.getDate() + ' ' + TM[d.getMonth()] + (String(s).length > 10 ? ' ' + String(s).slice(11, 16) : ''); };
+const thLong = s => { const d = pYmd(s); return d.getDate() + ' ' + TMF[d.getMonth()] + ' ' + (d.getFullYear() + 543); };
 function ckItems(r){
   const o = [];
   [['ins'], ['sup']].forEach(p => (r[p[0]] || []).forEach(x => { if(x.s === 'B') o.push({k: p[0] + ':' + x.n, t: p[0], n: x.n, q: x.q || '', from: x.from || ''}); }));
   return o;
 }
+/* ผลตรวจ: ok = ครบ · part = ชุดมาแต่ชิ้นข้างในขาด (ตรวจรับ) · bad = ไม่ส่งมา (ตรวจรับ) / ไม่ครบ (ตรวจคืน) */
 function ckSum(r, ph){
-  const L = ckItems(r), c = r.chk || {}, m = c[ph] || {}; let ok = 0, bad = 0; const bl = [];
-  L.forEach(x => { const v = m[x.k]; if(v && v.v === 'ok') ok++; else if(v && v.v === 'bad'){ bad++; bl.push({n: x.n, why: v.why || '', from: x.from}); } });
-  return {T: L.length, ok, bad, bl, done: !!c[ph + 'At'], at: c[ph + 'At'] || '', by: c[ph + 'By'] || ''};
+  const L = ckItems(r), c = r.chk || {}, m = c[ph] || {}; let ok = 0, part = 0, ns = 0; const bl = [];
+  L.forEach(x => { const v = m[x.k]; if(!v) return; if(v.v === 'ok'){ ok++; return; } if(v.v === 'part') part++; else ns++; bl.push({n: x.n, v: v.v, why: v.why || '', miss: v.miss || '', mq: v.mq || '', from: x.from}); });
+  return {T: L.length, ok, part, ns, bad: part + ns, bl, done: !!c[ph + 'At'], at: c[ph + 'At'] || '', by: c[ph + 'By'] || ''};
 }
+const vLabel = (ph, v) => ph === 'recv' ? (v === 'part' ? 'ชุดไม่ครบ' : 'ไม่ส่งมา') : 'ไม่ครบ';
+const blTxt = (x, ph) => (x.v === 'part' ? 'ขาด ' + (x.miss ? x.miss + (x.mq ? ' ' + x.mq : '') : (x.why || 'ชิ้นข้างใน')) : (x.why || vLabel(ph, x.v)));
 function ckPill(r, ph){
   const s = ckSum(r, ph), w = ph === 'recv' ? 'รับ' : 'คืน';
   if(!s.done) return '<span class="pill gy">ยังไม่' + PN[ph] + '</span>';
-  return '<span class="pill ' + (s.bad ? 'r' : 'g') + '">' + w + (s.bad ? 'ไม่ครบ ' + s.bad : 'ครบ') + '</span>';
+  if(!s.bad) return '<span class="pill g">' + w + 'ครบ</span>';
+  if(ph === 'ret') return '<span class="pill r">คืนไม่ครบ ' + s.bad + '</span>';
+  return (s.ns ? '<span class="pill r">ไม่ส่งมา ' + s.ns + '</span>' : '') + (s.part ? '<span class="pill b">ชุดไม่ครบ ' + s.part + '</span>' : '');
 }
 function openCheck(id, ph){
   const r = S.records.find(x => x.id === id); if(!r) return; const c = r.chk || {};
@@ -589,53 +617,58 @@ function openCheck(id, ph){
   ck = {id, phase: ph, recv: clone(c.recv || {}), ret: clone(c.ret || {}), by: keep.by || ''};
   view = 'check'; location.hash = '#check'; window.scrollTo(0, 0); render();
 }
-function grabCk(){ const b = $('#ckBy'); if(b && ck) ck.by = b.value.trim(); }
+function grabCk(){
+  const b = $('#ckBy'); if(b && ck) ck.by = b.value.trim();
+  if(!ck) return; const r = S.records.find(x => x.id === ck.id); if(!r) return; const L = ckItems(r), m = ck[ck.phase];
+  document.querySelectorAll('[data-ckm]').forEach(e => { const x = L[+e.dataset.i]; if(x && m[x.k]) m[x.k][e.dataset.ckm] = e.value.trim(); });
+}
 const fromsOf = L => L.map(x => x.from).filter((v, i, a) => v && a.indexOf(v) === i).join(', ');
 function ckView(){
   const r = S.records.find(x => x.id === ck.id);
   if(!r){ ck = null; return {h: '<div class=card>ไม่พบใบนี้</div>', foot: '<button data-act=view data-v=today>กลับ</button>'}; }
-  const L = ckItems(r), ph = ck.phase, m = ck[ph], c = r.chk || {}, T = L.length, fr = fromsOf(L);
-  let ok = 0, bad = 0; L.forEach(x => { const v = m[x.k]; if(v && v.v === 'ok') ok++; else if(v && v.v === 'bad') bad++; });
-  const done = ok + bad;
+  const L = ckItems(r), ph = ck.phase, m = ck[ph], c = r.chk || {}, T = L.length, fr = fromsOf(L), R3 = ph === 'recv';
+  let ok = 0, part = 0, bad = 0; L.forEach(x => { const v = m[x.k]; if(!v) return; if(v.v === 'ok') ok++; else if(v.v === 'part') part++; else bad++; });
+  const done = ok + part + bad;
   let h = '<div class=bigt><span class=hl>' + PN[ph] + '</span> ของยืม</div><div class=muted style="font-size:13px;margin:2px 0 10px">' + esc(r.caseName) + (r.doctor ? ' · ' + esc(r.doctor) : '') + ' · ผ่าตัด ' + esc(thDate(r.date)) + (fr ? ' · ยืมจาก ' + esc(fr) : '') + '</div>';
   h += '<div class=seg2><button class="r' + (ph === 'recv' ? ' on' : '') + '" data-act=ckphase data-v=recv>1 ตรวจรับ' + (c.recvAt ? ' ✓' : '') + '</button><button class="t' + (ph === 'ret' ? ' on' : '') + '" data-act=ckphase data-v=ret>2 ตรวจคืน' + (c.retAt ? ' ✓' : '') + '</button></div>';
-  h += '<div class=muted style="margin:0 0 8px">' + (ph === 'recv' ? 'ของยืมมาถึง: ตรวจว่าได้รับครบตามรายการไหม' : 'ก่อนส่งคืน: ตรวจว่าคืนครบตามที่รับมาไหม') + (c[ph + 'At'] ? ' · บันทึกล่าสุด ' + esc(c[ph + 'At']) : '') + '</div>';
-  h += '<div class=dk><div class=bd><b>' + done + '</b>จาก ' + T + '</div><div style="flex:1"><div class=tm><b style="color:var(--y)">ตรวจแล้ว ' + done + ' รายการ</b><span style="color:#ffd6e6">' + pct(done, T) + '%</span></div>' +
-    '<div class=prog style="margin:8px 0"><i style="width:' + pct(ok, T) + '%"></i><i style="width:' + pct(bad, T) + '%"></i></div><div style="font-size:12px;color:#f3dccf">ครบ ' + ok + ' · ไม่ครบ ' + bad + ' · เหลือ ' + (T - done) + '</div></div></div>';
-  if(done < T) h += '<button data-act=ckall style="width:100%;margin:2px 0 6px;border:2px dashed #4a3326;background:#fff7fa;box-shadow:none;font-weight:700;color:#4a3326">ติ๊ก "ครบ" ที่เหลือทั้งหมด</button>';
+  h += '<div class=muted style="margin:0 0 8px">' + (R3 ? 'ของยืมมาถึง: ตรวจว่าได้รับครบไหม · <b style="color:#b8532f">ชุดไม่ครบ</b> = มาแล้วแต่ชิ้นข้างในขาด · <b style="color:#c4466f">ไม่ส่งมา</b> = ไม่ได้เตรียมมาเลย' : 'ก่อนส่งคืน: ตรวจว่าคืนครบตามที่รับมาไหม') + (c[ph + 'At'] ? ' · บันทึกล่าสุด ' + esc(c[ph + 'At']) + (c[ph + 'By'] ? ' (' + esc(c[ph + 'By']) + ')' : '') : '') + '</div>';
+  h += '<div class=dk><div class=bd><b>' + done + '</b>จาก ' + T + '</div><div style="flex:1"><div class=tm><b>ตรวจแล้ว ' + done + ' รายการ</b><span>' + pct(done, T) + '%</span></div>' +
+    '<div class=prog style="margin:8px 0;display:flex"><i style="width:' + pct(ok, T) + '%"></i>' + (R3 ? '<i style="width:' + pct(part, T) + '%"></i>' : '<i style="width:0"></i>') + '<i style="width:' + pct(bad, T) + '%"></i></div><div style="font-size:12px">ครบ ' + ok + (R3 ? ' · <span style="color:#b8532f">ชุดไม่ครบ ' + part + '</span> · <span style="color:#c4466f">ไม่ส่งมา ' + bad + '</span>' : ' · <span style="color:#c4466f">ไม่ครบ ' + bad + '</span>') + ' · เหลือ ' + (T - done) + '</div></div></div>';
+  if(done < T) h += '<button data-act=ckall style="width:100%;margin:2px 0 6px;border:2px dashed #ffc0da;background:#fff7fa;box-shadow:none;font-weight:700;color:#a3486a">ติ๊ก "ครบ" ที่เหลือทั้งหมด</button>';
   let lastT = '';
   L.forEach((x, i) => {
     if(x.t !== lastT){ lastT = x.t; h += '<div class=cat>' + (x.t === 'ins' ? 'เครื่องมือ (Instrument)' : 'เวชภัณฑ์') + '</div>'; }
     const v = m[x.k] || {}, rv = ph === 'ret' ? ck.recv[x.k] : null;
-    const sub = [x.q ? 'จำนวน ' + esc(x.q) : '', x.from ? '← ' + esc(x.from) : ''].filter(Boolean).join(' · ') + (rv && rv.v === 'bad' ? ' <span style="color:#b3261e">ตอนรับ: ไม่ครบ' + (rv.why ? ' (' + esc(rv.why) + ')' : '') + '</span>' : '');
-    h += '<div class="ck' + (v.v === 'bad' ? ' cb' : v.v === 'ok' ? ' cg' : '') + '"><div class=n><b style="font-weight:600">' + esc(x.n) + '</b>' + (sub ? '<small>' + sub + '</small>' : '') + '</div><div class=ckb>' +
-      '<button class="y' + (v.v === 'ok' ? ' on' : '') + '" data-act=ckset data-i=' + i + ' data-v=ok aria-label="ครบ">' + ICO.ok + '</button><button class="n' + (v.v === 'bad' ? ' on' : '') + '" data-act=ckset data-i=' + i + ' data-v=bad aria-label="ไม่ครบ">' + ICO.bad + '</button></div></div>';
-    if(v.v === 'bad') h += '<div class=why>' + WHY.map(w => '<button class="' + (v.why === w ? 'on' : '') + '" data-act=ckwhy data-i=' + i + ' data-v="' + esc(w) + '">' + esc(w) + '</button>').join('') + '</div>';
+    const sub = [x.q ? 'จำนวน ' + esc(x.q) : '', x.from ? '← ' + esc(x.from) : ''].filter(Boolean).join(' · ') + (rv && rv.v !== 'ok' ? ' <span style="color:#c4466f">ตอนรับ: ' + esc(vLabel('recv', rv.v) + (rv.v === 'part' || rv.why ? ' — ' + blTxt(rv, 'recv') : '')) + '</span>' : '');
+    const btn = (k, cls, ic, lab) => '<button class="' + cls + (v.v === k ? ' on' : '') + '" data-act=ckset data-i=' + i + ' data-v=' + k + ' aria-label="' + lab + '">' + ic + '<small>' + lab + '</small></button>';
+    h += '<div class="ck' + (v.v === 'bad' ? ' cb' : v.v === 'part' ? ' cp' : v.v === 'ok' ? ' cg' : '') + '"><div class=n><b style="font-weight:600">' + esc(x.n) + '</b>' + (sub ? '<small>' + sub + '</small>' : '') + '</div><div class=ckb>' +
+      btn('ok', 'y', ICO.ok, 'ครบ') + (R3 ? btn('part', 'p', ICO.part, 'ชุดไม่ครบ') + btn('bad', 'n', ICO.bad, 'ไม่ส่งมา') : btn('bad', 'n', ICO.bad, 'ไม่ครบ')) + '</div></div>';
+    if(v.v === 'part') h += '<div class=mis><b>มาแล้ว แต่ชิ้นข้างในขาดอะไร</b><input type=text data-ckm=miss data-i=' + i + ' value="' + esc(v.miss || '') + '" placeholder="เช่น Light cable"><input type=text class=q inputmode=numeric data-ckm=mq data-i=' + i + ' value="' + esc(v.mq || '') + '" placeholder="จำนวน"></div><div class="why p">' + WHY_P.map(w => '<button class="' + (v.why === w ? 'on' : '') + '" data-act=ckwhy data-i=' + i + ' data-v="' + esc(w) + '">' + esc(w) + '</button>').join('') + '</div>';
+    else if(v.v === 'bad') h += (R3 ? '<div class=muted style="margin:-4px 0 4px;color:#c4466f;font-weight:700">ไม่ได้ส่งมาเพราะ</div>' : '') + '<div class=why>' + (R3 ? WHY_NS : WHY).map(w => '<button class="' + (v.why === w ? 'on' : '') + '" data-act=ckwhy data-i=' + i + ' data-v="' + esc(w) + '">' + esc(w) + '</button>').join('') + '</div>';
   });
   h += '<div class=card><label>ผู้' + PN[ph] + '</label>' + nameSelect('ckBy', ck.by, S.staff, 'เลือกชื่อ…') + '</div>';
   return {h, foot: '<button data-act=view data-v=today>กลับ</button><button class=pri data-act=cksave' + (busy ? ' disabled' : '') + '>บันทึก' + PN[ph] + ' ' + done + '/' + T + '</button>'};
 }
 function ckReport(r, ph){
-  const s = ckSum(r, ph), fr = fromsOf(ckItems(r));
-  const sub = '[ห้องผ่าตัด] ผล' + PN[ph] + 'ของยืม: ' + r.caseName + ' ' + thDate(r.date) + ' — ' + (s.bad ? 'ไม่ครบ ' + s.bad + ' รายการ' : 'ครบทุกรายการ');
-  const body = 'เรียน หัวหน้าแผนก\n\nผล' + PN[ph] + ' เคส ' + r.caseName + (r.doctor ? ' (' + r.doctor + ')' : '') + '\nวันที่ผ่าตัด ' + thDate(r.date) + (fr ? '\nยืมจาก ' + fr : '') +
-    '\nผล: ครบ ' + s.ok + ' จาก ' + s.T + ' รายการ (' + pct(s.ok, s.T) + '%)' +
-    (s.bl.length ? '\n\nรายการที่ไม่ครบ:\n' + s.bl.map(x => '- ' + x.n + (x.why ? ' (' + x.why + ')' : '') + (x.from ? ' ← ' + x.from : '')).join('\n') : '') +
-    '\n\nผู้ตรวจ: ' + s.by + ' · ' + s.at + '\n\n— ส่งจากแอปใบเช็กลิสต์ยืมของ ห้องผ่าตัด';
+  const s = ckSum(r, ph), fr = fromsOf(ckItems(r)), me = s.by || keep.by || '';
+  const sub = '[ห้องผ่าตัด] ผล' + PN[ph] + 'อุปกรณ์ยืม เคส ' + r.caseName + ' วันที่ ' + thDate(r.date) + (s.bad ? ' (พบรายการไม่ครบ ' + s.bad + ' รายการ)' : ' (ครบถ้วน)');
+  let body = 'เรียน หัวหน้าห้องผ่าตัด\n\nขอรายงานผล' + PN[ph] + 'อุปกรณ์ยืม เคส ' + r.caseName + (r.doctor ? ' (' + r.doctor + ')' : '') + ' วันที่ผ่าตัด ' + thDate(r.date) + (fr ? ' ยืมจาก ' + fr : '') + ' ดังนี้\n';
+  body += '1. ครบถ้วน ' + s.ok + ' จาก ' + s.T + ' รายการ (' + pct(s.ok, s.T) + '%)\n';
+  if(ph === 'recv'){ if(s.ns) body += '2. ไม่ได้รับ ' + s.ns + ' รายการ: ' + s.bl.filter(x => x.v !== 'part').map(x => x.n + (x.why ? ' (' + x.why + ')' : '')).join(', ') + '\n'; if(s.part) body += (s.ns ? '3' : '2') + '. ชุดไม่ครบ ' + s.part + ' รายการ: ' + s.bl.filter(x => x.v === 'part').map(x => x.n + ' (' + blTxt(x, ph) + ')').join(', ') + '\n'; }
+  else if(s.bad) body += '2. คืนไม่ครบ ' + s.bad + ' รายการ: ' + s.bl.map(x => x.n + (x.why ? ' (' + x.why + ')' : '')).join(', ') + '\n';
+  body += '\nผู้' + PN[ph] + ': ' + (s.by || '-') + ' เมื่อ ' + s.at + '\n\nจึงเรียนมาเพื่อโปรดทราบ\n\nขอแสดงความนับถือ\n' + (me ? me + ' ' : '') + '(ห้องผ่าตัด)';
   return {sub, body};
 }
-function donut(ok, bad, T, label){
-  const C = 226.2, a = T ? C * ok / T : 0, b = T ? C * bad / T : 0;
-  return '<svg width="92" height="92" viewBox="0 0 96 96" role="img" aria-label="' + esc(label) + '"><circle cx="48" cy="48" r="36" fill="none" stroke="#e8e6de" stroke-width="12"/>' +
-    '<circle cx="48" cy="48" r="36" fill="none" stroke="#3a97a6" stroke-width="12" stroke-dasharray="' + a.toFixed(1) + ' ' + C + '" transform="rotate(-90 48 48)"/>' +
-    '<circle cx="48" cy="48" r="36" fill="none" stroke="#b3261e" stroke-width="12" stroke-dasharray="' + b.toFixed(1) + ' ' + C + '" stroke-dashoffset="' + (-a).toFixed(1) + '" transform="rotate(-90 48 48)"/>' +
-    '<text x="48" y="54" text-anchor="middle" font-size="19" font-weight="700" fill="#222">' + pct(ok, T) + '%</text></svg>';
+function donut(ok, part, bad, T, label){
+  const C = 226.2, a = T ? C * ok / T : 0, b = T ? C * part / T : 0, d = T ? C * bad / T : 0;
+  const arc = (len, off, col) => '<circle cx="48" cy="48" r="36" fill="none" stroke="' + col + '" stroke-width="12" stroke-dasharray="' + len.toFixed(1) + ' ' + C + '" stroke-dashoffset="' + (-off).toFixed(1) + '" transform="rotate(-90 48 48)"/>';
+  return '<svg width="92" height="92" viewBox="0 0 96 96" role="img" aria-label="' + esc(label) + '"><circle cx="48" cy="48" r="36" fill="none" stroke="#f7e1eb" stroke-width="12"/>' + arc(a, 0, '#4aa9b9') + arc(b, a, '#ec8a62') + arc(d, a + b, '#ff9fbd') +
+    '<text x="48" y="54" text-anchor="middle" font-size="19" font-weight="700" fill="#5a4032">' + pct(ok, T) + '%</text></svg>';
 }
-const mailCard = (k, rp, warn) => '<div class=mailc><b style="font-size:16px">ส่งรีพอร์ตถึงหัวหน้าแผนก</b><div class=muted style="color:#4c6a4f">ส่งอีเมล หรือแชร์เข้า LINE กลุ่มหัวหน้า</div>' + (warn ? '<div class=warn>มีของไม่ครบ ควรแจ้งหัวหน้า</div>' : '') +
+const mailBox = (k) => '<div class=mailc><b style="font-size:15px">ส่งถึงหัวหน้าแผนก</b>' +
   '<div class=in><label>อีเมลหัวหน้าแผนก (จำไว้ให้ ใช้ได้ทุกเครื่อง)</label><input type=email id=mailIn value="' + esc(HEAD().mail || '') + '" placeholder="เช่น head.or@hospital.com">' +
-  '<div class=mailpv><b>' + esc(rp.sub) + '</b>\n\n' + esc(rp.body) + '</div>' +
-  '<div class=nmrow><button class=gr style="flex:1.4" data-act=sendmail data-k=' + k + '>ส่งอีเมล</button><button class=go style="flex:1" data-act=sharerep data-k=' + k + '>แชร์ LINE</button></div>' +
-  '<div class=muted style="margin-top:6px">ปุ่มส่งอีเมลจะเปิดแอปอีเมลในมือถือพร้อมข้อความ แล้วกดส่งเอง</div></div></div>';
+  '<div class=nmrow><button class=gr style="flex:1" data-act=sendmail data-k=' + k + '>ส่งอีเมล</button><button class=go style="flex:1" data-act=sharerep data-k=' + k + '>แชร์ LINE</button>' + (k === 'ck' ? '' : '<button class=go style="flex:1" data-act=reppdf>PDF</button>') + '</div>' +
+  '<div class=muted style="margin-top:6px">ส่งอีเมลจะเปิดแอปอีเมลพร้อมข้อความทางการ แล้วกดส่งเอง · ต้องการแนบไฟล์ ให้กด PDF ก่อนแล้วแนบ</div></div></div>';
 function saveMail(to){
   const d = Object.assign({}, S.head || {}, {mail: to}); S.head = d;
   upsertRows([{kind: 'setting', id: 'head', data: d}]).catch(() => {});
@@ -645,129 +678,362 @@ function ckDoneView(){
   if(!r) return {h: '<div class=card>ไม่พบใบนี้</div>', foot: '<button data-act=view data-v=saved>กลับ</button>'};
   const ph = ck.phase, s = ckSum(r, ph), o = ckSum(r, ph === 'recv' ? 'ret' : 'recv');
   let h = '<div class=ok>บันทึกผล' + PN[ph] + 'แล้ว · ' + esc(r.caseName) + ' · ลงชื่อ ' + esc(s.by) + '</div>';
-  h += '<div class="card nmrow" style="gap:14px">' + donut(s.ok, s.bad, s.T, 'ครบ ' + s.ok + ' จาก ' + s.T) + '<div style="flex:1"><b>' + PN[ph] + ': ครบ ' + s.ok + ' จาก ' + s.T + '</b>' +
-    '<div style="font-size:13px;color:#3a97a6">● ครบ ' + s.ok + '</div><div style="font-size:13px;color:#b3261e">● ไม่ครบ ' + s.bad + '</div>' +
+  h += '<div class="card nmrow" style="gap:14px">' + donut(s.ok, ph === 'recv' ? s.part : 0, ph === 'recv' ? s.ns : s.bad, s.T, 'ครบ ' + s.ok + ' จาก ' + s.T) + '<div style="flex:1"><b>' + PN[ph] + ': ครบ ' + s.ok + ' จาก ' + s.T + '</b>' +
+    '<div style="font-size:13px;color:#2f8f9d">● ครบ ' + s.ok + '</div>' + (ph === 'recv' ? '<div style="font-size:13px;color:#b8532f">● ชุดไม่ครบ ' + s.part + '</div><div style="font-size:13px;color:#c4466f">● ไม่ส่งมา ' + s.ns + '</div>' : '<div style="font-size:13px;color:#c4466f">● ไม่ครบ ' + s.bad + '</div>') +
     '<div class=muted>' + (ph === 'recv' ? 'ตรวจคืน' : 'ตรวจรับ') + ': ' + (o.done ? (o.bad ? 'ไม่ครบ ' + o.bad : 'ครบ') : 'ยังไม่ตรวจ') + '</div></div></div>';
-  if(s.bl.length) h += '<div class=card><b>รายการที่ไม่ครบ</b>' + s.bl.map(x => '<div class=nmrow style="border-top:1px solid #eeece4;margin-top:6px;padding-top:6px"><div style="flex:1">' + esc(x.n) + (x.from ? '<div class=muted>← ' + esc(x.from) + '</div>' : '') + '</div>' + (x.why ? '<span class="pill r">' + esc(x.why) + '</span>' : '') + '</div>').join('') + '</div>';
-  h += mailCard('ck', ckReport(r, ph), s.bad);
-  const foot = (ph === 'recv' && !o.done ? '<button data-act=check data-id="' + esc(r.id) + '" data-v=ret>ไปตรวจคืน</button>' : '<button data-act=view data-v=stats>ดูภาพรวม</button>') + '<button class=pri data-act=view data-v=today>เสร็จ</button>';
+  if(s.bl.length) h += '<div class=card><b>ขาด ' + s.bad + ' รายการ จากที่ยืม ' + s.T + ' รายการ</b>' + s.bl.map(x => '<div class=nmrow style="border-top:1px solid #f3e3ea;margin-top:6px;padding-top:6px"><span style="width:11px;height:11px;border-radius:50%;flex:none;background:' + (x.v === 'part' ? '#ec8a62' : '#ff9fbd') + '"></span><div style="flex:1"><b style="font-weight:600">' + esc(x.n) + '</b><div class=muted>' + esc(vLabel(ph, x.v)) + ' · ' + esc(blTxt(x, ph)) + (x.from ? ' · ← ' + esc(x.from) : '') + '</div></div></div>').join('') + '</div>';
+  const rp = ckReport(r, ph);
+  h += '<div class=card><b>ข้อความที่จะส่ง</b><div class=mailpv style="margin-top:6px"><b>' + esc(rp.sub) + '</b>\n\n' + esc(rp.body) + '</div></div>' + mailBox('ck');
+  const foot = (ph === 'recv' && !o.done ? '<button data-act=check data-id="' + esc(r.id) + '" data-v=ret>ไปตรวจคืน</button>' : '<button data-act=view data-v=stats>ดูรายงาน</button>') + '<button class=pri data-act=view data-v=today>เสร็จ</button>';
   return {h, foot};
 }
-const RANGES = [['m1', 'เดือนนี้'], ['m3', '3 เดือน'], ['all', 'ทั้งหมด']];
-const ymd = x => x.getFullYear() + '-' + String(x.getMonth() + 1).padStart(2, '0') + '-' + String(x.getDate()).padStart(2, '0');
-function rangeOf(k){
-  const d = new Date();
-  if(k === 'm1') return [ymd(new Date(d.getFullYear(), d.getMonth(), 1)), '', ymd(new Date(d.getFullYear(), d.getMonth() - 1, 1))];
-  if(k === 'm3') return [ymd(new Date(d.getFullYear(), d.getMonth() - 2, 1)), '', ymd(new Date(d.getFullYear(), d.getMonth() - 5, 1))];
-  return ['', '', null];
+function recStage(r){ const c = r.chk || {}; if(!ckItems(r).length) return 'none'; if(!c.recvAt) return 'recv'; if(!c.retAt && !r.returned) return 'ret'; return 'done'; }
+/* ===== รายงาน: รายวัน / เดือน / ไตรมาส / ปี ===== */
+const RPM = [['d', 'รายวัน'], ['m', 'เดือน'], ['q', 'ไตรมาส'], ['y', 'ปี']];
+function periodOf(mode, off){
+  const t = new Date(); let a, b, label, sub;
+  if(mode === 'd'){ a = new Date(t.getFullYear(), t.getMonth(), t.getDate() + off); b = new Date(a.getFullYear(), a.getMonth(), a.getDate() + 1); label = thLong(ymd(a)); sub = off === 0 ? 'วันนี้' : off === -1 ? 'เมื่อวาน' : ''; }
+  else if(mode === 'm'){ a = new Date(t.getFullYear(), t.getMonth() + off, 1); b = new Date(a.getFullYear(), a.getMonth() + 1, 1); label = TMF[a.getMonth()] + ' ' + (a.getFullYear() + 543); }
+  else if(mode === 'q'){ const q0 = Math.floor(t.getMonth() / 3) + off; a = new Date(t.getFullYear(), q0 * 3, 1); b = new Date(a.getFullYear(), a.getMonth() + 3, 1); label = 'ไตรมาส ' + (Math.floor(a.getMonth() / 3) + 1) + ' / ' + (a.getFullYear() + 543); }
+  else { a = new Date(t.getFullYear() + off, 0, 1); b = new Date(a.getFullYear() + 1, 0, 1); label = 'ปี ' + (a.getFullYear() + 543); }
+  if(mode !== 'd') sub = thShort(ymd(a)) + ' ' + (a.getFullYear() + 543) + ' – ' + thShort(ymd(new Date(b - 864e5))) + ' ' + (new Date(b - 864e5).getFullYear() + 543);
+  return {from: ymd(a), to: ymd(b), label, sub: sub || '', a, b};
 }
-function statsData(from, to){
-  if(from === undefined){ const g = rangeOf(stR); from = g[0]; to = g[1]; }
-  const R = S.records.filter(r => ckItems(r).length && (!from || (r.date || '') >= from) && (!to || (r.date || '') < to));
-  const D = {ev: 0, rOk: 0, rN: 0, tOk: 0, tN: 0, open: 0, grp: {}, bad: {}, whyBy: {}, len: {}, lenN: {}, why: {}};
-  const gk = r => { const dt = r.date || ''; if(stR === 'm1'){ const w = Math.min(3, Math.floor((+dt.slice(8, 10) - 1) / 7)); return 'w' + w; } return dt.slice(0, 7); };
+function bucketsOf(mode, P){
+  const o = [];
+  if(mode === 'm'){ const last = new Date(P.b - 864e5).getDate(); for(let w = 0; w * 7 < last; w++) o.push({k: 'w' + w, l: 'สัปดาห์ ' + (w + 1)}); }
+  else if(mode === 'q') for(let i = 0; i < 3; i++){ const d = new Date(P.a.getFullYear(), P.a.getMonth() + i, 1); o.push({k: ymd(d).slice(0, 7), l: TM[d.getMonth()]}); }
+  else if(mode === 'y') for(let i = 0; i < 4; i++) o.push({k: 'q' + i, l: 'ไตรมาส ' + (i + 1)});
+  return o;
+}
+const bucketKey = (mode, date) => mode === 'm' ? 'w' + Math.min(4, Math.floor((+date.slice(8, 10) - 1) / 7)) : mode === 'q' ? date.slice(0, 7) : 'q' + Math.floor((+date.slice(5, 7) - 1) / 3);
+function repData(mode, P){
+  const R = S.records.filter(r => ckItems(r).length && (r.date || '') >= P.from && (r.date || '') < P.to);
+  const D = {R, n: R.length, rOk: 0, rN: 0, tOk: 0, tN: 0, open: 0, closed: 0, miss: {}, src: {}, bk: {}};
   R.forEach(r => {
-    const c = r.chk || {}, L = ckItems(r), g = gk(r), G = D.grp[g] = D.grp[g] || [0, 0, 0, 0];
-    if(!c.retAt && !r.returned) D.open++;
-    fromsOf(L).split(', ').filter(Boolean).forEach(f => { D.lenN[f] = (D.lenN[f] || 0) + 1; });
-    ['recv', 'ret'].forEach(ph => {
-      if(!c[ph + 'At']) return; D.ev++; const m = c[ph] || {};
-      L.forEach(x => {
-        const v = m[x.k]; if(!v) return; const ok = v.v === 'ok';
-        if(ph === 'recv'){ D.rN++; G[1]++; if(ok){ D.rOk++; G[0]++; } const lk = x.from || 'ไม่ระบุ', N = D.len[lk] = D.len[lk] || [0, 0]; N[1]++; if(ok) N[0]++; }
-        else { D.tN++; G[3]++; if(ok){ D.tOk++; G[2]++; } }
-        if(!ok){ D.bad[x.n] = (D.bad[x.n] || 0) + 1; const wb = D.whyBy[x.n] = D.whyBy[x.n] || {}; if(v.why){ wb[v.why] = (wb[v.why] || 0) + 1; D.why[v.why] = (D.why[v.why] || 0) + 1; } }
-      });
-    });
+    const c = r.chk || {}, L = ckItems(r), st = recStage(r); if(st === 'done') D.closed++; else D.open++;
+    const a = ckSum(r, 'recv'), t = ckSum(r, 'ret');
+    fromsOf(L).split(', ').filter(Boolean).forEach(f => { const s = D.src[f] = D.src[f] || [0, 0, 0]; s[0]++; });
+    if(a.done){ D.rOk += a.ok; D.rN += a.ok + a.bad; const k = bucketKey(mode, r.date), B = D.bk[k] = D.bk[k] || [0, 0]; B[0] += a.ok; B[1] += a.ok + a.bad;
+      L.forEach(x => { const v = (c.recv || {})[x.k]; if(!v || !x.from) return; const s = D.src[x.from]; if(s){ s[2]++; if(v.v === 'ok') s[1]++; } });
+      a.bl.forEach(x => { const M = D.miss[x.n] = D.miss[x.n] || [0, 0, 0]; M[x.v === 'part' ? 0 : 1]++; }); }
+    if(t.done){ D.tOk += t.ok; D.tN += t.ok + t.bad; t.bl.forEach(x => { const M = D.miss[x.n] = D.miss[x.n] || [0, 0, 0]; M[2]++; }); }
   });
   return D;
 }
-const monLabel = k => { if(k[0] === 'w') return 'สัปดาห์ ' + (+k.slice(1) + 1); const p = k.split('-'); return p.length < 2 ? '?' : TM[+p[1] - 1] + ' ' + String(+p[0] + 543).slice(2); };
 const topOf = (o, n) => Object.keys(o).map(k => [k, o[k]]).sort((a, b) => b[1] - a[1]).slice(0, n);
-function lineChart(G){
-  const x0 = 38, x1 = 330, y0 = 22, y1 = 160, vals = [];
-  G.forEach(g => { if(g.r != null) vals.push(g.r); if(g.t != null) vals.push(g.t); });
-  const mn = Math.max(0, Math.min(80, Math.floor((Math.min.apply(null, vals) - 5) / 10) * 10));
-  const X = i => G.length < 2 ? (x0 + x1) / 2 : x0 + 22 + i * (x1 - x0 - 44) / (G.length - 1), Y = v => y1 - (v - mn) / (100 - mn) * (y1 - y0);
-  let s = '<svg viewBox="0 0 340 196" width="100%" role="img" aria-label="กราฟเส้น % ครบ" style="display:block;font-family:inherit">';
-  for(let k = 0; k <= 4; k++){ const v = mn + (100 - mn) * k / 4, y = Y(v); s += '<line x1="' + x0 + '" x2="' + x1 + '" y1="' + y + '" y2="' + y + '" stroke="' + (k ? '#f3dce5' : '#9c998c') + '"/><text x="' + (x0 - 6) + '" y="' + (y + 4) + '" font-size="10.5" fill="#8a887e" text-anchor="end">' + Math.round(v) + '</text>'; }
-  const line = (key, dash) => { const p = G.map((g, i) => g[key] == null ? null : X(i) + ',' + Y(g[key])).filter(Boolean); return p.length > 1 ? '<polyline points="' + p.join(' ') + '" fill="none" stroke="#4a3326" stroke-width="' + (dash ? 2 : 2.6) + '"' + (dash ? ' stroke-dasharray="6 5"' : '') + '/>' : ''; };
-  s += line('t', 1) + line('r', 0);
-  G.forEach((g, i) => {
-    const x = X(i);
-    if(g.t != null) s += '<circle cx="' + x + '" cy="' + Y(g.t) + '" r="4.5" fill="#fff" stroke="#4a3326" stroke-width="2"/><text x="' + x + '" y="' + (Y(g.t) + 18) + '" font-size="11.5" font-weight="700" fill="#6b6a62" text-anchor="middle">' + g.t + '</text>';
-    if(g.r != null) s += '<rect x="' + (x - 5) + '" y="' + (Y(g.r) - 5) + '" width="10" height="10" fill="#4a3326"/><text x="' + x + '" y="' + (Y(g.r) - 10) + '" font-size="11.5" font-weight="700" fill="#4a3326" text-anchor="middle">' + g.r + '</text>';
-    s += '<text x="' + x + '" y="186" font-size="11.5" fill="#6b6a62" text-anchor="middle">' + esc(g.l) + '</text>';
+function barChart(B){
+  const W = 330, x0 = 34, y0 = 26, y1 = 150, n = B.length, gw = (W - x0 - 6) / n, bw = Math.min(46, gw * 0.55), Y = v => y1 - v / 100 * (y1 - y0);
+  let s = '<svg viewBox="0 0 ' + W + ' 182" width="100%" role="img" aria-label="กราฟแท่ง ร้อยละรับของครบ" style="display:block;font-family:inherit">';
+  [0, 50, 100].forEach(v => { s += '<line x1="' + x0 + '" x2="' + W + '" y1="' + Y(v) + '" y2="' + Y(v) + '" stroke="' + (v ? '#f3e3ea' : '#5a4032') + '" stroke-width="' + (v ? 1 : 2) + '"/><text x="' + (x0 - 5) + '" y="' + (Y(v) + 4) + '" font-size="10" fill="#9a8271" text-anchor="end">' + v + '</text>'; });
+  B.forEach((b, i) => {
+    const cx = x0 + gw * i + gw / 2;
+    if(b.v != null){ const ok = b.v >= 90, h = Math.max(3, y1 - Y(b.v)); s += '<rect x="' + (cx - bw / 2) + '" y="' + (y1 - h) + '" width="' + bw + '" height="' + h + '" rx="7" fill="' + (ok ? '#6cc3d0' : '#ff9fbd') + '"/><rect x="' + (cx - bw / 2) + '" y="' + (y1 - h) + '" width="' + bw + '" height="' + Math.min(h, 12) + '" rx="7" fill="#fff" opacity=".25"/><text x="' + cx + '" y="' + (y1 - h - 6) + '" font-size="12" font-weight="700" fill="#3b2a20" text-anchor="middle">' + b.v + '%</text>'; }
+    else s += '<text x="' + cx + '" y="' + (y1 - 6) + '" font-size="12" fill="#c9b5a8" text-anchor="middle">–</text>';
+    s += '<text x="' + cx + '" y="170" font-size="11.5" fill="#5a4032" text-anchor="middle">' + esc(b.l) + '</text>';
   });
+  s += '<line x1="' + x0 + '" x2="' + W + '" y1="' + Y(90) + '" y2="' + Y(90) + '" stroke="#c4466f" stroke-width="1.6" stroke-dasharray="5 4"/><text x="' + (x0 + 4) + '" y="' + (Y(90) - 5) + '" font-size="10.5" font-weight="700" fill="#c4466f">เป้า 90%</text>';
   return s + '</svg>';
 }
+const pillS = (t, k) => '<span class="pill ' + k + '">' + esc(t) + '</span>';
+function recvPill(r){ const s = ckSum(r, 'recv'); return !s.done ? pillS('รอตรวจ', 'gy') : !s.bad ? pillS('ครบ', 'g') : pillS('พบขาด ' + s.bad, s.ns ? 'r' : 'b'); }
+function retPill(r){ const s = ckSum(r, 'ret'), a = ckSum(r, 'recv'); return !a.done ? '–' : !s.done ? (r.returned ? pillS('คืนแล้ว', 'g') : pillS('ยังไม่คืน', 'gy')) : !s.bad ? pillS('ครบ', 'g') : pillS('ไม่ครบ ' + s.bad, 'r'); }
+function issueOf(r){
+  const a = ckSum(r, 'recv'), t = ckSum(r, 'ret'), o = [];
+  if(!a.done) return r.caseName + ': อยู่ระหว่างรอตรวจรับ';
+  const ns = a.bl.filter(x => x.v !== 'part'), pt = a.bl.filter(x => x.v === 'part');
+  if(ns.length) o.push('ไม่ได้รับ ' + ns.map(x => x.n + (x.from ? ' (' + x.from + ')' : '')).join(', '));
+  if(pt.length) o.push('ชุดไม่ครบ ' + pt.map(x => x.n + ' (' + blTxt(x, 'recv') + ')').join(', '));
+  if(t.bad) o.push('คืนไม่ครบ ' + t.bl.map(x => x.n).join(', '));
+  if(!o.length && recStage(r) === 'ret') o.push('รอตรวจคืน');
+  return o.length ? r.caseName + ': ' + o.join(' และ ') : '';
+}
+function dailyData(P){
+  const day = P.from, hit = s => String(s || '').slice(0, 10) === day;
+  const R = S.records.filter(r => { const c = r.chk || {}; return ckItems(r).length && (r.date === day || hit(r.savedAt) || hit(c.recvAt) || hit(c.retAt)); });
+  const D = {R, n: R.length, closed: 0, full: 0, short: 0, wait: 0};
+  R.forEach(r => { const st = recStage(r), sh = ckSum(r, 'recv').bad || ckSum(r, 'ret').bad; if(st === 'done') D.closed++; if(sh) D.short++; else if(st === 'done') D.full++; else D.wait++; });
+  D.issues = R.map(issueOf).filter(Boolean);
+  return D;
+}
+const sbox = (v, l, bg, fg) => '<div style="background:' + bg + '"><b class=rpT style="color:' + fg + '">' + v + '</b><small>' + l + '</small></div>';
+function observe(mode, D, Pv){
+  const o = [], rp = pct(D.rOk, D.rN);
+  if(D.rN){ let s = 'ร้อยละการรับของครบ ' + rp + '%'; if(Pv && Pv.rN){ const q = pct(Pv.rOk, Pv.rN); s += q < rp ? ' เพิ่มขึ้นจาก ' + q + '% ในช่วงก่อนหน้า' : q > rp ? ' ลดลงจาก ' + q + '% ในช่วงก่อนหน้า' : ' เท่ากับช่วงก่อนหน้า'; } o.push(s + (rp >= 90 ? ' ผ่านเป้าหมาย 90%' : ' ต่ำกว่าเป้าหมาย 90%')); }
+  o.push(D.tN ? 'คืนครบ ' + pct(D.tOk, D.tN) + '%' : 'ยังไม่มีการตรวจคืนในช่วงนี้');
+  if(D.open) o.push('ค้างดำเนินการ ' + D.open + ' ใบ');
+  const tm = topOf(Object.keys(D.miss).reduce((a, k) => { a[k] = D.miss[k][0] + D.miss[k][1] + D.miss[k][2]; return a; }, {}), 1);
+  if(tm.length && tm[0][1] >= 2) o.push('รายการที่ขาดซ้ำคือ ' + tm[0][0] + ' (' + tm[0][1] + ' ครั้ง) จึงเสนอให้ประสานแหล่งยืมตรวจเตรียมรายการนี้ก่อนส่งทุกครั้ง');
+  else if(tm.length) o.push('พบรายการขาด ' + Object.keys(D.miss).length + ' รายการ ไม่พบการขาดซ้ำ');
+  return o.join(' · ');
+}
 function statsView(){
-  const g = rangeOf(stR), D = statsData(g[0], g[1]), P = g[2] !== null ? statsData(g[2], g[0]) : null;
-  const rp = pct(D.rOk, D.rN), tp = pct(D.tOk, D.tN);
-  let h = '<div class=bigt>ภาพรวม</div><div class=bigt style="margin-bottom:4px"><span class=hl>การยืม-คืนของ</span></div><div class=muted style="font-size:13px">ดูว่าได้ของครบแค่ไหน อะไรขาดบ่อย แล้วส่งสรุปให้หัวหน้าได้เลย</div>' +
-    '<div class=chips style="margin:12px 0">' + RANGES.map(c => '<button class="chip' + (stR === c[0] ? ' on' : '') + '" data-act=strange data-v=' + c[0] + '>' + c[1] + '</button>').join('') + '</div>';
-  if(!D.ev) return {h: h + '<div class=card>ยังไม่มีผลตรวจในช่วงนี้ — ไปที่ <b>งานวันนี้</b> แล้วกดเคสที่รอตรวจรับ / ตรวจคืน</div>', foot: ''};
-  let note = D.rOk + ' จาก ' + D.rN + ' รายการ';
-  if(P && P.rN){ const df = rp - pct(P.rOk, P.rN); note = df > 0 ? 'ดีขึ้น +' + df + '% จากช่วงก่อน' : df < 0 ? 'ลดลง ' + (-df) + '% จากช่วงก่อน' : 'เท่ากับช่วงก่อน'; }
-  h += '<div class=bento><div class=k1><div><b style="font-size:15px">รับของครบ</b><small style="color:#5c4b0c;font-weight:400">ของที่ยืมมาถึงครบตามใบ</small></div><b>' + (D.rN ? rp + '%' : '–') + '</b><em>' + esc(note) + '</em></div>' +
-    '<div class=k2><small>คืนครบ</small><b>' + (D.tN ? tp + '%' : '–') + '</b></div><div class=k3><small>ยังไม่คืน</small><b>' + D.open + ' ใบ</b></div>' +
-    '<div class=k4><small>ตรวจแล้วทั้งหมด</small><b>' + D.ev + ' ครั้ง</b></div></div>';
-  const gk = Object.keys(D.grp).sort().slice(-6);
-  const G = gk.map(k => { const a = D.grp[k]; return {l: monLabel(k), r: a[1] ? pct(a[0], a[1]) : null, t: a[3] ? pct(a[2], a[3]) : null}; }).filter(x => x.r != null || x.t != null);
-  if(G.length) h += '<div class=card><b style="font-size:16px">% ครบ ตามช่วงเวลา</b><div class=lgd><span><svg width="26" height="10"><line x1="0" y1="5" x2="26" y2="5" stroke="#22231f" stroke-width="2.5"/><rect x="9" y="1" width="8" height="8" fill="#22231f"/></svg>ตรวจรับครบ</span><span><svg width="26" height="10"><line x1="0" y1="5" x2="26" y2="5" stroke="#22231f" stroke-width="2" stroke-dasharray="4 3"/><circle cx="13" cy="5" r="3.5" fill="#fff" stroke="#22231f" stroke-width="2"/></svg>ตรวจคืนครบ</span></div>' +
-    lineChart(G) + '<div class=muted>เส้นยิ่งขึ้นสูง = ได้ของครบมากขึ้น</div></div>';
-  const tb = topOf(D.bad, 5), mx = tb.length ? tb[0][1] : 1, bc = ['#c99a2e', '#9ea3ab', '#b8774c'];
-  h += '<div class=sect><div class=bigt>ของที่ <span class=hl>ขาดบ่อย</span></div></div>';
-  h += tb.length ? '<div class=card style="padding:0;overflow:hidden">' + tb.map((t, i) => {
-    const w = topOf(D.whyBy[t[0]] || {}, 1), df = P ? t[1] - (P.bad[t[0]] || 0) : null;
-    const d = df === null ? '' : df > 0 ? '<span style="color:#b3261e;font-weight:600">▲ ' + df + ' จากช่วงก่อน</span>' : df < 0 ? '<span style="color:#2f7a3a;font-weight:600">▼ ' + (-df) + ' จากช่วงก่อน</span>' : '<span>– เท่าเดิม</span>';
-    return '<div class="rk' + (i < 3 ? ' rk' + (i + 1) : '') + '"><div class="md' + (i < 3 ? ' md' + (i + 1) : '') + '">' + (i + 1) + '</div><div style="flex:1;min-width:0"><div class=tm><b style="font-size:13.5px">' + esc(t[0]) + '</b><span style="color:var(--ink)"><b>' + t[1] + '</b> ครั้ง</span></div>' +
-      '<div class=tr><i style="width:' + Math.round(t[1] * 100 / mx) + '%;background:' + (bc[i] || '#3a3b35') + '"></i></div><div class=sm2><span>' + (w.length ? 'สาเหตุหลัก: ' + esc(w[0][0]) : '') + '</span>' + d + '</div></div></div>';
-  }).join('') + '</div>' : '<div class=card>ไม่มีรายการไม่ครบเลยในช่วงนี้</div>';
-  const ln = topOf(D.lenN, 6);
-  if(ln.length){
-    h += '<div class=sect><div class=bigt>แหล่งที่ <span class=hl>ยืมบ่อย</span></div></div><div class=card>' + ln.map(l => { const a = D.len[l[0]], p = a ? pct(a[0], a[1]) : null;
-      return '<div class=nmrow style="padding:5px 0"><div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(#e1f0f9,#B9DCF0);color:#3b6f8a;box-shadow:0 2px 0 #9cc6e0;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex:none">' + esc(l[0].slice(0, 1)) + '</div><div style="flex:1"><div class=tm><b>' + esc(l[0]) + '</b><span>' + l[1] + ' ใบ' + (p != null ? ' · รับครบ <b>' + p + '%</b>' : '') + '</span></div><div style="height:7px;background:#f7e1eb;border-radius:4px;margin-top:5px"><div style="height:7px;border-radius:4px;width:' + (p || 0) + '%;background:' + (p >= 90 ? '#4aa9b9' : '#ff9fbd') + '"></div></div></div></div>'; }).join('') + '</div>';
-  }
-  h += mailCard('stats', statsReport(D), false);
+  const mode = stR, P = periodOf(mode, rpOff);
+  let h = '<div class=bigt style="margin-bottom:6px"><span class=hl>รายงาน</span> ส่งหัวหน้า</div><div class=muted style="font-size:13px">สรุปสั้น ภาษาทางการ ส่งผู้บริหารได้ทันที · รายวันแยกจากรายงานรอบเวลา</div>' +
+    '<div class=rpseg>' + RPM.map(c => '<button class="' + (mode === c[0] ? 'on' : '') + '" data-act=strange data-v=' + c[0] + '>' + c[1] + '</button>').join('') + '</div>' +
+    '<div class=rpnav><button data-act=rpoff data-v=-1 aria-label="ก่อนหน้า">◀</button><div><b class=rpT>' + esc(P.label) + '</b><div class=muted style="font-size:11.5px">' + esc(P.sub) + '</div></div><button data-act=rpoff data-v=1 aria-label="ถัดไป"' + (rpOff >= 0 ? ' disabled style="opacity:.35"' : '') + '>▶</button></div>';
+  h += '<div class="card rp" id=rpCard>' + (mode === 'd' ? dailyHtml(P) : periodHtml(mode, P)) + '</div>';
+  const rp = statsReport();
+  h += '<div class=card><b>ข้อความอีเมล (ร่างให้)</b><div class=mailpv style="margin-top:6px"><b>' + esc(rp.sub) + '</b>\n\n' + esc(rp.body) + '</div></div>' + mailBox('stats');
   return {h, foot: ''};
 }
-function recStage(r){ const c = r.chk || {}; if(!ckItems(r).length) return 'none'; if(!c.recvAt) return 'recv'; if(!c.retAt && !r.returned) return 'ret'; return 'done'; }
+function dailyHtml(P){
+  const D = dailyData(P);
+  let h = '<div class=rpH><div class=rpT>รายงานผลการตรวจรับ–คืนอุปกรณ์ยืม</div><div class=muted style="font-size:12.5px">ห้องผ่าตัด · ประจำวันที่ ' + esc(thLong(P.from)) + '</div></div>';
+  if(!D.n) return h + '<div class=muted style="text-align:center;padding:10px 0">ไม่มีการยืมอุปกรณ์ในวันนี้</div>';
+  h += '<div class=rpS>1. สรุปภาพรวม</div><div class=sbx>' + sbox(D.n, 'เคสที่ยืม', '#e1f0f9', '#3b6f8a') + sbox(D.closed, 'ปิดเคสแล้ว', '#d3eef2', '#2f6f7a') + sbox(D.n - D.closed, 'ค้างดำเนินการ', '#f7e1eb', '#a3486a') + '</div>';
+  h += '<div class=stb><i style="width:' + pct(D.full, D.n) + '%;background:#4aa9b9"></i><i style="width:' + pct(D.short, D.n) + '%;background:#ec8a62"></i><i style="width:' + pct(D.wait, D.n) + '%;background:#ffc0da"></i></div><div class=tm style="font-size:10.5px"><span style="color:#2f8f9d">■ ครบถ้วน ' + D.full + '</span><span style="color:#b8532f">■ พบรายการขาด ' + D.short + '</span><span style="color:#c4466f">■ รอดำเนินการ ' + D.wait + '</span></div>';
+  h += '<div class=rpS>2. รายเคส</div><table class=rtab><tr><td>เคส</td><td>ตรวจรับ</td><td>ตรวจคืน</td><td>ผู้ดำเนินการ</td></tr>' + D.R.map(r => { const c = r.chk || {}; return '<tr><td><b style="font-weight:600">' + esc(r.caseName) + '</b></td><td>' + recvPill(r) + '</td><td>' + retPill(r) + '</td><td style="font-size:11.5px;color:#7a6556">' + esc([c.recvBy, c.retBy].filter((v, i, a) => v && a.indexOf(v) === i).join(' / ') || r.by || '-') + '</td></tr>'; }).join('') + '</table>';
+  h += '<div class=rpS>3. ประเด็นที่ขอให้ติดตาม</div><div class=rpN>' + (D.issues.length ? D.issues.map(x => '• ' + esc(x)).join('<br>') : 'ไม่มี — อุปกรณ์ยืมครบถ้วนทุกเคส') + '</div>';
+  return h + '<div class=muted style="font-size:11px;text-align:right;margin-top:12px">จัดทำโดย ' + esc(keep.by || '-') + ' · ' + esc(thShort(nowTh())) + ' ' + (new Date().getFullYear() + 543) + '</div>';
+}
+function periodHtml(mode, P){
+  const D = repData(mode, P), Pv = repData(mode, periodOf(mode, rpOff - 1)), B = bucketsOf(mode, P);
+  const nm = {m: 'ประจำเดือน', q: 'ไตรมาสที่', y: 'ประจำปี'}[mode];
+  let h = '<div class=rpH><div class=rpT>รายงานสรุปผลการตรวจรับ–คืนอุปกรณ์ยืม</div><div class=muted style="font-size:12.5px">ห้องผ่าตัด · ' + esc(mode === 'q' ? P.label.replace('ไตรมาส ', 'ไตรมาสที่ ').replace(' / ', ' ปี ') : nm + ' ' + P.label.replace('ปี ', '')) + '</div></div>';
+  if(!D.n) return h + '<div class=muted style="text-align:center;padding:10px 0">ไม่มีใบยืมในช่วงนี้</div>';
+  h += '<div class=sbx>' + sbox(D.n, 'ใบยืมทั้งหมด', '#e1f0f9', '#3b6f8a') + sbox(D.rN ? pct(D.rOk, D.rN) + '%' : '–', 'รับของครบ', '#d3eef2', '#2f6f7a') + sbox(D.tN ? pct(D.tOk, D.tN) + '%' : '–', 'คืนครบ', '#f7e1eb', '#a3486a') + '</div>';
+  h += '<div class=rpS>1. ร้อยละการรับของครบ ' + ({m: 'รายสัปดาห์', q: 'รายเดือน', y: 'รายไตรมาส'})[mode] + '</div>' + barChart(B.map(b => { const v = D.bk[b.k]; return {l: b.l, v: v && v[1] ? pct(v[0], v[1]) : null}; })) +
+    '<div class=muted style="font-size:10.5px"><span style="color:#4aa9b9">■</span> ถึงเป้า <span style="color:#ff9fbd">■</span> ต่ำกว่าเป้า · – = ไม่มีข้อมูล</div>';
+  const tm = topOf(Object.keys(D.miss).reduce((a, k) => { a[k] = D.miss[k][0] + D.miss[k][1] + D.miss[k][2]; return a; }, {}), 5), mx = tm.length ? tm[0][1] : 1;
+  h += '<div class=rpS>2. รายการที่ขาดบ่อย</div>' + (tm.length ? tm.map(t => { const M = D.miss[t[0]]; return '<div class=hb><div><b style="font-weight:600">' + esc(t[0]) + '</b><span class=muted>' + t[1] + ' ครั้ง</span></div><div class=tr2><i style="width:' + (M[0] / mx * 100) + '%;background:#ec8a62"></i><i style="width:' + (M[1] / mx * 100) + '%;background:#ff9fbd"></i><i style="width:' + (M[2] / mx * 100) + '%;background:#B9DCF0"></i></div></div>'; }).join('') +
+    '<div class=tm style="font-size:10.5px;justify-content:flex-start;gap:12px"><span style="color:#b8532f">■ ชุดไม่ครบ</span><span style="color:#c4466f">■ ไม่ส่งมา</span><span style="color:#4f8fb5">■ คืนไม่ครบ</span></div>' : '<div class=rpN>ไม่พบรายการขาดในช่วงนี้</div>');
+  const sr = Object.keys(D.src).sort((a, b) => D.src[b][0] - D.src[a][0]).slice(0, 6);
+  if(sr.length) h += '<div class=rpS>3. แหล่งที่ยืม</div><table class=rtab><tr><td>แหล่ง</td><td style="text-align:right">ใบ</td><td style="text-align:right">รับครบ</td></tr>' + sr.map(k => { const s = D.src[k], p = s[2] ? pct(s[1], s[2]) : null; return '<tr><td>' + esc(k) + '</td><td style="text-align:right">' + s[0] + '</td><td style="text-align:right"><b style="color:' + (p == null ? '#9a8271' : p >= 90 ? '#2f6f7a' : '#c4466f') + '">' + (p == null ? '–' : p + '%') + '</b></td></tr>'; }).join('') + '</table>';
+  return h + '<div class=rpS>' + (sr.length ? 4 : 3) + '. ข้อสังเกต</div><div class=rpN>' + esc(observe(mode, D, Pv)) + '</div>';
+}
+function statsReport(){
+  const mode = stR, P = periodOf(mode, rpOff), me = keep.by || '';
+  const sign = '\n\nจึงเรียนมาเพื่อโปรดทราบ\n\nขอแสดงความนับถือ\n' + (me ? me + ' ' : '') + '(ห้องผ่าตัด)';
+  if(mode === 'd'){
+    const D = dailyData(P), dt = thShort(P.from) + ' ' + (P.a.getFullYear() + 543);
+    const sub = '[ห้องผ่าตัด] รายงานอุปกรณ์ยืมประจำวัน ' + dt;
+    let body = 'เรียน หัวหน้าห้องผ่าตัด\n\nรายงานการตรวจรับ–คืนอุปกรณ์ยืม ประจำวันที่ ' + thLong(P.from) + ' โดยสรุปดังนี้\n';
+    if(!D.n) body += '- ไม่มีการยืมอุปกรณ์ในวันนี้';
+    else { body += '1. มีการยืมอุปกรณ์ ' + D.n + ' เคส ปิดเคสแล้ว ' + D.closed + ' เคส\n2. ' + (D.short ? 'พบรายการไม่ครบ ' + D.short + ' เคส' : 'อุปกรณ์ครบถ้วนทุกเคส') + '\n3. ค้างดำเนินการ ' + (D.n - D.closed) + ' เคส'; if(D.issues.length) body += '\n\nประเด็นที่ขอให้ติดตาม\n' + D.issues.map(x => '- ' + x).join('\n'); }
+    return {sub, body: body + sign};
+  }
+  const D = repData(mode, P), Pv = repData(mode, periodOf(mode, rpOff - 1));
+  const sub = '[ห้องผ่าตัด] รายงานสรุปการตรวจรับ–คืนอุปกรณ์ยืม ' + P.label;
+  let body = 'เรียน หัวหน้าห้องผ่าตัด\n\nรายงานสรุปผลการตรวจรับ–คืนอุปกรณ์ยืม ' + P.label + ' (' + P.sub + ') โดยสรุปดังนี้\n';
+  if(!D.n) body += '- ไม่มีใบยืมในช่วงนี้';
+  else body += '1. ใบยืมทั้งหมด ' + D.n + ' ใบ\n2. รับของครบ ' + (D.rN ? pct(D.rOk, D.rN) + '% (' + D.rOk + '/' + D.rN + ' รายการ)' : 'ยังไม่มีข้อมูล') + '\n3. คืนครบ ' + (D.tN ? pct(D.tOk, D.tN) + '% (' + D.tOk + '/' + D.tN + ' รายการ)' : 'ยังไม่มีข้อมูล') + '\n4. ค้างดำเนินการ ' + D.open + ' ใบ\n\nข้อสังเกต: ' + observe(mode, D, Pv);
+  return {sub, body: body + sign};
+}
+/* PDF รายงาน: วาดหน้า A4 จากข้อความรายงาน */
+async function reportPdf(){
+  const rp = statsReport(), P = periodOf(stR, rpOff), card = $('#rpCard');
+  try{ await Promise.all([document.fonts.load('26px ORThai'), document.fonts.load('bold 26px ORThai')]); }catch(e){}
+  const cv = document.createElement('canvas'); cv.width = 1240; cv.height = 1754; const g = cv.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, 1240, 1754);
+  const FF = 'ORThai, Tahoma, sans-serif', M = 100, TW = 1040; let y = 110; g.textBaseline = 'top';
+  const font = (px, b) => { g.font = (b ? 'bold ' : '') + px + 'px ' + FF; };
+  const wrap = (txt, w) => { const out = []; String(txt).split('\n').forEach(par => { let line = ''; for(const ch of par){ if(g.measureText(line + ch).width > w && line){ out.push(line); line = ch; } else line += ch; } out.push(line); }); return out; };
+  const HD = HEAD(), LG = await logoImg(HD.logo);
+  if(LG){ const s = Math.min(110 / LG.height, 240 / LG.width); g.drawImage(LG, M, y - 20, LG.width * s, LG.height * s); }
+  font(40, true); g.fillStyle = '#000'; g.textAlign = 'center'; g.fillText(stR === 'd' ? 'รายงานผลการตรวจรับ–คืนอุปกรณ์ยืม' : 'รายงานสรุปผลการตรวจรับ–คืนอุปกรณ์ยืม', 620, y); y += 60;
+  font(28); g.fillText((HD.org ? HD.org + ' · ' : '') + 'ห้องผ่าตัด · ' + (stR === 'd' ? 'ประจำวันที่ ' + thLong(P.from) : P.label), 620, y); y += 56; g.textAlign = 'left';
+  g.fillRect(M, y, TW, 3); y += 30;
+  const body = rp.body.replace(/^เรียน[^\n]*\n\n/, '').replace(/\n\nจึงเรียน[\s\S]*$/, '');
+  font(28); wrap(body, TW).forEach(l => { if(y > 1560) return; g.fillText(l, M, y); y += 46; });
+  if(stR !== 'd'){
+    const svg = card && card.querySelector('svg');
+    if(svg && y < 1150){ try{ const xml = new XMLSerializer().serializeToString(svg).replace('<svg', '<svg xmlns="http://www.w3.org/2000/svg"'); const im = new Image(); await new Promise((ok, no) => { im.onload = ok; im.onerror = no; im.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(xml); }); y += 20; font(28, true); g.fillText('ร้อยละการรับของครบ เทียบเป้าหมาย 90%', M, y); y += 50; g.drawImage(im, M + 80, y, 880, 485); y += 500; }catch(e){} }
+  }
+  font(24); g.fillStyle = '#444'; g.textAlign = 'right'; g.fillText('จัดทำโดย ' + (keep.by || '-') + ' · ' + nowTh(), 1140, 1660); g.textAlign = 'left';
+  const name = 'รายงานอุปกรณ์ยืม_' + (stR === 'd' ? P.from : P.label.replace(/[ /]+/g, '_')) + '.pdf';
+  return shareOrSave([new File([pagesToPdf([cv])], name, {type: 'application/pdf'})], rp.sub);
+}
 function todayView(){
   const d = new Date(), wd = ['อา','จ','อ','พ','พฤ','ศ','ส'];
   const P = S.records.filter(r => { const s = recStage(r); return s === 'recv' || s === 'ret'; }).sort((a, b) => (a.date || '').localeCompare(b.date || ''));
   let h = '<div class=tpill>ห้องผ่าตัด · ' + wd[d.getDay()] + ' ' + d.getDate() + ' ' + TM[d.getMonth()] + '</div><div class=bigt>งานยืมของ</div><div class=bigt style="margin:2px 0 4px"><span class=hl>' + (P.length ? 'ทำต่อ ' + P.length + ' เคส' : 'ไม่มีงานค้าง') + '</span></div>' +
     '<div class=muted style="font-size:13.5px">' + (P.length ? 'เปิดมารู้เลยว่าต้องตรวจรับ หรือตรวจคืนอะไร' : 'ของยืมทุกใบตรวจรับ-คืนครบแล้ว') + '</div>';
   if(P.length){
-    const r = P[0], st = recStage(r), cur = st === 'recv' ? 1 : 2, a = ckSum(r, 'recv');
-    const S4 = [['ทำใบยืม', thDate(r.date)], ['ตรวจรับ', a.done ? a.ok + '/' + a.T + ' ครบ' : 'ของมาถึง'], ['ตรวจคืน', 'ก่อนส่งคืน'], ['ปิดเคส', 'ส่งรีพอร์ต']];
-    h += '<div class=card style="margin-top:14px"><b>เส้นทางของ ' + esc(r.caseName) + '</b><div class=pth>' + S4.map((s, i) => '<div class="' + (i < cur ? 'dn' : i === cur ? 'cu' : '') + '"' + (i === cur ? ' data-act=check data-id="' + esc(r.id) + '" data-v=' + st : '') + '>' + (i === cur ? '<span class=tg>ทำต่อเลย</span>' : '') + '<i>' + (i < cur ? '✓' : i + 1) + '</i><b>' + s[0] + '</b><small>' + esc(s[1]) + '</small></div>').join('') + '</div></div>';
+    const r = P[0], st = recStage(r), cur = st === 'recv' ? 1 : 2, a = ckSum(r, 'recv'), c = r.chk || {};
+    const S4 = [['ทำใบยืม', r.by, r.savedAt], ['ตรวจรับ', c.recvBy, c.recvAt], ['ตรวจคืน', c.retBy, c.retAt], ['ปิดเคส', '', '']];
+    h += '<div class=card style="margin-top:14px"><b>เส้นทางของ ' + esc(r.caseName) + '</b><div class=pth>' + S4.map((s, i) => { const dn = i < cur, who = dn ? (s[1] || 'ไม่ระบุ') : '';
+      return '<div class="' + (dn ? 'dn' : i === cur ? 'cu' : '') + '"' + (i === cur ? ' data-act=check data-id="' + esc(r.id) + '" data-v=' + st : '') + '>' + (i === cur ? '<span class=tg>ทำต่อเลย</span>' : '') + '<i>' + (dn ? '✓' : i + 1) + '</i><b>' + s[0] + '</b>' +
+        (dn ? '<em title="' + esc(who) + '">' + esc(who) + '</em><small>' + esc(thShort(s[2]) || (i === 1 && a.done ? a.ok + '/' + a.T : '')) + '</small>' : '<em class=w>รอ</em><small>' + (i === cur ? (st === 'ret' ? 'ก่อนส่งคืน' : 'ของมาถึง') : '&nbsp;') + '</small>') + '</div>'; }).join('') + '</div></div>';
     h += '<div class=sect><div class=bigt>เคสที่ <span class=hl>ต้องทำต่อ</span></div><a href="#saved" data-act=view data-v=saved>ใบทั้งหมด →</a></div>';
     P.slice(0, 8).forEach((r, i) => {
-      const st = recStage(r), fr = fromsOf(ckItems(r)), a = ckSum(r, 'recv');
+      const st = recStage(r), fr = fromsOf(ckItems(r)), a = ckSum(r, 'recv'), c = r.chk || {};
+      const who = [r.by ? 'ทำใบ ' + r.by : '', c.recvBy ? 'รับ ' + c.recvBy : ''].filter(Boolean).join(' · ');
       h += '<button class="tcard' + (i === 0 ? ' first' : '') + '" data-act=check data-id="' + esc(r.id) + '" data-v=' + st + '>' + (i === 0 ? '<span class=tg>เริ่มอันนี้ก่อน</span>' : '') +
         '<div class=tm><span>' + (fr ? 'ยืมจาก ' + esc(fr) + ' · ' : '') + 'ผ่าตัด ' + esc(thDate(r.date)) + '</span>' + (i ? '<span class="tag ' + st + '">รอ' + PN[st] + '</span>' : '') + '</div>' +
-        '<div class=tn>' + esc(r.caseName) + (r.doctor ? ' <span style="font-size:13px;font-weight:400;color:#6b6a62">· ' + esc(r.doctor) + '</span>' : '') + '</div>' +
-        '<div class=prog style="background:' + '#fff' + '"><i style="width:' + (st === 'ret' ? pct(a.ok, a.T) : 0) + '%;background:#4aa9b9"></i></div>' +
-        '<div class=tm><span>' + (st === 'ret' ? 'รับมาครบ ' + a.ok + ' จาก ' + a.T + (a.bad ? ' · ไม่ครบ ' + a.bad : '') : 'ของยืม ' + a.T + ' รายการ') + '</span><b>' + PN[st] + ' →</b></div></button>';
+        '<div class=tn>' + esc(r.caseName) + (r.doctor ? ' <span style="font-size:13px;font-weight:400;color:#9a8271">· ' + esc(r.doctor) + '</span>' : '') + '</div>' +
+        (a.done && a.bad ? '<div style="margin:2px 0 6px">' + ckPill(r, 'recv') + '</div>' : '') +
+        '<div class=prog><i style="width:' + (st === 'ret' ? pct(a.ok, a.T) : 0) + '%"></i></div>' +
+        '<div class=tm><span>' + (st === 'ret' ? 'รับมาครบ ' + a.ok + ' จาก ' + a.T : 'ของยืม ' + a.T + ' รายการ') + '</span><b>' + PN[st] + ' →</b></div>' + (who ? '<div class=who>' + esc(who) + '</div>' : '') + '</button>';
     });
   }else h += '<div class=sect><div class=bigt>ใบ <span class=hl>ล่าสุด</span></div><a href="#saved" data-act=view data-v=saved>ใบทั้งหมด →</a></div>';
   const D = S.records.filter(r => recStage(r) === 'done').sort((a, b) => String(b.savedAt).localeCompare(String(a.savedAt))).slice(0, 3);
-  D.forEach(r => { h += '<button class=tcard style="opacity:.85" data-act=check data-id="' + esc(r.id) + '" data-v=ret><div class=tm><span>ผ่าตัด ' + esc(thDate(r.date)) + '</span><span class="tag done">คืนครบแล้ว</span></div><div class=tn style="margin-bottom:2px">' + esc(r.caseName) + '</div><div class=tm><span>' + (ckSum(r, 'recv').bad || ckSum(r, 'ret').bad ? 'มีของไม่ครบ' : 'รับครบ · คืนครบ') + '</span><span>ดู →</span></div></button>'; });
+  D.forEach(r => { const c = r.chk || {}, sh = ckSum(r, 'recv').bad || ckSum(r, 'ret').bad; h += '<button class=tcard style="opacity:.85" data-act=check data-id="' + esc(r.id) + '" data-v=ret><div class=tm><span>ผ่าตัด ' + esc(thDate(r.date)) + '</span><span class="tag done">คืนครบแล้ว</span></div><div class=tn style="margin-bottom:2px">' + esc(r.caseName) + '</div><div class=tm><span>' + (sh ? 'มีของไม่ครบ' : 'รับครบ · คืนครบ') + '</span><span>ดู →</span></div><div class=who>' + esc([c.recvBy ? 'รับ ' + c.recvBy : '', c.retBy ? 'คืน ' + c.retBy : ''].filter(Boolean).join(' · ')) + '</div></button>'; });
   const days = {}; S.records.forEach(r => { const c = r.chk || {}; ['recvAt', 'retAt'].forEach(k => { if(c[k]) days[String(c[k]).slice(0, 10)] = 1; }); });
   let n = 0, w = '';
   for(let k = 6; k >= 0; k--){ const x = new Date(d.getFullYear(), d.getMonth(), d.getDate() - k), on = !!days[ymd(x)]; if(on) n++; w += '<div><i class="' + (on ? 'on' : k === 0 ? 'td' : '') + '">' + (on ? '✓' : '') + '</i>' + wd[x.getDay()] + '</div>'; }
-  h += '<div class=card style="margin-top:4px"><div class=tm><b style="font-size:15px">สัปดาห์นี้</b><b>ตรวจ ' + n + ' จาก 7 วัน</b></div><div class=wk>' + w + '</div><div class=muted>' + (n ? 'ทำได้ดีครับ ตรวจของยืมสม่ำเสมอ' : 'ยังไม่มีการตรวจรับ-คืนใน 7 วันนี้') + '</div></div>';
+  h += '<div class=card style="margin-top:4px"><div class=tm><b style="font-size:15px;color:#3b2a20">สัปดาห์นี้</b><b style="color:#3b2a20">ตรวจ ' + n + ' จาก 7 วัน</b></div><div class=wk>' + w + '</div><div class=muted>' + (n ? 'ทำได้ดี ตรวจของยืมสม่ำเสมอ' : 'ยังไม่มีการตรวจรับ-คืนใน 7 วันนี้') + '</div></div>';
+  if(bkDue()) h = '<div class=warn style="display:flex;align-items:center;gap:8px"><span style="flex:1">ถึงรอบสำรองข้อมูลสิ้นเดือน — เก็บไฟล์ Excel ลง OneDrive</span><button class=sm data-act=view data-v=backup>สำรอง</button></div>' + h;
   return {h, foot: ''};
 }
-function statsReport(D){
-  D = D || statsData(); const rn = (RANGES.find(x => x[0] === stR) || ['', ''])[1];
-  const sub = '[ห้องผ่าตัด] สรุปการตรวจรับ-คืนของยืม (' + rn + ')';
-  const body = 'เรียน หัวหน้าแผนก\n\nสรุปการตรวจรับ-คืนของยืม ช่วง' + rn + ' (ณ ' + nowTh() + ')\n' +
-    '- ตรวจแล้ว ' + D.ev + ' ครั้ง\n- ได้รับครบ ' + pct(D.rOk, D.rN) + '% (' + D.rOk + '/' + D.rN + ' รายการ)\n- คืนครบ ' + (D.tN ? pct(D.tOk, D.tN) + '% (' + D.tOk + '/' + D.tN + ' รายการ)' : 'ยังไม่มีข้อมูล') + '\n- ใบที่ยังไม่คืน ' + D.open + ' ใบ' +
-    (Object.keys(D.bad).length ? '\n\nของที่ไม่ครบบ่อย:\n' + topOf(D.bad, 5).map(t => '- ' + t[0] + ' ' + t[1] + ' ครั้ง').join('\n') : '') +
-    '\n\n— ส่งจากแอปใบเช็กลิสต์ยืมของ ห้องผ่าตัด';
-  return {sub, body};
+/* ===== สำรอง/กู้คืนเป็น Excel (.xlsx) — เขียนไฟล์เอง ไม่พึ่งไลบรารีภายนอก ===== */
+const CRCT = (() => { const t = new Uint32Array(256); for(let n = 0; n < 256; n++){ let c = n; for(let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; } return t; })();
+const crc32 = u => { let c = 0xFFFFFFFF; for(let i = 0; i < u.length; i++) c = CRCT[(c ^ u[i]) & 255] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; };
+function zipStore(files){
+  const te = new TextEncoder(), parts = [], cen = []; let off = 0;
+  const u16 = v => [v & 255, (v >>> 8) & 255], u32 = v => [v & 255, (v >>> 8) & 255, (v >>> 16) & 255, (v >>> 24) & 255];
+  files.forEach(f => {
+    const nm = te.encode(f.name), d = typeof f.data === 'string' ? te.encode(f.data) : f.data, c = crc32(d);
+    const lh = new Uint8Array([].concat(u32(0x04034b50), u16(20), u16(0x0800), u16(0), u16(0), u16(0x21), u32(c), u32(d.length), u32(d.length), u16(nm.length), u16(0)));
+    parts.push(lh, nm, d);
+    cen.push(new Uint8Array([].concat(u32(0x02014b50), u16(20), u16(20), u16(0x0800), u16(0), u16(0), u16(0x21), u32(c), u32(d.length), u32(d.length), u16(nm.length), u16(0), u16(0), u16(0), u16(0), u32(0), u32(off))), nm);
+    off += lh.length + nm.length + d.length;
+  });
+  const cs = cen.reduce((a, x) => a + x.length, 0);
+  return new Blob(parts.concat(cen, [new Uint8Array([].concat(u32(0x06054b50), u16(0), u16(0), u16(files.length), u16(files.length), u32(cs), u32(off), u16(0)))]), {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+}
+async function unzip(buf){
+  const u = new Uint8Array(buf), dv = new DataView(buf), out = {}, td = new TextDecoder();
+  let e = u.length - 22; while(e >= 0 && dv.getUint32(e, true) !== 0x06054b50) e--; if(e < 0) throw new Error('ไฟล์ไม่ใช่ Excel (.xlsx)');
+  let p = dv.getUint32(e + 16, true); const n = dv.getUint16(e + 10, true);
+  for(let i = 0; i < n; i++){
+    const meth = dv.getUint16(p + 10, true), cs = dv.getUint32(p + 20, true), nl = dv.getUint16(p + 28, true), xl = dv.getUint16(p + 30, true), cl = dv.getUint16(p + 32, true), lo = dv.getUint32(p + 42, true);
+    const name = td.decode(u.subarray(p + 46, p + 46 + nl)); p += 46 + nl + xl + cl;
+    const ds = lo + 30 + dv.getUint16(lo + 26, true) + dv.getUint16(lo + 28, true), raw = u.subarray(ds, ds + cs);
+    out[name] = {meth, raw};
+  }
+  const get = async name => { const f = out[name]; if(!f) return null; if(f.meth === 0) return td.decode(f.raw);
+    if(typeof DecompressionStream === 'undefined') throw new Error('เบราว์เซอร์นี้เปิดไฟล์ Excel ที่ถูกบันทึกซ้ำไม่ได้ ลองใช้ Chrome หรืออัปเดตเครื่อง');
+    return new Response(new Blob([f.raw]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).text(); };
+  return {names: Object.keys(out), get};
+}
+const xEsc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c])).replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g, '');
+const colL = i => { let s = ''; i++; while(i){ const m = (i - 1) % 26; s = String.fromCharCode(65 + m) + s; i = Math.floor((i - 1) / 26); } return s; };
+/* แผ่นงาน: {name, cols:[ความกว้าง], rows:[[ค่า|{v,s}]], head:true, hidden} · s = เลขสไตล์ */
+function sheetXml(sh){
+  const rows = sh.rows.map((r, ri) => '<row r="' + (ri + 1) + '">' + r.map((c, ci) => {
+    if(c == null || c === '') return '';
+    const o = typeof c === 'object' ? c : {v: c}, s = o.s != null ? o.s : (sh.head && ri === 0 ? 1 : 0), ref = colL(ci) + (ri + 1);
+    return typeof o.v === 'number' ? '<c r="' + ref + '" s="' + s + '"><v>' + o.v + '</v></c>' : '<c r="' + ref + '" s="' + s + '" t="inlineStr"><is><t xml:space="preserve">' + xEsc(o.v) + '</t></is></c>';
+  }).join('') + '</row>').join('');
+  const nc = Math.max.apply(null, sh.rows.map(r => r.length).concat([1]));
+  return '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">' +
+    (sh.head ? '<sheetViews><sheetView workbookViewId="0"><pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews>' : '') +
+    (sh.cols ? '<cols>' + sh.cols.map((w, i) => '<col min="' + (i + 1) + '" max="' + (i + 1) + '" width="' + w + '" customWidth="1"/>').join('') + '</cols>' : '') +
+    '<sheetData>' + rows + '</sheetData>' + (sh.head && sh.rows.length > 1 ? '<autoFilter ref="A1:' + colL(nc - 1) + sh.rows.length + '"/>' : '') + '</worksheet>';
+}
+function buildXlsx(sheets){
+  const ct = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>' +
+    sheets.map((s, i) => '<Override PartName="/xl/worksheets/sheet' + (i + 1) + '.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>').join('') + '</Types>';
+  const rels = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>';
+  const wb = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets>' +
+    sheets.map((s, i) => '<sheet name="' + xEsc(s.name) + '" sheetId="' + (i + 1) + '"' + (s.hidden ? ' state="hidden"' : '') + ' r:id="rId' + (i + 1) + '"/>').join('') + '</sheets>' +
+    (sheets.some(s => s.head && s.rows.length > 1) ? '<definedNames>' + sheets.map((s, i) => s.head && s.rows.length > 1 ? '<definedName name="_xlnm._FilterDatabase" localSheetId="' + i + '" hidden="1">\'' + xEsc(s.name) + '\'!$A$1:$' + colL(Math.max.apply(null, s.rows.map(r => r.length)) - 1) + '$' + s.rows.length + '</definedName>' : '').join('') + '</definedNames>' : '') + '</workbook>';
+  const wrels = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' + sheets.map((s, i) => '<Relationship Id="rId' + (i + 1) + '" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet' + (i + 1) + '.xml"/>').join('') +
+    '<Relationship Id="rId' + (sheets.length + 1) + '" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>';
+  /* สไตล์: 0 ปกติ · 1 หัวตาราง · 2 ครบ (ฟ้า) · 3 ชุดไม่ครบ (ส้ม) · 4 ไม่ส่งมา/ไม่ครบ (ชมพู) · 5 หัวเรื่องใหญ่ · 6 แถบกราฟ */
+  const fill = c => '<fill><patternFill patternType="solid"><fgColor rgb="FF' + c + '"/><bgColor indexed="64"/></patternFill></fill>';
+  const st = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">' +
+    '<fonts count="4"><font><sz val="11"/><name val="Tahoma"/></font><font><b/><sz val="11"/><color rgb="FF2F6F7A"/><name val="Tahoma"/></font><font><b/><sz val="14"/><color rgb="FF5A4032"/><name val="Tahoma"/></font><font><sz val="11"/><color rgb="FF4AA9B9"/><name val="Tahoma"/></font></fonts>' +
+    '<fills count="6"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill>' + fill('D3EEF2') + fill('FCD5C2') + fill('FFC0DA') + fill('F7E1EB') + '</fills>' +
+    '<borders count="2"><border><left/><right/><top/><bottom/><diagonal/></border><border><left style="thin"><color rgb="FFE5D3DA"/></left><right style="thin"><color rgb="FFE5D3DA"/></right><top style="thin"><color rgb="FFE5D3DA"/></top><bottom style="thin"><color rgb="FFE5D3DA"/></bottom><diagonal/></border></borders>' +
+    '<cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="7">' +
+    '<xf numFmtId="0" fontId="0" fillId="0" borderId="1" applyBorder="1"/><xf numFmtId="0" fontId="1" fillId="2" borderId="1" applyFont="1" applyFill="1" applyBorder="1"/><xf numFmtId="0" fontId="0" fillId="2" borderId="1" applyFill="1" applyBorder="1"/>' +
+    '<xf numFmtId="0" fontId="0" fillId="3" borderId="1" applyFill="1" applyBorder="1"/><xf numFmtId="0" fontId="0" fillId="4" borderId="1" applyFill="1" applyBorder="1"/><xf numFmtId="0" fontId="2" fillId="0" borderId="0" applyFont="1"/><xf numFmtId="0" fontId="3" fillId="0" borderId="1" applyFont="1" applyBorder="1"/></cellXfs>' +
+    '<cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>';
+  return zipStore([{name: '[Content_Types].xml', data: ct}, {name: '_rels/.rels', data: rels}, {name: 'xl/workbook.xml', data: wb}, {name: 'xl/_rels/workbook.xml.rels', data: wrels}, {name: 'xl/styles.xml', data: st}]
+    .concat(sheets.map((s, i) => ({name: 'xl/worksheets/sheet' + (i + 1) + '.xml', data: sheetXml(s)}))));
+}
+const BK_RANGES = [['all', 'ทั้งหมด'], ['m', 'เดือนนี้'], ['q', 'ไตรมาสนี้'], ['y', 'ปีนี้']];
+let bkR = 'all';
+function backupBook(rk){
+  const P = rk === 'all' ? null : periodOf(rk, 0), inR = r => !P || ((r.date || '') >= P.from && (r.date || '') < P.to);
+  const R = S.records.filter(inR).sort((a, b) => (a.date || '').localeCompare(b.date || '') || String(a.savedAt).localeCompare(String(b.savedAt)));
+  const no = {}; S.records.slice().sort((a, b) => String(a.savedAt).localeCompare(String(b.savedAt))).forEach((r, i) => { no[r.id] = String(i + 1).padStart(4, '0'); });
+  const stName = r => ({recv: 'รอตรวจรับ', ret: 'รอตรวจคืน', done: 'ปิดเคสแล้ว', none: 'ไม่มีของยืม'})[recStage(r)];
+  const VS = {ok: ['ครบ', 2], part: ['ชุดไม่ครบ', 3], bad: ['ไม่ส่งมา', 4]};
+  /* แท็บสรุป */
+  const sum = [[{v: 'สรุปการตรวจรับ–คืนอุปกรณ์ยืม ห้องผ่าตัด', s: 5}], ['ช่วงข้อมูล: ' + (P ? P.label : 'ทั้งหมด') + ' · สร้างเมื่อ ' + nowTh()], [],
+    [{v: 'ช่วง', s: 1}, {v: 'ใบยืม', s: 1}, {v: 'รับครบ (รายการ)', s: 1}, {v: 'ตรวจรับ (รายการ)', s: 1}, {v: 'รับครบ %', s: 1}, {v: 'คืนครบ %', s: 1}, {v: 'ชุดไม่ครบ', s: 1}, {v: 'ไม่ส่งมา', s: 1}, {v: 'แถบ (รับครบ %)', s: 1}]];
+  const grp = (keyf, labf) => { const G = {}; R.forEach(r => { if(!ckItems(r).length || !r.date) return; const k = keyf(r.date), g = G[k] = G[k] || {n: 0, ro: 0, rn: 0, to: 0, tn: 0, p: 0, b: 0}; g.n++; const a = ckSum(r, 'recv'), t = ckSum(r, 'ret'); if(a.done){ g.ro += a.ok; g.rn += a.ok + a.bad; g.p += a.part; g.b += a.ns; } if(t.done){ g.to += t.ok; g.tn += t.ok + t.bad; } });
+    Object.keys(G).sort().forEach(k => { const g = G[k], p = g.rn ? pct(g.ro, g.rn) : null; sum.push([labf(k), g.n, g.ro, g.rn, p == null ? '–' : p, g.tn ? pct(g.to, g.tn) : '–', g.p, g.b, {v: p == null ? '' : '█'.repeat(Math.round(p / 10)) + ' ' + p + '%', s: 6}]); }); };
+  grp(d => d.slice(0, 7), k => TMF[+k.slice(5) - 1] + ' ' + (+k.slice(0, 4) + 543));
+  sum.push([]); sum.push([{v: 'รายไตรมาส', s: 1}]);
+  grp(d => d.slice(0, 4) + '-Q' + (Math.floor((+d.slice(5, 7) - 1) / 3) + 1), k => 'ไตรมาส ' + k.slice(-1) + ' / ' + (+k.slice(0, 4) + 543));
+  sum.push([]); sum.push([{v: 'รายปี', s: 1}]);
+  grp(d => d.slice(0, 4), k => 'ปี ' + (+k + 543));
+  sum.push([]); sum.push(['หมายเหตุ: รับครบ % = รายการที่ได้รับครบ ÷ รายการที่ตรวจรับ · ไฟล์นี้ไม่มีชื่อ/HN ผู้ป่วย']);
+  /* แท็บใบยืม */
+  const recs = [['เลขใบ', 'วันที่ผ่าตัด', 'เคส', 'แพทย์', 'ผู้ทำใบ', 'เวลาทำใบ', 'ยืมจาก', 'ของยืม (รายการ)', 'ผลตรวจรับ', 'ผู้ตรวจรับ', 'เวลาตรวจรับ', 'ผลตรวจคืน', 'ผู้ตรวจคืน', 'เวลาตรวจคืน', 'สถานะ']];
+  R.forEach(r => { const c = r.chk || {}, a = ckSum(r, 'recv'), t = ckSum(r, 'ret');
+    recs.push([no[r.id], thDate(r.date), r.caseName || '', r.doctor || '', r.by || '', r.savedAt || '', fromsOf(ckItems(r)), a.T, a.done ? {v: a.bad ? 'ขาด ' + a.bad + (a.part ? ' (ชุดไม่ครบ ' + a.part + ')' : '') : 'ครบ', s: a.bad ? (a.ns ? 4 : 3) : 2} : '', c.recvBy || '', c.recvAt || '', t.done ? {v: t.bad ? 'ไม่ครบ ' + t.bad : 'ครบ', s: t.bad ? 4 : 2} : (r.returned ? 'คืนแล้ว' : ''), c.retBy || '', c.retAt || '', stName(r)]); });
+  /* แท็บรายการ */
+  const its = [['เลขใบ', 'วันที่ผ่าตัด', 'เคส', 'ประเภท', 'รายการ', 'ยืมจาก', 'จำนวน', 'ผลตรวจรับ', 'รายละเอียดที่ขาด', 'ผู้ตรวจรับ', 'เวลาตรวจรับ', 'ผลตรวจคืน', 'เหตุผล (คืน)', 'ผู้ตรวจคืน', 'เวลาตรวจคืน']];
+  R.forEach(r => { const c = r.chk || {}; ckItems(r).forEach(x => { const a = (c.recv || {})[x.k], t = (c.ret || {})[x.k];
+    its.push([no[r.id], thDate(r.date), r.caseName || '', x.t === 'ins' ? 'Instrument' : 'เวชภัณฑ์', x.n, x.from, x.q, a ? {v: VS[a.v][0], s: VS[a.v][1]} : '', a && a.v !== 'ok' ? blTxt(a, 'recv') : '', a ? c.recvBy || '' : '', a ? c.recvAt || '' : '', t ? {v: t.v === 'ok' ? 'ครบ' : 'ไม่ครบ', s: t.v === 'ok' ? 2 : 4} : '', t && t.v !== 'ok' ? t.why || '' : '', t ? c.retBy || '' : '', t ? c.retAt || '' : '']); }); });
+  /* แท็บรายชื่อ */
+  const ppl = [['ประเภท', 'ชื่อ', 'หมวด / รายละเอียด']];
+  S.doctors.forEach(n => ppl.push(['แพทย์', n, ''])); S.staff.forEach(n => ppl.push(['เจ้าหน้าที่', n, '']));
+  S.cases.forEach(c => ppl.push(['แม่แบบเคส', c.name || '', c.cat || '']));
+  Object.keys(S.templates).forEach(k => { const t = S.templates[k]; ppl.push(['รายการที่จำไว้ตามแพทย์', (t.doctor || '') + ' · ' + (t.caseName || ''), 'อัปเดต ' + (t.updatedAt || '')]); });
+  (S.items || []).forEach(x => ppl.push(['คลัง' + (x.t === 'sup' ? 'เวชภัณฑ์' : 'เครื่องมือ'), x.n || '', x.code || '']));
+  /* แท็บตั้งค่า + ข้อมูลกู้คืน (ซ่อน) */
+  const hd = Object.assign({}, S.head || {}); delete hd.logo;
+  const set = [['ค่า', 'ข้อมูล'], ['ไฟล์', 'สำรองจากแอปใบเช็กลิสต์ยืมของ ห้องผ่าตัด'], ['สร้างเมื่อ', nowTh()], ['ช่วงข้อมูล', P ? P.label : 'ทั้งหมด'], ['อีเมลหัวหน้า', hd.mail || ''], ['ชื่อหน่วยงาน', hd.org || ''], ['ตัวอักษร', hd.font || ''], ['หมายเหตุ', 'ไม่เก็บรหัสหรือคีย์ของระบบ · แท็บ "กู้คืน" ซ่อนไว้สำหรับนำเข้ากลับ ห้ามแก้']];
+  const json = JSON.stringify({app: 'or-checklist', v: 2, at: nowTh(), range: rk, cases: S.cases, doctors: S.doctors, staff: S.staff, templates: S.templates, items: S.items || [], head: S.head || null, records: R});
+  const rec = []; for(let i = 0; i < json.length; i += 30000) rec.push([json.slice(i, i + 30000)]);
+  return buildXlsx([
+    {name: 'สรุป', rows: sum, cols: [24, 9, 15, 16, 10, 10, 11, 10, 22]},
+    {name: 'ใบยืม', rows: recs, head: true, cols: [8, 12, 22, 16, 14, 17, 18, 10, 20, 14, 17, 12, 14, 17, 12]},
+    {name: 'รายการ', rows: its, head: true, cols: [8, 12, 20, 12, 28, 14, 8, 12, 24, 14, 17, 11, 16, 14, 17]},
+    {name: 'รายชื่อ', rows: ppl, head: true, cols: [22, 36, 28]},
+    {name: 'ตั้งค่า', rows: set, head: true, cols: [16, 70]},
+    {name: 'กู้คืน', rows: rec, hidden: true, cols: [120]}]);
+}
+async function readBackupXlsx(buf){
+  const z = await unzip(buf), wb = await z.get('xl/workbook.xml'); if(!wb) throw new Error('ไฟล์ไม่ใช่ Excel (.xlsx)');
+  const dp = new DOMParser(), W = dp.parseFromString(wb, 'application/xml'), sh = [].slice.call(W.getElementsByTagName('sheet')).find(s => s.getAttribute('name') === 'กู้คืน');
+  if(!sh) throw new Error('ไม่พบแท็บ "กู้คืน" — ใช้ไฟล์สำรองที่ได้จากแอปนี้');
+  const rid = sh.getAttribute('r:id') || sh.getAttributeNS('http://schemas.openxmlformats.org/officeDocument/2006/relationships', 'id');
+  const RL = dp.parseFromString(await z.get('xl/_rels/workbook.xml.rels'), 'application/xml'), rel = [].slice.call(RL.getElementsByTagName('Relationship')).find(x => x.getAttribute('Id') === rid);
+  let tg = rel.getAttribute('Target').replace(/^\/?xl\//, '').replace(/^\//, ''); tg = 'xl/' + tg;
+  const SX = dp.parseFromString(await z.get(tg), 'application/xml');
+  const ssx = await z.get('xl/sharedStrings.xml'), SS = ssx ? [].slice.call(dp.parseFromString(ssx, 'application/xml').getElementsByTagName('si')).map(si => [].slice.call(si.getElementsByTagName('t')).map(t => t.textContent).join('')) : [];
+  const cells = [].slice.call(SX.getElementsByTagName('c')).filter(c => /^A\d+$/.test(c.getAttribute('r'))).sort((a, b) => +a.getAttribute('r').slice(1) - +b.getAttribute('r').slice(1));
+  const txt = cells.map(c => { const t = c.getAttribute('t'); if(t === 's') return SS[+c.getElementsByTagName('v')[0].textContent] || ''; if(t === 'inlineStr') return [].slice.call(c.getElementsByTagName('t')).map(x => x.textContent).join(''); const v = c.getElementsByTagName('v')[0]; return v ? v.textContent : ''; }).join('');
+  return JSON.parse(txt);
+}
+function bkLast(){ return (S.head && S.head.bkAt) || (function(){ try{ return localStorage.getItem('orBkAt') || ''; }catch(e){ return ''; } })(); }
+function bkDue(){
+  if(!loaded || (S.head && S.head.bkRemind === false) || !S.records.length) return false;
+  const d = new Date(), last = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate(), lb = bkLast(), ym = ymd(d).slice(0, 7);
+  if(d.getDate() >= last - 1) return lb.slice(0, 7) !== ym || lb.slice(8, 10) < String(last - 1);
+  if(d.getDate() <= 3){ const pm = ymd(new Date(d.getFullYear(), d.getMonth(), 0)); return lb.slice(0, 10) < pm.slice(0, 8) + String(+pm.slice(8) - 1).padStart(2, '0'); }
+  return false;
+}
+function saveHeadKey(k, v){ const d = Object.assign({}, S.head || {}); d[k] = v; S.head = d; upsertRows([{kind: 'setting', id: 'head', data: d}]).catch(() => {}); }
+async function doBackupXlsx(share){
+  const blob = backupBook(bkR), name = 'OR-Checklist_' + (+today().slice(0, 4) + 543) + today().slice(4) + (bkR === 'all' ? '' : '_' + bkR) + '.xlsx';
+  const at = nowTh(); try{ localStorage.setItem('orBkAt', at); }catch(e){} saveHeadKey('bkAt', at); saveHeadKey('bkFile', name);
+  if(share){ const r = await shareOrSave([new File([blob], name, {type: blob.type})], name); say(r === 'shared' ? 'ส่งไฟล์สำรองแล้ว' : 'บันทึกไฟล์ ' + name + ' แล้ว'); }
+  else { downloadBlob(blob, name); say('ดาวน์โหลด ' + name + ' แล้ว — อัปโหลดเข้า OneDrive บริษัทได้เลย'); }
+}
+function backupHtml(){
+  const lb = bkLast(), days = lb ? Math.floor((new Date() - pYmd(lb)) / 864e5) : null, on = !(S.head && S.head.bkRemind === false);
+  const tick = t => '<div class=nmrow style="gap:8px;margin:4px 0;font-size:13px"><span style="flex:none;width:22px;height:22px;display:inline-flex">' + ICO.ok.replace(/width="\d+" height="\d+"/, 'width="22" height="22"') + '</span>' + t + '</div>';
+  const step = (n, t, s) => '<div class=nmrow style="gap:10px;align-items:flex-start;margin:9px 0"><span style="width:28px;height:28px;border-radius:50%;background:linear-gradient(#f7e1eb,#ffc0da);box-shadow:0 2px 0 #ff9fbd;display:flex;align-items:center;justify-content:center;font-weight:700;flex:none">' + n + '</span><div><b style="font-size:13.5px">' + t + '</b><div class=muted style="font-size:12px">' + s + '</div></div></div>';
+  let h = '<div class=bigt style="margin-bottom:8px"><span class=hl>สำรองข้อมูล</span></div>';
+  h += '<div class=card><div class=bkst><b class=rpT>สำรองล่าสุด</b>' + (lb ? '<span class="pill ' + (days > 31 ? 'r' : days > 7 ? 'b' : 'g') + '">' + (days ? 'ผ่านมา ' + days + ' วัน' : 'วันนี้') + '</span>' : '<span class="pill r">ยังไม่เคยสำรอง</span>') + '</div>' +
+    (lb ? '<div style="font-size:13px">' + esc(thShort(lb)) + ' ' + (+lb.slice(0, 4) + 543) + '</div><div class=muted style="font-size:11.5px">' + esc((S.head && S.head.bkFile) || '') + '</div>' : '') +
+    '<label style="margin-top:12px">เลือกช่วงข้อมูล</label><div class=chips>' + BK_RANGES.map(c => '<button class="chip' + (bkR === c[0] ? ' on' : '') + '" data-act=bkrange data-v=' + c[0] + '>' + c[1] + '</button>').join('') + '</div>' +
+    '<label style="margin-top:10px">ในไฟล์มี</label>' + tick('ใบยืม + รายการ + ผลตรวจรับ/คืน') + tick('ชื่อคนทำแต่ละขั้น + วันเวลา') + tick('สรุปตัวเลขรายเดือน/ไตรมาส/ปี') + tick('รายชื่อแพทย์ เจ้าหน้าที่ แม่แบบเคส') +
+    '<div class=muted style="font-size:11.5px;margin-top:4px">ไม่มีชื่อ/HN ผู้ป่วย และไม่มีรหัสหรือคีย์ของระบบ</div>' +
+    '<button class="gr" style="width:100%;margin-top:12px" data-act=bkxlsx>ดาวน์โหลดไฟล์สำรอง (.xlsx)</button></div>';
+  h += '<div class=sect><div class=bigt>เอาลง <span class=hl>OneDrive</span> บริษัท</div></div><div class=card>' + step(1, 'กดดาวน์โหลดไฟล์สำรอง', 'หรือกด "แชร์ไป OneDrive" เพื่อเลือกแอป OneDrive จากมือถือโดยตรง') + step(2, 'เปิดแอป OneDrive (บัญชีบริษัท)', 'หรือเข้า OneDrive ทางเว็บบนคอม') + step(3, 'อัปโหลดเข้าโฟลเดอร์ "งานคุณภาพ OR"', 'ชื่อไฟล์มีวันที่ เก็บย้อนหลังได้') +
+    '<button style="width:100%;margin-top:6px" data-act=bkshare>แชร์ไป OneDrive / แอปอื่น</button></div>';
+  h += '<div class=sect><div class=bigt><span class=hl>กู้คืน</span> ข้อมูล</div></div><div class=card><div style="font-size:13px;margin-bottom:10px">เลือกไฟล์สำรอง (.xlsx หรือ .json แบบเดิม) ระบบจะ <b>รวมข้อมูล</b> เข้ามา ไม่ลบของเดิม</div><button style="width:100%" data-act=restore>นำเข้าจากไฟล์สำรอง</button><input type=file id=restoreFile accept=".xlsx,.json" style="display:none">' +
+    '<div class=bkst style="margin-top:14px;font-size:13px"><span><b>เตือนสำรองสิ้นเดือน</b><br><span class=muted style="font-size:11.5px">ขึ้นแจ้งที่หน้างานวันนี้ ช่วง 2 วันสุดท้ายของเดือน</span></span><button class="chip' + (on ? ' on' : '') + '" data-act=bkremind>' + (on ? 'เปิด' : 'ปิด') + '</button></div></div>';
+  h += '<div class=muted style="font-size:12px;margin:10px 4px">ส่งขึ้น OneDrive อัตโนมัติ (ไม่ต้องกดเอง) ต้องเชื่อมบัญชี Microsoft ของบริษัท ซึ่งต้องขออนุญาต IT ก่อน — ตอนนี้ใช้แบบกดเอง 3 ขั้นด้านบน</div>';
+  return h;
 }
 function nameSelect(id, val, list, ph){
   if(!list.length) return '<input type=text id=' + id + ' value="' + esc(val) + '" placeholder="' + ph + '">';
@@ -794,7 +1060,7 @@ function render(){
   if(CKV.indexOf(view) >= 0){ const o = view === 'check' ? ckView() : view === 'checkdone' ? ckDoneView() : view === 'today' ? todayView() : statsView(); h += o.h; foot = o.foot; }
 
   if(view === 'settings'){
-    h += '<div class=menu>' + [['items','คลังเครื่องมือ / เวชภัณฑ์ใน OR','รายการทั้งหมด ใช้ซ้ำได้ทุกเคส ดึงไปใส่เคสได้เลย'],['cases','แก้เคส / รายการมาตรฐาน','เพิ่ม แก้ ลบ เครื่องมือและเวชภัณฑ์ของแต่ละเคส'],['printer','เชื่อมต่อเครื่องปริ้น','ตั้งครั้งเดียว + ปุ่มทดสอบปริ้น A4'],['head','หัวกระดาษ / ตรา รพ.','แก้ชื่อหัวใบ และใส่ตรา รพ. ที่ปริ้นทุกใบ'],['people','รายชื่อแพทย์ / พยาบาล','แพทย์ ผู้ลงชื่อ และรายการที่จำไว้ตามแพทย์'],['backup','สำรองข้อมูล / ใช้หลายเครื่อง','ดาวน์โหลดไฟล์สำรอง เชื่อมให้น้องๆ เห็นข้อมูลร่วมกัน'],['help','คู่มือใช้งาน','อ่านแค่ 1 นาที']].map(m => '<button data-act=view data-v=' + m[0] + '><b>' + m[1] + '</b><span>' + m[2] + '</span></button>').join('') + '</div>';
+    h += '<div class=menu>' + [['items','คลังเครื่องมือ / เวชภัณฑ์ใน OR','รายการทั้งหมด ใช้ซ้ำได้ทุกเคส ดึงไปใส่เคสได้เลย'],['cases','แก้เคส / รายการมาตรฐาน','เพิ่ม แก้ ลบ เครื่องมือและเวชภัณฑ์ของแต่ละเคส'],['printer','เชื่อมต่อเครื่องปริ้น','ตั้งครั้งเดียว + ปุ่มทดสอบปริ้น A4'],['head','หัวกระดาษ / ตรา รพ.','แก้ชื่อหัวใบ และใส่ตรา รพ. ที่ปริ้นทุกใบ'],['people','รายชื่อแพทย์ / พยาบาล','แพทย์ ผู้ลงชื่อ และรายการที่จำไว้ตามแพทย์'],['backup','สำรองข้อมูล (Excel) / ใช้หลายเครื่อง','ไฟล์ Excel เก็บลง OneDrive บริษัท · กู้คืน · เชื่อมให้น้องๆ เห็นข้อมูลร่วมกัน'],['help','คู่มือใช้งาน','อ่านแค่ 1 นาที']].map(m => '<button data-act=view data-v=' + m[0] + '><b>' + m[1] + '</b><span>' + m[2] + '</span></button>').join('') + '</div>';
   }
 
   if(view === 'new'){
@@ -888,7 +1154,7 @@ function render(){
     keys.sort().forEach(k => { const p = k.split('|'); const c = caseById(p[1]); h += '<div class=row><div class=nmrow><div style="flex:1"><b>' + esc(p[0]) + '</b> · ' + esc(c ? c.name : p[1]) + '<div class=muted>อัปเดต ' + esc(S.templates[k].updatedAt || '') + '</div></div><button class="sm x" data-act=deltpl data-key="' + esc(k) + '">ลบ</button></div></div>'; });
   }
   else if(view === 'backup'){
-    h += '<div class=card><h2 style="margin-top:0">สำรองข้อมูล</h2><div class=muted>ดาวน์โหลดไฟล์สำรองเก็บไว้ (แนะนำทุกสัปดาห์ เก็บลง OneDrive ได้) หรือนำเข้าไฟล์เพื่อกู้คืน</div><div class=acts><button class=sm data-act=backup>ดาวน์โหลดไฟล์สำรอง</button><button class=sm data-act=restore>นำเข้าไฟล์สำรอง</button></div><input type=file id=restoreFile accept=".json" style="display:none"></div>';
+    h += backupHtml();
     if(cloud()){
       h += '<div class=card><h2 style="margin-top:0">ใช้หลายเครื่อง: เชื่อมแล้ว ✓</h2><div class=muted>' + esc(API.replace(/^https?:\/\//, '').slice(0, 40)) + '</div><div class=acts><button class="sm pri" data-act=sharelink>คัดลอกลิงก์ให้น้องๆ</button><button class=sm data-act=setup>เปลี่ยนการเชื่อมต่อ</button><button class="sm x" data-act=unlink>กลับไปใช้เครื่องเดียว</button></div></div>';
     }else{
@@ -1033,7 +1299,7 @@ document.addEventListener('click', e => {
   else if(a === 'ckset' || a === 'ckwhy' || a === 'ckall'){
     grabCk(); const r = S.records.find(x => x.id === ck.id); if(!r) return; const L = ckItems(r), m = ck[ck.phase];
     if(a === 'ckall') L.forEach(x => { if(!m[x.k]) m[x.k] = {v: 'ok'}; });
-    else if(a === 'ckset'){ const x = L[i]; m[x.k] = t.dataset.v === 'ok' ? {v: 'ok'} : {v: 'bad', why: (m[x.k] && m[x.k].why) || ''}; }
+    else if(a === 'ckset'){ const x = L[i], nv = t.dataset.v, o = m[x.k] || {}; m[x.k] = nv === 'ok' ? {v: 'ok'} : o.v === nv ? o : {v: nv, why: ''}; }
     else { const x = L[i]; if(m[x.k]) m[x.k].why = m[x.k].why === t.dataset.v ? '' : t.dataset.v; }
     render();
   }
@@ -1045,7 +1311,12 @@ document.addEventListener('click', e => {
     keep.by = ck.by; const data = {}; L.forEach(x => { data[x.k] = m[x.k]; });
     run(async () => { await api('saveCheck', {id: ck.id, phase: ck.phase, data, by: ck.by}); view = 'checkdone'; location.hash = '#checkdone'; window.scrollTo(0, 0); });
   }
-  else if(a === 'strange'){ stR = t.dataset.v; render(); }
+  else if(a === 'strange'){ stR = t.dataset.v; rpOff = 0; render(); }
+  else if(a === 'rpoff'){ rpOff = Math.min(0, rpOff + (+t.dataset.v)); render(); }
+  else if(a === 'reppdf'){ say('กำลังทำ PDF…'); render(); reportPdf().then(r => { say(r === 'cancel' ? '' : r === 'shared' ? 'ส่ง PDF แล้ว' : 'บันทึก PDF แล้ว'); render(); }).catch(er => { say(er.message, 'err'); render(); }); }
+  else if(a === 'bkrange'){ bkR = t.dataset.v; render(); }
+  else if(a === 'bkxlsx' || a === 'bkshare'){ doBackupXlsx(a === 'bkshare').then(render).catch(er => { say(er.message, 'err'); render(); }); }
+  else if(a === 'bkremind'){ saveHeadKey('bkRemind', !!(S.head && S.head.bkRemind === false)); render(); }
   else if(a === 'sendmail' || a === 'sharerep'){
     const rp = t.dataset.k === 'stats' ? statsReport() : ckReport(S.records.find(x => x.id === ck.id), ck.phase);
     const mi = $('#mailIn'), to = (mi ? mi.value : HEAD().mail || '').trim();
@@ -1085,7 +1356,7 @@ document.addEventListener('click', e => {
 
   /* รายชื่อ */
   else if(a === 'savepeople'){ const d = lines('#docIn'), s = lines('#staffIn'); run(async () => { await api('savePeople', {doctors: d, staff: s}); say('บันทึกรายชื่อแล้ว'); }); }
-  else if(a === 'backup'){
+  else if(a === 'backupjson'){
     const blob = new Blob([JSON.stringify({app: 'or-checklist', at: nowTh(), cases: S.cases, doctors: S.doctors, staff: S.staff, templates: S.templates, records: S.records}, null, 1)], {type: 'application/json'});
     const l = document.createElement('a'); l.href = URL.createObjectURL(blob); l.download = 'สำรองยืมของOR_' + today() + '.json'; document.body.appendChild(l); l.click(); l.remove();
     say('ดาวน์โหลดไฟล์สำรองแล้ว');
@@ -1097,20 +1368,22 @@ document.addEventListener('click', e => {
 document.addEventListener('change', e => {
   const t = e.target;
   if(t.id === 'restoreFile' && t.files[0]){
-    const rd = new FileReader();
+    const rd = new FileReader(), isX = /\.xlsx$/i.test(t.files[0].name);
     rd.onload = () => run(async () => {
-      const j = JSON.parse(rd.result); if(j.app !== 'or-checklist') throw new Error('ไม่ใช่ไฟล์สำรองของแอปนี้');
+      const j = isX ? await readBackupXlsx(rd.result) : JSON.parse(rd.result); if(j.app !== 'or-checklist') throw new Error('ไม่ใช่ไฟล์สำรองของแอปนี้');
       const rows = [].concat(
         (j.cases || []).map(c => ({kind: 'case', id: c.id, data: c})),
         (j.doctors || []).map((n, i) => ({kind: 'doctor', id: n, data: {name: n, o: i + 1}})),
         (j.staff || []).map((n, i) => ({kind: 'staff', id: n, data: {name: n, o: i + 1}})),
         Object.keys(j.templates || {}).map(k => ({kind: 'template', id: k, data: j.templates[k]})),
-        (j.records || []).map(r => ({kind: 'record', id: r.id, data: r})));
+        (j.records || []).map(r => ({kind: 'record', id: r.id, data: r})),
+        (j.items || []).filter(x => x && x.n).map(x => ({kind: 'item', id: itemId(x.t, x.n), data: x})),
+        (j.head && !S.head ? [{kind: 'setting', id: 'head', data: j.head}] : []));
       for(let i = 0; i < rows.length; i += 200) await upsertRows(rows.slice(i, i + 200));
       await api();
       say('นำเข้าข้อมูล ' + rows.length + ' รายการแล้ว');
     });
-    rd.readAsText(t.files[0]); return;
+    if(isX) rd.readAsArrayBuffer(t.files[0]); else rd.readAsText(t.files[0]); return;
   }
   if(t.id === 'ccatSel' && editCase){ editCase.cat = t.value; return; }
   if(t.id === 'newCat' || t.id === 'newCat2'){ newCatSel = t.value; return; }
