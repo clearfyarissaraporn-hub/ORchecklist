@@ -259,6 +259,28 @@ button.gr{background:linear-gradient(#b4e3ec,#6cc3d0);border:0;color:#fff;box-sh
   #print section:last-of-type{page-break-after:auto}
   #print .sg{margin-top:14px}
 }
+/* ===== สีตัวหนังสือ 2 โทน + สีในช่อง (มินิมอล) ===== */
+:root{--t1:#16697a;--t2:#b02f5c;--f1:#eaf6fa;--f2:#fff0f5;--f3:#fff4dc}
+label{color:var(--t1);font-weight:700;font-size:13.5px;letter-spacing:.1px}
+label:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--t2);margin-right:6px;vertical-align:1px}
+.card h2,h2{color:var(--t1)}
+.cat{color:var(--t2)!important;font-weight:700}
+.muted{color:#7d6657}
+input.fq,input[type=text]{background:var(--f2);border-color:#f4c7d7;color:#3b2a20}
+select,input[type=date]{background:var(--f1);border-color:#b7dbe6;color:#0f4f5d;font-weight:600}
+input[type=text]::placeholder{color:#c08aa0}
+input:focus,select:focus,textarea:focus{background:#fff;outline:2px solid var(--t1);border-color:var(--t1)}
+textarea{background:var(--f3);border-color:#f0dcae}
+.picked{display:flex;gap:8px;align-items:center;margin:8px 0 2px;padding:9px 12px;border-radius:12px;background:var(--f1);border:1.5px solid #8acdd7}
+.picked span{font-size:12px;font-weight:700;color:#fff;background:var(--t1);border-radius:999px;padding:1px 9px;white-space:nowrap}
+.picked b{color:var(--t1);font-size:15.5px}
+button.tgl{display:block;width:100%;margin:10px 0 2px;background:var(--f1);border:1.5px dashed #8acdd7;color:var(--t1);font-weight:700;box-shadow:none}
+.case{color:#3b2a20;font-weight:600}
+.case.on{background:var(--f1);border-color:var(--t1);color:var(--t1)}
+.case small{color:var(--t2);font-weight:700}
+details.more summary{color:var(--t1);font-weight:700}
+.ok{color:#14684a}.warn{color:#8a4a12}
+.steps div.cur{color:var(--t2);font-weight:700}
 </style>
 </head>
 <body>
@@ -298,7 +320,7 @@ let S = {cases:[], doctors:[], staff:[], templates:{}, records:[]};
 let loaded = false, busy = false, lastSync = '', msg = '', msgType = 'ok';
 const VIEWMAP = {'#new':'new','#today':'today','#check':'check','#checkdone':'checkdone','#stats':'stats','#printer':'printer','#head':'head','#saved':'saved','#items':'items','#settings':'settings','#cases':'cases','#people':'people','#help':'help','#backup':'backup'};
 let view = VIEWMAP[location.hash] || 'today';
-let catSel = '', caseQ = '', step = 1, draft = null, editCase = null, delPending = '', justSaved = false, filt = {q:'', borrow:'all'};
+let caseOpen = false, catSel = '', caseQ = '', step = 1, draft = null, editCase = null, delPending = '', justSaved = false, filt = {q:'', borrow:'all'};
 const keep = {doctor:'', date:'', by:''};
 
 const $ = s => document.querySelector(s);
@@ -491,7 +513,7 @@ async function refresh(silent){
 
 /* ===== ใบที่กำลังทำ ===== */
 function newDraft(){
-  draft = {id:'', caseId:'', doctor: keep.doctor, date: keep.date || today(), ins:[], sup:[], src:'', by: keep.by, by2:'', ok:false, returned:''};
+  caseOpen = false; draft = {id:'', caseId:'', doctor: keep.doctor, date: keep.date || today(), ins:[], sup:[], src:'', by: keep.by, by2:'', ok:false, returned:''};
   step = 1;
 }
 function loadCase(){
@@ -550,8 +572,16 @@ function pickedCat(sid, tid){ const t = ($('#' + tid).value || '').trim(), v = $
 function casePicker(act, selId){
   const cats = catList();
   const q = caseQ.trim().toLowerCase();
-  let h = '<input type=text id=cq placeholder="พิมพ์ค้นหาเคส เช่น ACL, TKA, LC" value="' + esc(caseQ) + '">' +
-    '<div class=chips><button class="chip' + (!catSel ? ' on' : '') + '" data-act=cat data-v="">ทั้งหมด</button>' + cats.map((k, i) => '<button class="chip' + (catSel === k ? ' on' : '') + '" data-act=cat data-v="' + i + '">' + esc(k.replace(/^\d+\.\s*/, '')) + '</button>').join('') + '</div>';
+  const collapse = act === 'pickcase';
+  const open = !collapse || caseOpen;
+  const selC = selId ? caseById(selId) : null;
+  let h = '<input type=text id=cq class=fq placeholder="พิมพ์ค้นหาเคส เช่น ACL, TKA, LC" value="' + esc(caseQ) + '" autocomplete=off>';
+  if(collapse && selC && !q && !caseOpen) h += '<div class=picked><span>เลือกแล้ว</span><b>' + esc(selC.name) + '</b></div>';
+  if(collapse && !q){
+    h += '<button type=button class=tgl data-act=caseopen>' + (caseOpen ? '▲ ซ่อนรายการเคส' : '▼ ดูรายการเคสทั้งหมด') + '</button>';
+    if(!caseOpen) return h;
+  }
+  if(open) h += '<div class=chips><button class="chip' + (!catSel ? ' on' : '') + '" data-act=cat data-v="">ทั้งหมด</button>' + cats.map((k, i) => '<button class="chip' + (catSel === k ? ' on' : '') + '" data-act=cat data-v="' + i + '">' + esc(k.replace(/^\d+\.\s*/, '')) + '</button>').join('') + '</div>';
   let n = 0;
   cats.forEach(k => {
     if(catSel && catSel !== k) return;
@@ -561,7 +591,7 @@ function casePicker(act, selId){
     L.forEach(c => { n++; const has = draft && draft.doctor && S.templates[draft.doctor + '|' + c.id];
       h += '<button class="case' + (selId === c.id ? ' on' : '') + '" data-act=' + act + ' data-id="' + esc(c.id) + '"><span>' + esc(c.name) + '</span>' + (has && act === 'pickcase' ? '<small>✓ ' + esc(draft.doctor) + ' เคยใช้</small>' : '') + '</button>'; });
   });
-  if(!n) h += '<div class=muted style="margin:8px 0">ไม่พบเคส — เพิ่มเคสใหม่ได้ด้านล่าง</div>';
+  if(!n) h += '<div class=muted style="margin:8px 0">ไม่พบเคส — กด "ดูรายการเคสทั้งหมด" หรือเพิ่มเคสใหม่ด้านล่าง</div>';
   return h;
 }
 
@@ -1069,12 +1099,11 @@ function render(){
     if(draft.id) h += '<div class=warn>กำลังแก้ใบที่บันทึกไว้ <button class=sm data-act=canceledit>ยกเลิกการแก้</button></div>';
     if(step === 1){
       const cats = {}; S.cases.forEach(c => { (cats[c.cat] = cats[c.cat] || []).push(c); });
-      h += '<div class=card><label>แพทย์</label><select id=docSel><option value="">ไม่ระบุแพทย์</option>' + S.doctors.map(n => '<option' + (draft.doctor === n ? ' selected' : '') + '>' + esc(n) + '</option>').join('') + '</select>' +
+      h += '<div class=card><label>วันที่ผ่าตัด</label><input type=date id=dateIn class=fd value="' + esc(draft.date) + '"><label>แพทย์</label><select id=docSel class=fs><option value="">ไม่ระบุแพทย์</option>' + S.doctors.map(n => '<option' + (draft.doctor === n ? ' selected' : '') + '>' + esc(n) + '</option>').join('') + '</select>' +
         '<label>เคสผ่าตัด</label>' + casePicker('pickcase', draft.caseId) +
         '<details class=more><summary>ไม่มีในรายการ? เพิ่มแพทย์ / เคสใหม่</summary><div class=nmrow style="margin-top:6px"><input type=text id=newDoc placeholder="ชื่อแพทย์ใหม่"><button data-act=adddoc>เพิ่ม</button></div>' +
         catPickHtml('newCat', 'newCatT') + '<div class=nmrow style="margin-top:6px"><input type=text id=newCase placeholder="ชื่อเคสใหม่"><button data-act=addcase>เพิ่ม</button></div></details>' +
-        '<label>วันที่ผ่าตัด</label><input type=date id=dateIn value="' + esc(draft.date) + '">' +
-        (draft.caseId ? '<div class="' + (draft.src === 'doctor' ? 'ok' : 'warn') + '">' + (draft.src === 'doctor' ? 'ดึงรายการที่ ' + esc(draft.doctor) + ' ใช้ครั้งล่าสุดมาให้แล้ว (เครื่องมือ ' + draft.ins.length + ' · เวชภัณฑ์ ' + draft.sup.length + ')' : 'ใช้รายการมาตรฐานของเคสนี้' + (draft.doctor ? ' — บันทึกครั้งนี้แล้ว ครั้งหน้าจะเด้งรายการของ ' + esc(draft.doctor) + ' ให้อัตโนมัติ' : '')) + '</div>' : '') + '</div>';
+                (draft.caseId ? '<div class="' + (draft.src === 'doctor' ? 'ok' : 'warn') + '">' + (draft.src === 'doctor' ? 'ดึงรายการที่ ' + esc(draft.doctor) + ' ใช้ครั้งล่าสุดมาให้แล้ว (เครื่องมือ ' + draft.ins.length + ' · เวชภัณฑ์ ' + draft.sup.length + ')' : 'ใช้รายการมาตรฐานของเคสนี้' + (draft.doctor ? ' — บันทึกครั้งนี้แล้ว ครั้งหน้าจะเด้งรายการของ ' + esc(draft.doctor) + ' ให้อัตโนมัติ' : '')) + '</div>' : '') + '</div>';
       foot = '<button class=pri data-act=next>ถัดไป: เครื่องมือ</button>';
     }else if(step === 2){
       h += '<h2>เครื่องมือ — มีใน OR หรือต้องยืม</h2>' + listView('ins');
@@ -1227,7 +1256,8 @@ document.addEventListener('click', e => {
   else if(a === 'hlogodel'){ hedit.org = $('#hOrg').value; hedit.title = $('#hTitle').value; hedit.form = $('#hForm').value; hedit.logo = ''; render(); }
   else if(a === 'saveitems'){ run(async () => { await saveItems(); await api(); startItems(); say('บันทึกคลังแล้ว ทุกเครื่องใช้รายการนี้ได้'); }); }
   else if(a === 'cat'){ const cs = catList(); catSel = t.dataset.v === '' ? '' : cs[+t.dataset.v]; if(draft && view === 'new') grab1(); render(); }
-  else if(a === 'pickcase'){ grab1(); draft.caseId = t.dataset.id; loadCase(); render(); }
+  else if(a === 'caseopen'){ caseOpen = !caseOpen; if(draft && view === 'new') grab1(); render(); }
+  else if(a === 'pickcase'){ grab1(); draft.caseId = t.dataset.id; caseOpen = false; caseQ = ''; loadCase(); render(); window.scrollTo(0, 0); }
   else if(a === 'editpick'){ const c = caseById(t.dataset.id); editCase = c ? clone(c) : null; delPending = ''; render(); window.scrollTo(0, document.body.scrollHeight); }
   else if(a === 'reload'){ location.reload(); }
   else if(a === 'updateapp'){ location.href = location.pathname + '?v=' + Date.now() + location.hash; }
