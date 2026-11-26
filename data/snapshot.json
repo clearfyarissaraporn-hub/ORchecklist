@@ -1098,10 +1098,6 @@
    "id": "c25",
    "ins": [
     [
-     "Lens 5 mm 0°",
-     ""
-    ],
-    [
      "Lens 10 mm 0°",
      ""
     ],
@@ -1142,15 +1138,35 @@
      ""
     ],
     [
-     "Harmonic (พ.ณัฐพงศ์) / Ligasure (พ.บัณฑิต, พ.ปราการ)",
-     ""
+     "set minor",
+     "O"
     ],
     [
-     "(ใช้ของบริษัท) จุกน้ำ + จุกแก๊ส / สายน้ำ + สายแก๊ส",
-     ""
+     "Cath set",
+     "O"
+    ],
+    [
+     "Valley lab",
+     "O"
+    ],
+    [
+     "Tray Mayo",
+     "O"
+    ],
+    [
+     "Basin + ขัน",
+     "O"
+    ],
+    [
+     "เครื่องvenaflow",
+     "O"
+    ],
+    [
+     "ถุงใส่ชิ้นเนื้อ",
+     "O"
     ]
    ],
-   "name": "LC / Lap appendectomy",
+   "name": "LC ยืมBPK",
    "sup": [
     [
      "Surgical trocar 12 mm (D12LT)",
@@ -1159,64 +1175,134 @@
     ],
     [
      "Dilating tip trocar 5 mm (D5LT)",
-     "3–4",
+     "2",
      ""
     ],
     [
      "Ligamex 5 mm / 12 mm",
-     "",
-     ""
-    ],
-    [
-     "Endoloop (PDS)",
-     "3",
-     ""
-    ],
-    [
-     "Hemoloc ทุก size",
-     "",
+     "1",
      ""
     ],
     [
      "Polymer clip 5 / 10 / 12 mm",
-     "",
-     ""
-    ],
-    [
-     "Endobag 3x6 / 5x8 / Lina endobag",
-     "",
+     "2",
      ""
     ],
     [
      "Endo scissor 5 mm",
-     "",
+     "1",
      ""
     ],
     [
-     "Ligasure Maryland 37 cm LF1937 / Harmonic Ace 36 cm",
-     "",
+     "Trocar 5mm#EZ torcar",
+     "1",
      ""
     ],
     [
-     "Jackson Pratt 400 / Jackson round drain 15 Fr",
-     "",
-     "I"
+     "Vicryl 0 vcp9221",
+     "2",
+     "O"
     ],
     [
-     "Glove port",
-     "",
-     ""
+     "Monocryl 4-0 (MCP3205) Cutting BPK",
+     "2",
+     "O"
     ],
     [
-     "ไหมตามใบเตรียมแพทย์",
-     "",
+     "Vicryl 4-0 (VCP426 ) Cutting",
+     "2",
+     "O"
+    ],
+    [
+     "Steri-Strip 1/4 x 4 นิ้ว (ส้ม) R1546",
+     "1",
+     "O"
+    ],
+    [
+     "Opsite Post op 6.5x5 cm",
+     "4",
+     "O"
+    ],
+    [
+     "syring 10ml.",
+     "1",
+     "O"
+    ],
+    [
+     "Sterile gel 4g.",
+     "1",
+     "O"
+    ],
+    [
+     "Blade No.15",
+     "1",
+     "O"
+    ],
+    [
+     "Foley cath no.14",
+     "1",
+     "O"
+    ],
+    [
+     "Urine bag",
+     "1",
+     "O"
+    ],
+    [
+     "Hand Control Electrosurgical pencil",
+     "1",
+     "O"
+    ],
+    [
+     "Crd liner3L",
+     "1",
+     "O"
+    ],
+    [
+     "Suction Tubing 6mm x 3.0 m (10ft)",
+     "1",
+     "O"
+    ],
+    [
+     "Gauze Sponges Sterile X-ray Detec.4x4 8ply 10pcs (BPK)",
+     "2",
+     "O"
+    ],
+    [
+     "Gauze Sterile 4x4 8ply 10 pcs",
+     "1",
+     "O"
+    ],
+    [
+     "ABD 6x18 (BPK)",
+     "1",
+     "O"
+    ],
+    [
+     "Scrub set A",
+     "1",
+     "O"
+    ],
+    [
+     "Universal set #70-1006-SE",
+     "1",
+     "O"
+    ],
+    [
+     "Venaflow elite calf cuff",
+     "1",
+     "O"
+    ],
+    [
+     "กระปุกใส่นิ่ว",
+     "1",
      "O"
     ]
    ]
   },
   "id": "c25",
   "kind": "case",
-  "updated_at": "2026-11-21T14:19:44.775668+00:00"
+  "updated_at": "2026-11-25T16:47:16.718+00:00"
  },
  {
   "data": {
@@ -2409,7 +2495,7 @@
     ],
     [
      "Glove sterile",
-     "",
+     "1",
      "O"
     ],
     [
@@ -2424,12 +2510,12 @@
     ],
     [
      "Gauze Sterile 4x4 8ply 10 pcs",
-     "",
+     "1",
      "O"
     ],
     [
      "Hand Control Electrosurgical pencil",
-     "",
+     "1",
      "O"
     ],
     [
@@ -2451,12 +2537,17 @@
      "Venaflow elite calf cuff",
      "1",
      "O"
+    ],
+    [
+     "ืื0.9%NSS1000ml IV",
+     "1",
+     "O"
     ]
    ]
   },
   "id": "n1795434108824",
   "kind": "case",
-  "updated_at": "2026-11-23T15:51:56.1+00:00"
+  "updated_at": "2026-11-25T16:10:37.498+00:00"
  },
  {
   "data": {
@@ -2509,6 +2600,443 @@
   "id": "n1795443137085",
   "kind": "case",
   "updated_at": "2026-11-23T14:17:51.751+00:00"
+ },
+ {
+  "data": {
+   "cat": "3. ศัลยกรรมทั่วไป / ส่องกล้อง / ทวารหนัก",
+   "id": "n1795623152523",
+   "ins": [
+    [
+     "Lens 10 mm 30°",
+     ""
+    ],
+    [
+     "Lens 10 mm 30°",
+     ""
+    ],
+    [
+     "Set camera",
+     ""
+    ],
+    [
+     "สายน้ำฟ้าขาว",
+     ""
+    ],
+    [
+     "Suction and irrigate",
+     ""
+    ],
+    [
+     "Pressure bag",
+     ""
+    ],
+    [
+     "LC set",
+     ""
+    ],
+    [
+     "Harmonic (พ.ณัฐพงศ์) ",
+     ""
+    ],
+    [
+     "กระป๋องน้ำ LC",
+     ""
+    ],
+    [
+     "Cautery cable LC",
+     ""
+    ],
+    [
+     "Tray Mayo",
+     "O"
+    ],
+    [
+     "set minor",
+     "O"
+    ],
+    [
+     "Valley lab",
+     "O"
+    ],
+    [
+     "ถุงใส่ชิ้นเนื้อ",
+     "O"
+    ],
+    [
+     "Basin + ขัน",
+     "O"
+    ],
+    [
+     "เครื่องvenaflow",
+     "O"
+    ],
+    [
+     "เครื่อง Ligasure",
+     "O"
+    ],
+    [
+     "Brain suction",
+     "O"
+    ]
+   ],
+   "name": "Lap-appendectomyยืมBPK",
+   "sup": [
+    [
+     "Surgical trocar 12 mm (D12LT)",
+     "1",
+     "O"
+    ],
+    [
+     "Trocar 5mm#B5LT",
+     "3",
+     "O"
+    ],
+    [
+     "Ligamex 5 mm",
+     "1",
+     "O"
+    ],
+    [
+     "Ligasure blunt / Maryland 37 cm",
+     "1",
+     "O"
+    ],
+    [
+     "Endo scissor 5 mm",
+     "1",
+     "O"
+    ],
+    [
+     "Endobag 3x6 / 5x8",
+     "1",
+     "O"
+    ],
+    [
+     "Endoloop (PDS)",
+     "4",
+     "O"
+    ],
+    [
+     "Vicryl 0 vcp9221",
+     "2",
+     "O"
+    ],
+    [
+     "Monocryl 4-0 (MCP3205) Cutting BPK",
+     "2",
+     "O"
+    ],
+    [
+     "Vicryl 4-0 (VCP426 ) Cutting",
+     "2",
+     "O"
+    ],
+    [
+     "Steri-Strip 1/4 x 4 นิ้ว (ส้ม) R1546",
+     "1",
+     "O"
+    ],
+    [
+     "Opsite Post op 6.5x5 cm",
+     "3",
+     "O"
+    ],
+    [
+     "syring 10ml.",
+     "1",
+     "O"
+    ],
+    [
+     "Sterile gel 4g.",
+     "1",
+     "O"
+    ],
+    [
+     "Blade No.15",
+     "1",
+     "O"
+    ],
+    [
+     "Foley cath no.14",
+     "1",
+     "O"
+    ],
+    [
+     "Urine bag",
+     "1",
+     "O"
+    ],
+    [
+     "Hand Control Electrosurgical pencil",
+     "1",
+     "O"
+    ],
+    [
+     "Suction Tubing 6mm x 3.0 m (10ft)",
+     "1",
+     "O"
+    ],
+    [
+     "Crd liner3L",
+     "1",
+     "O"
+    ],
+    [
+     "Gauze Sponges Sterile X-ray Detec.4x4 8ply 10pcs (BPK)",
+     "2",
+     "O"
+    ],
+    [
+     "Gauze Sterile 4x4 8ply 10 pcs",
+     "1",
+     "O"
+    ],
+    [
+     "ABD 6x18 (BPK)",
+     "2",
+     "O"
+    ],
+    [
+     "Scrub set A",
+     "1",
+     "O"
+    ],
+    [
+     "Universal set #70-1006-SE",
+     "1",
+     "O"
+    ],
+    [
+     "Venaflow elite calf cuff",
+     "1",
+     "O"
+    ],
+    [
+     "Buffered formalin10%180ml",
+     "1",
+     "O"
+    ]
+   ]
+  },
+  "id": "n1795623152523",
+  "kind": "case",
+  "updated_at": "2026-11-25T16:46:13.303+00:00"
+ },
+ {
+  "data": {
+   "cat": "3. ศัลยกรรมทั่วไป / ส่องกล้อง / ทวารหนัก",
+   "id": "n1795624116912",
+   "ins": [
+    [
+     "Set camera",
+     ""
+    ],
+    [
+     "จุกเสียบสายน้ำ",
+     ""
+    ],
+    [
+     "จุกgas",
+     ""
+    ],
+    [
+     "สายแก๊ส+สายน้ำ",
+     ""
+    ],
+    [
+     "สายน้ำฟ้าขาว",
+     ""
+    ],
+    [
+     "Suction and irrigate",
+     ""
+    ],
+    [
+     "Cautery cable LC",
+     ""
+    ],
+    [
+     "Pressure bag",
+     ""
+    ],
+    [
+     "set minor",
+     "O"
+    ],
+    [
+     "Cath set",
+     "O"
+    ],
+    [
+     "Valley lab",
+     "O"
+    ],
+    [
+     "เครื่อง Ligasure",
+     "O"
+    ],
+    [
+     "Tray Mayo",
+     "O"
+    ],
+    [
+     "Basin + ขัน",
+     "O"
+    ],
+    [
+     "เครื่อง Harmonic",
+     "O"
+    ],
+    [
+     "ถุงใส่ชิ้นเนื้อ",
+     "O"
+    ],
+    [
+     "Brain suction",
+     "O"
+    ],
+    [
+     "เครื่องvenaflow",
+     "O"
+    ]
+   ],
+   "name": "Lap-appendectomyบริษัท",
+   "sup": [
+    [
+     "Surgical trocar 12 mm (D12LT)",
+     "1",
+     "O"
+    ],
+    [
+     "Trocar 5mm#B5LT",
+     "3",
+     "O"
+    ],
+    [
+     "Endoloop (PDS)",
+     "4",
+     "O"
+    ],
+    [
+     "Endo scissor 5 mm",
+     "1",
+     "O"
+    ],
+    [
+     "Ligasure blunt / Maryland 37 cm",
+     "1",
+     "O"
+    ],
+    [
+     "Harmonic Ace 36 cm",
+     "1",
+     "O"
+    ],
+    [
+     "Vicryl 0 vcp9221",
+     "2",
+     "O"
+    ],
+    [
+     "Vicryl 4-0 (VCP426 ) Cutting",
+     "2",
+     "O"
+    ],
+    [
+     "Monocryl 4-0 (MCP3205) Cutting BPK",
+     "2",
+     "O"
+    ],
+    [
+     "Steri-Strip 1/4 x 4 นิ้ว (ส้ม) R1546",
+     "1",
+     "O"
+    ],
+    [
+     "Opsite Post op 6.5x5 cm",
+     "4",
+     "O"
+    ],
+    [
+     "syring 10ml.",
+     "1",
+     "O"
+    ],
+    [
+     "Sterile gel 4g.",
+     "1",
+     "O"
+    ],
+    [
+     "Foley cath no.14",
+     "1",
+     "O"
+    ],
+    [
+     "Urine bag",
+     "1",
+     "O"
+    ],
+    [
+     "Blade No.15",
+     "1",
+     "O"
+    ],
+    [
+     "Hand Control Electrosurgical pencil",
+     "1",
+     "O"
+    ],
+    [
+     "Suction Tubing 6mm x 3.0 m (10ft)",
+     "1",
+     "O"
+    ],
+    [
+     "Crd liner3L",
+     "1",
+     "O"
+    ],
+    [
+     "Gauze Sponges Sterile X-ray Detec.4x4 8ply 10pcs (BPK)",
+     "2",
+     "O"
+    ],
+    [
+     "Gauze Sterile 4x4 8ply 10 pcs",
+     "1",
+     "O"
+    ],
+    [
+     "ABD 6x18 (BPK)",
+     "2",
+     "O"
+    ],
+    [
+     "Scrub set A",
+     "1",
+     "O"
+    ],
+    [
+     "Universal set #70-1006-SE",
+     "1",
+     "O"
+    ],
+    [
+     "Buffered formalin10%180ml",
+     "1",
+     "O"
+    ],
+    [
+     "Venaflow elite calf cuff",
+     "1",
+     "O"
+    ]
+   ]
+  },
+  "id": "n1795624116912",
+  "kind": "case",
+  "updated_at": "2026-11-25T16:44:28.205+00:00"
  },
  {
   "data": {
@@ -3487,6 +4015,19 @@
   "id": "ins|hammer",
   "kind": "item",
   "updated_at": "2026-11-23T02:25:27.475+00:00"
+ },
+ {
+  "data": {
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Harmonic (พ.ณัฐพงศ์)",
+   "or": false,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|harmonic (พ.ณัฐพงศ์)",
+  "kind": "item",
+  "updated_at": "2026-11-25T16:15:03.55+00:00"
  },
  {
   "data": {
@@ -5401,6 +5942,19 @@
  },
  {
   "data": {
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "venaflow",
+   "or": true,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|venaflow",
+  "kind": "item",
+  "updated_at": "2026-11-25T15:58:46.584+00:00"
+ },
+ {
+  "data": {
    "code": "",
    "from": "",
    "grp": "ซอง Extra",
@@ -5927,6 +6481,19 @@
   "id": "ins|เครื่อง ligasure",
   "kind": "item",
   "updated_at": "2026-11-23T02:25:27.475+00:00"
+ },
+ {
+  "data": {
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "เครื่องvenaflow",
+   "or": true,
+   "stock": "",
+   "t": "ins"
+  },
+  "id": "ins|เครื่องvenaflow",
+  "kind": "item",
+  "updated_at": "2026-11-25T16:08:12.992+00:00"
  },
  {
   "data": {
@@ -7365,6 +7932,19 @@
  },
  {
   "data": {
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Harmonic Ace 36 cm",
+   "or": false,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|harmonic ace 36 cm",
+  "kind": "item",
+  "updated_at": "2026-11-25T16:44:13.429+00:00"
+ },
+ {
+  "data": {
    "code": "",
    "from": "",
    "grp": "เพิ่มจากเคส",
@@ -8484,6 +9064,19 @@
  },
  {
   "data": {
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "Scrub set A",
+   "or": true,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|scrub set a",
+  "kind": "item",
+  "updated_at": "2026-11-25T16:07:14.55+00:00"
+ },
+ {
+  "data": {
    "code": "",
    "from": "",
    "grp": "เพิ่มจากเคส",
@@ -8744,6 +9337,19 @@
   "id": "sup|suture button",
   "kind": "item",
   "updated_at": "2026-11-23T02:25:28.052+00:00"
+ },
+ {
+  "data": {
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "syring 10ml.",
+   "or": true,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|syring 10ml.",
+  "kind": "item",
+  "updated_at": "2026-11-25T16:07:14.55+00:00"
  },
  {
   "data": {
@@ -9338,6 +9944,19 @@
  },
  {
   "data": {
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "กระปุกใส่นิ่ว",
+   "or": true,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|กระปุกใส่นิ่ว",
+  "kind": "item",
+  "updated_at": "2026-11-25T16:47:16.718+00:00"
+ },
+ {
+  "data": {
    "code": "",
    "from": "",
    "grp": "รถเวชภัณฑ์ ชั้นที่ 5",
@@ -9492,6 +10111,19 @@
  },
  {
   "data": {
+   "from": "",
+   "grp": "เพิ่มจากเคส",
+   "n": "ืื0.9%NSS1000ml IV",
+   "or": true,
+   "stock": "",
+   "t": "sup"
+  },
+  "id": "sup|ืื0.9%nss1000ml iv",
+  "kind": "item",
+  "updated_at": "2026-11-25T16:10:37.498+00:00"
+ },
+ {
+  "data": {
    "code": "",
    "from": "",
    "grp": "รถเวชภัณฑ์ ชั้นที่ 1",
@@ -9568,6 +10200,22 @@
    "by2": "",
    "caseId": "n1795443137085",
    "caseName": "TFESI",
+   "chk": {
+    "recv": {
+     "ins:ข้อต่อเตียงท่อนสีดำ": {
+      "v": "ok"
+     }
+    },
+    "recvAt": "2026-11-26 02:40",
+    "recvBy": "วริศราภรณ์",
+    "ret": {
+     "ins:ข้อต่อเตียงท่อนสีดำ": {
+      "v": "ok"
+     }
+    },
+    "retAt": "2026-11-26 02:40",
+    "retBy": "วริศราภรณ์"
+   },
    "date": "2026-11-24",
    "doctor": "",
    "editedAt": "",
@@ -9584,7 +10232,7 @@
      "s": "O"
     }
    ],
-   "returned": "",
+   "returned": "2026-11-26 02:40 (วริศราภรณ์)",
    "savedAt": "2026-11-23 21:18",
    "sup": [
     {
@@ -9627,7 +10275,7 @@
   },
   "id": "r1795443535515538",
   "kind": "record",
-  "updated_at": "2026-11-23T14:18:55.519+00:00"
+  "updated_at": "2026-11-25T19:40:58.147+00:00"
  },
  {
   "data": {
@@ -9637,6 +10285,76 @@
    "by2": "",
    "caseId": "n1795434108824",
    "caseName": "LCบริษัท",
+   "chk": {
+    "recv": {
+     "ins:Pressure bag": {
+      "v": "ok"
+     },
+     "ins:Set camera": {
+      "v": "ok"
+     },
+     "ins:Suction and irrigate": {
+      "v": "ok"
+     },
+     "ins:จุกgas": {
+      "v": "ok"
+     },
+     "ins:จุกเสียบสายน้ำ": {
+      "v": "ok"
+     },
+     "ins:ด้าม Hemoloc 5 / 10 / 12 mm": {
+      "v": "ok"
+     },
+     "ins:สายน้ำฟ้าขาว": {
+      "v": "ok"
+     },
+     "ins:สายแก๊ส+สายน้ำ": {
+      "v": "ok"
+     },
+     "sup:Polymer clip 5 / 10 / 12 mm": {
+      "v": "ok"
+     },
+     "sup:Trocar 5mm#EZ torcar": {
+      "v": "ok"
+     }
+    },
+    "recvAt": "2026-11-26 02:40",
+    "recvBy": "วริศราภรณ์",
+    "ret": {
+     "ins:Pressure bag": {
+      "v": "ok"
+     },
+     "ins:Set camera": {
+      "v": "ok"
+     },
+     "ins:Suction and irrigate": {
+      "v": "ok"
+     },
+     "ins:จุกgas": {
+      "v": "ok"
+     },
+     "ins:จุกเสียบสายน้ำ": {
+      "v": "ok"
+     },
+     "ins:ด้าม Hemoloc 5 / 10 / 12 mm": {
+      "v": "ok"
+     },
+     "ins:สายน้ำฟ้าขาว": {
+      "v": "ok"
+     },
+     "ins:สายแก๊ส+สายน้ำ": {
+      "v": "ok"
+     },
+     "sup:Polymer clip 5 / 10 / 12 mm": {
+      "v": "ok"
+     },
+     "sup:Trocar 5mm#EZ torcar": {
+      "v": "ok"
+     }
+    },
+    "retAt": "2026-11-26 02:42",
+    "retBy": "วริศราภรณ์"
+   },
    "date": "2026-11-23",
    "doctor": "พ.เฉลิมพล",
    "editedAt": "",
@@ -9890,7 +10608,352 @@
   },
   "id": "r1795449201780161",
   "kind": "record",
-  "updated_at": "2026-11-23T15:56:09.736+00:00"
+  "updated_at": "2026-11-25T19:42:17.748+00:00"
+ },
+ {
+  "data": {
+   "borrowIns": "Lens 10 mm 0°; Lens 10 mm 30°; Set camera; สายน้ำฟ้าขาว; Suction and irrigate; กระป๋องน้ำ LC; Cautery cable LC; LC set; ด้าม Hemoloc 5 / 10 / 12 mm; Pressure bag",
+   "borrowSup": "Ligamex 5 mm / 12 mm (1); Polymer clip 5 / 10 / 12 mm (2)",
+   "by": "วริศราภรณ์",
+   "by2": "",
+   "caseId": "c25",
+   "caseName": "LC ยืมBPK",
+   "chk": {
+    "recv": {
+     "ins:Cautery cable LC": {
+      "v": "ok"
+     },
+     "ins:LC set": {
+      "v": "ok"
+     },
+     "ins:Lens 10 mm 0°": {
+      "v": "ok"
+     },
+     "ins:Lens 10 mm 30°": {
+      "v": "ok"
+     },
+     "ins:Pressure bag": {
+      "v": "ok"
+     },
+     "ins:Set camera": {
+      "v": "ok"
+     },
+     "ins:Suction and irrigate": {
+      "v": "ok"
+     },
+     "ins:กระป๋องน้ำ LC": {
+      "v": "ok"
+     },
+     "ins:ด้าม Hemoloc 5 / 10 / 12 mm": {
+      "v": "ok"
+     },
+     "ins:สายน้ำฟ้าขาว": {
+      "v": "ok"
+     },
+     "sup:Ligamex 5 mm / 12 mm": {
+      "v": "ok"
+     },
+     "sup:Polymer clip 5 / 10 / 12 mm": {
+      "v": "ok"
+     }
+    },
+    "recvAt": "2026-11-26 02:42",
+    "recvBy": "วริศราภรณ์",
+    "ret": {
+     "ins:Cautery cable LC": {
+      "v": "ok"
+     },
+     "ins:LC set": {
+      "v": "ok"
+     },
+     "ins:Lens 10 mm 0°": {
+      "v": "ok"
+     },
+     "ins:Lens 10 mm 30°": {
+      "v": "ok"
+     },
+     "ins:Pressure bag": {
+      "v": "ok"
+     },
+     "ins:Set camera": {
+      "v": "ok"
+     },
+     "ins:Suction and irrigate": {
+      "v": "ok"
+     },
+     "ins:กระป๋องน้ำ LC": {
+      "v": "ok"
+     },
+     "ins:ด้าม Hemoloc 5 / 10 / 12 mm": {
+      "v": "ok"
+     },
+     "ins:สายน้ำฟ้าขาว": {
+      "v": "ok"
+     },
+     "sup:Ligamex 5 mm / 12 mm": {
+      "v": "ok"
+     },
+     "sup:Polymer clip 5 / 10 / 12 mm": {
+      "v": "ok"
+     }
+    },
+    "retAt": "2026-11-26 02:41",
+    "retBy": "วริศราภรณ์"
+   },
+   "date": "2026-11-25",
+   "doctor": "",
+   "editedAt": "",
+   "id": "r1795623493504370",
+   "ins": [
+    {
+     "from": "",
+     "n": "Lens 10 mm 0°",
+     "s": "B"
+    },
+    {
+     "from": "",
+     "n": "Lens 10 mm 30°",
+     "s": "B"
+    },
+    {
+     "from": "",
+     "n": "Set camera",
+     "s": "B"
+    },
+    {
+     "from": "",
+     "n": "สายน้ำฟ้าขาว",
+     "s": "B"
+    },
+    {
+     "from": "",
+     "n": "Suction and irrigate",
+     "s": "B"
+    },
+    {
+     "from": "",
+     "n": "กระป๋องน้ำ LC",
+     "s": "B"
+    },
+    {
+     "from": "",
+     "n": "Cautery cable LC",
+     "s": "B"
+    },
+    {
+     "from": "",
+     "n": "LC set",
+     "s": "B"
+    },
+    {
+     "from": "",
+     "n": "ด้าม Hemoloc 5 / 10 / 12 mm",
+     "s": "B"
+    },
+    {
+     "from": "",
+     "n": "Pressure bag",
+     "s": "B"
+    },
+    {
+     "from": "",
+     "n": "set minor",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Cath set",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Valley lab",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Tray Mayo",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Basin + ขัน",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "เครื่องvenaflow",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "ถุงใส่ชิ้นเนื้อ",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Brain sucion",
+     "s": "O"
+    }
+   ],
+   "returned": "2026-11-26 02:41 (วริศราภรณ์)",
+   "savedAt": "2026-11-25 23:18",
+   "sup": [
+    {
+     "from": "",
+     "n": "Surgical trocar 12 mm (D12LT)",
+     "q": "2",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Dilating tip trocar 5 mm (D5LT)",
+     "q": "2",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Ligamex 5 mm / 12 mm",
+     "q": "1",
+     "s": "B"
+    },
+    {
+     "from": "",
+     "n": "Polymer clip 5 / 10 / 12 mm",
+     "q": "2",
+     "s": "B"
+    },
+    {
+     "from": "",
+     "n": "Endo scissor 5 mm",
+     "q": "1",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Trocar 5mm#EZ torcar",
+     "q": "1",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Vicryl 0 vcp9221",
+     "q": "2",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Monocryl 4-0 (MCP3205) Cutting BPK",
+     "q": "2",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Vicryl 4-0 (VCP426 ) Cutting",
+     "q": "2",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Steri-Strip 1/4 x 4 นิ้ว (ส้ม) R1546",
+     "q": "1",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Opsite Post op 6.5x5 cm",
+     "q": "4",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "syring 10ml.",
+     "q": "1",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Sterile gel 4g.",
+     "q": "1",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Blade No.15",
+     "q": "1",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Foley cath no.14",
+     "q": "1",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Urine bag",
+     "q": "1",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Hand Control Electrosurgical pencil",
+     "q": "1",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Crd liner3L",
+     "q": "1",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Suction Tubing 6mm x 3.0 m (10ft)",
+     "q": "1",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Gauze Sponges Sterile X-ray Detec.4x4 8ply 10pcs (BPK)",
+     "q": "2",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Gauze Sterile 4x4 8ply 10 pcs",
+     "q": "1",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "ABD 6x18 (BPK)",
+     "q": "1",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Scrub set A",
+     "q": "1",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Universal set #70-1006-SE",
+     "q": "1",
+     "s": "O"
+    },
+    {
+     "from": "",
+     "n": "Venaflow elite calf cuff",
+     "q": "1",
+     "s": "O"
+    }
+   ]
+  },
+  "id": "r1795623493504370",
+  "kind": "record",
+  "updated_at": "2026-11-25T19:42:03.89+00:00"
  },
  {
   "data": {
